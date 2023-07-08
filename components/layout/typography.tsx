@@ -3,6 +3,10 @@ interface TypographyProps {
   className?: string;
 }
 
+export function H1({ children }: TypographyProps) {
+  return <h1 className="text-[2em] font-bold m-[3px_0_4px]">{children}</h1>;
+}
+
 export function H2({ children }: TypographyProps) {
   return <h2 className="text-[1.5em] font-bold m-[3px_0_4px]">{children}</h2>;
 }

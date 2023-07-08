@@ -18,25 +18,27 @@ export default function Privacy() {
         Twitter provides this Privacy Policy to inform users of our policies and
         procedures regarding the collection, use and disclosure of personally
         identifiable information received from users of this website, located at{" "}
-        <Link href="/">www.twitter.com</Link> ("Site" ) or collected through our
-        social networking service, including via SMS, WAP and Instant Messaging
-        ("Service" ). This Privacy Policy may be updated from time to time for
-        any reason; each version will apply to information collected while it
-        was in place. We will notify you of any material changes to our Privacy
-        Policy by posting the new Privacy Policy on our Site. You are advised to
-        consult this Privacy Policy regularly for any changes.
+        <Link href="/">www.twitter.com</Link> (&quot;Site&quot; ) or collected
+        through our social networking service, including via SMS, WAP and
+        Instant Messaging (&quot;Service&quot; ). This Privacy Policy may be
+        updated from time to time for any reason; each version will apply to
+        information collected while it was in place. We will notify you of any
+        material changes to our Privacy Policy by posting the new Privacy Policy
+        on our Site. You are advised to consult this Privacy Policy regularly
+        for any changes.
       </P>
       <P className="mb-[15px]">
         By using our Site you are consenting to our processing of your
         information as set forth in this Privacy Policy now and as amended by
-        us. "Processing" means using cookies on a computer or using or touching
-        information in any way, including, but not limited to, collecting,
-        storing, deleting, using, combining and disclosing information, all of
-        which activities will take place in the United States. If you reside
-        outside the U.S. your personally identifiable information will be
-        transferred to the U.S., and processed and stored there under U.S.
-        privacy standards. By visiting our Site and providing information to us,
-        you consent to such transfer to, and processing in, the US.
+        us. &quot;Processing&quot; means using cookies on a computer or using or
+        touching information in any way, including, but not limited to,
+        collecting, storing, deleting, using, combining and disclosing
+        information, all of which activities will take place in the United
+        States. If you reside outside the U.S. your personally identifiable
+        information will be transferred to the U.S., and processed and stored
+        there under U.S. privacy standards. By visiting our Site and providing
+        information to us, you consent to such transfer to, and processing in,
+        the US.
       </P>
       <P className="mb-[15px]">
         If you have any questions or comments about this Privacy Policy or our
@@ -96,22 +98,23 @@ export default function Privacy() {
       <P className="mb-[15px]">
         <b>Log Data</b> When you visit the Site, our servers automatically
         record information that your browser sends whenever you visit a website
-        ("Log Data" ). This Log Data may include information such as your IP
-        address, browser type or the domain from which you are visiting, the
-        web-pages you visit, the search terms you use, and any advertisements on
-        which you click. For most users accessing the Internet from an Internet
-        service provider the IP address will be different every time you log on.
-        We use Log Data to monitor the use of the Site and of our Service, and
-        for the Site"™s technical administration. We do not associate your IP
-        address with any other personally identifiable information to identify
-        you personally, except in case of violation of the Terms of Service
+        (&quot;Log Data&quot; ). This Log Data may include information such as
+        your IP address, browser type or the domain from which you are visiting,
+        the web-pages you visit, the search terms you use, and any
+        advertisements on which you click. For most users accessing the Internet
+        from an Internet service provider the IP address will be different every
+        time you log on. We use Log Data to monitor the use of the Site and of
+        our Service, and for the Site&quot;™s technical administration. We do
+        not associate your IP address with any other personally identifiable
+        information to identify you personally, except in case of violation of
+        the Terms of Service
       </P>
       <H3>Cookies</H3>
       <P className="mb-[15px]">
-        Like many websites, we also use "cookie" technology to collect
+        Like many websites, we also use &quot;cookie&quot; technology to collect
         additional website usage data and to improve the Site and our service. A
-        cookie is a small data file that we transfer to your computer"™s hard
-        disk. We do not use cookies to collect personally identifiable
+        cookie is a small data file that we transfer to your computer&quot;™s
+        hard disk. We do not use cookies to collect personally identifiable
         information. Twitter may use both session cookies and persistent cookies
         to better understand how you interact with the Site and our Service, to
         monitor aggregate usage by our users and web traffic routing on the
@@ -152,9 +155,9 @@ export default function Privacy() {
         some or all of its assets, including your personally identifiable
         information, in connection with a merger, acquisition, reorganization or
         sale of assets or in the event of bankruptcy. You will have the
-        opportunity to opt out of any such transfer if the new entity's planned
-        processing of your information differs materially from that set forth in
-        this Privacy Policy.
+        opportunity to opt out of any such transfer if the new entity&apos;s
+        planned processing of your information differs materially from that set
+        forth in this Privacy Policy.
       </P>
       <H3>Changing or Deleting Information</H3>
       <P className="mb-[15px]">

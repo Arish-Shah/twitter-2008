@@ -31,8 +31,8 @@ export default function AboutUs() {
           For ongoing information about Twitter, please read our{" "}
           <Link href="/blog">company blog</Link>. Also, feel free to{" "}
           <Link href="/help/contact">contact us</Link> with service questions,
-          partnership proposals, or press inquiries. If you'd like your profile
-          image on this page, <Link href="/help/jobs">click here</Link>.
+          partnership proposals, or press inquiries. If you&apos;d like your
+          profile image on this page, <Link href="/help/jobs">click here</Link>.
         </P>
         <br />
         <P>
