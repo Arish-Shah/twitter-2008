@@ -14,6 +14,8 @@ module.exports = {
       colors: {
         "tw-blue": "#9ae4e8",
         "tw-links": "#0084b4",
+        "tw-side-base": "#ddffcc",
+        "tw-side-base-border": "#bddcad",
       },
     },
   },
