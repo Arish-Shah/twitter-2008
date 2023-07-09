@@ -37,28 +37,29 @@ export default function Press() {
         </P>
         <H3>Why do so many people seem to like Twitter?</H3>
         <P>
-          Simplicity has played an important role in Twitter's success. People
-          are eager to connect with other people and Twitter makes that simple.
-          Twitter asks one question, "What are you doing?" Answers must be under
-          140 characters in length and can be sent via mobile texting, instant
-          message, or the web
+          Simplicity has played an important role in Twitter&apos;s success.
+          People are eager to connect with other people and Twitter makes that
+          simple. Twitter asks one question, &quot;What are you doing?&quot;
+          Answers must be under 140 characters in length and can be sent via
+          mobile texting, instant message, or the web
         </P>
         <P>
-          Twitter's core technology is a device agnostic message routing system
-          with rudimentary social networking features. By accepting messages
-          from sms, web, mobile web, instant message, or from third party API
-          projects, Twitter makes it easy for folks to stay connected.
+          Twitter&apos;s core technology is a device agnostic message routing
+          system with rudimentary social networking features. By accepting
+          messages from sms, web, mobile web, instant message, or from third
+          party API projects, Twitter makes it easy for folks to stay connected.
         </P>
-        <H3>Isn't Twitter just too much information?</H3>
+        <H3>Isn&apos;t Twitter just too much information?</H3>
         <P>
           No, in fact, Twitter solves information overload by changing
           expectations traditionally associated with online communication. At
-          Twitter, we ask one question, "What are you doing?" The answers to
-          this question are for the most part rhetorical. In other words, users
-          do not expect a response when they send a message to Twitter. On the
-          receiving end, Twitter is ambient--updates from your friends and
-          relatives float to your phone, IM, or web site and you are only
-          expected to pay as much or as little attention to them as you see fit.
+          Twitter, we ask one question, &quot;What are you doing?&quot; The
+          answers to this question are for the most part rhetorical. In other
+          words, users do not expect a response when they send a message to
+          Twitter. On the receiving end, Twitter is ambient--updates from your
+          friends and relatives float to your phone, IM, or web site and you are
+          only expected to pay as much or as little attention to them as you see
+          fit.
         </P>
         <P>
           The result of using Twitter to stay connected with friends, relatives,
@@ -73,7 +74,8 @@ export default function Press() {
         </P>
         <P>
           Simply put, Twitter is what you make of it--receive a lot of
-          information about your friends, or just a tiny bit. It's up to them.
+          information about your friends, or just a tiny bit. It&apos;s up to
+          them.
         </P>
         <H3>How is Twitter built?</H3>
         <P>
@@ -86,19 +88,19 @@ export default function Press() {
           We built Twitter using Ruby on Rails because it allows us to work
           quickly and easily--our team likes to deploy features and changes
           multiple times per day. Rails provides skeleton code frameworks so we
-          don't have to re-invent the wheel every time we want to add something
-          simple like a sign in form or a picture upload feature.
+          don&apos;t have to re-invent the wheel every time we want to add
+          something simple like a sign in form or a picture upload feature.
         </P>
         <H3>How do you make money from Twitter?</H3>
         <P>
           Twitter has many appealing opportunities for generating revenue but we
-          are holding off on implementation for now because we don't want to
-          distract ourselves from the more important work at hand which is to
+          are holding off on implementation for now because we don&apos;t want
+          to distract ourselves from the more important work at hand which is to
           create a compelling service and great user experience for millions of
           people around the world. While our business model is in a research
           phase, we spend more money than we make.
         </P>
-        <H3>What's next for Twitter?</H3>
+        <H3>What&apos;s next for Twitter?</H3>
         <P>
           We continue to follow user behavior and pay close attention to feature
           requests. We launched our mobile site, m.twitter.com after getting
@@ -107,7 +109,7 @@ export default function Press() {
           like to restrain ourselves with regard to features. That being said,
           people seem to be calling for more interesting ways to share feedback
           with one another and organize themselves and their updates into
-          groups--we're paying attention to these requests.
+          groups--we&apos;re paying attention to these requests.
         </P>
         <P>
           We plan to build Twitter, Inc into a successful, revenue-generating

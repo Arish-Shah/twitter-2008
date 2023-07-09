@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Jobs() {
   return (
     <Wrapper>
-      <H1>Nice to meet you; won't you join us?</H1>
+      <H1>Nice to meet you; won&apos;t you join us?</H1>
       <P>
         Twitter is on to something big and we need your help—join our
         small-but-growing team!
@@ -42,10 +42,10 @@ export default function Jobs() {
       <H2 className="mb-0">Why work at Twitter?</H2>
       <P className="mt-0">
         We have our own cozy little building right in South Park—a tiny little
-        green space in San Francisco's SOMA neighborhood. On sunny days, the
-        park is full of folks from nearby startups lying on the grass, eating
-        burritos, and maybe enjoying a nice soy latte—iced! There's also a
-        playground in the park.
+        green space in San Francisco&apos;s SOMA neighborhood. On sunny days,
+        the park is full of folks from nearby startups lying on the grass,
+        eating burritos, and maybe enjoying a nice soy latte—iced! There&apos;s
+        also a playground in the park.
       </P>
       <H2 className="mt-[10px] mb-0">Competitive salary, full benefits</H2>
       <P className="mt-0">
@@ -59,17 +59,17 @@ export default function Jobs() {
       </P>
       <H2 className="mt-[10px] mb-0">Work with interesting people!</H2>
       <P className="mt-0">
-        You'll be joining a unique group of people who prior to joining Twitter
-        spent time creating and building other popular products and services
-        from companies such as Google, Blogger, Xanga, Odeo, CNET, Danger,
-        UserScripts.org, Samsung, Sony Ericsson, Vodafone and lots more—if
-        you're curious about any of these projects, or have your own to share,
-        please come and visit us.
+        You&apos;ll be joining a unique group of people who prior to joining
+        Twitter spent time creating and building other popular products and
+        services from companies such as Google, Blogger, Xanga, Odeo, CNET,
+        Danger, UserScripts.org, Samsung, Sony Ericsson, Vodafone and lots
+        more—if you&apos;re curious about any of these projects, or have your
+        own to share, please come and visit us.
       </P>
       <H1 className="mt-[20px] mb-0">Our current positions</H1>
       <P className="mt-0">
-        If you see a position that you're interested in, send an email telling
-        us about yourself and your relevant experience to{" "}
+        If you see a position that you&apos;re interested in, send an email
+        telling us about yourself and your relevant experience to{" "}
         <Link href="mailto:jobs@twitter.com">jobs@twitter.com</Link>. Unless
         otherwise stated, all jobs are located in San Francisco, California.
       </P>
