@@ -25,17 +25,17 @@ export function Container({ children, large }: ContainerProps) {
 }
 
 export function Wrapper({ children }: ContentProps) {
-  return <div className="p-[5px_10px] min-h-[591px]">{children}</div>;
+  return <div className="flex-1 p-[5px_10px] min-h-[591px]">{children}</div>;
 }
 
-export function SideBase({ children }: ContentProps) {
+export function SideBar({ children }: ContentProps) {
   return (
-    <div className="min-w-[200px] bg-tw-side-base border-l border-tw-side-base-border">
+    <div className="min-w-[200px] w-[200px] bg-tw-sidebar border-l border-tw-sidebar-border">
       {children}
     </div>
   );
 }
 
 export function Section({ children }: ContentProps) {
-  return <div className="p-[13px_13px_16px]">{children}</div>;
+  return <div className="leading-[1.2] p-[13px_13px_16px]">{children}</div>;
 }

@@ -1,4 +1,5 @@
-import { Section, SideBase, Wrapper } from "@/components/layout/content";
+import { BioPics } from "@/components/layout/bio-pics";
+import { Section, SideBar, Wrapper } from "@/components/layout/content";
 import { H2, P } from "@/components/layout/typography";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -7,6 +8,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Twitter: About Us",
 };
+
+const links = Array(13).fill({
+  handle: "default",
+  name: "Default",
+  img: "/images/default_profile_mini.png",
+});
 
 export default function AboutUs() {
   return (
@@ -46,9 +53,16 @@ export default function AboutUs() {
           />
         </P>
       </Wrapper>
-      <SideBase>
-        <Section>hello</Section>
-      </SideBase>
+      <SideBar>
+        <Section>
+          <div className="m-[10px_0_5px_0] border-b border-b-tw-sidebar-heading">
+            <h1 className="text-[1.1em] font-bold p-[0_0_2px_5px]">
+              Twitter Employees
+            </h1>
+          </div>
+          <BioPics links={links} />
+        </Section>
+      </SideBar>
     </div>
   );
 }
