@@ -17,6 +17,8 @@ module.exports = {
         "tw-sidebar": "#ddffcc",
         "tw-sidebar-border": "#bddcad",
         "tw-sidebar-heading": "#A7CF40;",
+        "tw-badgebox": "#ffc",
+        "tw-badgebox-border": "#ff0",
       },
     },
   },
