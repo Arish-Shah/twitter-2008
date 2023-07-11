@@ -19,7 +19,7 @@ const links = [
 
 export default function Contact() {
   return (
-    <Wrapper>
+    <Wrapper heightFix>
       <H2>Contact us!</H2>
       <H3>Email</H3>
       <ul>

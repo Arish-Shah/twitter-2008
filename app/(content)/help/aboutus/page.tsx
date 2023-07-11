@@ -18,7 +18,7 @@ const links = Array(13).fill({
 export default function AboutUs() {
   return (
     <div className="flex">
-      <Wrapper>
+      <Wrapper heightFix>
         <H2>About Us</H2>
         <P>
           Twitter is a privately funded startup with offices in the SoMA

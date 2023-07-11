@@ -18,7 +18,7 @@ export function Header({ large }: HeaderProps) {
         />
       </Link>
       {!large && (
-        <div className="absolute right-0 top-[25px] bg-white rounded-[5px] p-[8px_10px]">
+        <div className="leading-[1.2] absolute right-0 top-[25px] bg-white rounded-[5px] p-[8px_10px]">
           <ul>
             <li>
               <Link href="/login">Login</Link> /{" "}

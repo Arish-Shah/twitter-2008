@@ -1,9 +1,9 @@
 import { Container } from "@/components/layout/content";
 
-interface SiteLayoutProps {
+interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
-export default function SiteLayout({ children }: SiteLayoutProps) {
+export default function AuthLayout({ children }: AuthLayoutProps) {
   return <Container>{children}</Container>;
 }

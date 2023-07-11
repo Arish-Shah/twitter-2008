@@ -9,6 +9,10 @@ interface ContainerProps extends ContentProps {
   large?: boolean;
 }
 
+interface WrapperProps extends ContentProps {
+  heightFix?: boolean;
+}
+
 export function Container({ children, large }: ContainerProps) {
   return (
     <main className="w-[763px] mx-auto p-[16px_0px] relative">
@@ -24,8 +28,12 @@ export function Container({ children, large }: ContainerProps) {
   );
 }
 
-export function Wrapper({ children }: ContentProps) {
-  return <div className="flex-1 p-[5px_10px] min-h-[591px]">{children}</div>;
+export function Wrapper({ children, heightFix }: WrapperProps) {
+  return (
+    <div className={`flex-1 p-[5px_10px] ${heightFix ? "min-h-[591px]" : ""}`}>
+      {children}
+    </div>
+  );
 }
 
 export function SideBar({ children }: ContentProps) {
