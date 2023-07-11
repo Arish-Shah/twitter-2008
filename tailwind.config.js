@@ -27,6 +27,8 @@ module.exports = {
         "tw-join-button": "#417596",
         "tw-join-button-hover": "#294b60",
         "tw-subtext": "#777",
+        "tw-intro-muted": "#a4a0a1",
+        "tw-button-green": "#97cd39",
       },
     },
   },

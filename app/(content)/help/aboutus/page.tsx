@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const links = Array(13).fill({
   handle: "default",
   name: "Default",
-  img: "/images/default_profile_mini.png",
+  img: "/images/profile/default_profile_mini.png",
 });
 
 export default function AboutUs() {
