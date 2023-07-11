@@ -1,13 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Input,
-  InputFormGroup,
-  Label,
-  LabelFormGroup,
-  Submit,
-} from "./elements";
+import { Label } from "./elements/labels";
+import { Input, Submit } from "./elements/inputs";
+import { InputFormGroup, LabelFormGroup } from "./elements/form-group";
 
 export function LoginForm() {
   return (

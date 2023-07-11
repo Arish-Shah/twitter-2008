@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         "tw-bg": "url(/images/bg.gif)",
         "tw-arr2": "url(/images/arr2.gif)",
+        "tw-captcha": "url(/images/captcha/sprite.png)",
       },
       colors: {
         "tw-blue": "#9ae4e8",
@@ -25,6 +26,7 @@ module.exports = {
         "tw-button-border": "#ccc",
         "tw-join-button": "#417596",
         "tw-join-button-hover": "#294b60",
+        "tw-subtext": "#777",
       },
     },
   },
