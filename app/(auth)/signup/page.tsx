@@ -22,8 +22,8 @@ export default function Signup() {
           </H3>
           <P className="mt-0">
             Already use Twitter on your phone?{" "}
-            <Link href="/account/complete">Head over here</Link> and we'll get
-            you signed up on the web.
+            <Link href="/account/complete">Head over here</Link> and we&apos;ll
+            get you signed up on the web.
           </P>
         </Section>
       </SideBar>

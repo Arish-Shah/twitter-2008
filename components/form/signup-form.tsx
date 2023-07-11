@@ -16,7 +16,7 @@ export function SignupForm() {
             Your URL: http://twitter.com/
             <span className="text-green-700 font-bold">USERNAME</span>
             <br />
-            Username can only contain letters, numbers and '_'
+            Username can only contain letters, numbers and &apos;_&apos;
           </Subtext>
         </Input>
       </div>
@@ -52,8 +52,8 @@ export function SignupForm() {
         <LabelFormGroup />
         <InputFormGroup>
           <Subtext>
-            By clicking on 'I accept' below, you confirm that you are over 13
-            years of age and accept the{" "}
+            By clicking on &apos;I accept&apos; below, you confirm that you are
+            over 13 years of age and accept the{" "}
             <Link href="/tos">Terms of Service</Link>.
           </Subtext>
         </InputFormGroup>
