@@ -1,5 +1,5 @@
 import { IndexForm } from "@/components/form/index-form";
-import { Recent } from "@/components/intro/recent";
+import { RecentTweets } from "@/components/intro/recent-tweets";
 import { Container } from "@/components/layout/content";
 import type { Metadata } from "next";
 
@@ -18,7 +18,7 @@ export default function IndexLayout({ children }: IndexLayoutProps) {
         {children}
         <IndexForm />
       </div>
-      <Recent />
+      <RecentTweets />
     </Container>
   );
 }

@@ -8,10 +8,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "tw-bg": "url(/images/bg.gif)",
-        "tw-arr": "url(/images/arr.gif)",
-        "tw-arr2": "url(/images/arr2.gif)",
-        "tw-captcha": "url(/images/captcha/sprite.png)",
+        "tw-bg": "url(/images/main/bg.gif)",
+        "tw-arr": "url(/images/main/arr.gif)",
+        "tw-arr2": "url(/images/main/arr2.gif)",
       },
       colors: {
         "tw-blue": "#9ae4e8",

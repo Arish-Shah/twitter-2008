@@ -44,7 +44,7 @@ export default function AboutUs() {
         <br />
         <P>
           <Image
-            src="/images/office.png"
+            src="/images/about/office.png"
             alt="Office"
             height={306}
             width={400}

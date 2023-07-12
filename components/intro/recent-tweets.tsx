@@ -19,7 +19,7 @@ function Bubble({ tweet, fullName, title }: BubbleProps) {
   );
 }
 
-export function Recent() {
+export function RecentTweets() {
   return (
     <div className="bg-tw-recent">
       <ul className="w-full text-black flex justify-center py-[30px]">

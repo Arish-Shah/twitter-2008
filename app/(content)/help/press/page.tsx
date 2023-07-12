@@ -15,9 +15,9 @@ export default function Press() {
         <P>
           <small>
             High resolution logos:{" "}
-            <Link href="/images/twitter_logo.png">PNG</Link> |{" "}
-            <Link href="/images/twitter_logo.psd">Photoshop</Link> |{" "}
-            <Link href="/images/twitter_logo.ai">Illustrator</Link>
+            <Link href="/images/logo/twitter_logo.png">PNG</Link> |{" "}
+            <Link href="/images/logo/twitter_logo.psd">Photoshop</Link> |{" "}
+            <Link href="/images/logo/twitter_logo.ai">Illustrator</Link>
           </small>
         </P>
         <H3>Where did the idea for Twitter come from?</H3>

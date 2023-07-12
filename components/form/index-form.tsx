@@ -6,10 +6,10 @@ export function IndexForm() {
     <div className="w-full ml-[23px]">
       <Link
         href="/"
-        className="block w-full text-center bg-tw-button-red text-white font-bold text-[11pt] p-[2px_0] border border-black align-middle"
+        className="block w-full text-center bg-tw-button-red text-white font-bold text-[11pt] p-[2px_0] border border-black align-middle hover:no-underline"
       >
         <Image
-          src="/images/arrow_on_red.gif"
+          src="/images/main/arrow_on_red.gif"
           height={13}
           width={17}
           quality={100}

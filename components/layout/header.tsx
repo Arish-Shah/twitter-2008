@@ -10,7 +10,7 @@ export function Header({ large }: HeaderProps) {
     <nav>
       <Link href="/">
         <Image
-          src={`/images/twitter${!large ? "_logo_s" : ""}.png`}
+          src={`/images/logo/twitter${!large ? "_logo_s" : ""}.png`}
           alt="Twitter.com"
           height={large ? 49 : 41}
           width={large ? 210 : 175}
