@@ -20,7 +20,7 @@ export function Container({ children, large }: ContainerProps) {
       <div className="bg-transparent bg-tw-arr2 bg-no-repeat bg-scroll bg-[25px_0px] pt-[11px] mt-[16px]">
         <div className="bg-white bg-none bg-repeat bg-scroll bg-[0] rounded-[5px] overflow-hidden">
           {children}
-          {large && <Footer />}
+          {large && <Footer large />}
         </div>
       </div>
       {!large && <Footer />}

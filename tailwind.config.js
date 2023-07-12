@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "tw-bg": "url(/images/bg.gif)",
+        "tw-arr": "url(/images/arr.gif)",
         "tw-arr2": "url(/images/arr2.gif)",
         "tw-captcha": "url(/images/captcha/sprite.png)",
       },
@@ -29,6 +30,10 @@ module.exports = {
         "tw-subtext": "#777",
         "tw-intro-muted": "#a4a0a1",
         "tw-button-green": "#97cd39",
+        "tw-button-red": "#ff493c",
+        "tw-success": "#e8fecd",
+        "tw-success-border": "#a9bf74",
+        "tw-recent": "#afeff1",
       },
     },
   },

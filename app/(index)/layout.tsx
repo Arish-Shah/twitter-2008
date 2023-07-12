@@ -1,4 +1,5 @@
-import { Carousel } from "@/components/intro/carousel";
+import { IndexForm } from "@/components/form/index-form";
+import { Recent } from "@/components/intro/recent";
 import { Container } from "@/components/layout/content";
 import type { Metadata } from "next";
 
@@ -13,10 +14,11 @@ interface IndexLayoutProps {
 export default function IndexLayout({ children }: IndexLayoutProps) {
   return (
     <Container large>
-      <div className="flex p-[17px_20px]">
+      <div className="flex p-[17px_20px] mb-[5px]">
         {children}
-        <form className="w-[179px]">form</form>
+        <IndexForm />
       </div>
+      <Recent />
     </Container>
   );
 }

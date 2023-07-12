@@ -13,3 +13,7 @@ body {
 a {
   @apply text-tw-links hover:underline;
 }
+
+.text-black * {
+  color: #000;
+}

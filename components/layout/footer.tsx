@@ -17,12 +17,18 @@ const links = [
   { text: "Privacy", href: "/help/privacy" },
 ];
 
-export function Footer() {
+interface FooterProps {
+  large?: boolean;
+}
+
+export function Footer({ large }: FooterProps) {
   const pathname = usePathname();
 
   return (
     <footer
-      className={`mx-auto mt-[15px] p-[5px_0px] text-center bg-white rounded-[5px]`}
+      className={`mx-auto p-[5px_0px] text-center bg-white rounded-[5px] ${
+        large ? "" : "mt-[15px]"
+      }`}
     >
       <ul>
         <li className="inline m-[0px_5.65px]">© 2008 Twitter</li>
