@@ -43,8 +43,8 @@ export const How = (
   <div className="text-black text-[1.2em] leading-[1.3] m-[15px_0]">
     <p>
       With Twitter, you can stay hyper–connected to your friends and always know
-      what they're doing. Or, you can stop following them any time. You can even
-      set quiet times on Twitter so you're not interrupted.
+      what they&apos;re doing. Or, you can stop following them any time. You can
+      even set quiet times on Twitter so you&apos;re not interrupted.
     </p>
     <p className="mt-[15px]">
       <strong>Twitter puts you in control</strong> and becomes a modern antidote
