@@ -1,3 +1,0 @@
-- check https://twitter.com/tw/search/users
-- https://web.archive.org/web/20081127014028/http://twitter.com/jeremy
-- https://web.archive.org/web/20081031011808/http://twitter.com/account/complete

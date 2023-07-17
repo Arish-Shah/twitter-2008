@@ -2,18 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  color: #333;
-}
-
-body {
-  font: 0.75em/1.5 "Lucida Grande", sans-serif;
-}
-
-a {
-  @apply text-tw-links hover:underline;
-}
-
-.text-black * {
-  color: #000;
+:root {
 }
