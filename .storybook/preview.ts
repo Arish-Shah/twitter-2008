@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react";
 
+import "../app/globals.css";
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,6 +11,7 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    layout: "fullscreen",
   },
 };
 

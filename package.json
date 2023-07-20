@@ -42,6 +42,7 @@
     "eslint-plugin-tailwindcss": "^3.13.0",
     "husky": "^8.0.0",
     "prettier": "^3.0.0",
-    "storybook": "^7.1.0"
+    "storybook": "^7.1.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0"
   }
 }

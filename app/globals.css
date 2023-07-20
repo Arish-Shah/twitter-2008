@@ -3,4 +3,25 @@
 @tailwind utilities;
 
 :root {
+  --tw-black: #333;
+  --tw-blue: #9ae4e8;
+  --tw-darkblue: #0084b4;
+
+  --tw-bg: url(/images/bg.gif);
+
+  --tw-font: "Lucida Grande", sans-serif;
+}
+
+@layer base {
+  * {
+    @apply text-tw-black;
+  }
+
+  body {
+    @apply text-[12px] leading-[1.2];
+  }
+
+  a {
+    @apply text-tw-darkblue hover:no-underline;
+  }
 }
