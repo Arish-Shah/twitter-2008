@@ -3,25 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --tw-black: #333;
-  --tw-blue: #9ae4e8;
-  --tw-darkblue: #0084b4;
+  --theme: url("/images/themes/theme1.gif");
+  --tile: no-repeat;
 
-  --tw-bg: url(/images/bg.gif);
-
-  --tw-font: "Lucida Grande", sans-serif;
+  --background: #9ae4e8;
+  --text: #333333;
+  --links: #0084b4;
+  --sidebar: #ddffcc;
+  --sidebar-border: #bddcad;
 }
 
-@layer base {
-  * {
-    @apply text-tw-black;
-  }
+body {
+  @apply bg-tw-background bg-tw-theme bg-fixed bg-left-top text-base text-tw-text;
+  background-repeat: var(--tile);
+}
 
-  body {
-    @apply text-[12px] leading-[1.2];
-  }
-
-  a {
-    @apply text-tw-darkblue hover:no-underline;
-  }
+a {
+  @apply text-tw-links hover:underline;
 }

@@ -8,15 +8,23 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "tw-bg": "var(--tw-bg)",
+        "tw-theme": "var(--theme)",
+        "tw-arr": "url('/images/arrows/arr.gif')",
+        "tw-arr2": "url('/images/arrows/arr2.gif')",
+        "tw-arr_on_red": "url('/images/arrows/arrow_on_red.gif')",
       },
       colors: {
-        "tw-black": "var(--tw-black)",
-        "tw-darkblue": "var(--tw-darkblue)",
-        "tw-blue": "var(--tw-blue)",
+        "tw-background": "var(--background)",
+        "tw-text": "var(--text)",
+        "tw-links": "var(--links)",
+        "tw-sidebar": "var(--sidebar)",
+        "tw-sidebar-border": "var(--sidebar-border)",
       },
       fontFamily: {
-        sans: ["var(--tw-font)"],
+        sans: ["'Lucida Grande'", "sans-serif"],
+      },
+      fontSize: {
+        base: ["12px", 1.2],
       },
     },
   },

@@ -21,7 +21,7 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   staticDirs: ["../public"],
-  async webpackFinal(config) {
+  webpackFinal: async (config) => {
     if (config.resolve) {
       config.resolve.plugins = [
         ...(config.resolve.plugins || []),
@@ -33,4 +33,5 @@ const config: StorybookConfig = {
     return config;
   },
 };
+
 export default config;

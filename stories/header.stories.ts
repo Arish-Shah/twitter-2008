@@ -1,9 +1,9 @@
 import { Header } from "@/components/header";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof Header> = {
+const meta = {
   component: Header,
-};
+} satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof Header>;
@@ -11,7 +11,7 @@ type Story = StoryObj<typeof Header>;
 export const LoggedIn: Story = {
   args: {
     user: {
-      handle: "default",
+      handle: "user",
     },
   },
 };
