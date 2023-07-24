@@ -13,9 +13,20 @@ const meta = {
           <TwoColumn.Main.H3>heading 3</TwoColumn.Main.H3>
           <TwoColumn.Main.H4>heading 4</TwoColumn.Main.H4>
           <TwoColumn.Main.P>paragraph</TwoColumn.Main.P>
+          <TwoColumn.Main.OrderedList>
+            <li>ordered list</li>
+          </TwoColumn.Main.OrderedList>
         </TwoColumn.Main>
         <TwoColumn.Sidebar>
-          <TwoColumn.Sidebar.Section>sidebar section</TwoColumn.Sidebar.Section>
+          <TwoColumn.Sidebar.Section>
+            <TwoColumn.Sidebar.H1>heading 1</TwoColumn.Sidebar.H1>
+            <TwoColumn.Sidebar.H1Underline>
+              heading 1 with underline
+            </TwoColumn.Sidebar.H1Underline>
+            <TwoColumn.Sidebar.OrderedList>
+              <li>ordered list</li>
+            </TwoColumn.Sidebar.OrderedList>
+          </TwoColumn.Sidebar.Section>
         </TwoColumn.Sidebar>
       </TwoColumn>
     </Page>
