@@ -9,22 +9,28 @@ module.exports = {
     extend: {
       backgroundImage: {
         "tw-theme": "var(--theme)",
-        "tw-arr": "url('/images/arrows/arr.gif')",
-        "tw-arr2": "url('/images/arrows/arr2.gif')",
-        "tw-arr_on_red": "url('/images/arrows/arrow_on_red.gif')",
+        "tw-arr": "var(--arr)",
+        "tw-arr2": "var(--arr2)",
+        "tw-arr_on_red": "var(--arrow-on-red)",
       },
       colors: {
+        // theme
         "tw-background": "var(--background)",
         "tw-text": "var(--text)",
         "tw-links": "var(--links)",
         "tw-sidebar": "var(--sidebar)",
         "tw-sidebar-border": "var(--sidebar-border)",
+
+        // custom
+        "tw-sidebar-heading": "var(--sidebar-heading)",
+        "tw-badgebox": "var(--badgebox)",
+        "tw-badgebox-border": "var(--badgebox-border)",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],
       },
       fontSize: {
-        base: ["12px", 1.2],
+        base: ["12px", 1.5],
       },
     },
   },

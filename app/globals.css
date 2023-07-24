@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /* theme */
   --theme: url("/images/themes/theme1.gif");
   --tile: no-repeat;
 
@@ -11,6 +12,15 @@
   --links: #0084b4;
   --sidebar: #ddffcc;
   --sidebar-border: #bddcad;
+
+  /* custom */
+  --arr: url("/images/arrows/arr.gif");
+  --arr2: url("/images/arrows/arr2.gif");
+  --arrow-on-red: url("../public/images/arrows/arrow_on_red.gif");
+
+  --sidebar-heading: #a7cf40;
+  --badgebox: #ffc;
+  --badgebox-border: #ff0;
 }
 
 body {

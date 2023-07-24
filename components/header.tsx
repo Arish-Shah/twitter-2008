@@ -51,7 +51,7 @@ export function Header({ user, large }: HeaderProps) {
         />
       </NextLink>
       {!large && (
-        <div className="absolute right-0 top-[25px] rounded-[5px] bg-white p-[8px_10px]">
+        <div className="absolute right-0 top-[25px] rounded-[5px] bg-white p-[8px_10px] leading-[1.2]">
           <ul>{items}</ul>
         </div>
       )}

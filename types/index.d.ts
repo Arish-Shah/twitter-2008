@@ -24,3 +24,9 @@ export type Link = {
   text: string;
   url: string;
 };
+
+export type BioPicUser = {
+  handle: string;
+  firstName: string;
+  url: string;
+};

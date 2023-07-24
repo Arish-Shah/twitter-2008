@@ -1,0 +1,1 @@
+- [ ] fix footer still linking to same page (needs to be a client component)

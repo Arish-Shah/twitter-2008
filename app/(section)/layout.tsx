@@ -1,4 +1,9 @@
 import { Page } from "@/components/page";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Twitter",
+};
 
 interface SectionLayoutProps {
   children: React.ReactNode;
