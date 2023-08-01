@@ -31,13 +31,24 @@ export function WatchButton() {
     >
       <Image
         src="/images/arrows/arrow_on_red.gif"
-        height={13}
-        width={17}
+        className="mt-[-3px] inline h-[13px] w-[17px] pr-[5px]"
+        height={0}
+        width={0}
         quality={100}
         alt="Arrow_on_red"
-        className="mt-[-3px] inline pr-[5px]"
       />{" "}
       Watch a video!
+    </Link>
+  );
+}
+
+export function ProfileJoinButton() {
+  return (
+    <Link
+      href="/signup"
+      className="border border-tw-profilejoinbutton-border bg-tw-profilejoinbutton p-[10.25px_23.15px] text-[24px] font-bold text-white hover:bg-tw-profilejoinbutton-hover hover:no-underline"
+    >
+      Join today!
     </Link>
   );
 }

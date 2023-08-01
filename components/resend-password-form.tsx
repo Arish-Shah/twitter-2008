@@ -7,7 +7,7 @@ export function ResendPasswordForm() {
     <Form>
       <Form.Row>
         <Form.Label htmlFor="phone">Email:</Form.Label>
-        <Form.Input type="email" id="email" />
+        <Form.Input type="email" id="email" autoFocus />
       </Form.Row>
       <Form.Row>
         <Form.LabelGroup />

@@ -1,5 +1,5 @@
 export type User = {
-  handle: string;
+  screen: string;
 };
 
 export type Theme = {
@@ -26,7 +26,23 @@ export type Link = {
 };
 
 export type BioPicUser = {
-  handle: string;
+  screen: string;
   firstName: string;
   url: string;
+};
+
+export type Application = "web";
+
+export type TimelineTweetParent = {
+  id: string;
+  screen: string;
+};
+
+export type TimelineTweet = {
+  id: string;
+  text: string;
+  time: string;
+  application: Application;
+  favourited?: boolean;
+  parent?: TimelineTweetParent;
 };

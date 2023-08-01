@@ -11,7 +11,7 @@ export function BioPics({ users }: BioPicsProps) {
     <div className="p-[10px_0_0_12px] text-center">
       <div className="mx-auto w-[158px] text-left">
         {users.map((user, i) => (
-          <Link key={i} href={`/${user.handle}`} title={user.firstName}>
+          <Link key={i} href={`/${user.screen}`} title={user.firstName}>
             <Image
               src={user.url}
               alt={user.firstName}

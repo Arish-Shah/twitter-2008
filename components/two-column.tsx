@@ -7,8 +7,8 @@ export function TwoColumn({ children }: TwoColumnProps) {
   return <div className="flex">{children}</div>;
 }
 
-function Main({ children }: TwoColumnProps) {
-  return <div className="flex-1 p-[5px_10px]">{children}</div>;
+function Main({ children, className = "" }: TwoColumnProps) {
+  return <div className={`flex-1 p-[5px_10px] ${className}`}>{children}</div>;
 }
 
 function Sidebar({ children }: TwoColumnProps) {

@@ -54,7 +54,7 @@ export default function AboutUs() {
           </TwoColumn.Sidebar.H1Underline>
           <BioPics
             users={Array(30).fill({
-              handle: "user",
+              screen: "user",
               firstName: "User",
               url: "/images/profile/default_profile_mini.png",
             })}
