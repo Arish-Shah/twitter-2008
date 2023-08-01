@@ -1,9 +1,6 @@
 interface TwoColumnProps {
-  children: React.ReactNode;
-}
-
-interface TypographyProps extends TwoColumnProps {
   className?: string;
+  children: React.ReactNode;
 }
 
 export function TwoColumn({ children }: TwoColumnProps) {
@@ -22,11 +19,15 @@ function Sidebar({ children }: TwoColumnProps) {
   );
 }
 
+function Center({ className = "", children }: TwoColumnProps) {
+  return <div className={`text-center ${className}`}>{children}</div>;
+}
+
 function SidebarSection({ children }: TwoColumnProps) {
   return <div className="p-[13px_13px_16px] leading-[1.2]">{children}</div>;
 }
 
-function MainH1({ className = "", children }: TypographyProps) {
+function MainH1({ className = "", children }: TwoColumnProps) {
   return (
     <h1 className={`m-[3px_0_4px] text-[24px] font-bold ${className}`}>
       {children}
@@ -34,7 +35,7 @@ function MainH1({ className = "", children }: TypographyProps) {
   );
 }
 
-function MainH2({ className = "", children }: TypographyProps) {
+function MainH2({ className = "", children }: TwoColumnProps) {
   return (
     <h2 className={`m-[3px_0_4px] text-[18px] font-bold ${className}`}>
       {children}
@@ -42,7 +43,7 @@ function MainH2({ className = "", children }: TypographyProps) {
   );
 }
 
-function MainH3({ className = "", children }: TypographyProps) {
+function MainH3({ className = "", children }: TwoColumnProps) {
   return (
     <h3 className={`m-[3px_0_4px] text-[14px] font-bold ${className}`}>
       {children}
@@ -50,21 +51,21 @@ function MainH3({ className = "", children }: TypographyProps) {
   );
 }
 
-function MainH4({ className = "", children }: TypographyProps) {
+function MainH4({ className = "", children }: TwoColumnProps) {
   return <h4 className={`m-[3px_0_4px] font-bold ${className}`}>{children}</h4>;
 }
 
-function MainP({ className = "", children }: TypographyProps) {
+function MainP({ className = "", children }: TwoColumnProps) {
   return (
     <div className={`m-[5px_0] leading-[1.2] ${className}`}>{children}</div>
   );
 }
 
-function MainOrderedList({ className = "", children }: TypographyProps) {
+function MainOrderedList({ className = "", children }: TwoColumnProps) {
   return <ol className={`list-decimal pl-[30px] ${className}`}>{children}</ol>;
 }
 
-function SidebarH1({ className = "", children }: TypographyProps) {
+function SidebarH1({ className = "", children }: TwoColumnProps) {
   return (
     <h1
       className={`m-[10px_0_5px_0] p-[0_0_2px] text-[13.2px] font-bold ${className}`}
@@ -74,7 +75,7 @@ function SidebarH1({ className = "", children }: TypographyProps) {
   );
 }
 
-function SidebarH1Underline({ className = "", children }: TypographyProps) {
+function SidebarH1Underline({ className = "", children }: TwoColumnProps) {
   return (
     <div className="m-[10px_0_5px_0] border-b border-b-tw-sidebar-heading">
       <h1 className={`p-[0_0_2px_5px] text-[13.2px] font-bold ${className}`}>
@@ -84,7 +85,13 @@ function SidebarH1Underline({ className = "", children }: TypographyProps) {
   );
 }
 
-function SidebarOrderedList({ className = "", children }: TypographyProps) {
+function SidebarP({ className = "", children }: TwoColumnProps) {
+  return (
+    <div className={`mt-[15px] text-[10.8px] ${className}`}>{children}</div>
+  );
+}
+
+function SidebarOrderedList({ className = "", children }: TwoColumnProps) {
   return <ol className={`list-decimal pl-[30px] ${className}`}>{children}</ol>;
 }
 
@@ -97,8 +104,10 @@ Main.OrderedList = MainOrderedList;
 
 Sidebar.Section = SidebarSection;
 Sidebar.H1 = SidebarH1;
+Sidebar.P = SidebarP;
 Sidebar.H1Underline = SidebarH1Underline;
 Sidebar.OrderedList = SidebarOrderedList;
 
 TwoColumn.Main = Main;
 TwoColumn.Sidebar = Sidebar;
+TwoColumn.Center = Center;

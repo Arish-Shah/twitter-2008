@@ -1,3 +1,5 @@
+import { HelpCarousel } from "@/components/help-carousel";
+
 export default function Index() {
-  return <h1>hello world</h1>;
+  return <HelpCarousel index={0} />;
 }

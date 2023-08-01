@@ -21,6 +21,20 @@
   --sidebar-heading: #a7cf40;
   --badgebox: #ffc;
   --badgebox-border: #ff0;
+  --input-border: #aaa;
+  --subtext: #777;
+  --button: #e6e6e6;
+  --button-border: #ccc;
+  --button-hover: #999;
+  --joinbutton: #417596;
+  --joinbutton-hover: #294b60;
+  --signupbutton: #97cd39;
+  --watchbutton: #ff493c;
+  --green: #008000;
+  --intro-muted: #a4a0a1;
+  --complete: #e8fecd;
+  --complete-border: #a9bf74;
+  --recent: #afeff1;
 }
 
 body {
