@@ -55,7 +55,7 @@ export default function AboutUs() {
           <BioPics
             users={Array(30).fill({
               screen: "user",
-              firstName: "User",
+              name: "User",
               url: "/images/profile/default_profile_mini.png",
             })}
           />

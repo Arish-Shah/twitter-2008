@@ -1,5 +1,5 @@
+import { createThemeCSS } from "@/lib/util";
 import type { Theme, User } from "@/types";
-import { createThemeCSS } from "@/util/theme";
 import { Footer } from "./footer";
 import { Header } from "./header";
 

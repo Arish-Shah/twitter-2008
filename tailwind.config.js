@@ -11,6 +11,7 @@ module.exports = {
         "tw-arr": "var(--arr)",
         "tw-arr2": "var(--arr2)",
         "tw-arr_on_red": "var(--arrow-on-red)",
+        "tw-pale": "var(--pale)",
       },
       colors: {
         // theme
@@ -48,6 +49,7 @@ module.exports = {
         "tw-timeline-meta": "var(--timeline-meta)",
         "tw-timeline-hover": "var(--timeline-hover)",
         "tw-pagination-border": "var(--pagination-border)",
+        "tw-sidebar-tab": "var(--sidebar-tab)",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],

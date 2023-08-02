@@ -16,3 +16,7 @@ export function createThemeCSS(theme?: Theme) {
     }
   `;
 }
+
+export function truncateUrl(url: string) {
+  return url.slice(0, 17).concat("...");
+}

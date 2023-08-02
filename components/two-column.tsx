@@ -23,8 +23,12 @@ function Center({ className = "", children }: TwoColumnProps) {
   return <div className={`text-center ${className}`}>{children}</div>;
 }
 
-function SidebarSection({ children }: TwoColumnProps) {
-  return <div className="p-[13px_13px_16px] leading-[1.2]">{children}</div>;
+function SidebarSection({ children, className }: TwoColumnProps) {
+  return (
+    <div className={`p-[13px_13px_16px] leading-[1.2] ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 function MainH1({ className = "", children }: TwoColumnProps) {

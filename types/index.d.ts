@@ -27,7 +27,7 @@ export type Link = {
 
 export type BioPicUser = {
   screen: string;
-  firstName: string;
+  name: string;
   url: string;
 };
 
@@ -45,4 +45,18 @@ export type TimelineTweet = {
   application: Application;
   favourited?: boolean;
   parent?: TimelineTweetParent;
+};
+
+export type StatsCount = {
+  following: number;
+  followers: number;
+  updates: number;
+};
+
+export type UserInfo = {
+  name: string;
+  location?: string;
+  web?: string;
+  bio?: string;
+  count: StatsCount;
 };

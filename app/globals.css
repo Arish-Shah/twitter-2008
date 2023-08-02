@@ -16,6 +16,7 @@
   /* custom */
   --arr: url("/images/arrows/arr.gif");
   --arr2: url("/images/arrows/arr2.gif");
+  --pale: url("/images/ui/pale.png");
 
   --sidebar-heading: #a7cf40;
   --badgebox: #ffc;
@@ -44,6 +45,7 @@
   --timeline-meta: #999;
   --timeline-hover: #f7f7f7;
   --pagination-border: #cecece;
+  --sidebar-tab: #4c4c4c;
 }
 
 body {
