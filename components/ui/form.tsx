@@ -53,7 +53,7 @@ function Label({ htmlFor, children, className = "" }: LabelProps) {
 
 function SubText({ children, className = "" }: FormProps) {
   return (
-    <span className={`text-[11.64px] text-tw-subtext ${className}`}>
+    <span className={`text-[11.64px] text-x-subtext ${className}`}>
       {children}
     </span>
   );
@@ -71,7 +71,7 @@ function Input({ autoFocus, className, children, ...props }: InputProps) {
   return (
     <Form.InputGroup>
       <input
-        className={`mr-[7px] w-[165px] border border-tw-input-border p-[2px] text-[13.2px] text-black ${className}`}
+        className={`mr-[7px] w-[165px] border border-x-input-border p-[2px] text-[13.2px] text-black ${className}`}
         ref={inputRef}
         {...props}
       />
@@ -84,7 +84,7 @@ function Submit({ value }: { value: string }) {
   return (
     <input
       type="submit"
-      className="cursor-pointer border border-tw-button-border bg-tw-button p-[2px_8px] hover:bg-tw-button-hover"
+      className="cursor-pointer border border-x-button-border bg-x-button p-[2px_8px] hover:bg-x-button-hover"
       value={value}
     />
   );

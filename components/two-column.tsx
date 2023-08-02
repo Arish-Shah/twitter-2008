@@ -13,7 +13,7 @@ function Main({ children, className = "" }: TwoColumnProps) {
 
 function Sidebar({ children }: TwoColumnProps) {
   return (
-    <div className="w-[200px] border-l-[1px] border-l-tw-sidebar-border bg-tw-sidebar">
+    <div className="w-[200px] border-l-[1px] border-l-x-sidebar-border bg-x-sidebar">
       {children}
     </div>
   );
@@ -81,7 +81,7 @@ function SidebarH1({ className = "", children }: TwoColumnProps) {
 
 function SidebarH1Underline({ className = "", children }: TwoColumnProps) {
   return (
-    <div className="m-[10px_0_5px_0] border-b border-b-tw-sidebar-heading">
+    <div className="m-[10px_0_5px_0] border-b border-b-x-sidebar-heading">
       <h1 className={`p-[0_0_2px_5px] text-[13.2px] font-bold ${className}`}>
         {children}
       </h1>

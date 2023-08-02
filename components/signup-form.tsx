@@ -12,7 +12,7 @@ export function SignupForm() {
         <Form.Input type="text" id="username" autoFocus>
           <Form.SubText>
             Your URL: http://twitter.com/
-            <span className="font-bold text-tw-green">USERNAME</span> Username
+            <span className="font-bold text-x-green">USERNAME</span> Username
             can only contain letters, numbers and &apos;_&apos;
           </Form.SubText>
         </Form.Input>

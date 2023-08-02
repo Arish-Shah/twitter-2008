@@ -1,4 +1,4 @@
-import type { TimelineTweet } from "@/types";
+import type { BioPicUser, TimelineTweet } from "@/types";
 
 export const tweets: TimelineTweet[] = [
   {
@@ -145,4 +145,10 @@ export const info = {
     followers: 5547,
     updates: 6216,
   },
+};
+
+export const bioPic: BioPicUser = {
+  screen: "user",
+  name: "User",
+  url: "/images/profile/default_profile_mini.png",
 };

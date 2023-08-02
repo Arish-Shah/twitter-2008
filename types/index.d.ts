@@ -60,3 +60,5 @@ export type UserInfo = {
   bio?: string;
   count: StatsCount;
 };
+
+export type PageSize = "large" | "small" | "default";

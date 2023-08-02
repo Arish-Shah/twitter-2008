@@ -15,7 +15,7 @@ function Link({
   return (
     <NextLink
       href={href}
-      className={`border border-tw-pagination-border p-[1.75px_15px] ${className}`}
+      className={`border border-x-pagination-border p-[1.75px_15px] ${className}`}
     >
       {children}
     </NextLink>

@@ -1,17 +1,18 @@
 import { createThemeCSS } from "@/lib/util";
-import type { Theme, User } from "@/types";
+import type { PageSize, Theme, User } from "@/types";
 import { Footer } from "./footer";
 import { Header } from "./header";
 
 interface PageProps {
   user?: User;
   theme?: Theme;
-  isIndex?: boolean;
   join?: string;
+  size?: PageSize;
   children: React.ReactNode;
 }
 
-export function Page({ user, theme, isIndex, join, children }: PageProps) {
+export function Page(props: PageProps) {
+  const { user, theme, join, size = "default", children } = props;
   const css = createThemeCSS(theme);
 
   return (
@@ -19,14 +20,18 @@ export function Page({ user, theme, isIndex, join, children }: PageProps) {
       {css && <style>{css}</style>}
       <main>
         <div className="relative mx-auto w-[763px] p-[16px_0]">
-          <Header user={user} large={isIndex} join={join} />
-          <div className="mt-[16px] bg-tw-arr2 bg-[25px_0] bg-no-repeat pt-[11px]">
+          <Header user={user} join={join} size={size} />
+          <div
+            className={`mt-[16px] bg-x-arr2 bg-[25px_0] bg-no-repeat pt-[11px] ${
+              size === "small" && "w-[620px]"
+            }`}
+          >
             <div className="overflow-hidden rounded-[5px] bg-white">
               {children}
-              {isIndex && <Footer connected={isIndex} />}
+              {size === "large" && <Footer connected={true} />}
             </div>
           </div>
-          {!isIndex && <Footer connected={isIndex} />}
+          {size === "default" && <Footer />}
         </div>
       </main>
     </>

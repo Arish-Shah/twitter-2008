@@ -7,7 +7,7 @@ interface BubbleProps {
 function Bubble({ tweet, fullName, title }: BubbleProps) {
   return (
     <li className="mx-[11px] w-[169px]">
-      <blockquote className="mb-[1px] bg-tw-arr bg-[8%_100%] bg-no-repeat pb-[11px]">
+      <blockquote className="mb-[1px] bg-x-arr bg-[8%_100%] bg-no-repeat pb-[11px]">
         <div className="bg-white p-[6px_5px] text-[11.04px] leading-[1.2]">
           {tweet}
         </div>
@@ -21,7 +21,7 @@ function Bubble({ tweet, fullName, title }: BubbleProps) {
 
 export function RecentTweets() {
   return (
-    <div className="bg-tw-recent">
+    <div className="bg-x-recent">
       <ul className="flex w-full justify-center py-[30px] text-black">
         <Bubble
           tweet="When I first started doing it, I thought, 'geez, not another website to worry about updating and checking', but now I'm glad I did it."

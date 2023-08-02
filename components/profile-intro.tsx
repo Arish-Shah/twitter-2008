@@ -1,7 +1,6 @@
 import { truncateUrl } from "@/lib/util";
 import { UserInfo } from "@/types";
 import Link from "next/link";
-import { TwoColumn } from "./two-column";
 
 interface IntroItemProps {
   label: string;
@@ -33,9 +32,11 @@ function Stat({ count, label, url, className }: StatProps) {
   return (
     <Link
       href={url}
-      className={`group px-[7px] hover:no-underline ${className} border-l border-tw-sidebar-border`}
+      className={`group px-[7px] hover:no-underline ${className} border-l border-x-sidebar-border`}
     >
-      <span className="font-meta text-[15.6px]">{count.toLocaleString()}</span>
+      <span className="font-georgia text-[15.6px]">
+        {count.toLocaleString()}
+      </span>
       <br />
       <span className="text-[10.8px] lowercase group-hover:underline">
         {label}
@@ -46,7 +47,7 @@ function Stat({ count, label, url, className }: StatProps) {
 
 export function ProfileIntro({ info, screen }: ProfileIntroProps) {
   return (
-    <TwoColumn.Sidebar.Section>
+    <>
       <address>
         <ul>
           <IntroItem label="Name">{info.name}</IntroItem>
@@ -75,6 +76,6 @@ export function ProfileIntro({ info, screen }: ProfileIntroProps) {
         />
         <Stat count={info.count.updates} label="Updates" url={`/${screen}`} />
       </div>
-    </TwoColumn.Sidebar.Section>
+    </>
   );
 }

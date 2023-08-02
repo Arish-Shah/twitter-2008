@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  /* theme */
   --theme: url("/images/themes/theme1.gif");
   --tile: no-repeat;
 
@@ -12,47 +11,13 @@
   --links: #0084b4;
   --sidebar: #ddffcc;
   --sidebar-border: #bddcad;
-
-  /* custom */
-  --arr: url("/images/arrows/arr.gif");
-  --arr2: url("/images/arrows/arr2.gif");
-  --pale: url("/images/ui/pale.png");
-
-  --sidebar-heading: #a7cf40;
-  --badgebox: #ffc;
-  --badgebox-border: #ff0;
-  --input-border: #aaa;
-  --subtext: #777;
-  --button: #e6e6e6;
-  --button-border: #ccc;
-  --button-hover: #999;
-  --joinbutton: #417596;
-  --joinbutton-hover: #294b60;
-  --signupbutton: #97cd39;
-  --watchbutton: #ff493c;
-  --green: #008000;
-  --intro-muted: #a4a0a1;
-  --complete: #e8fecd;
-  --complete-border: #a9bf74;
-  --recent: #afeff1;
-  --profile-banner: #feffdf;
-  --profile-banner-border: #ff0;
-  --profilejoinbutton: #74ca00;
-  --profilejoinbutton-border: #0f0;
-  --profilejoinbutton-hover: #8cf500;
-  --profilehead-border: #999999;
-  --timeline-border: #d2dada;
-  --timeline-meta: #999;
-  --timeline-hover: #f7f7f7;
-  --pagination-border: #cecece;
-  --sidebar-tab: #4c4c4c;
 }
 
 body {
-  @apply bg-tw-background bg-tw-theme bg-fixed bg-left-top text-base text-tw-text;
+  @apply bg-x-background bg-x-theme text-x-text bg-fixed bg-left-top text-base;
   background-repeat: var(--tile);
 }
 
 a {
-  @apply text-tw-links hover:underline;
+  @apply text-x-links hover:underline;
 }

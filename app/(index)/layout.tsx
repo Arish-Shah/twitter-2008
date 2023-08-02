@@ -8,7 +8,7 @@ interface IndexLayoutProps {
 
 export default function IndexLayout({ children }: IndexLayoutProps) {
   return (
-    <Page isIndex={true}>
+    <Page size="large">
       <div className="mb-[5px] flex p-[17px_20px]">
         {children}
         <IndexLoginForm />

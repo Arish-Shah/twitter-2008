@@ -24,7 +24,7 @@ export function HelpCarousel({ index }: CarouselProps) {
             const colors =
               index == i
                 ? "text-black border-black "
-                : "text-tw-intro-muted border-dashed border-tw-intro-muted hover:border-solid";
+                : "text-x-intro-muted border-dashed border-x-intro-muted hover:border-solid";
 
             return (
               <li key={i} className="m-[2.4px_0_0_8px] inline p-[3px_2px]">

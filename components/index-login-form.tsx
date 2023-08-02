@@ -11,7 +11,7 @@ export function IndexLoginForm() {
           <label htmlFor="usernameOrEmail">user name or email address:</label>
           <input
             type="text"
-            className="w-full border border-tw-input-border p-[2px] text-[13.2px] text-black"
+            className="w-full border border-x-input-border p-[2px] text-[13.2px] text-black"
             autoFocus
           />
         </div>
@@ -19,7 +19,7 @@ export function IndexLoginForm() {
           <label htmlFor="password">password:</label>
           <input
             type="password"
-            className="w-full border border-tw-input-border p-[2px] text-[13.2px] text-black"
+            className="w-full border border-x-input-border p-[2px] text-[13.2px] text-black"
           />
         </div>
         <div className="m-[10px_0] flex">
@@ -32,7 +32,7 @@ export function IndexLoginForm() {
           <input
             type="submit"
             value="Sign In »"
-            className="cursor-pointer border border-tw-button-border bg-tw-button p-[2px_8px] hover:bg-tw-button-hover"
+            className="cursor-pointer border border-x-button-border bg-x-button p-[2px_8px] hover:bg-x-button-hover"
           />
         </div>
         <div className="text-[10.2px]">
@@ -45,7 +45,7 @@ export function IndexLoginForm() {
           </Link>
           .
         </div>
-        <div className="mt-[10px] border border-tw-complete-border bg-tw-complete p-[4px_25px] text-center text-[0.85em] leading-[1.2]">
+        <div className="mt-[10px] border border-x-complete-border bg-x-complete p-[4px_25px] text-center text-[0.85em] leading-[1.2]">
           Already using Twitter from your phone?{" "}
           <Link href="/account/complete">Click here</Link>.
         </div>

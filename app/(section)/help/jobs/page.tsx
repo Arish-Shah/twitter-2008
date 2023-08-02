@@ -26,7 +26,7 @@ export default function Jobs() {
             height={193}
             quality={100}
           />
-          <div className="ml-[9px] w-full border border-tw-badgebox-border bg-tw-badgebox p-[5px]">
+          <div className="ml-[9px] w-full border border-x-badgebox-border bg-x-badgebox p-[5px]">
             <TwoColumn.Main.H2 className="mt-0 text-[14.4px]">
               Current positions:
             </TwoColumn.Main.H2>

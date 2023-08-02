@@ -15,7 +15,7 @@ export function ProfileHead({ img, screen }: ProfileHeadProps) {
           alt={screen}
           height={74}
           width={74}
-          className="border border-tw-profilehead-border"
+          className="border border-x-profilehead-border"
         />
       </Link>
       <h2 className="ml-[10px] mt-[-5px] text-[33.6px] font-bold">{screen}</h2>

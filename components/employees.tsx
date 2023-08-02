@@ -2,11 +2,11 @@ import type { BioPicUser } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-interface BioPicsProps {
+interface EmployeesProps {
   users: BioPicUser[];
 }
 
-export function BioPics({ users }: BioPicsProps) {
+export function Employees({ users }: EmployeesProps) {
   return (
     <div className="p-[10px_0_0_12px] text-center">
       <div className="mx-auto w-[158px] text-left">

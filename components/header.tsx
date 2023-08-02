@@ -1,4 +1,4 @@
-import type { Link, User } from "@/types";
+import type { Link, PageSize, User } from "@/types";
 import Image from "next/image";
 import NextLink from "next/link";
 import { ProfileJoinButton } from "./ui/button";
@@ -14,11 +14,14 @@ const links: Link[] = [
 
 interface HeaderProps {
   user?: User;
-  large?: boolean;
   join?: string;
+  size?: PageSize;
 }
 
-export function Header({ user, large, join }: HeaderProps) {
+export function Header({ user, join, size }: HeaderProps) {
+  const large = size === "large";
+  const def = size === "default";
+
   let items = null;
 
   if (user) {
@@ -42,7 +45,7 @@ export function Header({ user, large, join }: HeaderProps) {
 
   return (
     <nav>
-      <NextLink href="/" className="text-tw-links">
+      <NextLink href="/" className="text-x-links">
         <Image
           src={`/images/logos/twitter${large ? "" : "_logo_s"}.png`}
           alt="Twitter.com"
@@ -52,7 +55,7 @@ export function Header({ user, large, join }: HeaderProps) {
           draggable={false}
         />
       </NextLink>
-      {!large && (
+      {def && (
         <div className="absolute right-0 top-[25px] rounded-[5px] bg-white p-[8px_10px] leading-[1.2]">
           <ul>{items}</ul>
         </div>
@@ -69,7 +72,7 @@ export function Header({ user, large, join }: HeaderProps) {
               quality={100}
             />
           </div>
-          <div className="mb-[-6px] mt-[-7.5px] flex w-[755px] border border-tw-profile-banner-border bg-tw-profile-banner p-[15px_10px_20px_10px]">
+          <div className="mb-[-6px] mt-[-7.5px] flex w-[755px] border border-x-profile-banner-border bg-x-profile-banner p-[15px_10px_20px_10px]">
             <div className="w-[480px]">
               <h1 className="text-[25.2px]">
                 Hey there! <span className="font-bold">{join}</span> is using

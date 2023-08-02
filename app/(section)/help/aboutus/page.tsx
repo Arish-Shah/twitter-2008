@@ -1,5 +1,6 @@
-import { BioPics } from "@/components/bio-pics";
+import { Employees } from "@/components/employees";
 import { TwoColumn } from "@/components/two-column";
+import { bioPic } from "@/lib/data";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,13 +53,7 @@ export default function AboutUs() {
           <TwoColumn.Sidebar.H1Underline>
             Twitter Employees
           </TwoColumn.Sidebar.H1Underline>
-          <BioPics
-            users={Array(30).fill({
-              screen: "user",
-              name: "User",
-              url: "/images/profile/default_profile_mini.png",
-            })}
-          />
+          <Employees users={Array(30).fill(bioPic)} />
         </TwoColumn.Sidebar.Section>
       </TwoColumn.Sidebar>
     </TwoColumn>

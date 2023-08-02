@@ -10,7 +10,7 @@ interface ProfileFollowingProps {
 
 export function ProfileFollowing({ users, screen }: ProfileFollowingProps) {
   return (
-    <TwoColumn.Sidebar.Section className="border-t border-tw-sidebar-border">
+    <>
       <TwoColumn.Sidebar.H1>Following</TwoColumn.Sidebar.H1>
       <div className="pl-[3px]">
         {users.map((user, i) => (
@@ -31,6 +31,6 @@ export function ProfileFollowing({ users, screen }: ProfileFollowingProps) {
       <Link href={`/${screen}/friends`} className="text-[10px]">
         View All...
       </Link>
-    </TwoColumn.Sidebar.Section>
+    </>
   );
 }

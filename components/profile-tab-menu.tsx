@@ -13,12 +13,12 @@ interface ProfileTabMenuProps {
 
 function Tab({ label, url, selected }: TabProps) {
   return (
-    <li className="w-full border-t border-tw-sidebar-border">
+    <li className="w-full border-t border-x-sidebar-border">
       <Link
         href={url}
-        className={`block py-[11px] pl-[13px] text-[13.2px] font-bold text-tw-sidebar-tab hover:no-underline ${
+        className={`block py-[11px] pl-[13px] text-[13.2px] font-bold text-x-sidebar-tab hover:no-underline ${
           selected && "ml-[-1px] bg-white pl-[14px]"
-        } ${!selected && "hover:bg-tw-pale"}`}
+        } ${!selected && "hover:bg-x-pale"}`}
       >
         {label}
       </Link>
