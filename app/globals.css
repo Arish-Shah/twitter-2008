@@ -14,7 +14,7 @@
 }
 
 body {
-  @apply bg-x-background bg-x-theme text-x-text bg-fixed bg-left-top text-base;
+  @apply bg-x-background bg-x-theme bg-fixed bg-left-top text-base text-x-text;
   background-repeat: var(--tile);
 }
 

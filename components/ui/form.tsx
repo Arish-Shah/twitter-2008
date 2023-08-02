@@ -84,7 +84,7 @@ function Submit({ value }: { value: string }) {
   return (
     <input
       type="submit"
-      className="cursor-pointer border border-x-button-border bg-x-button p-[2px_8px] hover:bg-x-button-hover"
+      className="cursor-pointer border border-x-gray-border bg-x-gray p-[2px_8px] hover:bg-x-gray-hover"
       value={value}
     />
   );

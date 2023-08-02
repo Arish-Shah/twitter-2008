@@ -32,7 +32,7 @@ export function IndexLoginForm() {
           <input
             type="submit"
             value="Sign In »"
-            className="cursor-pointer border border-x-button-border bg-x-button p-[2px_8px] hover:bg-x-button-hover"
+            className="cursor-pointer border border-x-gray-border bg-x-gray p-[2px_8px] hover:bg-x-gray-hover"
           />
         </div>
         <div className="text-[10.2px]">

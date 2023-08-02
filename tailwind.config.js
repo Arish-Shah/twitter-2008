@@ -11,7 +11,6 @@ module.exports = {
 
         "x-arr": "url(/images/arrows/arr.gif)",
         "x-arr2": "url(/images/arrows/arr2.gif)",
-        "x-arr_on_red": "url(/images/arrows/arrow_on_red.gif)",
         "x-pale": "url(/images/ui/pale.png)",
       },
       colors: {
@@ -27,9 +26,9 @@ module.exports = {
         "x-badgebox-border": "#ff0",
         "x-input-border": "#aaa",
         "x-subtext": "#777",
-        "x-button": "#e6e6e6",
-        "x-button-border": "#ccc",
-        "x-button-hover": "#999",
+        "x-gray": "#e6e6e6",
+        "x-gray-border": "#ccc",
+        "x-gray-hover": "#999",
         "x-joinbutton": "#417596",
         "x-joinbutton-hover": "#294b60",
         "x-signupbutton": "#97cd39",
