@@ -20,8 +20,12 @@ export default function Status({ params: { screen } }: StatusProps) {
   return (
     <Page size="small">
       <div className="p-[20px]">
-        <div className="mr-[30px] font-georgia text-[25.2px] font-normal leading-[1.1]">
-          working on work instead.
+        <div className="flex">
+          <div className="w-[550px] font-georgia text-[25.2px] font-normal leading-[1.1]">
+            I wonder if starbuck&apos;s will be too crazy today to make it worth
+            dropping in for one of their yummy pre-packaged sandwiches.
+          </div>
+          <div>..</div>
         </div>
         <div className="m-[13px_0_0_3px] mt-[10px] font-georgia text-[15.6px] italic leading-[1] text-x-meta">
           07:07 PM November 09, 2008 from web

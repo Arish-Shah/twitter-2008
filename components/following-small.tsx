@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { TwoColumn } from "./two-column";
 
-interface ProfileFollowingProps {
+interface FollowingSmallProps {
   screen: string;
   users: BioPicUser[];
 }
 
-export function ProfileFollowing({ users, screen }: ProfileFollowingProps) {
+export function FollowingSmall({ users, screen }: FollowingSmallProps) {
   return (
     <>
       <TwoColumn.Sidebar.H1>Following</TwoColumn.Sidebar.H1>

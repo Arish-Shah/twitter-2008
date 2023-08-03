@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface ProfileHeadProps {
+interface UserMastheadProps {
   img: string;
   screen: string;
 }
 
-export function ProfileHead({ img, screen }: ProfileHeadProps) {
+export function UserMasthead({ img, screen }: UserMastheadProps) {
   return (
     <div className="flex items-center">
       <Link href={`/account/profile_image/${screen}`}>

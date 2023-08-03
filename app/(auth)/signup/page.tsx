@@ -22,7 +22,7 @@ export default function Signup() {
           </TwoColumn.Sidebar.H1>
           <TwoColumn.Sidebar.P className="mt-[0px] text-[12px]">
             Already use Twitter on your phone?{" "}
-            <Link href="/account/complete">Head over here</Link> and we&apos;ll
+            <Link href="/account/complete">Head over here</Link> and we&rsquo;ll
             get you signed up on the web.
           </TwoColumn.Sidebar.P>
         </TwoColumn.Sidebar.Section>

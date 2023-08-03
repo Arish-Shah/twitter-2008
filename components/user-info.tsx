@@ -2,24 +2,24 @@ import { truncateUrl } from "@/lib/util";
 import { UserInfo } from "@/types";
 import Link from "next/link";
 
-interface IntroItemProps {
+interface InfoItemProps {
   label: string;
   children: React.ReactNode;
 }
 
-interface StatProps {
+interface InfoStatProps {
   count: number;
   label: string;
   url: string;
   className?: string;
 }
 
-interface ProfileIntroProps {
+interface UserInfoProps {
   screen: string;
   info: UserInfo;
 }
 
-function IntroItem({ label, children }: IntroItemProps) {
+function InfoItem({ label, children }: InfoItemProps) {
   return (
     <li className="pb-[3px]">
       <span className="font-bold">{label}</span>{" "}
@@ -28,7 +28,7 @@ function IntroItem({ label, children }: IntroItemProps) {
   );
 }
 
-function Stat({ count, label, url, className }: StatProps) {
+function InfoStat({ count, label, url, className }: InfoStatProps) {
   return (
     <Link
       href={url}
@@ -45,36 +45,40 @@ function Stat({ count, label, url, className }: StatProps) {
   );
 }
 
-export function ProfileIntro({ info, screen }: ProfileIntroProps) {
+export function UserInfo({ info, screen }: UserInfoProps) {
   return (
     <>
       <address>
         <ul>
-          <IntroItem label="Name">{info.name}</IntroItem>
+          <InfoItem label="Name">{info.name}</InfoItem>
           {info.location && (
-            <IntroItem label="Location">{info.location}</IntroItem>
+            <InfoItem label="Location">{info.location}</InfoItem>
           )}
           {info.web && (
-            <IntroItem label="Web">
+            <InfoItem label="Web">
               <Link href={info.web}>{truncateUrl(info.web)}</Link>
-            </IntroItem>
+            </InfoItem>
           )}
-          {info.bio && <IntroItem label="Bio">{info.bio}</IntroItem>}
+          {info.bio && <InfoItem label="Bio">{info.bio}</InfoItem>}
         </ul>
       </address>
       <div className="m-[5px_0_10px_0] flex">
-        <Stat
+        <InfoStat
           count={info.count.following}
           label="Following"
           url={`/${screen}/friends`}
           className="border-l-0 pl-0"
         />
-        <Stat
+        <InfoStat
           count={info.count.followers}
           label="Followers"
           url={`/${screen}/followers`}
         />
-        <Stat count={info.count.updates} label="Updates" url={`/${screen}`} />
+        <InfoStat
+          count={info.count.updates}
+          label="Updates"
+          url={`/${screen}`}
+        />
       </div>
     </>
   );

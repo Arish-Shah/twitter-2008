@@ -1,48 +1,35 @@
+import { Favourited } from "@/components/favourited";
 import { FollowingSmall } from "@/components/following-small";
 import { Page } from "@/components/page";
 import { Pagination } from "@/components/pagination";
 import { TabMenu } from "@/components/tab-menu";
-import { Timeline } from "@/components/timeline";
 import { TwoColumn } from "@/components/two-column";
 import { UserInfo } from "@/components/user-info";
-import { UserMasthead } from "@/components/user-masthead";
-import { bioPic, info, tweets } from "@/lib/data";
-import type { Metadata } from "next";
+import { bioPic, favourited, info } from "@/lib/data";
 
-interface ProfileProps {
+interface FavouritesProps {
   params: { screen: string };
 }
 
-export async function generateMetadata({
-  params,
-}: ProfileProps): Promise<Metadata> {
-  return {
-    title: `Twitter / ${params.screen}`,
-  };
-}
-
-export default function Profile({ params: { screen } }: ProfileProps) {
+export default function Favourites({ params: { screen } }: FavouritesProps) {
   return (
-    <Page join={screen}>
+    <Page>
       <TwoColumn>
-        <TwoColumn.Main className="px-[20px] pb-[12px] pt-[18px]">
-          <UserMasthead
-            screen={screen}
-            img="/images/profile/default_profile_bigger.png"
-          />
-          <Timeline tweets={tweets} screen={screen} />
+        <TwoColumn.Main className="pb-[12px]">
+          <TwoColumn.Main.H2>{screen}&rsquo;s Favorites</TwoColumn.Main.H2>
+          <Favourited tweets={favourited} />
           <Pagination
             current={2}
             hasNext={true}
             screen={screen}
-            type="newOld"
+            type="prevNext"
           />
         </TwoColumn.Main>
         <TwoColumn.Sidebar>
           <TwoColumn.Sidebar.Section>
             <UserInfo screen={screen} info={info} />
           </TwoColumn.Sidebar.Section>
-          <TabMenu screen={screen} selected="updates" />
+          <TabMenu screen={screen} selected="favorites" />
           <TwoColumn.Sidebar.Section className="border-t border-x-sidebar-border">
             <FollowingSmall screen={screen} users={Array(36).fill(bioPic)} />
           </TwoColumn.Sidebar.Section>

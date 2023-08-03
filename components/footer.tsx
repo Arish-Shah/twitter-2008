@@ -1,5 +1,8 @@
+"use client";
+
 import type { Link } from "@/types";
 import NextLink from "next/link";
+import { usePathname } from "next/navigation";
 
 const links: Link[] = [
   { text: "About Us", url: "/help/aboutus" },
@@ -20,6 +23,7 @@ interface FooterProps {
 }
 
 export function Footer({ connected }: FooterProps) {
+  const pathname = usePathname();
   const margin = connected ? "" : "mt-[15px]";
 
   return (
@@ -30,7 +34,11 @@ export function Footer({ connected }: FooterProps) {
         <li className="m-[0_5.65px] inline">&copy; 2008 Twitter</li>
         {links.map((link, i) => (
           <li key={i} className="m-[0_5.65px] inline">
-            <NextLink href={link.url}>{link.text}</NextLink>
+            {link.url !== pathname ? (
+              <NextLink href={link.url}>{link.text}</NextLink>
+            ) : (
+              link.text
+            )}
           </li>
         ))}
       </ul>

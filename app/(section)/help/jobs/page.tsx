@@ -27,9 +27,9 @@ export default function Jobs() {
             quality={100}
           />
           <div className="ml-[9px] w-full border border-x-badgebox-border bg-x-badgebox p-[5px]">
-            <TwoColumn.Main.H2 className="mt-0 text-[14.4px]">
+            <TwoColumn.Main.H3 className="mt-0 text-[14.4px]">
               Current positions:
-            </TwoColumn.Main.H2>
+            </TwoColumn.Main.H3>
             <ul className="text-[9.6px]">
               <li className="leading-[16px]">
                 <Link href="#opsend">Operations Engineer</Link>

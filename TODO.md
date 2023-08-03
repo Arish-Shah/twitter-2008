@@ -1,1 +1,5 @@
-- [ ] fix footer still linking to same page (needs to be a client component)
+- [x] fix footer still linking to same page (needs to be a client component)
+- [ ] for tweets in the last 24 hour, show duration past
+- [ ] extract username, hashtags, and links from tweets. replace with <Link>
+- [ ] add navigation panel to status page when logged in. also add like and reply button
+- [ ] replace .. with actions when user is logged in on fav, timeline, feed components

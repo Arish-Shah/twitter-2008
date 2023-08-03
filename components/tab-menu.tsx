@@ -6,7 +6,7 @@ interface TabProps {
   selected: boolean;
 }
 
-interface ProfileTabMenuProps {
+interface TabMenuProps {
   screen: string;
   selected: "updates" | "favorites";
 }
@@ -26,7 +26,7 @@ function Tab({ label, url, selected }: TabProps) {
   );
 }
 
-export function ProfileTabMenu({ screen, selected }: ProfileTabMenuProps) {
+export function TabMenu({ screen, selected }: TabMenuProps) {
   return (
     <ul className="">
       <Tab

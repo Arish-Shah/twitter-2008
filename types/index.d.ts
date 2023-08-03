@@ -43,7 +43,22 @@ export type TimelineTweet = {
   text: string;
   time: string;
   application: Application;
-  favourited?: boolean;
+  favorited?: boolean;
+  parent?: TimelineTweetParent;
+};
+
+export type FavouritedTweetAuthor = {
+  img: string;
+  screen: string;
+};
+
+export type FavouritedTweet = {
+  id: string;
+  text: string;
+  time: string;
+  application: Application;
+  author: FavouritedTweetAuthor;
+  favorited?: boolean;
   parent?: TimelineTweetParent;
 };
 

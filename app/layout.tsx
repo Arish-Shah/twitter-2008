@@ -6,7 +6,7 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: "Twitter: What are you doing?",
+  title: "Twitter",
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
