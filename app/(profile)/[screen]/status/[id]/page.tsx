@@ -1,4 +1,5 @@
 import { Page } from "@/components/page";
+import { formatText } from "@/lib/utils";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,13 +18,14 @@ export async function generateMetadata({
 }
 
 export default function Status({ params: { screen } }: StatusProps) {
+  const text = formatText("@krissy happy birthday!");
+
   return (
     <Page size="small">
       <div className="p-[20px]">
         <div className="flex">
           <div className="w-[550px] font-georgia text-[25.2px] font-normal leading-[1.1]">
-            I wonder if starbuck&apos;s will be too crazy today to make it worth
-            dropping in for one of their yummy pre-packaged sandwiches.
+            {text}
           </div>
           <div>..</div>
         </div>
@@ -43,9 +45,12 @@ export default function Status({ params: { screen } }: StatusProps) {
               quality={100}
             />
           </Link>
-          <Link href={`/${screen}`} className="text-[27.6px]">
-            <span>{screen}</span>
-          </Link>
+          <div>
+            <Link href={`/${screen}`} className="text-[27.6px]">
+              <span>{screen}</span>
+            </Link>
+            <span className="mt-[3px] block text-[14.4px]">Cris Pearson</span>
+          </div>
         </div>
       </div>
     </Page>

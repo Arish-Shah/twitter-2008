@@ -15,6 +15,7 @@ export function UserMasthead({ img, screen }: UserMastheadProps) {
           alt={screen}
           height={74}
           width={74}
+          quality={100}
           className="border border-x-profilehead-border"
         />
       </Link>

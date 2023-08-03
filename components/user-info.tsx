@@ -1,4 +1,4 @@
-import { truncateUrl } from "@/lib/util";
+import { truncateUserInfoUrl } from "@/lib/utils";
 import { UserInfo } from "@/types";
 import Link from "next/link";
 
@@ -56,7 +56,7 @@ export function UserInfo({ info, screen }: UserInfoProps) {
           )}
           {info.web && (
             <InfoItem label="Web">
-              <Link href={info.web}>{truncateUrl(info.web)}</Link>
+              <Link href={info.web}>{truncateUserInfoUrl(info.web)}</Link>
             </InfoItem>
           )}
           {info.bio && <InfoItem label="Bio">{info.bio}</InfoItem>}

@@ -41,7 +41,7 @@ export type TimelineTweetParent = {
 export type TimelineTweet = {
   id: string;
   text: string;
-  time: string;
+  createdAt: string;
   application: Application;
   favorited?: boolean;
   parent?: TimelineTweetParent;
@@ -55,7 +55,7 @@ export type FavouritedTweetAuthor = {
 export type FavouritedTweet = {
   id: string;
   text: string;
-  time: string;
+  createdAt: string;
   application: Application;
   author: FavouritedTweetAuthor;
   favorited?: boolean;

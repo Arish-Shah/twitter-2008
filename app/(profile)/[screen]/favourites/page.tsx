@@ -1,4 +1,4 @@
-import { Favourited } from "@/components/favourited";
+import { Feed } from "@/components/feed";
 import { FollowingSmall } from "@/components/following-small";
 import { Page } from "@/components/page";
 import { Pagination } from "@/components/pagination";
@@ -16,8 +16,8 @@ export default function Favourites({ params: { screen } }: FavouritesProps) {
     <Page>
       <TwoColumn>
         <TwoColumn.Main className="pb-[12px]">
-          <TwoColumn.Main.H2>{screen}&rsquo;s Favorites</TwoColumn.Main.H2>
-          <Favourited tweets={favourited} />
+          <TwoColumn.Main.H2>Bruce Wayne&rsquo;s Favorites</TwoColumn.Main.H2>
+          <Feed tweets={favourited} />
           <Pagination
             current={2}
             hasNext={true}

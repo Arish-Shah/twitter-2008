@@ -1,16 +1,20 @@
+import { formatDateTime, formatText } from "@/lib/utils";
 import type { FavouritedTweet } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-interface FavouritedItemProps {
+interface FeedItemProps {
   tweet: FavouritedTweet;
 }
 
-interface FavouritedProps {
+interface FeedProps {
   tweets: FavouritedTweet[];
 }
 
-function FavouritedItem({ tweet }: FavouritedItemProps) {
+function FeedItem({ tweet }: FeedItemProps) {
+  const text = formatText(tweet.text);
+  const time = formatDateTime(tweet.createdAt);
+
   return (
     <div className="group flex h-[70.84px] items-center border-b border-dashed border-x-timeline-border pl-[5px]">
       <div className="w-[60px]">
@@ -28,13 +32,14 @@ function FavouritedItem({ tweet }: FavouritedItemProps) {
         <Link href={`${tweet.author.screen}`} className="font-bold">
           {tweet.author.screen}
         </Link>{" "}
-        <span>{tweet.text}</span>
+        <span>{text}</span>
         <span className="ml-[5px] font-georgia text-[11.5px] italic text-x-meta">
           <Link
             href={`/${tweet.author.screen}/status/${tweet.id}`}
             className="text-x-meta group-hover:text-x-links"
+            title={tweet.createdAt}
           >
-            7:08 PM Nov 9th
+            {time}
           </Link>
           <span> from web </span>
           {tweet.parent && (
@@ -52,11 +57,11 @@ function FavouritedItem({ tweet }: FavouritedItemProps) {
   );
 }
 
-export function Favourited({ tweets }: FavouritedProps) {
+export function Feed({ tweets }: FeedProps) {
   return (
     <div className="mt-[10px] border-t border-dashed border-x-timeline-border">
       {tweets.map((tweet) => (
-        <FavouritedItem key={tweet.id} tweet={tweet} />
+        <FeedItem key={tweet.id} tweet={tweet} />
       ))}
     </div>
   );

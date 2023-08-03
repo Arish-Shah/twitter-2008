@@ -1,4 +1,4 @@
-import { createThemeCSS } from "@/lib/util";
+import { createThemeCSS } from "@/lib/utils";
 import type { PageSize, Theme, User } from "@/types";
 import { Footer } from "./footer";
 import { Header } from "./header";

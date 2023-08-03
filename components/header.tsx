@@ -56,7 +56,7 @@ export function Header({ user, join, size }: HeaderProps) {
         />
       </NextLink>
       {def && (
-        <div className="absolute right-0 top-[25px] rounded-[5px] bg-white p-[8px_10px] leading-[1.2]">
+        <div className="absolute right-0 top-[25px] rounded-[5px] bg-white p-[8px_10px] leading-[12px] text-[12.6px]">
           <ul>{items}</ul>
         </div>
       )}
@@ -72,7 +72,7 @@ export function Header({ user, join, size }: HeaderProps) {
               quality={100}
             />
           </div>
-          <div className="mb-[-6px] mt-[-7.5px] flex w-[755px] border border-x-profile-banner-border bg-x-profile-banner p-[15px_10px_20px_10px]">
+          <div className="mb-[-6px] mt-[-7.5px] flex w-[763px] border border-x-profile-banner-border bg-x-profile-banner p-[15px_10px_20px_10px]">
             <div className="w-[480px]">
               <h1 className="text-[25.2px]">
                 Hey there! <span className="font-bold">{join}</span> is using
