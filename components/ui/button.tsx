@@ -31,10 +31,11 @@ export function WatchButton() {
     >
       <Image
         src="/images/arrows/arrow_on_red.gif"
-        className="mt-[-3px] inline h-auto w-auto pr-[5px]"
-        height={0}
-        width={0}
+        className="mr-[5px] mt-[-3px] inline"
+        height={13}
+        width={12}
         quality={100}
+        sizes="13px"
         alt="Arrow_on_red"
       />{" "}
       Watch a video!

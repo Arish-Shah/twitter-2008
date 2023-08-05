@@ -28,10 +28,10 @@ export function Notification() {
       <Image
         src="/images/ui/girl.gif"
         alt="notification"
-        height={0}
-        width={0}
+        height={40}
+        width={18}
         quality={100}
-        className="mb-[5px] ml-[24px] h-[40px] w-[18px]"
+        className="mb-[5px] ml-[24px]"
         draggable={false}
       />
       <div className={`bg-x-arr2 bg-[25px_0] bg-no-repeat pt-[11px]`}>
