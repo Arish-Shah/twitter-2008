@@ -37,7 +37,7 @@ export function UserMastheadSmall({ img, screen }: UserMastheadProps) {
           className="border border-x-profilehead-border"
         />
       </Link>
-      <h2 className="ml-[8px] text-[14.4px]">2trndy4u</h2>
+      <h2 className="ml-[8px] text-[14.4px]">default</h2>
     </div>
   );
 }

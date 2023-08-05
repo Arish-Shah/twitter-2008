@@ -13,7 +13,7 @@ interface IndexLayoutProps {
 
 export default function IndexLayout({ children }: IndexLayoutProps) {
   return (
-    <Page size="large">
+    <Page size="LARGE">
       <div className="mb-[5px] flex p-[17px_20px]">
         {children}
         <IndexLoginForm />

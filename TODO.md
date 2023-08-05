@@ -6,3 +6,4 @@
 - [ ] use fullnames on page titles when available
 - [ ] hide following count and following-small section if it is 0
 - [ ] check /home tab menu urls
+- [ ] override fullname with username if its available

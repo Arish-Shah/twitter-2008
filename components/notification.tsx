@@ -31,7 +31,8 @@ export function Notification() {
         height={0}
         width={0}
         quality={100}
-        className="mb-[5px] ml-[24px] h-auto w-auto"
+        className="mb-[5px] ml-[24px] h-[40px] w-[18px]"
+        draggable={false}
       />
       <div className={`bg-x-arr2 bg-[25px_0] bg-no-repeat pt-[11px]`}>
         <div className="overflow-hidden rounded-[5px] bg-white p-[5px_10px]">

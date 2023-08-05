@@ -1,4 +1,4 @@
-import { ResendPasswordForm } from "@/components/resend-password-form";
+import { ResendPasswordForm } from "@/components/forms/resend-password-form";
 import { TwoColumn } from "@/components/two-column";
 
 export default function ResendPassword() {
