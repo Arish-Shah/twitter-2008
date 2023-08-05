@@ -1,4 +1,4 @@
-import type { BioPicUser } from "@/types";
+import type { BioPicType } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -6,7 +6,7 @@ import { TwoColumn } from "./two-column";
 
 interface FollowingSmallProps {
   screen: string;
-  users: BioPicUser[];
+  users: BioPicType[];
 }
 
 export function FollowingSmall({ users, screen }: FollowingSmallProps) {

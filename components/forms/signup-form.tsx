@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ReCaptcha } from "./re-captcha";
-import { Form } from "./ui/form";
+import { ReCaptcha } from "../re-captcha";
+import { Form } from "../ui/form";
 
 export function SignupForm() {
   return (

@@ -1,9 +1,9 @@
-import type { BioPicUser } from "@/types";
+import type { BioPicType } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
 interface EmployeesProps {
-  users: BioPicUser[];
+  users: BioPicType[];
 }
 
 export function Employees({ users }: EmployeesProps) {

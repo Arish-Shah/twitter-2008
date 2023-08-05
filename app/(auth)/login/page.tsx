@@ -1,4 +1,4 @@
-import { LoginForm } from "@/components/login-form";
+import { LoginForm } from "@/components/forms/login-form";
 import { TwoColumn } from "@/components/two-column";
 import { JoinButton } from "@/components/ui/button";
 import Link from "next/link";

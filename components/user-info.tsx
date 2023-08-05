@@ -1,26 +1,19 @@
 import { truncateUserInfoUrl } from "@/lib/utils";
-import { UserInfo } from "@/types";
+import { UserInfoType } from "@/types";
 import Link from "next/link";
 import { Fragment } from "react";
 
-interface InfoItemProps {
+interface UserInfoItemProps {
   label: string;
   children: React.ReactNode;
 }
 
-interface InfoStatProps {
-  count: number;
-  label: string;
-  url: string;
-  className?: string;
-}
-
 interface UserInfoProps {
   screen: string;
-  info: UserInfo;
+  info: UserInfoType;
 }
 
-function InfoItem({ label, children }: InfoItemProps) {
+function UserInfoItem({ label, children }: UserInfoItemProps) {
   return (
     <li className="pb-[3px]">
       <span className="font-bold">{label}</span>{" "}
@@ -29,58 +22,23 @@ function InfoItem({ label, children }: InfoItemProps) {
   );
 }
 
-function InfoStat({ count, label, url, className }: InfoStatProps) {
-  return (
-    <Link
-      href={url}
-      className={`group px-[7px] hover:no-underline ${className} border-l border-x-sidebar-border`}
-    >
-      <span className="font-georgia text-[15.6px]">
-        {count.toLocaleString()}
-      </span>
-      <br />
-      <span className="text-[10.8px] lowercase group-hover:underline">
-        {label}
-      </span>
-    </Link>
-  );
-}
-
-export function UserInfo({ info, screen }: UserInfoProps) {
+export function UserInfo({ info }: UserInfoProps) {
   return (
     <Fragment>
       <address>
         <ul>
-          <InfoItem label="Name">{info.name}</InfoItem>
+          <UserInfoItem label="Name">{info.name}</UserInfoItem>
           {info.location && (
-            <InfoItem label="Location">{info.location}</InfoItem>
+            <UserInfoItem label="Location">{info.location}</UserInfoItem>
           )}
           {info.web && (
-            <InfoItem label="Web">
+            <UserInfoItem label="Web">
               <Link href={info.web}>{truncateUserInfoUrl(info.web)}</Link>
-            </InfoItem>
+            </UserInfoItem>
           )}
-          {info.bio && <InfoItem label="Bio">{info.bio}</InfoItem>}
+          {info.bio && <UserInfoItem label="Bio">{info.bio}</UserInfoItem>}
         </ul>
       </address>
-      <div className="m-[5px_0_10px_0] flex">
-        <InfoStat
-          count={info.count.following}
-          label="Following"
-          url={`/${screen}/friends`}
-          className="border-l-0 pl-0"
-        />
-        <InfoStat
-          count={info.count.followers}
-          label="Followers"
-          url={`/${screen}/followers`}
-        />
-        <InfoStat
-          count={info.count.updates}
-          label="Updates"
-          url={`/${screen}`}
-        />
-      </div>
     </Fragment>
   );
 }

@@ -1,17 +1,17 @@
 import { formatDateTime, formatText } from "@/lib/utils";
-import type { FavouritedTweet, User } from "@/types";
+import type { FeedTweetType, UserType } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { TweetInteractions } from "./interactions";
 
 interface FeedItemProps {
-  user?: User;
-  tweet: FavouritedTweet;
+  user?: UserType;
+  tweet: FeedTweetType;
 }
 
 interface FeedProps {
-  user?: User;
-  tweets: FavouritedTweet[];
+  user?: UserType;
+  tweets: FeedTweetType[];
 }
 
 function FeedItem({ user, tweet }: FeedItemProps) {

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import type { FormEventHandler } from "react";
-import { notify } from "./notification";
-import { Form } from "./ui/form";
+import { notify } from "../notification";
+import { Form } from "../ui/form";
 
 export function LoginForm() {
   const handleSubmit: FormEventHandler = (e) => {

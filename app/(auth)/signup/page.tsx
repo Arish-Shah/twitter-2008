@@ -1,4 +1,4 @@
-import { SignupForm } from "@/components/signup-form";
+import { SignupForm } from "@/components/forms/signup-form";
 import { TwoColumn } from "@/components/two-column";
 import type { Metadata } from "next";
 import Link from "next/link";

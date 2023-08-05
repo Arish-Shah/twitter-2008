@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { WatchButton } from "./ui/button";
+import { WatchButton } from "../ui/button";
 
 export function IndexLoginForm() {
   return (

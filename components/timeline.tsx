@@ -1,18 +1,18 @@
 import { formatDateTime, formatText } from "@/lib/utils";
-import type { TimelineTweet, User } from "@/types";
+import type { TimelineTweetType, UserType } from "@/types";
 import Link from "next/link";
 import { TweetInteractions } from "./interactions";
 
 interface TimelineItemProps {
   screen: string;
-  tweet: TimelineTweet;
-  user?: User;
+  tweet: TimelineTweetType;
+  user?: UserType;
 }
 
 interface TimelineProps {
   screen: string;
-  tweets: TimelineTweet[];
-  user?: User;
+  tweets: TimelineTweetType[];
+  user?: UserType;
 }
 
 function TimelineMain({ tweet, screen, user }: TimelineItemProps) {

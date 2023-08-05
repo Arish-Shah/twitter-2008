@@ -1,11 +1,11 @@
-import type { Theme } from "@/types";
+import type { ThemeType } from "@/types";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Link from "next/link";
 import { Fragment } from "react";
 
-export function createThemeCSS(theme?: Theme) {
+export function createThemeCSS(theme?: ThemeType) {
   if (!theme) return null;
 
   return `

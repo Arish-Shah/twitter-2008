@@ -1,3 +1,4 @@
+import { PaginationType } from "@/types";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import React from "react";
 
@@ -10,7 +11,7 @@ interface PaginationProps {
   screen: string;
   current: number;
   hasNext: boolean;
-  type: "prevNext" | "newOld";
+  type: PaginationType;
 }
 
 function Link({ href, className, children }: LinkProps) {
@@ -25,12 +26,12 @@ function Link({ href, className, children }: LinkProps) {
 }
 
 export function Pagination({ current, hasNext, type }: PaginationProps) {
-  const left = type === "newOld" ? "Newer" : "Previous";
-  const right = type === "newOld" ? "Older" : "Next";
+  const left = type === "NEW_OLD" ? "Newer" : "Previous";
+  const right = type === "NEW_OLD" ? "Older" : "Next";
 
   return (
     <div className="mt-[18px] flex justify-between leading-[1.2]">
-      {type === "newOld" && (
+      {type === "NEW_OLD" && (
         <Link href={`/statuses/user_timeline/15.rss`}>RSS</Link>
       )}
       <div className="ml-auto flex">

@@ -23,3 +23,21 @@ export function UserMasthead({ img, screen }: UserMastheadProps) {
     </div>
   );
 }
+
+export function UserMastheadSmall({ img, screen }: UserMastheadProps) {
+  return (
+    <div className="flex items-center">
+      <Link href={`/account/profile_image/${screen}`}>
+        <Image
+          src={img}
+          alt={screen}
+          height={32}
+          width={32}
+          quality={100}
+          className="border border-x-profilehead-border"
+        />
+      </Link>
+      <h2 className="ml-[8px] text-[14.4px]">2trndy4u</h2>
+    </div>
+  );
+}

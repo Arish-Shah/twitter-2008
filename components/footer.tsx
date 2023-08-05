@@ -1,10 +1,10 @@
 "use client";
 
-import type { Link } from "@/types";
+import type { LinkType } from "@/types";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 
-const links: Link[] = [
+const links: LinkType[] = [
   { text: "About Us", url: "/help/aboutus" },
   { text: "Contact", url: "/help/contact" },
   { text: "Blog", url: "" },

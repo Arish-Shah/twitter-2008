@@ -1,4 +1,4 @@
-import { IndexLoginForm } from "@/components/index-login-form";
+import { IndexLoginForm } from "@/components/forms/index-login-form";
 import { Page } from "@/components/page";
 import { RecentTweets } from "@/components/recent-tweets";
 import type { Metadata } from "next";

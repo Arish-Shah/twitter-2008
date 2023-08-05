@@ -1,18 +1,16 @@
-export type User = {
-  screen: string;
+export type UserType = { screen: string };
+
+export type ThemeType = {
+  backgroundImage: BackgroundImageType;
+  designColors: DesignColorsType;
 };
 
-export type Theme = {
-  backgroundImage: BackgroundImage;
-  designColors: DesignColors;
-};
-
-export type BackgroundImage = {
+export type BackgroundImageType = {
   url: string;
   tile: boolean;
 };
 
-export type DesignColors = {
+export type DesignColorsType = {
   background: string;
   text: string;
   links: string;
@@ -20,60 +18,79 @@ export type DesignColors = {
   sidebarBorder: string;
 };
 
-export type Link = {
+export type LinkType = {
   text: string;
   url: string;
 };
 
-export type BioPicUser = {
+export type BioPicType = {
   screen: string;
   name: string;
   url: string;
 };
 
-export type Application = "web";
+export type ApplicationType = "WEB";
 
-export type TimelineTweetParent = {
+export type TweetParentType = {
   id: string;
   screen: string;
 };
 
-export type TimelineTweet = {
+export type TimelineTweetType = {
   id: string;
   text: string;
   createdAt: string;
-  application: Application;
+  application: ApplicationType;
   favorited?: boolean;
-  parent?: TimelineTweetParent;
+  parent?: TweetParentType;
 };
 
-export type FavouritedTweetAuthor = {
+export type FeedTweetAuthorType = {
   img: string;
   screen: string;
 };
 
-export type FavouritedTweet = {
+export type FeedTweetType = {
   id: string;
   text: string;
   createdAt: string;
-  application: Application;
-  author: FavouritedTweetAuthor;
+  application: ApplicationType;
+  author: FeedTweetAuthorType;
   favorited?: boolean;
-  parent?: TimelineTweetParent;
+  parent?: TweetParentType;
 };
 
-export type StatsCount = {
+export type StatsCountType = {
   following: number;
   followers: number;
   updates: number;
 };
 
-export type UserInfo = {
+export type UserInfoType = {
   name: string;
   location?: string;
   web?: string;
   bio?: string;
-  count: StatsCount;
 };
 
-export type PageSize = "large" | "small" | "default";
+export type PageType = "DEFAULT" | "LARGE" | "SMALL";
+
+export type PaginationType = "PREV_NEXT" | "NEW_OLD";
+
+export const profileTabTypes = ["UPDATES", "FAVORITES"] as const;
+export type ProfileTabType = (typeof profileTabTypes)[number];
+
+export const homeTabTypes = [
+  "HOME",
+  "REPLIES",
+  "DIRECT_MESSAGES",
+  "FAVORITES",
+  "EVERYONE",
+] as const;
+export type HomeTabType = (typeof homeTabTypes)[number];
+
+export type MenuItemType = {
+  label: string;
+  url: string;
+  selected: boolean;
+};

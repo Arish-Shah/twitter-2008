@@ -5,3 +5,4 @@
 - [ ] replace .. with actions when user is logged in on fav, timeline, feed components
 - [ ] use fullnames on page titles when available
 - [ ] hide following count and following-small section if it is 0
+- [ ] check /home tab menu urls

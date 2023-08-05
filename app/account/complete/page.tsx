@@ -1,4 +1,4 @@
-import { CompleteForm } from "@/components/complete-form";
+import { CompleteForm } from "@/components/forms/complete-form";
 import { TwoColumn } from "@/components/two-column";
 
 export default function Complete() {

@@ -1,9 +1,9 @@
-import type { Link, PageSize, User } from "@/types";
+import type { LinkType, PageType, UserType } from "@/types";
 import Image from "next/image";
 import NextLink from "next/link";
 import { Fragment } from "react";
 
-const links: Link[] = [
+const links: LinkType[] = [
   { text: "Home", url: "/home" },
   { text: "Profile", url: "/" },
   { text: "Find People", url: "/invitations" },
@@ -13,14 +13,14 @@ const links: Link[] = [
 ];
 
 interface HeaderProps {
-  user?: User;
+  user?: UserType;
   join?: string;
-  size?: PageSize;
+  size?: PageType;
 }
 
 export function Header({ user, size }: HeaderProps) {
-  const large = size === "large";
-  const def = size === "default";
+  const large = size === "LARGE";
+  const def = size === "DEFAULT";
 
   let items = null;
 

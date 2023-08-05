@@ -1,5 +1,5 @@
 import { createThemeCSS } from "@/lib/utils";
-import type { PageSize, Theme, User } from "@/types";
+import type { PageType, ThemeType, UserType } from "@/types";
 import { Fragment } from "react";
 import { Footer } from "./footer";
 import { Header } from "./header";
@@ -7,15 +7,15 @@ import { JoinBanner } from "./join-banner";
 import { Notification } from "./notification";
 
 interface PageProps {
-  user?: User;
-  theme?: Theme;
+  user?: UserType;
+  theme?: ThemeType;
   join?: string;
-  size?: PageSize;
+  size?: PageType;
   children: React.ReactNode;
 }
 
 export function Page(props: PageProps) {
-  const { user, theme, join, size = "default", children } = props;
+  const { user, theme, join, size = "DEFAULT", children } = props;
   const css = createThemeCSS(theme);
 
   return (
@@ -28,15 +28,15 @@ export function Page(props: PageProps) {
           {join && <JoinBanner screen={join} />}
           <div
             className={`mt-[8px] bg-x-arr2 bg-[25px_0] bg-no-repeat pt-[11px] ${
-              size === "small" && "w-[620px]"
+              size === "SMALL" && "w-[620px]"
             }`}
           >
             <div className="overflow-hidden rounded-[5px] bg-white">
               {children}
-              {size === "large" && <Footer connected={true} />}
+              {size === "LARGE" && <Footer connected={true} />}
             </div>
           </div>
-          {size === "default" && <Footer />}
+          {size === "DEFAULT" && <Footer />}
         </div>
       </main>
     </Fragment>
