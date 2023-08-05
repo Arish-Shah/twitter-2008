@@ -1,4 +1,28 @@
-import type { BioPicUser, FavouritedTweet, TimelineTweet } from "@/types";
+import type {
+  BioPicUser,
+  FavouritedTweet,
+  Theme,
+  TimelineTweet,
+  User,
+} from "@/types";
+
+export const user: User = {
+  screen: "default",
+};
+
+export const theme: Theme = {
+  backgroundImage: {
+    tile: false,
+    url: "/images/themes/theme7.gif",
+  },
+  designColors: {
+    background: "#ebebeb",
+    links: "#990000",
+    sidebar: "#f3f3f3",
+    sidebarBorder: "#dfdfdf",
+    text: "#333333",
+  },
+};
 
 export const tweets: TimelineTweet[] = [
   {

@@ -1,22 +1,25 @@
 import { formatDateTime, formatText } from "@/lib/utils";
-import type { FavouritedTweet } from "@/types";
+import type { FavouritedTweet, User } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import { TweetInteractions } from "./interactions";
 
 interface FeedItemProps {
+  user?: User;
   tweet: FavouritedTweet;
 }
 
 interface FeedProps {
+  user?: User;
   tweets: FavouritedTweet[];
 }
 
-function FeedItem({ tweet }: FeedItemProps) {
+function FeedItem({ user, tweet }: FeedItemProps) {
   const text = formatText(tweet.text);
   const time = formatDateTime(tweet.createdAt);
 
   return (
-    <div className="group flex h-[70.84px] items-center border-b border-dashed border-x-timeline-border pl-[5px]">
+    <div className="group flex h-[70.84px] items-center border-b border-dashed border-x-timeline-border pl-[5px] hover:bg-x-timeline-hover">
       <div className="w-[60px]">
         <Link href={`/${tweet.author.screen}`}>
           <Image
@@ -29,7 +32,7 @@ function FeedItem({ tweet }: FeedItemProps) {
         </Link>
       </div>
       <div className="flex-1 text-[14.4px] leading-[1.1]">
-        <Link href={`${tweet.author.screen}`} className="font-bold">
+        <Link href={`/${tweet.author.screen}`} className="font-bold">
           {tweet.author.screen}
         </Link>{" "}
         <span>{text}</span>
@@ -52,16 +55,16 @@ function FeedItem({ tweet }: FeedItemProps) {
           )}
         </span>
       </div>
-      <div className="w-[60px]">..</div>
+      <div className="w-[60px] pl-[30px]">{user && <TweetInteractions />}</div>
     </div>
   );
 }
 
-export function Feed({ tweets }: FeedProps) {
+export function Feed({ user, tweets }: FeedProps) {
   return (
     <div className="mt-[10px] border-t border-dashed border-x-timeline-border">
       {tweets.map((tweet) => (
-        <FeedItem key={tweet.id} tweet={tweet} />
+        <FeedItem key={tweet.id} tweet={tweet} user={user} />
       ))}
     </div>
   );

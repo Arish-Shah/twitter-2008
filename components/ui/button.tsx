@@ -31,7 +31,7 @@ export function WatchButton() {
     >
       <Image
         src="/images/arrows/arrow_on_red.gif"
-        className="mt-[-3px] inline h-[13px] w-[17px] pr-[5px]"
+        className="mt-[-3px] inline h-auto w-auto pr-[5px]"
         height={0}
         width={0}
         quality={100}

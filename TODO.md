@@ -4,3 +4,4 @@
 - [ ] add navigation panel to status page when logged in. also add like and reply button
 - [ ] replace .. with actions when user is logged in on fav, timeline, feed components
 - [ ] use fullnames on page titles when available
+- [ ] hide following count and following-small section if it is 0

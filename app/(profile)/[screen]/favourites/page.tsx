@@ -5,7 +5,7 @@ import { Pagination } from "@/components/pagination";
 import { TabMenu } from "@/components/tab-menu";
 import { TwoColumn } from "@/components/two-column";
 import { UserInfo } from "@/components/user-info";
-import { bioPic, favourited, info } from "@/lib/data";
+import { bioPic, favourited, info, user } from "@/lib/data";
 
 interface FavouritesProps {
   params: { screen: string };
@@ -13,11 +13,11 @@ interface FavouritesProps {
 
 export default function Favourites({ params: { screen } }: FavouritesProps) {
   return (
-    <Page>
+    <Page user={user}>
       <TwoColumn>
         <TwoColumn.Main className="pb-[12px]">
           <TwoColumn.Main.H2>Bruce Wayne&rsquo;s Favorites</TwoColumn.Main.H2>
-          <Feed tweets={favourited} />
+          <Feed tweets={favourited} user={user} />
           <Pagination
             current={2}
             hasNext={true}

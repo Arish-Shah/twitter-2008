@@ -1,6 +1,7 @@
 import { truncateUserInfoUrl } from "@/lib/utils";
 import { UserInfo } from "@/types";
 import Link from "next/link";
+import { Fragment } from "react";
 
 interface InfoItemProps {
   label: string;
@@ -47,7 +48,7 @@ function InfoStat({ count, label, url, className }: InfoStatProps) {
 
 export function UserInfo({ info, screen }: UserInfoProps) {
   return (
-    <>
+    <Fragment>
       <address>
         <ul>
           <InfoItem label="Name">{info.name}</InfoItem>
@@ -80,6 +81,6 @@ export function UserInfo({ info, screen }: UserInfoProps) {
           url={`/${screen}`}
         />
       </div>
-    </>
+    </Fragment>
   );
 }

@@ -1,18 +1,21 @@
 import { formatDateTime, formatText } from "@/lib/utils";
-import type { TimelineTweet } from "@/types";
+import type { TimelineTweet, User } from "@/types";
 import Link from "next/link";
+import { TweetInteractions } from "./interactions";
 
 interface TimelineItemProps {
   screen: string;
   tweet: TimelineTweet;
+  user?: User;
 }
 
 interface TimelineProps {
   screen: string;
   tweets: TimelineTweet[];
+  user?: User;
 }
 
-function TimelineMain({ tweet, screen }: TimelineItemProps) {
+function TimelineMain({ tweet, screen, user }: TimelineItemProps) {
   const text = formatText(tweet.text);
   const time = formatDateTime(tweet.createdAt);
 
@@ -39,12 +42,12 @@ function TimelineMain({ tweet, screen }: TimelineItemProps) {
           )}
         </span>
       </div>
-      <div className="mx-auto">..</div>
+      <div className="m-auto">{user && <TweetInteractions liked={true} />}</div>
     </div>
   );
 }
 
-function TimelineItem({ screen, tweet }: TimelineItemProps) {
+function TimelineItem({ screen, tweet, user }: TimelineItemProps) {
   const text = formatText(tweet.text);
   const time = formatDateTime(tweet.createdAt);
 
@@ -71,17 +74,22 @@ function TimelineItem({ screen, tweet }: TimelineItemProps) {
           )}
         </span>
       </div>
-      <div className="mx-auto">..</div>
+      <div className="m-auto">{user && <TweetInteractions />}</div>
     </div>
   );
 }
 
-export function Timeline({ screen, tweets }: TimelineProps) {
+export function Timeline({ screen, tweets, user }: TimelineProps) {
   return (
     <div className="mt-[17.5px]">
-      <TimelineMain screen={screen} tweet={tweets[0]} />
+      <TimelineMain screen={screen} tweet={tweets[0]} user={user} />
       {tweets.slice(1).map((tweet) => (
-        <TimelineItem screen={screen} tweet={tweet} key={tweet.id} />
+        <TimelineItem
+          screen={screen}
+          tweet={tweet}
+          key={tweet.id}
+          user={user}
+        />
       ))}
     </div>
   );

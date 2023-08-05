@@ -48,6 +48,8 @@ module.exports = {
         "x-timeline-hover": "#f7f7f7",
         "x-pagination-border": "#cecece",
         "x-sidebar-tab": "#4c4c4c",
+        "x-star": "#ffda64",
+        "x-star-border": "#ffac31",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],
@@ -56,6 +58,9 @@ module.exports = {
       fontSize: {
         base: ["12px", 1.5],
       },
+    },
+    transitionProperty: {
+      height: "height",
     },
   },
   plugins: [],

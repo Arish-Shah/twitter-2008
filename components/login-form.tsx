@@ -1,11 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import type { FormEventHandler } from "react";
+import { notify } from "./notification";
 import { Form } from "./ui/form";
 
 export function LoginForm() {
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
+    notify("Wrong Username/Email and password combination.");
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Row>
         <Form.Label htmlFor="usernameOrEmail">Username</Form.Label>
         <Form.Input type="text" id="usernameOrEmail" autoFocus />

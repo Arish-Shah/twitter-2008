@@ -3,13 +3,14 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Link from "next/link";
+import { Fragment } from "react";
 
 export function createThemeCSS(theme?: Theme) {
   if (!theme) return null;
 
   return `
     :root {
-      --theme: url("${theme.backgroundImage.url}");
+      --theme: url(${theme.backgroundImage.url});
       --tile: ${theme.backgroundImage.tile ? "repeat" : "no-repeat"};
 
       --background: ${theme.designColors.background};
@@ -38,9 +39,9 @@ export function formatText(text: string): React.ReactNode[] {
     if (word.startsWith("@")) {
       const screen = word.replace("@", "");
       return (
-        <>
+        <Fragment key={i}>
           @<Link href={`/${screen}`}>{screen}</Link>
-        </>
+        </Fragment>
       );
     } else if (word.startsWith("http")) {
       return (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 import { SignupButton } from "./ui/button";
 
 interface CarouselProps {
@@ -57,7 +58,7 @@ export function HelpCarousel({ index }: CarouselProps) {
 }
 
 export const What = (
-  <>
+  <Fragment>
     <p className="m-[15px_0] p-[0_4px] text-[18px] leading-[1.3] text-black">
       Twitter is a service for friends, family, and co–workers <br />
       to communicate and stay connected through the exchange of quick, frequent
@@ -66,7 +67,7 @@ export const What = (
     <p className="m-[0_0_12px] mt-[26px] text-center text-[14.4px] leading-[1.3]">
       <SignupButton />
     </p>
-  </>
+  </Fragment>
 );
 
 export const Why = (
