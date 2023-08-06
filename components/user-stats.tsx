@@ -13,7 +13,12 @@ interface UserStatsProps {
   screen: string;
 }
 
-function UserStatsItem({ count, label, url, className }: UserStatsItemProps) {
+function UserStatsItem({
+  count,
+  label,
+  url,
+  className = "",
+}: UserStatsItemProps) {
   return (
     <Link
       href={url}

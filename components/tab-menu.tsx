@@ -5,6 +5,7 @@ interface TabProps {
   label: any;
   url: string;
   selected: boolean;
+  unreadCount?: number;
 }
 
 interface ProfileTabMenuProps {
@@ -17,16 +18,17 @@ interface HomeTabMenuProps {
   selected: HomeTabType;
 }
 
-function Tab({ label, url, selected }: TabProps) {
+function Tab({ label, url, selected, unreadCount }: TabProps) {
   return (
     <li className="w-full border-t border-x-sidebar-border">
       <Link
         href={url}
-        className={`block py-[11px] pl-[13px] text-[13.2px] font-bold text-x-sidebar-tab hover:no-underline ${
+        className={`flex justify-between px-[13px] py-[11px] text-[13.2px] font-bold text-x-text hover:no-underline ${
           selected && "ml-[-1px] bg-white pl-[14px]"
         } ${!selected && "hover:bg-x-pale"}`}
       >
-        {label}
+        <span>{label}</span>
+        {unreadCount && <span>{unreadCount}</span>}
       </Link>
     </li>
   );
@@ -54,18 +56,18 @@ export function ProfileTabMenu({ screen, selected }: ProfileTabMenuProps) {
 export function HomeTabMenu({ screen, selected }: HomeTabMenuProps) {
   const menu: MenuItemType[] = [
     { label: "Home", url: "/home", selected: selected === "HOME" },
-    { label: "Replies", url: "/replies", selected: selected === "REPLIES" },
+    { label: "@Replies", url: "/replies", selected: selected === "REPLIES" },
     {
       label: "Direct Messages",
       url: "/direct_messages",
       selected: selected === "DIRECT_MESSAGES",
+      unreadCount: 0,
     },
     {
       label: "Favorites",
       url: "/favorites",
       selected: selected === "FAVORITES",
     },
-    { label: "@Replies", url: "/replies", selected: selected === "REPLIES" },
     { label: "Everyone", url: "/everyone", selected: selected === "EVERYONE" },
   ];
 

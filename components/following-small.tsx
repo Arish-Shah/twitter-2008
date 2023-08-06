@@ -2,7 +2,6 @@ import type { BioPicType } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
-import { TwoColumn } from "./two-column";
 
 interface FollowingSmallProps {
   screen: string;
@@ -13,14 +12,12 @@ export function FollowingSmall({ users, screen }: FollowingSmallProps) {
   return (
     <Fragment>
       <div className="flex items-center justify-between">
-        <TwoColumn.Sidebar.H1 className="text-x-sidebar-tab">
-          Following
-        </TwoColumn.Sidebar.H1>
+        <span className="text-[13.2px] font-bold">Following</span>
         <Link href={"/"} className="text-[12px]">
           add
         </Link>
       </div>
-      <div className="pl-[3px]">
+      <div className="mt-[10px] pl-[3px]">
         {users.map((user, i) => (
           <span key={i} className="p-[0_3px_2px_1px]">
             <Link href={`/${user.screen}`} title={user.name}>

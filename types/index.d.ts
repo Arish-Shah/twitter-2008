@@ -93,4 +93,5 @@ export type MenuItemType = {
   label: string;
   url: string;
   selected: boolean;
+  unreadCount?: number;
 };

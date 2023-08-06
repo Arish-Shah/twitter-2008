@@ -26,7 +26,7 @@ export function UserMasthead({ img, screen }: UserMastheadProps) {
 
 export function UserMastheadSmall({ img, screen }: UserMastheadProps) {
   return (
-    <div className="flex items-center">
+    <div className="mb-[13px] flex items-center">
       <Link href={`/account/profile_image/${screen}`}>
         <Image
           src={img}

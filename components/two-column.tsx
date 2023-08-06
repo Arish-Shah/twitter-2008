@@ -23,9 +23,19 @@ function Center({ className = "", children }: TwoColumnProps) {
   return <div className={`text-center ${className}`}>{children}</div>;
 }
 
-function SidebarSection({ children, className }: TwoColumnProps) {
+function SidebarSection({
+  children,
+  className = "",
+  bordered,
+}: TwoColumnProps & { bordered?: boolean }) {
   return (
-    <div className={`p-[13px_13px_16px] leading-[1.2] ${className}`}>
+    <div
+      className={`leading-[1.2] ${
+        bordered
+          ? "border-t border-x-sidebar-border p-[11px_13px_11px_13px]"
+          : "p-[13px_13px_16px]"
+      } ${className}`}
+    >
       {children}
     </div>
   );

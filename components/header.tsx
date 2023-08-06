@@ -20,7 +20,7 @@ interface HeaderProps {
 
 export function Header({ user, size }: HeaderProps) {
   const large = size === "LARGE";
-  const def = size === "DEFAULT";
+  const small = size === "SMALL";
 
   let items = null;
 
@@ -55,8 +55,12 @@ export function Header({ user, size }: HeaderProps) {
           draggable={false}
         />
       </NextLink>
-      {def && (
-        <div className="absolute right-0 top-[25px] rounded-[5px] bg-white p-[8px_10px] text-[12.6px] leading-[12px]">
+      {!large && (
+        <div
+          className={`absolute right-0 top-[25px] rounded-[5px] bg-white p-[8px_10px] text-[12.6px] leading-[12px] ${
+            small && "right-[143px]"
+          }`}
+        >
           <ul>{items}</ul>
         </div>
       )}

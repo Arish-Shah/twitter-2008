@@ -46,8 +46,10 @@ export default function Profile({ params: { screen } }: ProfileProps) {
             <UserStats screen={screen} count={count} />
           </TwoColumn.Sidebar.Section>
           <ProfileTabMenu screen={screen} selected="UPDATES" />
-          <TwoColumn.Sidebar.Section className="border-t border-x-sidebar-border">
+          <TwoColumn.Sidebar.Section bordered={true}>
             <Actions screen={screen} />
+          </TwoColumn.Sidebar.Section>
+          <TwoColumn.Sidebar.Section bordered={true}>
             <FollowingSmall screen={screen} users={Array(36).fill(bioPic)} />
           </TwoColumn.Sidebar.Section>
         </TwoColumn.Sidebar>

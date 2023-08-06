@@ -7,3 +7,6 @@
 - [ ] hide following count and following-small section if it is 0
 - [ ] check /home tab menu urls
 - [ ] override fullname with username if its available
+- [ ] check and implement
+  - https://web.archive.org/web/20091007131707/http://twitter.com//
+  - https://web.archive.org/web/20091010004544/http://twitter.com/public_timeline

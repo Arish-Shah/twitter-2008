@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { TwoColumn } from "./two-column";
 
 interface ActionsProps {
@@ -7,10 +8,8 @@ interface ActionsProps {
 
 export function Actions({ screen }: ActionsProps) {
   return (
-    <div className="mb-[13px]">
-      <TwoColumn.Sidebar.H1 className="text-x-sidebar-tab">
-        Actions
-      </TwoColumn.Sidebar.H1>
+    <Fragment>
+      <div className="text-[13.2px] font-bold">Actions</div>
       <TwoColumn.Sidebar.P className="!mt-[11px]">
         <div className="text-[12px]">
           <Link href="/">message</Link> {screen}
@@ -25,6 +24,6 @@ export function Actions({ screen }: ActionsProps) {
           {screen}
         </div>
       </TwoColumn.Sidebar.P>
-    </div>
+    </Fragment>
   );
 }

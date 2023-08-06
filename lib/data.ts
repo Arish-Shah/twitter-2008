@@ -12,7 +12,35 @@ export const user: UserType = {
   screen: "default",
 };
 
-export const theme: ThemeType = {
+export const theme2: ThemeType = {
+  backgroundImage: {
+    tile: false,
+    url: "/images/themes/theme2.gif",
+  },
+  designColors: {
+    background: "#c6e2ee",
+    links: "#1f98c7",
+    sidebar: "#daecf4",
+    sidebarBorder: "#c6e2ee",
+    text: "#663b12",
+  },
+};
+
+export const theme5: ThemeType = {
+  backgroundImage: {
+    tile: false,
+    url: "/images/themes/theme5.gif",
+  },
+  designColors: {
+    background: "#352726",
+    links: "#d02b55",
+    sidebar: "#99cc33",
+    sidebarBorder: "#829d5e",
+    text: "#3e4415",
+  },
+};
+
+export const theme7: ThemeType = {
   backgroundImage: {
     tile: false,
     url: "/images/themes/theme7.gif",
@@ -22,6 +50,20 @@ export const theme: ThemeType = {
     links: "#990000",
     sidebar: "#f3f3f3",
     sidebarBorder: "#dfdfdf",
+    text: "#333333",
+  },
+};
+
+export const theme8: ThemeType = {
+  backgroundImage: {
+    tile: false,
+    url: "/images/themes/theme8.gif",
+  },
+  designColors: {
+    background: "#8b542b",
+    links: "#9d582e",
+    sidebar: "#eadeaa",
+    sidebarBorder: "#d9b17e",
     text: "#333333",
   },
 };
@@ -161,7 +203,7 @@ export const tweets: TimelineTweetType[] = [
   },
 ];
 
-export const favourited: FeedTweetType[] = [
+export const feed: FeedTweetType[] = [
   {
     id: "849894313",
     text: 'nothin\' like a little weepy waily "hey jupiter" to kick off morning testing',

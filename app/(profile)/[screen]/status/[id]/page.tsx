@@ -1,5 +1,5 @@
 import { Page } from "@/components/page";
-import { theme, user } from "@/lib/data";
+import { theme7, user } from "@/lib/data";
 import { formatDateTime, formatText } from "@/lib/utils";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -25,7 +25,7 @@ export default function Status({ params: { screen } }: StatusProps) {
   const time = formatDateTime("2023-08-03T18:50:19Z");
 
   return (
-    <Page size={"SMALL"} user={user} theme={theme}>
+    <Page size={"SMALL"} user={user} theme={theme7}>
       <div className="p-[20px]">
         <div className="flex">
           <div className="w-[550px] font-georgia text-[25.2px] font-normal leading-[1.1]">

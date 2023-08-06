@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./util/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -47,9 +48,15 @@ module.exports = {
         "x-timeline-border": "#d2dada",
         "x-timeline-hover": "#f7f7f7",
         "x-pagination-border": "#cecece",
-        "x-sidebar-tab": "#4c4c4c",
         "x-star": "#ffda64",
         "x-star-border": "#ffac31",
+        "x-latest": "#666666",
+        "x-updatebutton": "#4c4c4c",
+        "x-updatebutton-disabled": "#c6c6c6",
+        "x-updatebutton-gradient-from": "#fafafa",
+        "x-updatebutton-gradient-to": "#f1f1f1",
+        "x-updatebutton-gradient-from-hover": "#f1f1f1",
+        "x-updatebutton-gradient-to-hover": "#e0e0e0",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],

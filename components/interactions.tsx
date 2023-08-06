@@ -1,5 +1,4 @@
-import { Fragment } from "react";
-import { StarIcon } from "./ui/icon";
+import { StarIcon, TrashIcon } from "./ui/icon";
 
 interface TweetInteractionsProps {
   liked?: boolean;
@@ -7,13 +6,14 @@ interface TweetInteractionsProps {
 
 export function TweetInteractions({ liked }: TweetInteractionsProps) {
   return (
-    <Fragment>
+    <div className="flex flex-col items-center">
       <StarIcon
         className={`opacity-0 group-hover:opacity-100 ${
           liked && "opacity-100"
         }`}
         liked={liked}
       />
-    </Fragment>
+      <TrashIcon className="mt-[5px] opacity-0 group-hover:opacity-100" />
+    </div>
   );
 }

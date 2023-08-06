@@ -52,7 +52,7 @@ function TimelineItem({ screen, tweet, user }: TimelineItemProps) {
   const time = formatDateTime(tweet.createdAt);
 
   return (
-    <div className="group flex border-b border-dashed border-x-timeline-border p-[8px_3px] leading-[15px] hover:bg-x-timeline-hover">
+    <div className="group flex items-center border-b border-dashed border-x-timeline-border p-[8px_3px] leading-[15px] hover:bg-x-timeline-hover">
       <div className="w-[485px]">
         <span className="text-[14.4px]">{text}</span>
         <span className="ml-[8px] font-georgia text-[11.5px] italic text-x-meta">

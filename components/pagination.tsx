@@ -14,7 +14,7 @@ interface PaginationProps {
   type: PaginationType;
 }
 
-function Link({ href, className, children }: LinkProps) {
+function Link({ href, className = "", children }: LinkProps) {
   return (
     <NextLink
       href={href}
@@ -40,7 +40,16 @@ export function Pagination({ current, hasNext, type }: PaginationProps) {
             « {left}
           </Link>
         )}
-        {hasNext && <Link href={`?page=${current + 1}`}>{right} »</Link>}
+        <Link
+          href={`?page=${current + 1}`}
+          className={
+            !hasNext
+              ? "pointer-events-none cursor-default text-x-meta hover:no-underline"
+              : ""
+          }
+        >
+          {right} »
+        </Link>
       </div>
     </div>
   );

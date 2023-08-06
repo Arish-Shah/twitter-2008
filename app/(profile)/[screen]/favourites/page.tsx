@@ -6,7 +6,7 @@ import { ProfileTabMenu } from "@/components/tab-menu";
 import { TwoColumn } from "@/components/two-column";
 import { UserInfo } from "@/components/user-info";
 import { UserStats } from "@/components/user-stats";
-import { bioPic, count, favourited, info, user } from "@/lib/data";
+import { bioPic, count, feed, info, user } from "@/lib/data";
 
 interface FavouritesProps {
   params: { screen: string };
@@ -18,7 +18,7 @@ export default function Favourites({ params: { screen } }: FavouritesProps) {
       <TwoColumn>
         <TwoColumn.Main className="pb-[12px]">
           <TwoColumn.Main.H2>Bruce Wayne&rsquo;s Favorites</TwoColumn.Main.H2>
-          <Feed tweets={favourited} user={user} />
+          <Feed tweets={feed} user={user} />
           <Pagination
             current={2}
             hasNext={true}
@@ -32,7 +32,7 @@ export default function Favourites({ params: { screen } }: FavouritesProps) {
             <UserStats screen={screen} count={count} />
           </TwoColumn.Sidebar.Section>
           <ProfileTabMenu screen={screen} selected="FAVORITES" />
-          <TwoColumn.Sidebar.Section className="border-t border-x-sidebar-border">
+          <TwoColumn.Sidebar.Section bordered={true}>
             <FollowingSmall screen={screen} users={Array(36).fill(bioPic)} />
           </TwoColumn.Sidebar.Section>
         </TwoColumn.Sidebar>

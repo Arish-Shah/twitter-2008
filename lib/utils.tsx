@@ -67,3 +67,38 @@ export function formatDateTime(iso: string) {
     return date.format("h:mm A MMM Do");
   else return "about " + date.fromNow();
 }
+
+export function parseTweetText(text: string) {
+  const words = text.split(" ");
+
+  if (words.length > 1) {
+    if (words[0].startsWith("@"))
+      return {
+        label: `Reply to ${words[0].slice(1)}:`,
+        input: "update",
+      };
+    else if (words[0] === "D") {
+      if (words.length > 2 && words[1].startsWith("@"))
+        return {
+          label: `Direct message ${words[1].slice(1)}:`,
+          input: "send",
+        };
+      return {
+        label: "Direct message:",
+        input: "send",
+      };
+    }
+  }
+  return {
+    label: "What are you doing?",
+    input: "update",
+  };
+}
+
+export function getCharCountColor(text: string) {
+  const difference = 140 - text.length;
+
+  if (difference < 10) return "text-red-700";
+  if (difference < 20) return "text-red-950";
+  return "text-x-updatebutton-disabled";
+}

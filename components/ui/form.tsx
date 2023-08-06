@@ -13,7 +13,10 @@ interface LabelProps extends FormProps {
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export function Form({ children, className, ...props }: HTMLProps) {
+interface TextAreaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+
+export function Form({ children, className = "", ...props }: HTMLProps) {
   return (
     <form className={`table pt-[5px] ${className}`} {...props}>
       {children}
@@ -59,7 +62,7 @@ function SubText({ children, className = "" }: FormProps) {
   );
 }
 
-function Input({ autoFocus, className, children, ...props }: InputProps) {
+function Input({ autoFocus, className = "", children, ...props }: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -80,6 +83,16 @@ function Input({ autoFocus, className, children, ...props }: InputProps) {
   );
 }
 
+function TextArea({ className = "", ...props }: TextAreaProps) {
+  return (
+    <textarea
+      className={`w-full resize-none border border-x-input-border p-[4px] text-[15px] leading-[1.2] text-black ${className}`}
+      rows={2}
+      {...props}
+    />
+  );
+}
+
 function Submit({ value }: { value: string }) {
   return (
     <input
@@ -94,6 +107,7 @@ Form.Row = FormRow;
 Form.InputGroup = InputGroup;
 Form.LabelGroup = LabelGroup;
 Form.Input = Input;
+Form.TextArea = TextArea;
 Form.Label = Label;
 Form.Submit = Submit;
 Form.SubText = SubText;
