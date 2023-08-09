@@ -7,6 +7,36 @@
 - [ ] hide following count and following-small section if it is 0
 - [ ] check /home tab menu urls
 - [ ] override fullname with username if its available
+- [ ] by default username is set as the full name
 - [ ] check and implement
   - https://web.archive.org/web/20091007131707/http://twitter.com//
   - https://web.archive.org/web/20091010004544/http://twitter.com/public_timeline
+  - https://web.archive.org/web/20081001114700/http://twitter.com:80/sessions
+  - https://web.archive.org/web/20081217013517/twitter.com/public_timeline
+  - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
+
+# Database
+
+**users**
+id, username, password, email, scoop, web, bio, location, language, protected, picture, picture_changed, theme, updates, checklist, device
+
+**notices**
+userid, auto_nudge, replies, new_follower, direct_text, newsletter
+
+**themes**
+background_image, tile, background, links, sidebar, sidebar_border, text
+
+**updates**
+text, author, type, parent, createdAt
+
+**followers_following**
+from, to, device_updates
+
+**favorites**
+userid, updateid
+
+**blocks**
+from, to
+
+**device_updates**
+phone, updates, turn_off, turn_off_from, turn_off_to,

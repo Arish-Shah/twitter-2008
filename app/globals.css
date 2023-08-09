@@ -3,21 +3,4 @@
 @tailwind utilities;
 
 :root {
-  --theme: url("/images/themes/theme1.gif");
-  --tile: no-repeat;
-
-  --background: #9ae4e8;
-  --text: #333333;
-  --links: #0084b4;
-  --sidebar: #ddffcc;
-  --sidebar-border: #bddcad;
-}
-
-body {
-  @apply bg-x-background bg-x-theme bg-fixed bg-left-top text-base text-x-text;
-  background-repeat: var(--tile);
-}
-
-a {
-  @apply text-x-links hover:underline;
 }
