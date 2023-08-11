@@ -6,7 +6,7 @@ type TitleType = string | null;
 
 type FlashContextType = {
   message: TitleType;
-  notify: (message: string) => void;
+  flash: (message: string) => void;
 };
 
 const FlashContext = createContext<FlashContextType | null>(null);
@@ -18,7 +18,7 @@ interface FlashContextProviderProps {
 export function FlashContextProvider({ children }: FlashContextProviderProps) {
   const [message, setMessage] = useState<TitleType>(null);
 
-  const notify = (message: string) => {
+  const flash = (message: string) => {
     if (message) {
       setMessage(message);
 
@@ -32,7 +32,7 @@ export function FlashContextProvider({ children }: FlashContextProviderProps) {
     <FlashContext.Provider
       value={{
         message,
-        notify,
+        flash,
       }}
     >
       {children}

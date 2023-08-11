@@ -66,6 +66,18 @@ CREATE TABLE IF NOT EXISTS "messages" (
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "notices" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"nudge" boolean DEFAULT false NOT NULL,
+	"replies" "reply" DEFAULT 'following' NOT NULL,
+	"new_follower" boolean DEFAULT true NOT NULL,
+	"direct_text" boolean DEFAULT true NOT NULL,
+	"newsletter" boolean DEFAULT false NOT NULL,
+	"user_id" integer NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "profiles" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" varchar(20),
@@ -107,24 +119,12 @@ CREATE TABLE IF NOT EXISTS "updates" (
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"username" varchar(15) NOT NULL,
-	"email" varchar(50) NOT NULL,
+	"email" varchar(30) NOT NULL,
 	"password" text NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "users_username_unique" UNIQUE("username"),
 	CONSTRAINT "users_email_unique" UNIQUE("email")
-);
---> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "notices" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"nudge" boolean DEFAULT false NOT NULL,
-	"replies" "reply" DEFAULT 'following' NOT NULL,
-	"new_follower" boolean DEFAULT true NOT NULL,
-	"direct_text" boolean DEFAULT true NOT NULL,
-	"newsletter" boolean DEFAULT false NOT NULL,
-	"user_id" integer NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 DO $$ BEGIN
@@ -182,6 +182,12 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
+ ALTER TABLE "notices" ADD CONSTRAINT "notices_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
  ALTER TABLE "profiles" ADD CONSTRAINT "profiles_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
@@ -201,12 +207,6 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "updates" ADD CONSTRAINT "updates_parent_id_updates_id_fk" FOREIGN KEY ("parent_id") REFERENCES "updates"("id") ON DELETE cascade ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
- ALTER TABLE "notices" ADD CONSTRAINT "notices_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

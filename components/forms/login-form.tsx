@@ -9,13 +9,13 @@ import { Input, Submit } from "../ui/input";
 interface LoginFormProps {}
 
 export function LoginForm({}: LoginFormProps) {
-  const { notify } = useFlash();
-  const { setLoading } = useLoader();
+  const { flash } = useFlash();
+  const { loader } = useLoader();
 
   const handleSubmit: React.FormEventHandler = (e) => {
     e.preventDefault();
-    setLoading(true);
-    notify("Wrong Username/Email and password combination.");
+    loader(true);
+    flash("Wrong Username/Email and password combination.");
   };
 
   return (

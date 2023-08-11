@@ -15,7 +15,7 @@ export function Employees() {
         {users.map((user, i) => (
           <Link key={i} href={`/${user.screen}`} title={user.name}>
             <Image
-              src={user.img}
+              src={user.src}
               alt={user.name}
               height={24}
               width={24}

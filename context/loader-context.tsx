@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 
 type LoaderContextType = {
   loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  loader: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoaderContext = createContext<LoaderContextType | null>(null);
@@ -16,10 +16,10 @@ interface LoaderContextProviderProps {
 export function LoaderContextProvider({
   children,
 }: LoaderContextProviderProps) {
-  const [loading, setLoading] = useState(false);
+  const [loading, loader] = useState(false);
 
   return (
-    <LoaderContext.Provider value={{ loading, setLoading }}>
+    <LoaderContext.Provider value={{ loading, loader }}>
       {children}
     </LoaderContext.Provider>
   );

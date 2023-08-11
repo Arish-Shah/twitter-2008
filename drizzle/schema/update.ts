@@ -7,8 +7,8 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import { users } from ".";
 import { favorites } from "./favorite";
+import { users } from "./user";
 
 export const updates = pgTable("updates", {
   id: serial("id").primaryKey().notNull(),

@@ -14,3 +14,4 @@
   - https://web.archive.org/web/20081001114700/http://twitter.com:80/sessions
   - https://web.archive.org/web/20081217013517/twitter.com/public_timeline
   - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
+- [ ] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss

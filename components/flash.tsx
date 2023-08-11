@@ -8,7 +8,6 @@ import { useEffect, useRef } from "react";
 export function Flash() {
   const { message } = useFlash();
 
-  const currentRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -21,7 +20,6 @@ export function Flash() {
         "h-0": !message,
         "h-[105.52px]": message,
       })}
-      ref={currentRef}
     >
       <h2 className="pl-[24px]">
         <Image src="/images/ui/girl.gif" alt="Girl" height={40} width={18} />

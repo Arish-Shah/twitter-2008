@@ -12,6 +12,7 @@ const config: Config = {
         arr: "url(/images/arrows/arr.gif)",
         arr2: "url(/images/arrows/arr2.gif)",
         pale: "url(/images/ui/pale.png)",
+        sprite: "url(/images/captcha/sprite.png)",
       },
       colors: {
         background: "var(--background)",
@@ -34,6 +35,7 @@ const config: Config = {
         subtext: "#777",
         "input-border": "#aaa",
         green: "#008000",
+        red: "#dd0000",
         badgebox: "#ffc",
         "badgebox-border": "#ff0",
       },
@@ -50,6 +52,7 @@ const config: Config = {
     },
     transitionProperty: {
       height: "height",
+      opacity: "opacity",
     },
   },
   plugins: [],

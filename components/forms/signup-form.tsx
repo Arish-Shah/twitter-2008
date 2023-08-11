@@ -1,26 +1,48 @@
 "use client";
-
+import { useFlash } from "@/context/flash-context";
+import { useLoader } from "@/context/loader-context";
+import { postSignup } from "@/lib/post-signup";
+import { validateSignupBody } from "@/lib/validation";
 import Link from "next/link";
+import { FormEventHandler } from "react";
 import { ReCaptcha } from "../re-captcha";
 import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
+import { UsernameField } from "../username-field";
 
-interface SignupFormProps {}
+export function SignupForm() {
+  const { loader } = useLoader();
+  const { flash } = useFlash();
 
-export function SignupForm({}: SignupFormProps) {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    loader(true);
+    const body = {
+      username: e.currentTarget.username.value,
+      password: e.currentTarget.password.value,
+      email: e.currentTarget.email.value,
+      humanness: e.currentTarget.humanness.checked,
+      newsletter: e.currentTarget.newsletter.checked,
+    };
+
+    const message = validateSignupBody(body);
+    if (message) {
+      loader(false);
+      return flash(message);
+    }
+    const response = await postSignup(body);
+    console.log(response);
+    loader(false);
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Row>
         <Form.LabelGroup>
           <label htmlFor="username">Username:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input type="text" id="username" name="username" autoFocus />
-          <Form.Subtext>
-            Your URL: http://twitter.com/
-            <span className="font-bold text-green">USERNAME</span> Username can
-            only contain letters, numbers and &apos;_&apos;
-          </Form.Subtext>
+          <UsernameField />
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
@@ -28,7 +50,13 @@ export function SignupForm({}: SignupFormProps) {
           <label htmlFor="password">Password:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input type="password" id="password" name="password" />
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            minLength={6}
+            maxLength={30}
+          />
           <Form.Subtext>6 characters or more (be tricky!)</Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
@@ -37,13 +65,13 @@ export function SignupForm({}: SignupFormProps) {
           <label htmlFor="email">Email Address:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input type="email" id="email" name="email" />
+          <Input type="email" id="email" name="email" maxLength={30} />
           <Form.Subtext>In case you forget something</Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
         <Form.LabelGroup>
-          <label htmlFor="recaptcha">Humanness:</label>
+          <label htmlFor="humanness">Humanness:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
           <ReCaptcha />
@@ -52,7 +80,7 @@ export function SignupForm({}: SignupFormProps) {
       <Form.Row>
         <Form.LabelGroup />
         <Form.InputGroup>
-          <input type="checkbox" id="newsletter" name="newsletter" />
+          <input type="checkbox" id="sendEmailNewsletter" name="newsletter" />
           <label htmlFor="sendEmailNewsletter" className="ml-[3px]">
             I want the inside scoop—please send me email updates!
           </label>

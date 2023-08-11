@@ -5,7 +5,8 @@ import {
   serial,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { replyEnum, users } from ".";
+import { replyEnum } from "./enum";
+import { users } from "./user";
 
 export const notices = pgTable("notices", {
   id: serial("id").primaryKey().notNull(),

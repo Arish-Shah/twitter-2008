@@ -12,7 +12,7 @@ import { updates } from "./update";
 export const users = pgTable("users", {
   id: serial("id").primaryKey().notNull(),
   username: varchar("username", { length: 15 }).notNull().unique(),
-  email: varchar("email", { length: 50 }).notNull().unique(),
+  email: varchar("email", { length: 30 }).notNull().unique(),
   password: text("password").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),

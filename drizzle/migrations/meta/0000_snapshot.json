@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "a10f8261-e57c-48d0-9307-b86e59a6910e",
+  "id": "73c06ec3-3004-472f-8922-df13a44c4610",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "blocks": {
@@ -324,6 +324,87 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
+    "notices": {
+      "name": "notices",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nudge": {
+          "name": "nudge",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "replies": {
+          "name": "replies",
+          "type": "reply",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'following'"
+        },
+        "new_follower": {
+          "name": "new_follower",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "direct_text": {
+          "name": "direct_text",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "newsletter": {
+          "name": "newsletter",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "notices_user_id_users_id_fk": {
+          "name": "notices_user_id_users_id_fk",
+          "tableFrom": "notices",
+          "tableTo": "users",
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "profiles": {
       "name": "profiles",
       "schema": "",
@@ -602,7 +683,7 @@
         },
         "email": {
           "name": "email",
-          "type": "varchar(50)",
+          "type": "varchar(30)",
           "primaryKey": false,
           "notNull": true
         },
@@ -642,87 +723,6 @@
           "columns": ["email"]
         }
       }
-    },
-    "notices": {
-      "name": "notices",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "nudge": {
-          "name": "nudge",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
-        },
-        "replies": {
-          "name": "replies",
-          "type": "reply",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'following'"
-        },
-        "new_follower": {
-          "name": "new_follower",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": true
-        },
-        "direct_text": {
-          "name": "direct_text",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": true
-        },
-        "newsletter": {
-          "name": "newsletter",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "notices_user_id_users_id_fk": {
-          "name": "notices_user_id_users_id_fk",
-          "tableFrom": "notices",
-          "tableTo": "users",
-          "columnsFrom": ["user_id"],
-          "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
     }
   },
   "enums": {

@@ -8,8 +8,8 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import { themes } from ".";
 import { checkListEnum, languageEnum } from "./enum";
+import { themes } from "./theme";
 import { users } from "./user";
 
 export const profiles = pgTable("profiles", {

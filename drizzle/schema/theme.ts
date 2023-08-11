@@ -7,7 +7,7 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import { profiles } from ".";
+import { profiles } from "./profile";
 
 export const themes = pgTable("themes", {
   id: serial("id").primaryKey().notNull(),
