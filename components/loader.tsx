@@ -4,9 +4,7 @@ import { useLoader } from "@/context/loader-context";
 import clsx from "clsx";
 import Image from "next/image";
 
-interface LoaderProps {}
-
-export function Loader({}: LoaderProps) {
+export function Loader() {
   const { loading } = useLoader();
 
   return (

@@ -5,9 +5,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-interface FlashProps {}
-
-export function Flash({}: FlashProps) {
+export function Flash() {
   const { message } = useFlash();
 
   const currentRef = useRef<HTMLDivElement>(null);

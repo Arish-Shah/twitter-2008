@@ -34,6 +34,8 @@ const config: Config = {
         subtext: "#777",
         "input-border": "#aaa",
         green: "#008000",
+        badgebox: "#ffc",
+        "badgebox-border": "#ff0",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],
