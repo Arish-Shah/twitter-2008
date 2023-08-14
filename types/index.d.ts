@@ -15,7 +15,7 @@ export type LinkType = {
 
 export type VCardType = {
   name: string;
-  screen: string;
+  username: string;
   src: string;
 };
 
@@ -24,7 +24,11 @@ export type CaptchaType = {
   answers: string[];
 };
 
-export type SignupData = z.infer<typeof signupSchema>;
-export type LoginData = z.infer<typeof loginSchema>;
-export type CompleteData = z.infer<typeof completeSchema>;
-export type ResendPasswordData = z.infer<typeof resendPasswordSchema>;
+export type SignupDataType = z.infer<typeof signupSchema>;
+export type LoginDataType = z.infer<typeof loginSchema>;
+export type CompleteDataType = z.infer<typeof completeSchema>;
+export type ResendPasswordDataType = z.infer<typeof resendPasswordSchema>;
+
+export type CredentialsDataType =
+  | ({ kind: "signup" } & SignupDataType)
+  | ({ kind: "login" } & LoginDataType);

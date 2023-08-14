@@ -1,7 +1,7 @@
 "use client";
 
 import { resendPasswordSchema } from "@/lib/validations/auth";
-import type { ResendPasswordData } from "@/types";
+import type { ResendPasswordDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "../ui/form";
@@ -12,7 +12,7 @@ export function ResendPasswordForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ResendPasswordData>({
+  } = useForm<ResendPasswordDataType>({
     resolver: zodResolver(resendPasswordSchema),
   });
 

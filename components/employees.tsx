@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function Employees() {
-  const users: VCardType[] = Array(30).fill({
+  const users: VCardType[] = Array<VCardType>(30).fill({
     name: "Default User",
-    screen: "default",
+    username: "default",
     src: "/images/profile/default_profile.png",
   });
 
@@ -13,7 +13,7 @@ export function Employees() {
     <div className="p-[10px_0_0_12px] text-center">
       <div className="mx-auto w-[158px] text-left">
         {users.map((user, i) => (
-          <Link key={i} href={`/${user.screen}`} title={user.name}>
+          <Link key={i} href={`/${user.username}`} title={user.name}>
             <Image
               src={user.src}
               alt={user.name}

@@ -1,10 +1,17 @@
 import { users } from "@/drizzle/schema";
-import { InferModel } from "drizzle-orm";
+import type { InferModel } from "drizzle-orm";
 import "next-auth";
 
+interface NextAuthUser {
+  id: number;
+  username: string;
+  role: InferModel<typeof users, "insert">["role"];
+}
+
 declare module "next-auth" {
-  interface User {
-    id: any;
-    role: InferModel<typeof users, "select">["role"];
+  interface User extends NextAuthUser {}
+
+  interface Session {
+    user: NextAuthUser;
   }
 }

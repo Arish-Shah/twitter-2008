@@ -1,7 +1,7 @@
 "use client";
 
 import { completeSchema } from "@/lib/validations/auth";
-import type { CompleteData } from "@/types";
+import type { CompleteDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "../ui/form";
@@ -12,7 +12,7 @@ export function CompleteForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CompleteData>({
+  } = useForm<CompleteDataType>({
     resolver: zodResolver(completeSchema),
   });
 

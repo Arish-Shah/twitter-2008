@@ -2,7 +2,7 @@
 
 import { useFlash } from "@/context/flash-context";
 import { loginSchema } from "@/lib/validations/auth";
-import { LoginData } from "@/types";
+import { LoginDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -15,20 +15,20 @@ interface LoginFormProps {}
 export function LoginForm({}: LoginFormProps) {
   const { flash } = useFlash();
 
-  const { handleSubmit, register } = useForm<LoginData>({
+  const { handleSubmit, register } = useForm<LoginDataType>({
     resolver: zodResolver(loginSchema),
   });
 
   return (
     <Form
-      onSubmit={handleSubmit(async ({ usernameOrEmail, password }) => {
+      onSubmit={handleSubmit(async (data) => {
         const response = await signIn("credentials", {
           redirect: false,
-          usernameOrEmail,
-          password,
+          kind: "login",
+          ...data,
         });
         if (response?.error)
-          flash("Wrong Username/Email and password combination.", true);
+          return flash("Wrong Username/Email and password combination.", true);
       })}
     >
       <Form.Row>

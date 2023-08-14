@@ -1,3 +1,4 @@
+import { auth } from "@/lib/auth";
 import type { LinkType, PageSizeType } from "@/types";
 import clsx from "clsx";
 import Image from "next/image";
@@ -17,12 +18,13 @@ interface HeaderProps {
   title?: string;
 }
 
-export function Header({ size, title = "Twitter" }: HeaderProps) {
+export async function Header({ size, title = "Twitter" }: HeaderProps) {
+  const session = await auth();
+
   const large = size === "large";
   const small = size === "small";
 
-  // TODO: check for user here
-  const items = false ? (
+  const items = session?.user ? (
     links.map((link, i) => (
       <li key={i} className="m-[5px] inline">
         <Link href={link.href}>{link.label}</Link>

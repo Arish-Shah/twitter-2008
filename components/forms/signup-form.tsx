@@ -1,9 +1,8 @@
 "use client";
 
-import { signup } from "@/actions/signup";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { signupSchema } from "@/lib/validations/auth";
-import type { CaptchaType, SignupData } from "@/types";
+import type { CaptchaType, SignupDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -23,25 +22,16 @@ export function SignupForm({ captcha }: SignupFormProps) {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<SignupData>({
+  } = useForm<SignupDataType>({
     resolver: zodResolver(signupSchema),
   });
   const [, startTransition] = useLoadingTransition();
-
-  const signupAndLogin = async (data: SignupData) => {
-    await signup(data);
-    await signIn("credentials", {
-      usernameOrEmail: data.username,
-      password: data.password,
-      redirect: false,
-    });
-  };
 
   return (
     <Form
       onSubmit={handleSubmit((data) => {
         startTransition(() => {
-          signupAndLogin(data);
+          signIn("credentials", { redirect: false, kind: "signup", ...data });
         });
       })}
     >
