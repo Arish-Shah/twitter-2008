@@ -20,3 +20,5 @@ export const checkListEnum = pgEnum("check_list", [
   "1_3",
   "1_2_3",
 ]);
+
+export const roleEnum = pgEnum("role", ["user", "admin"]);

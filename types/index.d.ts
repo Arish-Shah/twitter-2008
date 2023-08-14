@@ -1,10 +1,15 @@
-import { signupSchema } from "@/lib/validation";
+import {
+  completeSchema,
+  loginSchema,
+  resendPasswordSchema,
+  signupSchema,
+} from "@/lib/validations/auth";
 import { z } from "zod";
 
 export type PageSizeType = "large" | "default" | "small";
 
 export type LinkType = {
-  text: string;
+  label: string;
   href: string;
 };
 
@@ -14,9 +19,12 @@ export type VCardType = {
   src: string;
 };
 
-export type UsernameAvailableResponseType = {
-  message: string | null;
-  success: boolean;
+export type CaptchaType = {
+  src: string;
+  answers: string[];
 };
 
-export type SignupBodyType = z.infer<typeof signupSchema>;
+export type SignupData = z.infer<typeof signupSchema>;
+export type LoginData = z.infer<typeof loginSchema>;
+export type CompleteData = z.infer<typeof completeSchema>;
+export type ResendPasswordData = z.infer<typeof resendPasswordSchema>;

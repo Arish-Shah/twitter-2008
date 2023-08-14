@@ -1,30 +1,31 @@
 import clsx from "clsx";
-import { useEffect, useRef } from "react";
+import { forwardRef } from "react";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  hasError?: boolean;
+}
 
-export function Input({ autoFocus, className, ...props }: InputProps) {
-  const ref = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (ref.current && autoFocus) {
-      ref.current.focus();
-    }
-  }, [autoFocus]);
-
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  { hasError = false, className, ...props },
+  ref
+) {
   return (
     <input
       className={clsx(
         "mr-[7px] w-[165px] border border-input-border p-[2px] text-[13.2px] text-black",
-        className
+        className,
+        { "bg-red-100": hasError }
       )}
       ref={ref}
       {...props}
     />
   );
-}
+});
 
-export function Submit({ className, ...props }: InputProps) {
+export const Submit = forwardRef<HTMLInputElement, InputProps>(function Submit(
+  { className, ...props },
+  ref
+) {
   return (
     <input
       type="submit"
@@ -32,7 +33,8 @@ export function Submit({ className, ...props }: InputProps) {
         "cursor-pointer border border-gray-border bg-gray p-[2px_8px] hover:bg-gray-hover",
         className
       )}
+      ref={ref}
       {...props}
     />
   );
-}
+});

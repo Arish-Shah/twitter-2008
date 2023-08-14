@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "73c06ec3-3004-472f-8922-df13a44c4610",
+  "id": "8d4f917b-ef14-4c50-a6fa-618efb03172e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "blocks": {
@@ -693,6 +693,13 @@
           "primaryKey": false,
           "notNull": true
         },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'user'"
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -759,6 +766,13 @@
         "all": "all",
         "following": "following",
         "none": "none"
+      }
+    },
+    "role": {
+      "name": "role",
+      "values": {
+        "user": "user",
+        "admin": "admin"
       }
     }
   },

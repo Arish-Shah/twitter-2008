@@ -1,8 +1,12 @@
 "use client";
 
 import { useFlash } from "@/context/flash-context";
-import { useLoader } from "@/context/loader-context";
+import { loginSchema } from "@/lib/validations/auth";
+import { LoginData } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
 
@@ -10,16 +14,23 @@ interface LoginFormProps {}
 
 export function LoginForm({}: LoginFormProps) {
   const { flash } = useFlash();
-  const { loader } = useLoader();
 
-  const handleSubmit: React.FormEventHandler = (e) => {
-    e.preventDefault();
-    loader(true);
-    flash("Wrong Username/Email and password combination.");
-  };
+  const { handleSubmit, register } = useForm<LoginData>({
+    resolver: zodResolver(loginSchema),
+  });
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit(async ({ usernameOrEmail, password }) => {
+        const response = await signIn("credentials", {
+          redirect: false,
+          usernameOrEmail,
+          password,
+        });
+        if (response?.error)
+          flash("Wrong Username/Email and password combination.", true);
+      })}
+    >
       <Form.Row>
         <Form.LabelGroup>
           <label htmlFor="usernameOrEmail">Username</label>
@@ -28,7 +39,7 @@ export function LoginForm({}: LoginFormProps) {
           <Input
             type="text"
             id="usernameOrEmail"
-            name="usernameOrEmail"
+            {...register("usernameOrEmail")}
             autoFocus
           />
         </Form.InputGroup>
@@ -38,7 +49,7 @@ export function LoginForm({}: LoginFormProps) {
           <label htmlFor="password">Password</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input type="password" id="password" name="password" />
+          <Input type="password" id="password" {...register("password")} />
           <Form.Subtext>
             <Link href="/account/resend_password">Forgot?</Link>
           </Form.Subtext>

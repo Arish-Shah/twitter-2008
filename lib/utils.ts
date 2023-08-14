@@ -1,4 +1,6 @@
-export function getRandomCaptcha(idLength: number) {
+import { CaptchaType } from "@/types";
+
+export function getRandomCaptcha(): CaptchaType {
   const captchas = [
     ["freitag", "winnie"],
     ["spotters", "investi"],
@@ -6,10 +8,10 @@ export function getRandomCaptcha(idLength: number) {
     ["levelers", "critics"],
   ];
 
-  const index = idLength % captchas.length;
+  const index = Math.floor(Math.random() * captchas.length);
 
   return {
     src: `/images/captcha/image_${index + 1}.png`,
-    answer: captchas[index],
+    answers: captchas[index],
   };
 }

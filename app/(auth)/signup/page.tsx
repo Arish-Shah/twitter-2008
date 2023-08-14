@@ -1,5 +1,6 @@
 import { Main, Sidebar } from "@/components/content";
 import { SignupForm } from "@/components/forms/signup-form";
+import { getRandomCaptcha } from "@/lib/utils";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -9,11 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default function Signup() {
+  const captcha = getRandomCaptcha();
+
   return (
     <Fragment>
       <Main>
         <Main.H2>Create a Free Twitter Account</Main.H2>
-        <SignupForm />
+        <SignupForm captcha={captcha} />
         <div className="h-[20px]"></div>
       </Main>
       <Sidebar>

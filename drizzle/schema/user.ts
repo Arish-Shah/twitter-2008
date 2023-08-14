@@ -2,6 +2,7 @@ import { relations } from "drizzle-orm";
 import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { blocks } from "./block";
 import { deviceUpdates } from "./device-update";
+import { roleEnum } from "./enum";
 import { favorites } from "./favorite";
 import { follows } from "./follow";
 import { messages } from "./message";
@@ -14,6 +15,7 @@ export const users = pgTable("users", {
   username: varchar("username", { length: 15 }).notNull().unique(),
   email: varchar("email", { length: 30 }).notNull().unique(),
   password: text("password").notNull(),
+  role: roleEnum("role").default("user"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

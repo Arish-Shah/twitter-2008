@@ -6,17 +6,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links: LinkType[] = [
-  { text: "About Us", href: "/help/aboutus" },
-  { text: "Contact", href: "/help/contact" },
-  { text: "Blog", href: "" },
-  { text: "Status", href: "" },
-  { text: "Downloads", href: "/downloads" },
-  { text: "API", href: "" },
-  { text: "Search", href: "" },
-  { text: "Help", href: "/help" },
-  { text: "Jobs", href: "/help/jobs" },
-  { text: "TOS", href: "/tos" },
-  { text: "Privacy", href: "/help/privacy" },
+  { label: "About Us", href: "/help/aboutus" },
+  { label: "Contact", href: "/help/contact" },
+  { label: "Blog", href: "/blog" },
+  { label: "Status", href: "/status" },
+  { label: "Downloads", href: "/downloads" },
+  { label: "API", href: "/api" },
+  { label: "Search", href: "/search" },
+  { label: "Help", href: "/help" },
+  { label: "Jobs", href: "/help/jobs" },
+  { label: "TOS", href: "/tos" },
+  { label: "Privacy", href: "/help/privacy" },
 ];
 
 interface FooterProps {
@@ -37,9 +37,9 @@ export function Footer({ connected }: FooterProps) {
         {links.map((link, i) => (
           <li key={i} className="m-[0_5.65px] inline">
             {link.href !== pathname ? (
-              <Link href={link.href}>{link.text}</Link>
+              <Link href={link.href}>{link.label}</Link>
             ) : (
-              link.text
+              link.label
             )}
           </li>
         ))}

@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const links: LinkType[] = [
-  { text: "Home", href: "/home" },
-  { text: "Profile", href: "/" },
-  { text: "Find People", href: "/invitations" },
-  { text: "Settings", href: "/account/settings" },
-  { text: "Help", href: "/help" },
-  { text: "Sign out", href: "/signout" },
+  { label: "Home", href: "/home" },
+  { label: "Profile", href: "/" },
+  { label: "Find People", href: "/invitations" },
+  { label: "Settings", href: "/account/settings" },
+  { label: "Help", href: "/help" },
+  { label: "Sign out", href: "/signout" },
 ];
 
 interface HeaderProps {
@@ -25,7 +25,7 @@ export function Header({ size, title = "Twitter" }: HeaderProps) {
   const items = false ? (
     links.map((link, i) => (
       <li key={i} className="m-[5px] inline">
-        <Link href={link.href}>{link.text}</Link>
+        <Link href={link.href}>{link.label}</Link>
       </li>
     ))
   ) : (

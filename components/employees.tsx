@@ -6,7 +6,7 @@ export function Employees() {
   const users: VCardType[] = Array(30).fill({
     name: "Default User",
     screen: "default",
-    img: "/images/profile/default_profile.png",
+    src: "/images/profile/default_profile.png",
   });
 
   return (

@@ -15,9 +15,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
-        <LoaderContextProvider>
-          <FlashContextProvider>{children}</FlashContextProvider>
-        </LoaderContextProvider>
+        <FlashContextProvider>
+          <LoaderContextProvider>{children}</LoaderContextProvider>
+        </FlashContextProvider>
       </body>
     </html>
   );

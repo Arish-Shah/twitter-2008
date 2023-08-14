@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Fragment } from "react";
 
 interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {}
 
@@ -43,5 +44,14 @@ Form.Subtext = function Subtext({ className, children }: Props) {
     <span className={clsx("text-[11.64px] text-subtext", className)}>
       {children}
     </span>
+  );
+};
+
+Form.Error = function Error({ className, children }: Props) {
+  return (
+    <Fragment>
+      <br />
+      <span className={clsx("text-form-red", className)}>{children}</span>
+    </Fragment>
   );
 };

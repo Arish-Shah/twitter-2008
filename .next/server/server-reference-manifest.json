@@ -1,0 +1,55 @@
+{
+  "node": {
+    "01e2dcda45e20ea6c90dfcc1efa3a23256b6b156": {
+      "workers": {
+        "app/(auth)/login/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/signup/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fsignup.ts%22%2C%5B%22signup%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/account/complete/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/account/resend_password/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(auth)/login/page": "actionBrowser",
+        "app/(auth)/signup/page": "actionBrowser",
+        "app/(auth)/account/complete/page": "actionBrowser",
+        "app/(auth)/account/resend_password/page": "actionBrowser"
+      }
+    },
+    "2233958c63f1d7be2785c743ee41e586117530b2": {
+      "workers": {
+        "app/(auth)/login/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/signup/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fsignup.ts%22%2C%5B%22signup%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/account/complete/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/account/resend_password/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(auth)/login/page": "actionBrowser",
+        "app/(auth)/signup/page": "actionBrowser",
+        "app/(auth)/account/complete/page": "actionBrowser",
+        "app/(auth)/account/resend_password/page": "actionBrowser"
+      }
+    },
+    "ddcd2b5912c6a3e4d52ce40bca3c603e3fb9dbf5": {
+      "workers": {
+        "app/(auth)/login/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/signup/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fsignup.ts%22%2C%5B%22signup%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/account/complete/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!",
+        "app/(auth)/account/resend_password/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(auth)/login/page": "actionBrowser",
+        "app/(auth)/signup/page": "actionBrowser",
+        "app/(auth)/account/complete/page": "actionBrowser",
+        "app/(auth)/account/resend_password/page": "actionBrowser"
+      }
+    },
+    "c4402c02b509c525855928ba4a36fd751d4403c5": {
+      "workers": {
+        "app/(auth)/signup/page": "(actionBrowser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fsignup.ts%22%2C%5B%22signup%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Femail-available.ts%22%2C%5B%22emailAvailable%22%5D%5D%2C%5B%22%2Fhome%2Farish%2Fdev%2Fx-2008%2Factions%2Fusername-available.ts%22%2C%5B%22usernameAvailable%22%2C%22usernameAvailableActive%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(auth)/signup/page": "actionBrowser"
+      }
+    }
+  },
+  "edge": {}
+}

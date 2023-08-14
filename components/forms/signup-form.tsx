@@ -1,48 +1,59 @@
 "use client";
-import { useFlash } from "@/context/flash-context";
-import { useLoader } from "@/context/loader-context";
-import { postSignup } from "@/lib/post-signup";
-import { validateSignupBody } from "@/lib/validation";
+
+import { signup } from "@/actions/signup";
+import { useLoadingTransition } from "@/hooks/use-loading-transition";
+import { signupSchema } from "@/lib/validations/auth";
+import type { CaptchaType, SignupData } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { FormEventHandler } from "react";
-import { ReCaptcha } from "../re-captcha";
+import { useForm } from "react-hook-form";
+import { Captcha } from "../captcha";
 import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
-import { UsernameField } from "../username-field";
+import { UsernameInput } from "../username-input";
 
-export function SignupForm() {
-  const { loader } = useLoader();
-  const { flash } = useFlash();
+interface SignupFormProps {
+  captcha: CaptchaType;
+}
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-    loader(true);
-    const body = {
-      username: e.currentTarget.username.value,
-      password: e.currentTarget.password.value,
-      email: e.currentTarget.email.value,
-      humanness: e.currentTarget.humanness.checked,
-      newsletter: e.currentTarget.newsletter.checked,
-    };
+export function SignupForm({ captcha }: SignupFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm<SignupData>({
+    resolver: zodResolver(signupSchema),
+  });
+  const [, startTransition] = useLoadingTransition();
 
-    const message = validateSignupBody(body);
-    if (message) {
-      loader(false);
-      return flash(message);
-    }
-    const response = await postSignup(body);
-    console.log(response);
-    loader(false);
+  const signupAndLogin = async (data: SignupData) => {
+    await signup(data);
+    await signIn("credentials", {
+      usernameOrEmail: data.username,
+      password: data.password,
+      redirect: false,
+    });
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit((data) => {
+        startTransition(() => {
+          signupAndLogin(data);
+        });
+      })}
+    >
       <Form.Row>
         <Form.LabelGroup>
           <label htmlFor="username">Username:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <UsernameField />
+          <UsernameInput
+            hasError={!!errors.username}
+            {...register("username")}
+          />
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
@@ -53,11 +64,16 @@ export function SignupForm() {
           <Input
             type="password"
             id="password"
-            name="password"
-            minLength={6}
             maxLength={30}
+            hasError={!!errors.password}
+            {...register("password")}
           />
-          <Form.Subtext>6 characters or more (be tricky!)</Form.Subtext>
+          <Form.Subtext>
+            <span>6 characters or more (be tricky!)</span>
+            {errors.password && (
+              <Form.Error>{errors.password.message}</Form.Error>
+            )}
+          </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
@@ -65,8 +81,17 @@ export function SignupForm() {
           <label htmlFor="email">Email Address:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input type="email" id="email" name="email" maxLength={30} />
-          <Form.Subtext>In case you forget something</Form.Subtext>
+          <Input
+            type="email"
+            id="email"
+            maxLength={30}
+            hasError={!!errors.email}
+            {...register("email")}
+          />
+          <Form.Subtext>
+            <span>In case you forget something</span>
+            {errors.email && <Form.Error>{errors.email.message}</Form.Error>}
+          </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
@@ -74,13 +99,25 @@ export function SignupForm() {
           <label htmlFor="humanness">Humanness:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <ReCaptcha />
+          <Captcha
+            value={captcha}
+            onChange={(value) => setValue("humanness", value)}
+          />
+          <Form.Subtext>
+            {errors.humanness && (
+              <span className="text-form-red">{errors.humanness.message}</span>
+            )}
+          </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
         <Form.LabelGroup />
         <Form.InputGroup>
-          <input type="checkbox" id="sendEmailNewsletter" name="newsletter" />
+          <input
+            type="checkbox"
+            id="sendEmailNewsletter"
+            {...register("newsletter")}
+          />
           <label htmlFor="sendEmailNewsletter" className="ml-[3px]">
             I want the inside scoop—please send me email updates!
           </label>
