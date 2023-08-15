@@ -1,8 +1,9 @@
 "use server";
 
+import { cache } from "react";
 import { db } from "../db";
 
-export async function getRecentUpdates(limit: number) {
+export const getRecentUpdates = cache(async (limit: number) => {
   const updates = await db.query.updates.findMany({
     limit,
     columns: {
@@ -30,4 +31,4 @@ export async function getRecentUpdates(limit: number) {
     username: update.author.username,
     name: update.author.profile.name,
   }));
-}
+});

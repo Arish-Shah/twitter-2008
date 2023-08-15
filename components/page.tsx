@@ -28,7 +28,7 @@ export function Page({ size = "default", theme, children }: PageProps) {
       >
         <div className="overflow-hidden rounded bg-white">
           {children}
-          {size === "large" && <Footer />}
+          {size === "large" && <Footer connected />}
         </div>
       </div>
       {size === "default" && <Footer />}

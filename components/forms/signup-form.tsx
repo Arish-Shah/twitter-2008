@@ -32,7 +32,6 @@ export function SignupForm({ captcha }: SignupFormProps) {
   });
 
   const signup = async (data: SignupDataType) => {
-    setSubmitting(true);
     await signIn("credentials", { redirect: false, kind: "signup", ...data });
     router.push("/home");
   };
@@ -40,6 +39,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
   return (
     <Form
       onSubmit={handleSubmit((data) => {
+        setSubmitting(true);
         startTransition(() => signup(data));
       })}
     >

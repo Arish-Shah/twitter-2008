@@ -1,7 +1,9 @@
 "use server";
 
+import { users } from "@/drizzle/schema";
 import { db } from "@/lib/db";
 import { signupSchema } from "@/lib/validations/auth";
+import { sql } from "drizzle-orm";
 import { cache } from "react";
 
 export type UsernameAvailableResponse = {
@@ -10,10 +12,12 @@ export type UsernameAvailableResponse = {
 };
 
 export const getUsernameAvailable = cache(async (username: string) => {
-  const exists = await db.query.users.findFirst({
-    where: (users, { eq }) => eq(users.username, username),
-  });
-  if (exists) return { success: false };
+  const result = await db
+    .select()
+    .from(users)
+    .where(sql`lower(${users.username}) = ${username.toLowerCase()}`);
+
+  if (result.length > 0) return { success: false };
   return { success: true };
 });
 

@@ -7,6 +7,7 @@ import {
 } from "@/drizzle/schema";
 import type { CredentialsDataType } from "@/types";
 import { compare, hash } from "bcrypt";
+import { or, sql } from "drizzle-orm";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { db } from "./db";
@@ -33,7 +34,7 @@ export const {
 
           const profileResult = await db
             .insert(profiles)
-            .values({ userId })
+            .values({ userId, name: params.username })
             .returning({ id: profiles.id });
 
           await db.insert(themes).values({ profileId: profileResult[0].id });
@@ -49,29 +50,33 @@ export const {
           };
         } else if (params.kind === "login") {
           const { usernameOrEmail, password } = params;
+          const lowercase = usernameOrEmail.toLowerCase();
 
-          const result = await db.query.users.findFirst({
-            columns: {
-              id: true,
-              username: true,
-              role: true,
-              password: true,
-            },
-            where: (users, { eq, or }) =>
+          const result = await db
+            .select({
+              id: users.id,
+              username: users.username,
+              password: users.password,
+              role: users.role,
+            })
+            .from(users)
+            .where(
               or(
-                eq(users.username, usernameOrEmail),
-                eq(users.email, usernameOrEmail)
-              ),
-          });
-          if (!result) throw new Error();
+                sql`lower(${users.username}) = ${lowercase}`,
+                sql`lower(${users.email}) = ${lowercase}`
+              )
+            );
 
-          const valid = await compare(password, result.password);
-          if (!valid) throw new Error();
+          if (result.length === 0) throw new Error();
+          const user = result[0];
+
+          const valid = await compare(password, user.password);
+          if (!valid) throw new Error("Incorrect password");
 
           return {
-            id: result.id.toString(),
-            username: result.username,
-            role: result.role,
+            id: user.id.toString(),
+            username: user.username,
+            role: user.role,
           };
         }
         return null;
