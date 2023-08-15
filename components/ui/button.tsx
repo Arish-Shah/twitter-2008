@@ -26,8 +26,9 @@ export function SignupButton() {
 export function WatchButton() {
   return (
     <Link
-      href="/"
+      href="https://www.commoncraft.com/video/twitter"
       className="block w-full border border-black bg-watchbutton p-[2px_0] text-center align-middle text-[11pt] font-bold text-white hover:no-underline"
+      target="_blank"
     >
       <Image
         src="/images/arrows/arrow_on_red.gif"

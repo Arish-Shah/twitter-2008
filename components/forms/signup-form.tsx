@@ -6,6 +6,8 @@ import type { CaptchaType, SignupDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Captcha } from "../captcha";
 import { Form } from "../ui/form";
@@ -17,6 +19,9 @@ interface SignupFormProps {
 }
 
 export function SignupForm({ captcha }: SignupFormProps) {
+  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
+  const [, startTransition] = useLoadingTransition();
   const {
     register,
     handleSubmit,
@@ -25,14 +30,17 @@ export function SignupForm({ captcha }: SignupFormProps) {
   } = useForm<SignupDataType>({
     resolver: zodResolver(signupSchema),
   });
-  const [, startTransition] = useLoadingTransition();
+
+  const signup = async (data: SignupDataType) => {
+    setSubmitting(true);
+    await signIn("credentials", { redirect: false, kind: "signup", ...data });
+    router.push("/home");
+  };
 
   return (
     <Form
       onSubmit={handleSubmit((data) => {
-        startTransition(() => {
-          signIn("credentials", { redirect: false, kind: "signup", ...data });
-        });
+        startTransition(() => signup(data));
       })}
     >
       <Form.Row>
@@ -126,7 +134,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
       <Form.Row>
         <Form.LabelGroup />
         <Form.InputGroup>
-          <Submit value="I accept. Create my account." />
+          <Submit value="I accept. Create my account." disabled={submitting} />
         </Form.InputGroup>
       </Form.Row>
     </Form>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { resendPasswordSchema } from "@/lib/validations/auth";
 import type { ResendPasswordDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +9,7 @@ import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
 
 export function ResendPasswordForm() {
+  const [, startTransition] = useLoadingTransition();
   const {
     register,
     handleSubmit,
@@ -16,10 +18,14 @@ export function ResendPasswordForm() {
     resolver: zodResolver(resendPasswordSchema),
   });
 
+  const resendPassword = async (data: ResendPasswordDataType) => {
+    // TODO
+  };
+
   return (
     <Form
       onSubmit={handleSubmit((data) => {
-        console.log(data);
+        startTransition(() => resendPassword(data));
       })}
     >
       <Form.Row>

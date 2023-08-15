@@ -1,5 +1,6 @@
 "use client";
 
+import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { completeSchema } from "@/lib/validations/auth";
 import type { CompleteDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +9,7 @@ import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
 
 export function CompleteForm() {
+  const [, startTransition] = useLoadingTransition();
   const {
     register,
     handleSubmit,
@@ -16,10 +18,14 @@ export function CompleteForm() {
     resolver: zodResolver(completeSchema),
   });
 
+  const complete = async (data: CompleteDataType) => {
+    // TODO
+  };
+
   return (
     <Form
       onSubmit={handleSubmit((data) => {
-        console.log(data);
+        startTransition(() => complete(data));
       })}
     >
       <Form.Row>

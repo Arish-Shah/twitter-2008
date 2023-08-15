@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --theme: url("/images/themes/theme1.gif");
+  --background-image: url("/images/themes/theme1.gif");
   --tile: no-repeat;
 
   --background: #9ae4e8;
@@ -14,7 +14,7 @@
 }
 
 body {
-  @apply bg-background bg-theme bg-fixed bg-left-top text-base text-text;
+  @apply bg-background bg-background-image bg-fixed bg-left-top text-base text-text;
   background-repeat: var(--tile);
 }
 

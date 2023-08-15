@@ -1,8 +1,8 @@
-import {
-  UsernameAvailableResponse,
-  usernameAvailableActive,
-} from "@/actions/username-available";
 import { useMountedEffect } from "@/hooks/use-mounted-effect";
+import {
+  getUsernameAvailableActive,
+  type UsernameAvailableResponse,
+} from "@/lib/actions/get-username-available";
 import clsx from "clsx";
 import Image from "next/image";
 import React, {
@@ -32,7 +32,7 @@ export const UsernameInput = forwardRef<HTMLInputElement, UsernameInputProps>(
 
     useMountedEffect(() => {
       const checkUsername = async () => {
-        setResponse(await usernameAvailableActive(debouncedUsername));
+        setResponse(await getUsernameAvailableActive(debouncedUsername));
         setLoading(false);
       };
       checkUsername();

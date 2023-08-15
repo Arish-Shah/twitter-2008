@@ -1,7 +1,6 @@
-import { Main, Sidebar } from "@/components/content";
+import { Content, Main, Sidebar } from "@/components/content";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Fragment } from "react";
 
 export const metadata: Metadata = {
   title: "Twitter / Twitter Terms of Service",
@@ -9,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TOS() {
   return (
-    <Fragment>
+    <Content>
       <Main>
         <Main.H2>Terms of Service</Main.H2>
         <Main.P>
@@ -198,6 +197,6 @@ export default function TOS() {
           </Sidebar.OrderedList>
         </Sidebar.Section>
       </Sidebar>
-    </Fragment>
+    </Content>
   );
 }

@@ -3,7 +3,7 @@ import type { InferModel } from "drizzle-orm";
 import "next-auth";
 
 interface NextAuthUser {
-  id: number;
+  id: string;
   username: string;
   role: InferModel<typeof users, "insert">["role"];
 }

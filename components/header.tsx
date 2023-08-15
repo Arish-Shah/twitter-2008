@@ -3,6 +3,7 @@ import type { LinkType, PageSizeType } from "@/types";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 
 const links: LinkType[] = [
   { label: "Home", href: "/home" },
@@ -10,26 +11,31 @@ const links: LinkType[] = [
   { label: "Find People", href: "/invitations" },
   { label: "Settings", href: "/account/settings" },
   { label: "Help", href: "/help" },
-  { label: "Sign out", href: "/signout" },
+  { label: "Sign out", href: "/logout" },
 ];
 
 interface HeaderProps {
   size?: PageSizeType;
-  title?: string;
 }
 
-export async function Header({ size, title = "Twitter" }: HeaderProps) {
+export async function Header({ size }: HeaderProps) {
   const session = await auth();
 
   const large = size === "large";
   const small = size === "small";
 
+  if (session?.user) {
+    links[1].href = `/${session.user.username}`;
+  }
+
   const items = session?.user ? (
-    links.map((link, i) => (
-      <li key={i} className="m-[5px] inline">
-        <Link href={link.href}>{link.label}</Link>
-      </li>
-    ))
+    <Fragment>
+      {links.map((link, i) => (
+        <li key={i} className="m-[5px] inline">
+          <Link href={link.href}>{link.label}</Link>
+        </li>
+      ))}
+    </Fragment>
   ) : (
     <li className="inline">
       <Link href="/login">Login</Link> /{" "}
@@ -39,7 +45,7 @@ export async function Header({ size, title = "Twitter" }: HeaderProps) {
 
   return (
     <header className={clsx("mb-[10px] flex")}>
-      <Link href="/" title={title} className="mr-auto">
+      <Link href="/" title="Twitter: home" className="mr-auto">
         <Image
           src={`/images/logos/twitter${large ? "" : "_logo_s"}.png`}
           alt="Twitter.com"
@@ -52,7 +58,7 @@ export async function Header({ size, title = "Twitter" }: HeaderProps) {
       {!large && (
         <nav
           className={clsx(
-            "absolute right-0 top-[25px] rounded bg-white p-[8px_10px] text-[12.6px] leading-[12px]",
+            "absolute right-0 top-[25px] rounded bg-white p-[6px_10px] leading-[1.5]",
             {
               "right-[143px]": small,
             }

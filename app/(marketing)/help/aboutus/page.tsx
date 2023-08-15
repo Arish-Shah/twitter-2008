@@ -1,9 +1,8 @@
-import { Main, Sidebar } from "@/components/content";
+import { Content, Main, Sidebar } from "@/components/content";
 import { Employees } from "@/components/employees";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
 
 export const metadata: Metadata = {
   title: "Twitter / About Us",
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutUs() {
   return (
-    <Fragment>
+    <Content>
       <Main>
         <Main.H2>About Us</Main.H2>
         <Main.P>
@@ -54,6 +53,6 @@ export default function AboutUs() {
           <Employees />
         </Sidebar.Section>
       </Sidebar>
-    </Fragment>
+    </Content>
   );
 }

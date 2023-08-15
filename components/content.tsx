@@ -5,6 +5,10 @@ interface ContentProps {
   children: React.ReactNode;
 }
 
+export function Content({ className, children }: ContentProps) {
+  return <div className={clsx("flex", className)}>{children}</div>;
+}
+
 export function Main({ className, children }: ContentProps) {
   return (
     <div className={clsx("flex-1 p-[5px_10px]", className)}>{children}</div>

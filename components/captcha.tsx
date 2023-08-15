@@ -85,7 +85,7 @@ export function Captcha({ value, onChange }: CaptchaProps) {
               width={25}
               quality={100}
               className="absolute left-0 top-0 cursor-pointer"
-              onClick={() => setData(getRandomCaptcha())}
+              onClick={() => setData(getRandomCaptcha(data.index))}
             />
           </td>
           <td

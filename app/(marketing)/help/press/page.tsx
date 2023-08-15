@@ -1,10 +1,9 @@
-import { Main, Sidebar } from "@/components/content";
+import { Content, Main, Sidebar } from "@/components/content";
 import Link from "next/link";
-import { Fragment } from "react";
 
 export default function Press() {
   return (
-    <Fragment>
+    <Content>
       <Main>
         <Main.H2>About Twitter!</Main.H2>
         <Main.P className="mt-[7px] text-[10px]">
@@ -119,6 +118,6 @@ export default function Press() {
           <Link href="mailto:pr@twitter.com">pr at twitter dot com</Link>
         </Main.P>
       </Sidebar>
-    </Fragment>
+    </Content>
   );
 }

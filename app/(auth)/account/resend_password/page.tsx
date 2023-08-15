@@ -1,7 +1,7 @@
 import { Main } from "@/components/content";
 import { ResendPasswordForm } from "@/components/forms/resend-password-form";
 
-export default function ResendPassword() {
+export default async function ResendPassword() {
   return (
     <Main>
       <Main.H2>Forgot?</Main.H2>

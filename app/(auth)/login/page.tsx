@@ -1,12 +1,11 @@
-import { Main, Sidebar } from "@/components/content";
+import { Content, Main, Sidebar } from "@/components/content";
 import { LoginForm } from "@/components/forms/login-form";
 import { JoinButton } from "@/components/ui/button";
 import Link from "next/link";
-import { Fragment } from "react";
 
-export default function Login() {
+export default async function Login() {
   return (
-    <Fragment>
+    <Content>
       <Main>
         <Main.H2>Sign in to Twitter</Main.H2>
         <Main.P>
@@ -30,6 +29,6 @@ export default function Login() {
           </div>
         </Sidebar.Section>
       </Sidebar>
-    </Fragment>
+    </Content>
   );
 }

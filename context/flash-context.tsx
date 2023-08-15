@@ -1,14 +1,12 @@
 "use client";
 
-import { useMountedEffect } from "@/hooks/use-mounted-effect";
-import { usePathname } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 
 type TitleType = string | null;
 
 type FlashContextType = {
   message: TitleType;
-  flash: (message: string, stick?: boolean) => void;
+  flash: (message: string) => void;
 };
 
 const FlashContext = createContext<FlashContextType | null>(null);
@@ -19,21 +17,14 @@ interface FlashContextProviderProps {
 
 export function FlashContextProvider({ children }: FlashContextProviderProps) {
   const [message, setMessage] = useState<TitleType>(null);
-  const pathname = usePathname();
 
-  useMountedEffect(() => {
-    if (message) setMessage(null);
-  }, [pathname]);
-
-  const flash = (message: string, stick = false) => {
+  const flash = (message: string) => {
     if (message) {
       setMessage(message);
 
-      if (!stick) {
-        setTimeout(() => {
-          setMessage(null);
-        }, 5000);
-      }
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
     }
   };
 

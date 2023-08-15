@@ -4,8 +4,7 @@
 - [ ] add navigation panel to status page when logged in. also add like and reply button
 - [ ] replace .. with actions when user is logged in on fav, timeline, feed components
 - [ ] use fullnames on page titles when available
-- [ ] hide following count and following-small section if it is 0
-- [ ] check /home tab menu urls
+- [x] check /home tab menu urls
 - [ ] override fullname with username if its available
 - [ ] by default username is set as the full name
 - [ ] check and implement
@@ -15,4 +14,4 @@
   - https://web.archive.org/web/20081217013517/twitter.com/public_timeline
   - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
 - [ ] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss
-- [ ] cache multiple useAuth calls
+- [ ] fix signup form, try using useFormStatus etc

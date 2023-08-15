@@ -1,5 +1,5 @@
-import { emailAvailable } from "@/actions/email-available";
-import { usernameAvailable } from "@/actions/username-available";
+import { getEmailAvailable } from "@/lib/actions/get-email-available";
+import { getUsernameAvailable } from "@/lib/actions/get-username-available";
 import { z } from "zod";
 
 export const signupSchema = z.object({
@@ -13,7 +13,7 @@ export const signupSchema = z.object({
     )
     .refine(
       async (val) => {
-        const available = await usernameAvailable(val);
+        const available = await getUsernameAvailable(val);
         return available.success;
       },
       () => ({ message: "That name has been taken. Please choose another." })
@@ -26,7 +26,7 @@ export const signupSchema = z.object({
     .email("Please enter a valid email")
     .refine(
       async (val) => {
-        const available = await emailAvailable(val);
+        const available = await getEmailAvailable(val);
         return available.success;
       },
       (val) => ({ message: `Email${val} Email has already been taken` })
@@ -42,6 +42,7 @@ export const signupSchema = z.object({
 export const loginSchema = z.object({
   usernameOrEmail: z.string().min(1),
   password: z.string().min(1),
+  remember: z.boolean(),
 });
 
 export const completeSchema = z.object({

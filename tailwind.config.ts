@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        theme: "var(--theme)",
+        "background-image": "var(--background-image)",
         arr: "url(/images/arrows/arr.gif)",
         arr2: "url(/images/arrows/arr2.gif)",
         pale: "url(/images/ui/pale.png)",
@@ -24,6 +24,8 @@ const config: Config = {
         gray: "#e6e6e6",
         "gray-border": "#ccc",
         "gray-hover": "#999",
+        "gray-disabled": "#a6a6a6",
+        "gray-disabled-hover": "#707070",
         "sidebar-heading-border": "#a7cf40",
         joinbutton: "#417596",
         "joinbutton-hover": "#294b60",
@@ -38,6 +40,16 @@ const config: Config = {
         "form-red": "#dd0000",
         badgebox: "#ffc",
         "badgebox-border": "#ff0",
+        updatebutton: "#4c4c4c",
+        "updatebutton-disabled": "#c6c6c6",
+        "updatebutton-gradient-from": "#fafafa",
+        "updatebutton-gradient-to": "#f1f1f1",
+        "updatebutton-gradient-from-hover": "#f1f1f1",
+        "updatebutton-gradient-to-hover": "#e0e0e0",
+        intro: "#a4a0a1",
+        "alert-success": "#e8fecd",
+        "alert-success-border": "#a9bf74",
+        recent: "#afeff1",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],

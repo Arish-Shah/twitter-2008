@@ -1,4 +1,5 @@
-import type { PageSizeType } from "@/types";
+import { getThemeCSS } from "@/lib/utils";
+import type { PageSizeType, ThemeType } from "@/types";
 import clsx from "clsx";
 import { Flash } from "./flash";
 import { Footer } from "./footer";
@@ -8,11 +9,15 @@ import { Loader } from "./loader";
 interface PageProps {
   size?: PageSizeType;
   children: React.ReactNode;
+  theme?: ThemeType;
 }
 
-export function Page({ size = "default", children }: PageProps) {
+export function Page({ size = "default", theme, children }: PageProps) {
+  const css = getThemeCSS(theme);
+
   return (
     <main className="relative mx-auto w-[763px] p-[16px_0]">
+      {css && <style>{css}</style>}
       <Loader />
       <Header size={size} />
       <Flash />
@@ -21,7 +26,7 @@ export function Page({ size = "default", children }: PageProps) {
           "w-[620px]": size === "small",
         })}
       >
-        <div className="flex overflow-hidden rounded bg-white">
+        <div className="overflow-hidden rounded bg-white">
           {children}
           {size === "large" && <Footer />}
         </div>
