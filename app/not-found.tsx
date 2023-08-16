@@ -1,3 +1,4 @@
+import { auth } from "@/lib/auth";
 import { LinkType } from "@/types";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -13,7 +14,11 @@ const links: LinkType[] = [
   { label: "Contact Support", href: "/help/contact" },
 ];
 
-export default function NotFound() {
+export default async function NotFound() {
+  const session = await auth();
+
+  if (session?.user) links[0].href = "/home";
+
   return (
     <center className="mt-[53px]">
       <Link href="/">

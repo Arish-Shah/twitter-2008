@@ -11,9 +11,7 @@ export function Loader() {
     <span
       className={clsx(
         "absolute right-0 top-[5px] border border-gray-border bg-white",
-        {
-          hidden: !loading,
-        }
+        { hidden: !loading }
       )}
     >
       <Image

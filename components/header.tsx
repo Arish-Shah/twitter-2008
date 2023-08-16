@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
+import { LogoutForm } from "./forms/logout-form";
 
 const links: LinkType[] = [
   { label: "Home", href: "/home" },
@@ -11,7 +12,6 @@ const links: LinkType[] = [
   { label: "Find People", href: "/invitations" },
   { label: "Settings", href: "/account/settings" },
   { label: "Help", href: "/help" },
-  { label: "Sign out", href: "/logout" },
 ];
 
 interface HeaderProps {
@@ -19,11 +19,9 @@ interface HeaderProps {
 }
 
 export async function Header({ size }: HeaderProps) {
-  const session = await auth();
-
   const large = size === "large";
-  const small = size === "small";
 
+  const session = await auth();
   if (session?.user) {
     links[1].href = `/${session.user.username}`;
   }
@@ -35,6 +33,9 @@ export async function Header({ size }: HeaderProps) {
           <Link href={link.href}>{link.label}</Link>
         </li>
       ))}
+      <li className="m-[5px] inline">
+        <LogoutForm />
+      </li>
     </Fragment>
   ) : (
     <li className="inline">
@@ -63,9 +64,7 @@ export async function Header({ size }: HeaderProps) {
         <nav
           className={clsx(
             "absolute right-0 top-[25px] rounded bg-white p-[6px_10px] leading-[1.5]",
-            {
-              "right-[143px]": small,
-            }
+            { "right-[143px]": size === "small" }
           )}
         >
           <ul>{items}</ul>

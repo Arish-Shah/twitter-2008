@@ -4,67 +4,71 @@ import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 
-export const getTimeline = cache(async (username: string, page: number = 1) => {
-  const result = await db.query.users.findFirst({
-    where: (users, { sql }) =>
-      sql`lower(${users.username}) = ${username.toLowerCase()}`,
-    offset: (page - 1) * 20,
-    columns: {
-      username: true,
-    },
-    with: {
-      updates: {
-        limit: 21,
-        columns: {
-          id: true,
-          text: true,
-          createdAt: true,
-        },
-        with: {
-          application: {
-            columns: {
-              id: false,
-            },
+export const getTimeline = cache(
+  async (username: string, page: number = 1, limit = 20) => {
+    const offset = 20 * (page - 1);
+
+    const user = await db.query.users.findFirst({
+      where: (users, { sql }) =>
+        sql`lower(${users.username}) = ${username.toLowerCase()}`,
+      columns: {
+        id: true,
+      },
+    });
+    if (!user) return notFound();
+
+    const data = await db.query.updates.findMany({
+      where: (updates, { eq }) => eq(updates.authorId, user.id),
+      limit: limit + 1,
+      offset,
+      columns: {
+        id: true,
+        text: true,
+        createdAt: true,
+      },
+      with: {
+        application: {
+          columns: {
+            id: false,
           },
-          parent: {
-            columns: {
-              id: true,
-            },
-            with: {
-              author: {
-                columns: {
-                  username: true,
-                },
+        },
+        parent: {
+          columns: {
+            id: true,
+          },
+          with: {
+            author: {
+              columns: {
+                username: true,
               },
             },
           },
         },
-        orderBy: (updates, { desc }) => [desc(updates.createdAt)],
       },
-    },
-  });
+      orderBy: (updates, { desc }) => [desc(updates.createdAt)],
+    });
 
-  if (!result?.updates) return notFound();
+    const updates = data.map((update) => {
+      const parent = update.parent
+        ? {
+            id: update.parent.id,
+            username: update.parent.author.username,
+          }
+        : null;
+      return {
+        id: update.id,
+        username,
+        text: update.text,
+        application: update.application,
+        parent,
+        createdAt: update.createdAt,
+      };
+    });
 
-  const mappedUpdates = result.updates.map((update) => {
-    const parent = update.parent
-      ? {
-          id: update.parent.id,
-          username: update.parent.author.username,
-        }
-      : null;
     return {
-      id: update.id,
-      username,
-      text: update.text,
-      application: update.application,
-      parent,
-      createdAt: update.createdAt,
+      userId: user.id,
+      updates: updates.slice(0, limit),
+      hasMore: updates.length > limit,
     };
-  });
-
-  return {
-    updates: mappedUpdates.slice(0, 20),
-    hasMore: mappedUpdates.length === 21,
-  };
-});
+  }
+);

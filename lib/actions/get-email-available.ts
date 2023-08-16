@@ -6,11 +6,11 @@ import { sql } from "drizzle-orm";
 import { cache } from "react";
 
 export const getEmailAvailable = cache(async (email: string) => {
-  const result = await db
+  const data = await db
     .select()
     .from(users)
     .where(sql`lower(${users.email}) = ${email.toLowerCase()}`);
 
-  if (result.length > 0) return { success: false };
+  if (data.length > 0) return { success: false };
   return { success: true };
 });

@@ -9,10 +9,9 @@ interface MastHeadProps {
 export async function MastHead({ username }: MastHeadProps) {
   const data = await getMastHead(username);
 
-  // TODO: let users view profile image: /account/profile_image/${data.username}
   return (
     <div className="flex items-center">
-      <Link href={`/${data.username}`}>
+      <Link href={`/account/profile_images/${data.username}`}>
         <Image
           src={data.picture}
           alt={data.username}

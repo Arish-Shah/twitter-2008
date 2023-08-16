@@ -12,12 +12,12 @@ export type UsernameAvailableResponse = {
 };
 
 export const getUsernameAvailable = cache(async (username: string) => {
-  const result = await db
+  const data = await db
     .select()
     .from(users)
     .where(sql`lower(${users.username}) = ${username.toLowerCase()}`);
 
-  if (result.length > 0) return { success: false };
+  if (data.length > 0) return { success: false };
   return { success: true };
 });
 

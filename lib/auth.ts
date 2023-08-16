@@ -52,7 +52,7 @@ export const {
           const { usernameOrEmail, password } = params;
           const lowercase = usernameOrEmail.toLowerCase();
 
-          const result = await db
+          const data = await db
             .select({
               id: users.id,
               username: users.username,
@@ -67,8 +67,8 @@ export const {
               )
             );
 
-          if (result.length === 0) throw new Error();
-          const user = result[0];
+          if (data.length === 0) throw new Error();
+          const user = data[0];
 
           const valid = await compare(password, user.password);
           if (!valid) throw new Error("Incorrect password");

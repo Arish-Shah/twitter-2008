@@ -1,12 +1,10 @@
 "use client";
 
-import { Main } from "@/components/content";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
-export default function Logout() {
+export function LogoutForm() {
   const router = useRouter();
   const [, startTransition] = useLoadingTransition();
 
@@ -18,14 +16,15 @@ export default function Logout() {
     router.push(data.url);
   };
 
-  useEffect(() => {
-    startTransition(() => logout());
-    // eslint-disable-next-line
-  }, []);
-
   return (
-    <Main>
-      <Main.H2>Signing out.</Main.H2>
-    </Main>
+    <a
+      href="/logout"
+      onClick={(e) => {
+        e.preventDefault();
+        startTransition(() => logout());
+      }}
+    >
+      Sign out
+    </a>
   );
 }

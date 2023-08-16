@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 
 export const getTheme = cache(async (username: string): Promise<ThemeType> => {
-  const result = await db.query.users.findFirst({
+  const data = await db.query.users.findFirst({
     columns: {},
     where: (users, { eq }) => eq(users.username, username),
     with: {
@@ -28,6 +28,6 @@ export const getTheme = cache(async (username: string): Promise<ThemeType> => {
       },
     },
   });
-  if (!result) return notFound();
-  return result.profile.theme;
+  if (!data) return notFound();
+  return data.profile.theme;
 });

@@ -48,19 +48,22 @@ export default async function Status({
         <Link href={`/${update.author.username}`} className="mr-[20px]">
           <Image
             src={update.author.picture}
-            alt={`${update.author.username}_bigger`}
+            alt={`${update.author.username}'s picture`}
             height={48}
             width={48}
             quality={100}
+            draggable={false}
           />
         </Link>
         <div>
           <Link href={`/${update.author.username}`} className="text-[27.6px]">
             <span>{update.author.username}</span>
           </Link>
-          <span className="mt-[3px] block text-[14.4px]">
-            {update.author.name}
-          </span>
+          {update.author.username !== update.author.name && (
+            <span className="mt-[3px] block text-[14.4px]">
+              {update.author.name}
+            </span>
+          )}
         </div>
       </div>
     </div>

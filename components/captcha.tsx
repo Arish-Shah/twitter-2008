@@ -8,6 +8,7 @@ interface CaptchaProps {
   onChange: (value: boolean) => void;
 }
 
+// shameless copy from google's v1 captcha
 export function Captcha({ value, onChange }: CaptchaProps) {
   const [data, setData] = useState(value);
 
@@ -18,10 +19,10 @@ export function Captcha({ value, onChange }: CaptchaProps) {
           <td
             colSpan={6}
             className="h-[9px] bg-sprite bg-[-0px_-63px] bg-no-repeat"
-          ></td>
+          />
         </tr>
         <tr>
-          <td className="h-[57px] w-[9px] bg-sprite bg-[-18px_-0px] bg-no-repeat"></td>
+          <td className="h-[57px] w-[9px] bg-sprite bg-[-18px_-0px] bg-no-repeat" />
           <td colSpan={4} className="relative h-[57px] bg-white">
             <Image
               src={data.src}
@@ -32,21 +33,21 @@ export function Captcha({ value, onChange }: CaptchaProps) {
               className="absolute left-0 top-0"
             />
           </td>
-          <td className="h-[57px] w-[9px] bg-sprite bg-[-27px_-0px] bg-no-repeat"></td>
+          <td className="h-[57px] w-[9px] bg-sprite bg-[-27px_-0px] bg-no-repeat" />
         </tr>
         <tr>
           <td
             rowSpan={6}
             className="h-[63px] w-[9px] bg-sprite bg-[-0px_-0px] bg-no-repeat"
-          ></td>
+          />
           <td
             colSpan={4}
             className="h-[6px] w-[300px] bg-sprite bg-[-18px_-57px] bg-no-repeat"
-          ></td>
+          />
           <td
             rowSpan={6}
             className="h-[63px] w-[9px] bg-sprite bg-[-9px_-0px] bg-no-repeat"
-          ></td>
+          />
         </tr>
         <tr>
           <td
@@ -75,7 +76,7 @@ export function Captcha({ value, onChange }: CaptchaProps) {
           <td
             rowSpan={4}
             className="h-[57px] w-[7px] bg-sprite bg-[-36px_-0px] bg-no-repeat"
-          ></td>
+          />
           <td className="relative">
             <Image
               alt="Refresh"
@@ -91,7 +92,7 @@ export function Captcha({ value, onChange }: CaptchaProps) {
           <td
             rowSpan={4}
             className="h-[57px] w-[97px] bg-sprite bg-[-214px_-0px] bg-no-repeat"
-          ></td>
+          />
         </tr>
         <tr>
           <td className="relative">
@@ -120,8 +121,8 @@ export function Captcha({ value, onChange }: CaptchaProps) {
           </td>
         </tr>
         <tr>
-          <td className="h-[8px] w-[171px] bg-sprite bg-[-43px_-49px] bg-no-repeat"></td>
-          <td className="h-[8px] w-[25px] bg-sprite bg-[-43px_-49px] bg-no-repeat"></td>
+          <td className="h-[8px] w-[171px] bg-sprite bg-[-43px_-49px] bg-no-repeat" />
+          <td className="h-[8px] w-[25px] bg-sprite bg-[-43px_-49px] bg-no-repeat" />
         </tr>
       </tbody>
     </table>

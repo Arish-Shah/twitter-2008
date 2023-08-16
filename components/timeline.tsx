@@ -22,7 +22,7 @@ function TimelineItem({ highlight, update }: TimelineItemProps) {
         "group flex items-center border-b border-dashed border-timeline-border leading-[15px]",
         {
           "p-[8px_3px] hover:bg-timeline-hover": !highlight,
-          "p-[12px_0]": highlight,
+          "p-[12px_0_18px_0]": highlight,
         }
       )}
     >
@@ -37,8 +37,8 @@ function TimelineItem({ highlight, update }: TimelineItemProps) {
         </span>
         <span
           className={clsx("font-georgia text-[11.5px] italic text-meta", {
-            block: highlight,
-            "ml-[8px]": !highlight,
+            "ml-[3px] block": highlight,
+            "ml-[6px]": !highlight,
           })}
         >
           <Link
@@ -75,8 +75,6 @@ function TimelineItem({ highlight, update }: TimelineItemProps) {
     </div>
   );
 }
-
-function TimelineHighlight({}: TimelineItemProps) {}
 
 export function Timeline({ updates }: TimelineProps) {
   return (

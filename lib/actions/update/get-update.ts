@@ -1,3 +1,5 @@
+"use server";
+
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { cache } from "react";
