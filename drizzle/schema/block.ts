@@ -11,8 +11,9 @@ export const blocks = pgTable(
     blockingId: integer("blocking_id")
       .references(() => users.id, { onDelete: "cascade" })
       .notNull(),
-
-    createdAt: timestamp("created_at").defaultNow().notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
   },
   (t) => ({
     pk: primaryKey(t.blockerId, t.blockingId),

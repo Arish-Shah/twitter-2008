@@ -45,7 +45,11 @@ export async function Header({ size }: HeaderProps) {
 
   return (
     <header className={clsx("mb-[10px] flex")}>
-      <Link href="/" title="Twitter: home" className="mr-auto">
+      <Link
+        href={session?.user ? "/home" : "/"}
+        title="Twitter: home"
+        className="mr-auto"
+      >
         <Image
           src={`/images/logos/twitter${large ? "" : "_logo_s"}.png`}
           alt="Twitter.com"

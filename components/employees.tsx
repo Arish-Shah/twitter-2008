@@ -6,7 +6,7 @@ export function Employees() {
   const users: VCardType[] = Array<VCardType>(30).fill({
     name: "Default User",
     username: "default",
-    src: "/images/profile/default_profile.png",
+    picture: "/images/profile/default_profile.png",
   });
 
   return (
@@ -15,7 +15,7 @@ export function Employees() {
         {users.map((user, i) => (
           <Link key={i} href={`/${user.username}`} title={user.name}>
             <Image
-              src={user.src}
+              src={user.picture}
               alt={user.name}
               height={24}
               width={24}

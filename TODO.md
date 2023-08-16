@@ -6,7 +6,7 @@
 - [ ] use fullnames on page titles when available
 - [x] check /home tab menu urls
 - [ ] override fullname with username if its available
-- [ ] by default username is set as the full name
+- [x] by default username is set as the full name
 - [ ] check and implement
   - https://web.archive.org/web/20091007131707/http://twitter.com//
   - https://web.archive.org/web/20091010004544/http://twitter.com/public_timeline
@@ -15,3 +15,6 @@
   - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
 - [ ] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss
 - [ ] fix signup form, try using useFormStatus etc
+- [x] change application in db to a table as it would also include url etc idk
+- [ ] /help page https://web.archive.org/web/20081031043123/http://twitter.com/help
+- [ ] hide login/join navigation from status page when the user is logged out

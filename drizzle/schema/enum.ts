@@ -10,15 +10,4 @@ export const deviceUpdateEnum = pgEnum("device_update", [
   "direct_messages",
 ]);
 
-export const checkListEnum = pgEnum("check_list", [
-  "0",
-  "1",
-  "2",
-  "3",
-  "1_2",
-  "2_3",
-  "1_3",
-  "1_2_3",
-]);
-
 export const roleEnum = pgEnum("role", ["user", "admin"]);

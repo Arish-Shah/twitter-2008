@@ -1,7 +1,7 @@
 "use client";
 
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
-import { postUpdate } from "@/lib/actions/post-update";
+import { postUpdate } from "@/lib/actions/update/post-update";
 import { updateSchema } from "@/lib/validations/update";
 import { UpdateDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";

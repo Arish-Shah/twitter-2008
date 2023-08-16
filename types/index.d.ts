@@ -1,4 +1,5 @@
 import { themes } from "@/drizzle/schema";
+import { getTimeline } from "@/lib/actions/profile/get-timeline";
 import {
   completeSchema,
   loginSchema,
@@ -19,7 +20,7 @@ export type LinkType = {
 export type VCardType = {
   name: string;
   username: string;
-  src: string;
+  picture: string;
 };
 
 export type CaptchaType = {
@@ -48,3 +49,8 @@ export type ThemeType = Pick<
   | "links"
   | "text"
 >;
+
+export type ProfileUpdateType = Awaited<
+  ReturnType<typeof getTimeline>
+>["updates"][number];
+0;

@@ -123,6 +123,7 @@ export function Carousel({ type }: Props) {
         height={155}
         width={510}
         className="m-[24px_0_9px_0] border border-black"
+        priority
       />
       {data[type].teaser}
     </Fragment>

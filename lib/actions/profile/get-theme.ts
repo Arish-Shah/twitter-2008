@@ -1,8 +1,9 @@
 "use server";
 
-import { ThemeType } from "@/types";
+import { db } from "@/lib/db";
+import type { ThemeType } from "@/types";
+import { notFound } from "next/navigation";
 import { cache } from "react";
-import { db } from "../db";
 
 export const getTheme = cache(async (username: string): Promise<ThemeType> => {
   const result = await db.query.users.findFirst({
@@ -27,6 +28,6 @@ export const getTheme = cache(async (username: string): Promise<ThemeType> => {
       },
     },
   });
-  if (!result) throw new Error("Theme not found");
+  if (!result) return notFound();
   return result.profile.theme;
 });

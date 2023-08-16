@@ -1,5 +1,6 @@
 import { Page } from "@/components/page";
-import { getTheme } from "@/lib/actions/get-theme";
+import { getTheme } from "@/lib/actions/profile/get-theme";
+import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 interface ProfileLayoutProps {
@@ -19,6 +20,13 @@ export default async function ProfileLayout({
   params: { username },
   children,
 }: ProfileLayoutProps) {
+  const session = await auth();
+  const join = !session?.user ? username : undefined;
+
   const theme = await getTheme(username);
-  return <Page theme={theme}>{children}</Page>;
+  return (
+    <Page theme={theme} join={join}>
+      {children}
+    </Page>
+  );
 }

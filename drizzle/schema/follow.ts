@@ -18,8 +18,12 @@ export const follows = pgTable(
       .references(() => users.id, { onDelete: "cascade" })
       .notNull(),
     deviceUpdates: boolean("device_updates").default(false).notNull(),
-    createdAt: timestamp("created_at").notNull().defaultNow(),
-    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
   },
   (t) => ({
     pk: primaryKey(t.followerId, t.followingId),

@@ -8,7 +8,7 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import { checkListEnum, languageEnum } from "./enum";
+import { languageEnum } from "./enum";
 import { themes } from "./theme";
 import { users } from "./user";
 
@@ -27,9 +27,12 @@ export const profiles = pgTable("profiles", {
   userId: integer("user_id")
     .references(() => users.id, { onDelete: "cascade" })
     .notNull(),
-  checkList: checkListEnum("check_list").default("0").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
 });
 
 export const profileRelations = relations(profiles, ({ one }) => ({

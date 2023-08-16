@@ -1,5 +1,5 @@
 import { Page } from "@/components/page";
-import { getTheme } from "@/lib/actions/get-theme";
+import { getTheme } from "@/lib/actions/profile/get-theme";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";

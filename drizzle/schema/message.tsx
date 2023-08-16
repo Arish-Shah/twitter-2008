@@ -19,7 +19,9 @@ export const messages = pgTable("messages", {
     .references(() => users.id, { onDelete: "cascade" })
     .notNull(),
   read: boolean("read").default(false).notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
 });
 
 export const messageRelations = relations(messages, ({ one }) => ({

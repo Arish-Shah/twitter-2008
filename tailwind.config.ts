@@ -50,6 +50,11 @@ const config: Config = {
         "alert-success": "#e8fecd",
         "alert-success-border": "#a9bf74",
         recent: "#afeff1",
+        "join-banner": "#feffdf",
+        "join-banner-border": "#ff0",
+        meta: "#999",
+        "timeline-border": "#d2dada",
+        "timeline-hover": "#f7f7f7",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],
