@@ -56,6 +56,8 @@ const config: Config = {
         "timeline-border": "#d2dada",
         "timeline-hover": "#f7f7f7",
         "pagination-border": "#cecece",
+        star: "#ffda64",
+        "star-border": "#ffac31",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],

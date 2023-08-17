@@ -40,7 +40,7 @@ export default async function NotFound() {
         className="mt-[21px]"
         draggable={false}
       />
-      <div className="inline-block w-[544.5px] rounded bg-white p-[20px_10px_54px_10px] leading-[1.2]">
+      <div className="inline-block w-[40%] rounded bg-white p-[20px_10px_54px_10px] leading-[1.2]">
         <h3 className="text-[17.5px]">That page doesn&apos;t exist!</h3>
         <Image
           src="/images/ui/not_found.gif"
@@ -51,7 +51,7 @@ export default async function NotFound() {
           className="mt-[21px]"
           draggable={false}
         />
-        <ul className="mt-[75px] flex w-[186px] justify-between">
+        <ul className="mx-auto mt-[75px] flex max-w-[186px] justify-between">
           {links.map((link, i) => (
             <li key={i} className="inline">
               <Link href={link.href} className="underline">

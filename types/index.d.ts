@@ -53,4 +53,3 @@ export type ThemeType = Pick<
 export type ProfileUpdateType = Awaited<
   ReturnType<typeof getTimeline>
 >["updates"][number];
-0;

@@ -1,17 +1,24 @@
 "use client";
 
-import { useFlash } from "@/context/flash-context";
+import { useFlashStore } from "@/hooks/use-flash-store";
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 export function Flash() {
-  const { message } = useFlash();
-
+  const message = useFlashStore((state) => state.message);
+  const setMessage = useFlashStore((state) => state.setMessage);
   const messageRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (message && messageRef.current) messageRef.current.textContent = message;
+    if (message && messageRef.current) {
+      messageRef.current.textContent = message;
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    }
+    // eslint-disable-next-line
   }, [message]);
 
   return (

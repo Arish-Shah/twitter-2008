@@ -1,5 +1,6 @@
 "use server";
 
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -7,6 +8,10 @@ import { cache } from "react";
 export const getTimeline = cache(
   async (username: string, page: number = 1, limit = 20) => {
     const offset = 20 * (page - 1);
+    const session = await auth();
+
+    // TODO: might wanna change this
+    const userId = Number(session?.user.id) || 0;
 
     const user = await db.query.users.findFirst({
       where: (users, { sql }) =>
@@ -27,6 +32,9 @@ export const getTimeline = cache(
         createdAt: true,
       },
       with: {
+        favoritedBy: {
+          where: (favorites, { eq }) => eq(favorites.userId, userId),
+        },
         application: {
           columns: {
             id: false,
@@ -61,6 +69,7 @@ export const getTimeline = cache(
         text: update.text,
         application: update.application,
         parent,
+        favorited: update.favoritedBy.length !== 0,
         createdAt: update.createdAt,
       };
     });

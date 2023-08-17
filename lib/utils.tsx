@@ -88,3 +88,12 @@ export function formatUpdateCreatedAt(createdAt: Date) {
     return date.format("h:mm A MMM Do");
   else return "about " + date.fromNow();
 }
+
+export function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
+
+export function formatUpdateCreatedAtTitle(createdAt: Date) {
+  return dayjs(createdAt).format("YYYY-MM-DDTHH:mm:ssZ");
+}

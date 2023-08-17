@@ -18,3 +18,4 @@
 - [x] change application in db to a table as it would also include url etc idk
 - [ ] /help page https://web.archive.org/web/20081031043123/http://twitter.com/help
 - [ ] hide login/join navigation from status page when the user is logged out
+- [ ] use revalidatePath on server actions

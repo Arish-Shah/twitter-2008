@@ -1,6 +1,6 @@
 "use client";
 
-import { useFlash } from "@/context/flash-context";
+import { useFlashStore } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { loginSchema } from "@/lib/validations/auth";
 import type { LoginDataType } from "@/types";
@@ -14,7 +14,7 @@ import { Input, Submit } from "../ui/input";
 
 export function LoginForm() {
   const router = useRouter();
-  const { flash } = useFlash();
+  const flash = useFlashStore((state) => state.setMessage);
   const [, startTransition] = useLoadingTransition();
   const { handleSubmit, register } = useForm<LoginDataType>({
     resolver: zodResolver(loginSchema),

@@ -1,11 +1,11 @@
 "use client";
 
-import { useLoader } from "@/context/loader-context";
+import { useLoadingStore } from "@/hooks/use-loading-store";
 import clsx from "clsx";
 import Image from "next/image";
 
 export function Loader() {
-  const { loading } = useLoader();
+  const loading = useLoadingStore((state) => state.loading);
 
   return (
     <span

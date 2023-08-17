@@ -1,7 +1,13 @@
-import { formatUpdateCreatedAt, formatUpdateText } from "@/lib/utils";
+import { auth } from "@/lib/auth";
+import {
+  formatUpdateCreatedAt,
+  formatUpdateCreatedAtTitle,
+  formatUpdateText,
+} from "@/lib/utils";
 import type { ProfileUpdateType } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
+import { Interactions } from "./interactions";
 
 interface TimelineItemProps {
   update: ProfileUpdateType;
@@ -12,9 +18,12 @@ interface TimelineProps {
   updates: ProfileUpdateType[];
 }
 
-function TimelineItem({ highlight, update }: TimelineItemProps) {
+async function TimelineItem({ highlight, update }: TimelineItemProps) {
+  const session = await auth();
+
   const text = formatUpdateText(update.text);
   const createdAt = formatUpdateCreatedAt(update.createdAt);
+  const title = formatUpdateCreatedAtTitle(update.createdAt);
 
   return (
     <div
@@ -22,7 +31,7 @@ function TimelineItem({ highlight, update }: TimelineItemProps) {
         "group flex items-center border-b border-dashed border-timeline-border leading-[15px]",
         {
           "p-[8px_3px] hover:bg-timeline-hover": !highlight,
-          "p-[12px_0_18px_0]": highlight,
+          "p-[8px_0_18px_0]": highlight,
         }
       )}
     >
@@ -30,7 +39,7 @@ function TimelineItem({ highlight, update }: TimelineItemProps) {
         <span
           className={clsx({
             "text-[14.4px]": !highlight,
-            "mb-[10px] block text-[25.25px] leading-[1]": highlight,
+            "mb-[10px] block text-[25.45px] leading-[1.05]": highlight,
           })}
         >
           {text}
@@ -44,7 +53,7 @@ function TimelineItem({ highlight, update }: TimelineItemProps) {
           <Link
             href={`/${update.username}/status/${update.id}`}
             className="text-meta group-hover:text-links"
-            title={update.createdAt.toISOString()}
+            title={title}
           >
             {createdAt}
           </Link>
@@ -72,6 +81,9 @@ function TimelineItem({ highlight, update }: TimelineItemProps) {
           )}
         </span>
       </div>
+      {session?.user && (
+        <Interactions username={session.user.username} update={update} />
+      )}
     </div>
   );
 }

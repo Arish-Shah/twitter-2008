@@ -1,12 +1,12 @@
-import { useLoader } from "@/context/loader-context";
 import { useEffect, useTransition } from "react";
+import { useLoadingStore } from "./use-loading-store";
 
 export function useLoadingTransition(): ReturnType<typeof useTransition> {
   const [isPending, startTransition] = useTransition();
-  const { loader } = useLoader();
+  const setLoading = useLoadingStore((state) => state.setLoading);
 
   useEffect(() => {
-    loader(isPending);
+    setLoading(isPending);
     // eslint-disable-next-line
   }, [isPending]);
 
