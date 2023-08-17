@@ -5,8 +5,12 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { UpdateDataType } from "@/types";
 import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 
-export async function postUpdate(data: UpdateDataType, from: string = "web") {
+export const postUpdate = async (
+  data: UpdateDataType,
+  from: string = "web"
+) => {
   const session = await auth();
   if (!session) throw new Error("Unauthenticated");
 
@@ -22,4 +26,7 @@ export async function postUpdate(data: UpdateDataType, from: string = "web") {
     applicationId: application[0].id,
     parentId: data.parent,
   });
-}
+
+  revalidatePath("/home");
+  revalidatePath("/[username]");
+};

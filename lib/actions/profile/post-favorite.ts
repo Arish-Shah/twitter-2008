@@ -4,10 +4,10 @@ import { favorites, updates } from "@/drizzle/schema";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { and, eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { cache } from "react";
 
-export const postFavorite = cache(async (updateId: number) => {
+export const postFavorite = async (updateId: number) => {
   const session = await auth();
   if (!session?.user) return redirect("/login");
 
@@ -33,4 +33,6 @@ export const postFavorite = cache(async (updateId: number) => {
         and(eq(favorites.updateId, updateId), eq(favorites.userId, userId))
       );
   }
-});
+  revalidatePath("/home");
+  revalidatePath("/[username]");
+};

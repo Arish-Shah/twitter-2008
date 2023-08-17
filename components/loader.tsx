@@ -1,17 +1,25 @@
 "use client";
 
 import { useLoadingStore } from "@/hooks/use-loading-store";
+import { PageSizeType } from "@/types";
 import clsx from "clsx";
 import Image from "next/image";
 
-export function Loader() {
+interface LoaderProps {
+  size: PageSizeType;
+}
+
+export function Loader({ size }: LoaderProps) {
   const loading = useLoadingStore((state) => state.loading);
 
   return (
     <span
       className={clsx(
         "absolute right-0 top-[5px] border border-gray-border bg-white",
-        { hidden: !loading }
+        {
+          hidden: !loading,
+          "right-[145px]": size === "small",
+        }
       )}
     >
       <Image

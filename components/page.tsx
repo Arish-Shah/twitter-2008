@@ -20,9 +20,9 @@ export function Page({ size = "default", theme, join, children }: PageProps) {
   return (
     <main className="relative mx-auto w-[763px] p-[16px_0]">
       {css && <style>{css}</style>}
-      <Loader />
+      <Loader size={size} />
       <Header size={size} />
-      <Flash />
+      <Flash size={size} />
       {join && <JoinBanner username={join} />}
       <div
         className={clsx("mt-[6px] bg-arr2 bg-[25px_0] bg-no-repeat pt-[11px]", {

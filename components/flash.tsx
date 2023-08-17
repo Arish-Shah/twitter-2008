@@ -1,11 +1,16 @@
 "use client";
 
 import { useFlashStore } from "@/hooks/use-flash-store";
+import { PageSizeType } from "@/types";
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-export function Flash() {
+interface FlashProps {
+  size: PageSizeType;
+}
+
+export function Flash({ size }: FlashProps) {
   const message = useFlashStore((state) => state.message);
   const setMessage = useFlashStore((state) => state.setMessage);
   const messageRef = useRef<HTMLParagraphElement>(null);
@@ -26,6 +31,7 @@ export function Flash() {
       className={clsx("overflow-hidden", {
         "h-0 transition-height duration-500": !message,
         "h-[105.52px]": message,
+        "w-[620px]": size === "small",
       })}
     >
       <h2 className="pl-[24px]">

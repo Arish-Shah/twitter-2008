@@ -8,7 +8,7 @@ import { getErrorMessage } from "@/lib/utils";
 import type { ProfileUpdateType } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { ReplyIcon } from "./icons/reply";
 import { StarIcon } from "./icons/star";
 import { TrashIcon } from "./icons/trash";
@@ -27,12 +27,10 @@ export function Interactions({
 }: InteractionsProps) {
   const flash = useFlashStore((state) => state.setMessage);
   const [isPending, startTransition] = useLoadingTransition();
-  const [favorited, setFavorited] = useState(update.favorited);
 
   const handleFavorite = async () => {
     try {
       await postFavorite(update.id);
-      setFavorited((favorited) => !favorited);
     } catch (error) {
       flash(getErrorMessage(error));
     }
@@ -57,11 +55,12 @@ export function Interactions({
         title="favorite this update"
         className={clsx({
           "opacity-0 group-hover:opacity-100": !visible,
-          "opacity-100": favorited,
+          "opacity-100": update.favorited,
         })}
         onClick={() => startTransition(() => handleFavorite())}
+        disabled={isPending}
       >
-        <StarIcon favorited={favorited} />
+        <StarIcon favorited={update.favorited} />
       </button>
       {username === update.username ? (
         <button
@@ -69,6 +68,7 @@ export function Interactions({
           className={clsx("mt-[6px]", {
             "opacity-0 group-hover:opacity-100": !visible,
           })}
+          disabled={isPending}
           onClick={() => {
             startTransition(() => handleDelete());
           }}

@@ -4,10 +4,10 @@ import { updates } from "@/drizzle/schema";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { cache } from "react";
 
-export const deleteUpdate = cache(async (updateId: number) => {
+export const deleteUpdate = async (updateId: number) => {
   const session = await auth();
   if (!session?.user) return redirect("/login");
 
@@ -23,4 +23,6 @@ export const deleteUpdate = cache(async (updateId: number) => {
     throw new Error("You are not authorized to delete update.");
 
   await db.delete(updates).where(eq(updates.id, updateId));
-});
+  revalidatePath("/home");
+  revalidatePath("/[username]");
+};
