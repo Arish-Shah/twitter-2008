@@ -1,11 +1,13 @@
 "use client";
 
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
+import { useUpdateFormStore } from "@/hooks/use-update-form-store";
 import { postUpdate } from "@/lib/actions/update/post-update";
 import { updateSchema } from "@/lib/validations/update";
 import { UpdateDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { TextArea } from "../ui/input";
 
@@ -14,29 +16,33 @@ interface UpdateFormProps {
 }
 
 export function UpdateForm({ children }: UpdateFormProps) {
+  const values = useUpdateFormStore((state) => state.values);
+  const setText = useUpdateFormStore((state) => state.setText);
   const {
     register,
     handleSubmit,
     formState: { isValid },
-    watch,
     reset,
     setFocus,
+    setValue,
   } = useForm<UpdateDataType>({
-    defaultValues: {
-      update: "",
-      // TODO: update this if query params changes
-      parent: null,
-    },
     resolver: zodResolver(updateSchema),
   });
   const [, startTransition] = useLoadingTransition();
+  const { onChange, ...rest } = register("text");
+  const charactersLeft = 140 - values.text.length;
 
-  const watchedUpdate = watch("update");
-  const charactersLeft = 140 - watchedUpdate.length;
+  useEffect(() => {
+    setValue("text", values.text);
+    setValue("to", values.to);
+    setValue("kind", values.kind);
+    // eslint-disable-next-line
+  }, [values]);
 
   const update = async (data: UpdateDataType) => {
     await postUpdate(data);
-    setFocus("update");
+    setText("");
+    setFocus("text");
     reset();
   };
 
@@ -48,7 +54,7 @@ export function UpdateForm({ children }: UpdateFormProps) {
     >
       <div className="flex items-center justify-between text-[20px]">
         <label htmlFor="update" className="font-medium text-black">
-          What are you doing?
+          {values.label}
         </label>
         <h1
           className={clsx("font-georgia text-[28px] font-bold", {
@@ -60,12 +66,21 @@ export function UpdateForm({ children }: UpdateFormProps) {
           {charactersLeft}
         </h1>
       </div>
-      <TextArea id="update" rows={2} autoFocus {...register("update")} />
+      <TextArea
+        id="update"
+        rows={2}
+        onChange={(e) => {
+          setText(e.target.value);
+          onChange(e);
+        }}
+        autoFocus
+        {...rest}
+      />
       <div className="flex">
         <div className="flex-1">{children}</div>
         <input
           type="submit"
-          value="update"
+          value={values.button}
           className="min-w-[115px] rounded-[5px] border border-gray-border bg-gradient-to-b from-updatebutton-gradient-from to-updatebutton-gradient-to p-[6px_36px] text-[13.2px] font-medium text-updatebutton shadow-[0.5px_0.5px_0px] shadow-gray active:shadow-none enabled:hover:from-updatebutton-gradient-from-hover enabled:hover:to-updatebutton-gradient-to-hover disabled:text-updatebutton-disabled"
           disabled={!isValid}
         />

@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const updateSchema = z.object({
-  update: z.string().min(1).max(140),
-  parent: z.number().nullable(),
+  text: z.string().min(1).max(140),
+  kind: z.enum(["update", "reply", "direct_message"]),
+  to: z.string().nullable(),
 });

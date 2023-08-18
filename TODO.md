@@ -1,11 +1,11 @@
 - [x] fix footer still linking to same page (needs to be a client component)
-- [ ] for tweets in the last 24 hour, show duration past
-- [ ] extract username, hashtags, and links from tweets. replace with Link
-- [ ] add navigation panel to status page when logged in. also add like and reply button
-- [ ] replace .. with actions when user is logged in on fav, timeline, feed components
-- [ ] use fullnames on page titles when available
+- [x] for tweets in the last 24 hour, show duration past
+- [x] extract username, hashtags, and links from tweets. replace with Link
+- [x] add navigation panel to status page when logged in. also add like and reply button
+- [x] replace .. with actions when user is logged in on fav, timeline, feed components
+- [x] use fullnames on page titles when available
 - [x] check /home tab menu urls
-- [ ] override fullname with username if its available
+- [x] override fullname with username if its available
 - [x] by default username is set as the full name
 - [ ] check and implement
   - https://web.archive.org/web/20091007131707/http://twitter.com//
@@ -13,9 +13,10 @@
   - https://web.archive.org/web/20081001114700/http://twitter.com:80/sessions
   - https://web.archive.org/web/20081217013517/twitter.com/public_timeline
   - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
-- [ ] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss
+- [x] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss
 - [ ] fix signup form, try using useFormStatus etc
 - [x] change application in db to a table as it would also include url etc idk
 - [ ] /help page https://web.archive.org/web/20081031043123/http://twitter.com/help
 - [ ] hide login/join navigation from status page when the user is logged out
-- [ ] use revalidatePath on server actions
+- [x] use revalidatePath on server actions
+- [ ] on signing in as different user, the navbar still links to old profile

@@ -2,12 +2,13 @@
 
 import { useFlashStore } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
+import { useUpdateFormStore } from "@/hooks/use-update-form-store";
 import { deleteUpdate } from "@/lib/actions/profile/delete-update";
 import { postFavorite } from "@/lib/actions/profile/post-favorite";
 import { getErrorMessage } from "@/lib/utils";
 import type { ProfileUpdateType } from "@/types";
 import clsx from "clsx";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { ReplyIcon } from "./icons/reply";
 import { StarIcon } from "./icons/star";
@@ -26,6 +27,9 @@ export function Interactions({
   className,
 }: InteractionsProps) {
   const flash = useFlashStore((state) => state.setMessage);
+  const setText = useUpdateFormStore((state) => state.setText);
+  const router = useRouter();
+
   const [isPending, startTransition] = useLoadingTransition();
 
   const handleFavorite = async () => {
@@ -52,7 +56,9 @@ export function Interactions({
       className={clsx("mx-auto my-[3px] flex flex-col items-center", className)}
     >
       <button
-        title="favorite this update"
+        title={
+          update.favorited ? "remove from favorites" : "favorite this update"
+        }
         className={clsx({
           "opacity-0 group-hover:opacity-100": !visible,
           "opacity-100": update.favorited,
@@ -76,15 +82,18 @@ export function Interactions({
           <TrashIcon />
         </button>
       ) : (
-        <Link
+        <button
           title={`reply to ${update.username}`}
           className={clsx("mt-[6px]", {
             "opacity-0 group-hover:opacity-100": !visible,
           })}
-          href="/home"
+          onClick={() => {
+            setText(`@${update.username} `);
+            router.push("/home");
+          }}
         >
           <ReplyIcon />
-        </Link>
+        </button>
       )}
     </div>
   );
