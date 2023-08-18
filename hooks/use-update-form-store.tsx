@@ -36,7 +36,7 @@ export const useUpdateFormStore = create<UpdateFormState>((set) => ({
         }
         kind = "direct_message";
       } else if (trigger.startsWith("@")) {
-        to = trigger.substring(1);
+        to = words[0].substring(1);
         label = `Replying to ${to}:`;
         kind = "reply";
       }

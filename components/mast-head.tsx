@@ -11,7 +11,7 @@ export async function MastHead({ username }: MastHeadProps) {
 
   return (
     <div className="flex items-center">
-      <Link href={`/account/profile_images/${data.username}`}>
+      <Link href={`/account/profile_images/${data.username}`} prefetch={false}>
         <Image
           src={data.picture}
           alt={data.username}

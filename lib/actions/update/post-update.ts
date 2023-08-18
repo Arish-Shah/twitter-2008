@@ -28,7 +28,8 @@ export const postUpdate = async (
     await db.insert(updates).values({ text, authorId, applicationId });
   } else if (data.kind === "reply") {
     const user = await db.query.users.findFirst({
-      where: (users, { eq }) => eq(users.username, data.to!),
+      where: (users, { sql }) =>
+        sql`lower(${users.username}) = ${data.to!.toLowerCase()}`,
       with: {
         updates: {
           limit: 1,
@@ -46,7 +47,8 @@ export const postUpdate = async (
   } else {
     // TODO: also check if the user follows me
     const user = await db.query.users.findFirst({
-      where: (users, { eq }) => eq(users.username, data.to!),
+      where: (users, { sql }) =>
+        sql`lower(${users.username}) = ${data.to!.toLowerCase()}`,
     });
 
     if (user) {

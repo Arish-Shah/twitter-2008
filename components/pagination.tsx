@@ -39,7 +39,10 @@ export function Pagination({
   return (
     <div className="mt-[16px] flex justify-between leading-[1.2]">
       {type === "newOld" && (
-        <PaginationLink href={`statuses/user_timeline/${userId}.rss`}>
+        <PaginationLink
+          href={`statuses/user_timeline/${userId}.rss`}
+          prefetch={false}
+        >
           RSS
         </PaginationLink>
       )}

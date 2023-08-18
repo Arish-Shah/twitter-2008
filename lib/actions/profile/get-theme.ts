@@ -8,7 +8,8 @@ import { cache } from "react";
 export const getTheme = cache(async (username: string): Promise<ThemeType> => {
   const data = await db.query.users.findFirst({
     columns: {},
-    where: (users, { eq }) => eq(users.username, username),
+    where: (users, { sql }) =>
+      sql`lower(${users.username}) = ${username.toLowerCase()}`,
     with: {
       profile: {
         columns: {},
