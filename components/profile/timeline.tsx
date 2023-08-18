@@ -7,7 +7,7 @@ import {
 import type { ProfileUpdateType } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
-import { Interactions } from "./interactions";
+import { Interactions } from "../interactions";
 
 interface TimelineItemProps {
   update: ProfileUpdateType;

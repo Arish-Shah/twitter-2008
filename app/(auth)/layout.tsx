@@ -1,4 +1,4 @@
-import { Page } from "@/components/page";
+import { Page } from "@/components/ui/page";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 

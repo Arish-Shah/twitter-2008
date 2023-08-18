@@ -1,7 +1,7 @@
 import { IndexLoginForm } from "@/components/forms/index-login-form";
-import { Page } from "@/components/page";
-import { TopUpdates } from "@/components/top-updates";
+import { News } from "@/components/news";
 import { WatchButton } from "@/components/ui/button";
+import { Page } from "@/components/ui/page";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
@@ -27,7 +27,7 @@ export default async function IndexLayout({ children }: IndexLayoutProps) {
           <IndexLoginForm />
         </div>
       </div>
-      <TopUpdates />
+      <News />
     </Page>
   );
 }

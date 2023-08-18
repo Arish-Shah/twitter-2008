@@ -1,7 +1,7 @@
-import { Content, Main, Sidebar } from "@/components/content";
-import { MastHead } from "@/components/mast-head";
-import { Pagination } from "@/components/pagination";
-import { Timeline } from "@/components/timeline";
+import { MastHead } from "@/components/profile/mast-head";
+import { Pagination } from "@/components/profile/pagination";
+import { Timeline } from "@/components/profile/timeline";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getTimeline } from "@/lib/actions/profile/get-timeline";
 
 interface ProfileProps {

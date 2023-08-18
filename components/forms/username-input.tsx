@@ -7,13 +7,13 @@ import clsx from "clsx";
 import Image from "next/image";
 import React, {
   ChangeEventHandler,
-  Fragment,
   forwardRef,
+  Fragment,
   useState,
 } from "react";
 import { useDebounce } from "use-debounce";
-import { Form } from "./ui/form";
-import { Input } from "./ui/input";
+import { Form } from "../ui/form";
+import { Input } from "../ui/input";
 
 interface UsernameInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {

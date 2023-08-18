@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
-import { SignoutForm } from "./forms/logout-form";
+import { SignoutForm } from "../forms/logout-form";
 
 const links: LinkType[] = [
   { label: "Home", href: "/home" },

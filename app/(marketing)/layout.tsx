@@ -1,4 +1,4 @@
-import { Page } from "@/components/page";
+import { Page } from "@/components/ui/page";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;

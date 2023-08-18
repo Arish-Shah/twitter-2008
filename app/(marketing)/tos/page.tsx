@@ -1,4 +1,4 @@
-import { Content, Main, Sidebar } from "@/components/content";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 import type { Metadata } from "next";
 import Link from "next/link";
 

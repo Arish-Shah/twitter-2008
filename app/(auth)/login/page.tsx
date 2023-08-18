@@ -1,6 +1,6 @@
-import { Content, Main, Sidebar } from "@/components/content";
 import { LoginForm } from "@/components/forms/login-form";
 import { JoinButton } from "@/components/ui/button";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 import Link from "next/link";
 
 export default async function Login() {

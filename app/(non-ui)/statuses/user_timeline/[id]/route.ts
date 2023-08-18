@@ -1,4 +1,4 @@
-import { getRSS } from "@/lib/actions/get-rss";
+import { getRSS } from "@/lib/actions/profile/get-rss";
 import dayjs from "dayjs";
 
 export async function GET(_: Request, { params }: { params: { id: string } }) {

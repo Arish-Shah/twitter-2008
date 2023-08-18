@@ -1,5 +1,5 @@
-import { Content, Main, Sidebar } from "@/components/content";
 import { UpdateForm } from "@/components/forms/update-form";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 
 export default async function Home() {
   return (

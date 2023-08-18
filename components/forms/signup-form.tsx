@@ -9,10 +9,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Captcha } from "../captcha";
 import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
-import { UsernameInput } from "../username-input";
+import { Captcha } from "./captcha";
+import { UsernameInput } from "./username-input";
 
 interface SignupFormProps {
   captcha: CaptchaType;

@@ -1,5 +1,5 @@
-import { Content, Main, Sidebar } from "@/components/content";
 import { Employees } from "@/components/employees";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";

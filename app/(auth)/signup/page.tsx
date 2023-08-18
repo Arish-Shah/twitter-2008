@@ -1,5 +1,5 @@
-import { Content, Main, Sidebar } from "@/components/content";
 import { SignupForm } from "@/components/forms/signup-form";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getRandomCaptcha } from "@/lib/utils";
 import type { Metadata } from "next";
 import Link from "next/link";

@@ -1,10 +1,10 @@
 import { getThemeCSS } from "@/lib/utils";
 import type { PageSizeType, ThemeType } from "@/types";
 import clsx from "clsx";
+import { JoinBanner } from "../profile/join-banner";
 import { Flash } from "./flash";
 import { Footer } from "./footer";
 import { Header } from "./header";
-import { JoinBanner } from "./join-banner";
 import { Loader } from "./loader";
 
 interface PageProps {

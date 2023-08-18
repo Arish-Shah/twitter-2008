@@ -1,5 +1,5 @@
-import { Main } from "@/components/content";
 import { ResendPasswordForm } from "@/components/forms/resend-password-form";
+import { Main } from "@/components/ui/content";
 
 export default async function ResendPassword() {
   return (

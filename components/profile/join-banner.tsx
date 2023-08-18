@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
-import { ProfileJoinButton } from "./ui/button";
+import { ProfileJoinButton } from "../ui/button";
 
 interface JoinBannerProps {
   username: string;

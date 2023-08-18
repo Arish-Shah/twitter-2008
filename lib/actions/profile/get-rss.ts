@@ -1,8 +1,8 @@
 "use server";
 
+import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { cache } from "react";
-import { db } from "../db";
 
 export const getRSS = cache(async (userId: string, limit = 20) => {
   const user = await db.query.users.findFirst({

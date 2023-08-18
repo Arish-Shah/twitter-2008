@@ -1,4 +1,4 @@
-import { Page } from "@/components/page";
+import { Page } from "@/components/ui/page";
 import { getTheme } from "@/lib/actions/profile/get-theme";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";

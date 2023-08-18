@@ -5,9 +5,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import Link from "next/link";
 import { Fragment } from "react";
 
-export function getRandomCaptcha(currentIndex?: number): CaptchaType {
-  const getRandomIndex = (limit: number) => Math.floor(Math.random() * limit);
+const getRandomIndex = (limit: number) => Math.floor(Math.random() * limit);
 
+export function getRandomCaptcha(currentIndex?: number): CaptchaType {
   const captchas = [
     ["freitag", "winnie"],
     ["spotters", "investi"],
@@ -96,4 +96,13 @@ export function getErrorMessage(error: unknown) {
 
 export function formatUpdateCreatedAtTitle(createdAt: Date) {
   return dayjs(createdAt).format("YYYY-MM-DDTHH:mm:ssZ");
+}
+
+export function getRandomNewsIndex(length: number) {
+  const indices = [];
+  while (indices.length < 3) {
+    const index = getRandomIndex(length);
+    if (indices.indexOf(index) === -1) indices.push(index);
+  }
+  return indices;
 }

@@ -1,5 +1,5 @@
-import { Content, Main, Sidebar } from "@/components/content";
 import { HelpForm } from "@/components/forms/help-form";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 import Link from "next/link";
 
 export default function Help() {

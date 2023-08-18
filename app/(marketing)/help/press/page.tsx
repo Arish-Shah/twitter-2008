@@ -1,4 +1,4 @@
-import { Content, Main, Sidebar } from "@/components/content";
+import { Content, Main, Sidebar } from "@/components/ui/content";
 import Link from "next/link";
 
 export default function Press() {
