@@ -15,6 +15,7 @@ export type PageSizeType = "large" | "default" | "small";
 export type LinkType = {
   label: string;
   href: string;
+  disablePrefetch?: boolean;
 };
 
 export type VCardType = {

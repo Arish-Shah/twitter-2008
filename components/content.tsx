@@ -128,3 +128,19 @@ Sidebar.OrderedList = function OrderedList({
     <ol className={clsx("list-decimal pl-[30px]", className)}>{children}</ol>
   );
 };
+
+Sidebar.UnorderedList = function UnorderedList({
+  className,
+  children,
+}: ContentProps) {
+  return (
+    <ul className={clsx("list-[square] p-[12px]", className)}>{children}</ul>
+  );
+};
+
+Sidebar.UnorderedListItem = function UnorderedListItem({
+  className,
+  children,
+}: ContentProps) {
+  return <li className={clsx("ml-[12px]", className)}>{children}</li>;
+};

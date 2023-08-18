@@ -16,6 +16,7 @@ interface TimelineItemProps {
 
 interface TimelineProps {
   updates: ProfileUpdateType[];
+  currentPage: number;
 }
 
 async function TimelineItem({ highlight, update }: TimelineItemProps) {
@@ -88,11 +89,15 @@ async function TimelineItem({ highlight, update }: TimelineItemProps) {
   );
 }
 
-export function Timeline({ updates }: TimelineProps) {
+export function Timeline({ updates, currentPage }: TimelineProps) {
   return (
     <div className="mt-[17.5px]">
       {updates.map((update, i) => (
-        <TimelineItem key={update.id} update={update} highlight={i === 0} />
+        <TimelineItem
+          key={update.id}
+          update={update}
+          highlight={currentPage === 1 && i === 0}
+        />
       ))}
     </div>
   );

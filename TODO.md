@@ -20,3 +20,5 @@
 - [ ] hide login/join navigation from status page when the user is logged out
 - [x] use revalidatePath on server actions
 - [ ] on signing in as different user, the navbar still links to old profile
+- [ ] show loading on favorite and delete
+- [ ] help page form should submit

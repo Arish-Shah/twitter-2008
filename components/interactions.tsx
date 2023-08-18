@@ -3,8 +3,8 @@
 import { useFlashStore } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { useUpdateFormStore } from "@/hooks/use-update-form-store";
-import { deleteUpdate } from "@/lib/actions/profile/delete-update";
-import { postFavorite } from "@/lib/actions/profile/post-favorite";
+import { deleteUpdate } from "@/lib/actions/update/delete-update";
+import { postFavorite } from "@/lib/actions/update/post-favorite";
 import { getErrorMessage } from "@/lib/utils";
 import type { ProfileUpdateType } from "@/types";
 import clsx from "clsx";

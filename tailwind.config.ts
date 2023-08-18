@@ -58,6 +58,9 @@ const config: Config = {
         "pagination-border": "#cecece",
         star: "#ffda64",
         "star-border": "#ffac31",
+        downloadbutton: "#d4ff84",
+        "downloadbutton-border": "#693",
+        superscript: "#888",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],

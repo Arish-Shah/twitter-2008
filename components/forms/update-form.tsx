@@ -1,8 +1,10 @@
 "use client";
 
+import { useFlashStore } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { useUpdateFormStore } from "@/hooks/use-update-form-store";
 import { postUpdate } from "@/lib/actions/update/post-update";
+import { getErrorMessage } from "@/lib/utils";
 import { updateSchema } from "@/lib/validations/update";
 import { UpdateDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +20,7 @@ interface UpdateFormProps {
 export function UpdateForm({ children }: UpdateFormProps) {
   const values = useUpdateFormStore((state) => state.values);
   const setText = useUpdateFormStore((state) => state.setText);
+  const flash = useFlashStore((state) => state.setMessage);
   const {
     register,
     handleSubmit,
@@ -39,8 +42,14 @@ export function UpdateForm({ children }: UpdateFormProps) {
     // eslint-disable-next-line
   }, [values]);
 
+  console.log("here");
+
   const update = async (data: UpdateDataType) => {
-    await postUpdate(data);
+    try {
+      await postUpdate(data);
+    } catch (error) {
+      flash(getErrorMessage(error));
+    }
     setText("");
     setFocus("text");
     reset();

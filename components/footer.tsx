@@ -8,11 +8,19 @@ import { usePathname } from "next/navigation";
 const links: LinkType[] = [
   { label: "About Us", href: "/help/aboutus" },
   { label: "Contact", href: "/help/contact" },
-  { label: "Blog", href: "/blog" },
-  { label: "Status", href: "/status" },
+  { label: "Blog", href: "https://blog.twitter.com", disablePrefetch: true },
+  {
+    label: "Status",
+    href: "http://status.twitter.com/",
+    disablePrefetch: true,
+  },
   { label: "Downloads", href: "/downloads" },
-  { label: "API", href: "/api" },
-  { label: "Search", href: "/search" },
+  { label: "API", href: "http://apiwiki.twitter.com/", disablePrefetch: true },
+  {
+    label: "Search",
+    href: "https://search.twitter.com/",
+    disablePrefetch: true,
+  },
   { label: "Help", href: "/help" },
   { label: "Jobs", href: "/help/jobs" },
   { label: "TOS", href: "/tos" },
@@ -37,7 +45,9 @@ export function Footer({ connected }: FooterProps) {
         {links.map((link, i) => (
           <li key={i} className="m-[0_5.65px] inline">
             {link.href !== pathname ? (
-              <Link href={link.href}>{link.label}</Link>
+              <Link href={link.href} prefetch={!link.disablePrefetch}>
+                {link.label}
+              </Link>
             ) : (
               link.label
             )}

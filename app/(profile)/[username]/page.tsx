@@ -20,7 +20,7 @@ export default async function Profile({
     <Content>
       <Main className="px-[20px] pb-[12px] pt-[18px]">
         <MastHead username={username} />
-        <Timeline updates={timeline.updates} />
+        <Timeline updates={timeline.updates} currentPage={currentPage} />
         <Pagination
           userId={timeline.userId}
           currentPage={currentPage}

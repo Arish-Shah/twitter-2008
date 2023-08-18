@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean;
@@ -7,6 +7,8 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { hasError = false, className, ...props },
@@ -56,3 +58,20 @@ export const Submit = forwardRef<HTMLInputElement, InputProps>(function Submit(
     />
   );
 });
+
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+  function Select({ className, children, ...props }, ref) {
+    return (
+      <select
+        className={clsx(
+          "mr-[7px] border border-input-border p-[4px_2px]",
+          className
+        )}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </select>
+    );
+  }
+);
