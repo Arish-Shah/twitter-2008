@@ -31,14 +31,17 @@ export const useUpdateFormStore = create<UpdateFormState>((set) => ({
         if (words.length > 2) {
           to = words[1].startsWith("@") ? words[1].substring(1) : words[1];
           label = `Direct message ${to}:`;
+          button = "send";
         } else {
           label = "Direct message:";
+          button = "send";
         }
         kind = "direct_message";
       } else if (trigger.startsWith("@")) {
         to = words[0].substring(1);
         label = `Replying to ${to}:`;
         kind = "reply";
+        button = "reply";
       }
     }
 

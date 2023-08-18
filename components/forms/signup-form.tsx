@@ -33,7 +33,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
 
   const signup = async (data: SignupDataType) => {
     await signIn("credentials", { redirect: false, kind: "signup", ...data });
-    router.push("/home");
+    router.push("/invitations");
   };
 
   return (

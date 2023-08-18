@@ -85,7 +85,7 @@ export function UpdateForm({ children }: UpdateFormProps) {
         autoFocus
         {...rest}
       />
-      <div className="flex">
+      <div className="flex items-start">
         <div className="flex-1">{children}</div>
         <input
           type="submit"

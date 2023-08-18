@@ -49,7 +49,9 @@ export default function AboutUs() {
       </Main>
       <Sidebar>
         <Sidebar.Section>
-          <Sidebar.H1Underline>Twitter Employees</Sidebar.H1Underline>
+          <Sidebar.H1Underline className="pl-[5px]">
+            Twitter Employees
+          </Sidebar.H1Underline>
           <Employees />
         </Sidebar.Section>
       </Sidebar>

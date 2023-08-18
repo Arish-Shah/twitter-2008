@@ -104,10 +104,8 @@ Sidebar.H1Underline = function H1Underline({
   children,
 }: ContentProps) {
   return (
-    <div className="m-[10px_0_5px_0] border-b border-b-sidebar-heading-border">
-      <h1
-        className={clsx("p-[0_0_2px_5px] text-[13.2px] font-bold", className)}
-      >
+    <div className="m-[10px_0_5px_0] border-b border-sidebar-border">
+      <h1 className={clsx("pb-[2px] text-[13.2px] font-bold", className)}>
         {children}
       </h1>
     </div>
@@ -115,9 +113,7 @@ Sidebar.H1Underline = function H1Underline({
 };
 
 Sidebar.P = function P({ className, children }: ContentProps) {
-  return (
-    <p className={clsx("mt-[15px] text-[10.8px]", className)}>{children}</p>
-  );
+  return <p className={clsx("mt-[15px]", className)}>{children}</p>;
 };
 
 Sidebar.OrderedList = function OrderedList({

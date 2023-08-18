@@ -21,7 +21,7 @@ export default async function Login() {
           <Sidebar.H1 className="mb-[10px]">Create Your Account</Sidebar.H1>
           <div className="text-center">
             <JoinButton />
-            <Sidebar.P>
+            <Sidebar.P className="text-[10.8px]">
               Already using Twitter
               <br />
               from your phone? <Link href="/account/complete">Click here</Link>.

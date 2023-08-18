@@ -19,7 +19,7 @@ export default function Help() {
       <Sidebar>
         <Sidebar.Section>
           <Sidebar.H1>Twitter from your phone!</Sidebar.H1>
-          <Sidebar.P className="!mt-0 text-[12px]">
+          <Sidebar.P className="!mt-0">
             Twitter is great on the go. Update your followers by sending your
             updates to one of the following numbers:
           </Sidebar.P>
@@ -34,7 +34,7 @@ export default function Help() {
               <strong>+44 7624801423</strong> Global!
             </Sidebar.UnorderedListItem>
           </Sidebar.UnorderedList>
-          <Sidebar.P className="!mt-0 text-[12px]">
+          <Sidebar.P className="!mt-0">
             What else can you do from your phone? Check out this lingo:
           </Sidebar.P>
           <Sidebar.UnorderedList>

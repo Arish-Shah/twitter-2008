@@ -23,7 +23,7 @@ export default async function Signup() {
           <Sidebar.H1 className="!m-0 text-[14.04px]">
             Already a member? Please <Link href="/login">Sign In!</Link>
           </Sidebar.H1>
-          <Sidebar.P className="!mt-0 text-[12px]">
+          <Sidebar.P className="!mt-0">
             Already use Twitter on your phone?{" "}
             <Link href="/account/complete">Head over here</Link> and we&rsquo;ll
             get you signed up on the web.

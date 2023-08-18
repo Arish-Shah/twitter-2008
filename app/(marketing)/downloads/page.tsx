@@ -224,7 +224,7 @@ export default function Downloads() {
                   <br />
                   <Link
                     href={item.downloadUrl}
-                    className="border border-downloadbutton-border bg-downloadbutton p-[5px] font-bold text-black"
+                    className="border border-downloadbutton-border bg-downloadbutton p-[5px] font-bold text-black hover:no-underline"
                   >
                     {item.button === "install" ? "Install" : "Download"}
                   </Link>{" "}
