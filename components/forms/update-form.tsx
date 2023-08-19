@@ -42,8 +42,6 @@ export function UpdateForm({ children }: UpdateFormProps) {
     // eslint-disable-next-line
   }, [values]);
 
-  console.log("here");
-
   const update = async (data: UpdateDataType) => {
     try {
       await postUpdate(data);

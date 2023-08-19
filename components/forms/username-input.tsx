@@ -49,13 +49,11 @@ export const UsernameInput = forwardRef<HTMLInputElement, UsernameInputProps>(
       <Fragment>
         <Input
           type="text"
-          id="username"
           maxLength={15}
           onChange={handleChange}
           ref={ref}
           hasError={hasError}
           {...props}
-          autoFocus
         />
         <Form.Subtext>
           Your URL: http://twitter.com/

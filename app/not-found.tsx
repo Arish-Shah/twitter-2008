@@ -16,7 +16,6 @@ const links: LinkType[] = [
 
 export default async function NotFound() {
   const session = await auth();
-
   if (session?.user) links[0].href = "/home";
 
   return (

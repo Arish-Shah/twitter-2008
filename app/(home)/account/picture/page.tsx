@@ -1,3 +1,4 @@
+import { PictureForm } from "@/components/forms/picture-form";
 import { MastHead } from "@/components/profile/mast-head";
 import { Tabs } from "@/components/profile/tabs";
 import { Content, Main, Sidebar } from "@/components/ui/content";
@@ -16,6 +17,7 @@ export default async function Picture() {
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
         <Tabs selected="Picture" />
+        <PictureForm />
       </Main>
       <Sidebar>
         <Sidebar.Section className="pr-[18px]">

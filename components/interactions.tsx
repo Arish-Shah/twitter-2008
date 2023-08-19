@@ -1,6 +1,7 @@
 "use client";
 
 import { useFlashStore } from "@/hooks/use-flash-store";
+import { useLoadingStore } from "@/hooks/use-loading-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { useUpdateFormStore } from "@/hooks/use-update-form-store";
 import { deleteUpdate } from "@/lib/actions/update/delete-update";
@@ -27,6 +28,7 @@ export function Interactions({
   className,
 }: InteractionsProps) {
   const flash = useFlashStore((state) => state.setMessage);
+  const setLoading = useLoadingStore((state) => state.setLoading);
   const setText = useUpdateFormStore((state) => state.setText);
   const router = useRouter();
 
@@ -45,7 +47,9 @@ export function Interactions({
       const confirmDelete = confirm(
         "Sure you want to delete this update? There is NO undo!"
       );
-      confirmDelete && (await deleteUpdate(update.id));
+      if (confirmDelete) await deleteUpdate(update.id);
+      // TODO: loading state isn't set to false with delete, test
+      setLoading(false);
     } catch (error) {
       flash(getErrorMessage(error));
     }
@@ -57,20 +61,22 @@ export function Interactions({
     >
       <button
         title={
-          update.favorited ? "remove from favorites" : "favorite this update"
+          update.favorited ? "Remove from favorites" : "Favorite this update"
         }
         className={clsx({
           "opacity-0 group-hover:opacity-100": !visible,
           "opacity-100": update.favorited,
         })}
-        onClick={() => startTransition(() => handleFavorite())}
+        onClick={() => {
+          startTransition(() => handleFavorite());
+        }}
         disabled={isPending}
       >
         <StarIcon favorited={update.favorited} />
       </button>
       {username === update.username ? (
         <button
-          title="delete this update"
+          title="Delete this update?"
           className={clsx("mt-[6px]", {
             "opacity-0 group-hover:opacity-100": !visible,
           })}

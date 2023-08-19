@@ -1,5 +1,9 @@
+import { Following } from "@/components/profile/following";
+import { Info } from "@/components/profile/info";
 import { MastHead } from "@/components/profile/mast-head";
+import { Menu } from "@/components/profile/menu";
 import { Pagination } from "@/components/profile/pagination";
+import { Stats } from "@/components/profile/stats";
 import { Timeline } from "@/components/profile/timeline";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getTimeline } from "@/lib/actions/profile/get-timeline";
@@ -28,7 +32,16 @@ export default async function Profile({
           type="newOld"
         />
       </Main>
-      <Sidebar>sidebar</Sidebar>
+      <Sidebar>
+        <Sidebar.Section>
+          <Info username={username} />
+          <Stats username={username} />
+        </Sidebar.Section>
+        <Menu type={{ username }} selected="Updates" />
+        <Sidebar.Section bordered>
+          <Following username={username} />
+        </Sidebar.Section>
+      </Sidebar>
     </Content>
   );
 }

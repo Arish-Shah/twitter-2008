@@ -6,9 +6,14 @@ import Link from "next/link";
 interface MastHeadProps {
   size?: "small";
   username: string;
+  light?: boolean;
 }
 
-export async function MastHead({ size, username }: MastHeadProps) {
+export async function MastHead({
+  size,
+  username,
+  light = false,
+}: MastHeadProps) {
   const data = await getMastHead(username);
   const small = size === "small";
 
@@ -31,8 +36,9 @@ export async function MastHead({ size, username }: MastHeadProps) {
       </Link>
       <h2
         className={clsx({
-          "ml-[10px] mt-[-5px] text-[33.6px] font-bold": !small,
-          "ml-[8px] text-[18px] font-bold": small,
+          "ml-[10px] mt-[-5px] text-[33.6px]": !small,
+          "ml-[8px] text-[14.4px]": small,
+          "text-[18px] font-bold": !light,
         })}
       >
         {data.username}

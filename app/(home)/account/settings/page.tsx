@@ -1,8 +1,10 @@
+import { SettingsForm } from "@/components/forms/settings-form";
 import { MastHead } from "@/components/profile/mast-head";
 import { Tabs } from "@/components/profile/tabs";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Twitter / Settings",
@@ -16,6 +18,11 @@ export default async function Settings() {
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
         <Tabs selected="Account" />
+        <SettingsForm />
+        <div className="h-[10px]"></div>
+        <Link href="/account/delete" prefetch={false}>
+          Delete my account
+        </Link>
       </Main>
       <Sidebar>
         <Sidebar.Section className="pr-[16px]">

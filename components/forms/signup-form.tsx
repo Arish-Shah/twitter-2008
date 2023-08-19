@@ -49,8 +49,10 @@ export function SignupForm({ captcha }: SignupFormProps) {
         </Form.LabelGroup>
         <Form.InputGroup>
           <UsernameInput
+            id="username"
             hasError={!!errors.username}
             {...register("username")}
+            autoFocus
           />
         </Form.InputGroup>
       </Form.Row>
