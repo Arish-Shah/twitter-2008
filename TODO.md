@@ -14,11 +14,12 @@
   - https://web.archive.org/web/20081217013517/twitter.com/public_timeline
   - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
 - [x] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss
-- [ ] fix signup form, try using useFormStatus etc
+- [ ] fix signup form, try using useFormStatus etc => but it has to be reused in another place??
 - [x] change application in db to a table as it would also include url etc idk
 - [ ] /help page https://web.archive.org/web/20081031043123/http://twitter.com/help
-- [ ] hide login/join navigation from status page when the user is logged out
+- [x] hide login/join navigation from status page when the user is logged out => meh, it's fine
 - [x] use revalidatePath on server actions
 - [ ] on signing in as different user, the navbar still links to old profile
-- [ ] show loading on favorite and delete
+- [x] show loading on favorite and delete
 - [ ] help page form should submit
+- [ ] deleting a tweet from status page goes to 404, what to do?

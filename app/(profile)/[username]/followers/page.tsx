@@ -1,5 +1,5 @@
+import { Menu } from "@/components/home/menu";
 import { Info } from "@/components/profile/info";
-import { Menu } from "@/components/profile/menu";
 import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 

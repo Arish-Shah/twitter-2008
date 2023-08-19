@@ -1,7 +1,7 @@
+import { Menu } from "@/components/home/menu";
 import { Following } from "@/components/profile/following";
 import { Info } from "@/components/profile/info";
 import { MastHead } from "@/components/profile/mast-head";
-import { Menu } from "@/components/profile/menu";
 import { Pagination } from "@/components/profile/pagination";
 import { Stats } from "@/components/profile/stats";
 import { Timeline } from "@/components/profile/timeline";

@@ -1,6 +1,6 @@
 import { SettingsForm } from "@/components/forms/settings-form";
+import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
-import { Tabs } from "@/components/profile/tabs";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";

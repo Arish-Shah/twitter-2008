@@ -7,7 +7,6 @@ import { useUpdateFormStore } from "@/hooks/use-update-form-store";
 import { deleteUpdate } from "@/lib/actions/update/delete-update";
 import { postFavorite } from "@/lib/actions/update/post-favorite";
 import { getErrorMessage } from "@/lib/utils";
-import type { ProfileUpdateType } from "@/types";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -16,7 +15,7 @@ import { StarIcon } from "./icons/star";
 import { TrashIcon } from "./icons/trash";
 
 interface InteractionsProps extends React.HTMLAttributes<HTMLDivElement> {
-  update: ProfileUpdateType;
+  update: { id: number; username: string; favorited: boolean };
   username: string;
   visible?: boolean;
 }

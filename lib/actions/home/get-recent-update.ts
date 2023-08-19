@@ -2,12 +2,13 @@
 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { redirect } from "next/navigation";
 import { cache } from "react";
 
 export const getRecentUpdate = cache(async () => {
-  const session = await auth();
-  if (!session?.user) return redirect("/login");
+  const {
+    user: { id },
+  } = await auth();
+  const userId = Number(id);
 
   const update = await db.query.updates.findFirst({
     columns: {
@@ -15,7 +16,7 @@ export const getRecentUpdate = cache(async () => {
       text: true,
       createdAt: true,
     },
-    where: (updates, { eq }) => eq(updates.authorId, Number(session.user.id)),
+    where: (updates, { eq }) => eq(updates.authorId, userId),
     with: {
       author: {
         columns: {

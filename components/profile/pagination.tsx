@@ -8,7 +8,7 @@ interface PaginationLinkProps extends LinkProps {
 
 interface PaginationProps {
   type: "prevNext" | "newOld";
-  userId: number;
+  userId: number | string;
   currentPage: number;
   hasMore: boolean;
 }

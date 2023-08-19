@@ -6,8 +6,7 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 
 export const getTimeline = cache(
-  async (username: string, page: number = 1, limit = 20) => {
-    const offset = 20 * (page - 1);
+  async (username: string, page = 1, limit = 20) => {
     const session = await auth();
 
     // TODO: might wanna change this
@@ -25,7 +24,7 @@ export const getTimeline = cache(
     const data = await db.query.updates.findMany({
       where: (updates, { eq }) => eq(updates.authorId, user.id),
       limit: limit + 1,
-      offset,
+      offset: limit * (page - 1),
       columns: {
         id: true,
         text: true,

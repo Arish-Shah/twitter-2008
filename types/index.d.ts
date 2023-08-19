@@ -1,5 +1,4 @@
 import { themes } from "@/drizzle/schema";
-import { getTimeline } from "@/lib/actions/profile/get-timeline";
 import {
   completeSchema,
   loginSchema,
@@ -50,7 +49,3 @@ export type ThemeType = Pick<
   | "links"
   | "text"
 >;
-
-export type ProfileUpdateType = Awaited<
-  ReturnType<typeof getTimeline>
->["updates"][number];

@@ -1,4 +1,4 @@
-import { getRecentUpdate } from "@/lib/actions/profile/get-recent-update";
+import { getRecentUpdate } from "@/lib/actions/home/get-recent-update";
 import { formatUpdateCreatedAt } from "@/lib/utils";
 import Link from "next/link";
 

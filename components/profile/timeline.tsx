@@ -1,21 +1,23 @@
+import { getTimeline } from "@/lib/actions/profile/get-timeline";
 import { auth } from "@/lib/auth";
 import {
   formatUpdateCreatedAt,
   formatUpdateCreatedAtTitle,
   formatUpdateText,
 } from "@/lib/utils";
-import type { ProfileUpdateType } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
 import { Interactions } from "../interactions";
 
+type TimelineType = Awaited<ReturnType<typeof getTimeline>>["updates"];
+
 interface TimelineItemProps {
-  update: ProfileUpdateType;
+  update: TimelineType[number];
   highlight: boolean;
 }
 
 interface TimelineProps {
-  updates: ProfileUpdateType[];
+  updates: TimelineType;
   currentPage: number;
 }
 

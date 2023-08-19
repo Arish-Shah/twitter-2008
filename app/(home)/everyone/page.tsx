@@ -1,5 +1,5 @@
+import { Menu } from "@/components/home/menu";
 import { MastHead } from "@/components/profile/mast-head";
-import { Menu } from "@/components/profile/menu";
 import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { auth } from "@/lib/auth";

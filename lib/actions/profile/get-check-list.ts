@@ -4,14 +4,14 @@ import { deviceUpdates, updates } from "@/drizzle/schema";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { eq } from "drizzle-orm";
-import { redirect } from "next/navigation";
 import { cache } from "react";
 
 export const getCheckList = cache(async () => {
-  const session = await auth();
-  if (!session?.user) return redirect("/login");
+  const {
+    user: { id },
+  } = await auth();
 
-  const userId = Number(session.user.id);
+  const userId = Number(id);
 
   const updateData = await db
     .select({})

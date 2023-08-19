@@ -39,6 +39,7 @@ export function UpdateForm({ children }: UpdateFormProps) {
     setValue("text", values.text);
     setValue("to", values.to);
     setValue("kind", values.kind);
+    setFocus("text");
     // eslint-disable-next-line
   }, [values]);
 
