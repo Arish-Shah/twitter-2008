@@ -3,18 +3,19 @@ import {
   integer,
   pgTable,
   serial,
+  text,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { deviceUpdateEnum } from "./enum";
+import { deviceUpdateTypeEnum } from "./enum";
 import { users } from "./user";
 
 export const deviceUpdates = pgTable("device_updates", {
   id: serial("id").primaryKey().notNull(),
-  phone: integer("phone"),
-  type: deviceUpdateEnum("type").default("on").notNull(),
-  custom: boolean("custom").default(true).notNull(),
-  from: integer("from").default(20).notNull(),
-  to: integer("to").default(4).notNull(),
+  phone: text("phone").unique().notNull(),
+  type: deviceUpdateTypeEnum("type").default("off").notNull(),
+  sleep: boolean("sleep").default(true).notNull(),
+  from: integer("from").default(0).notNull(),
+  to: integer("to").default(0).notNull(),
   userId: integer("user_id")
     .references(() => users.id, { onDelete: "cascade" })
     .notNull(),

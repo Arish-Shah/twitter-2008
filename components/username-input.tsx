@@ -12,8 +12,8 @@ import React, {
   useState,
 } from "react";
 import { useDebounce } from "use-debounce";
-import { Form } from "../ui/form";
-import { Input } from "../ui/input";
+import { Form } from "./ui/form";
+import { Input } from "./ui/input";
 
 interface UsernameInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -91,6 +91,7 @@ export const UsernameInput = forwardRef<HTMLInputElement, UsernameInputProps>(
                 width={10}
                 quality={100}
                 className="inline"
+                draggable={false}
               />{" "}
               Checking for availability of this username ...
             </span>

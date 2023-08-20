@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Form } from "../ui/form";
 import { Input, Select, Submit } from "../ui/input";
-import { UsernameInput } from "./username-input";
+import { UsernameInput } from "../username-input";
 
 interface SettingsFormProps {}
 
@@ -47,7 +47,7 @@ export function SettingsForm({}: SettingsFormProps) {
             </strong>
             <div className="h-[15px]"></div>
             <Form.Row>
-              <Form.LabelGroup className="!w-0 p-[3px_3px_0_0]">
+              <Form.LabelGroup className="!w-0">
                 <label htmlFor="password" className="font-bold">
                   Password:
                 </label>

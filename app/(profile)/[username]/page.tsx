@@ -1,4 +1,5 @@
 import { Menu } from "@/components/home/menu";
+import { Follow } from "@/components/profile/follow";
 import { Following } from "@/components/profile/following";
 import { Info } from "@/components/profile/info";
 import { MastHead } from "@/components/profile/mast-head";
@@ -7,6 +8,7 @@ import { Stats } from "@/components/profile/stats";
 import { Timeline } from "@/components/profile/timeline";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getTimeline } from "@/lib/actions/profile/get-timeline";
+import { auth } from "@/lib/auth";
 
 interface ProfileProps {
   params: { username: string };
@@ -17,6 +19,8 @@ export default async function Profile({
   params: { username },
   searchParams,
 }: ProfileProps) {
+  const session = await auth();
+
   const currentPage = Number(searchParams.page || 1);
   const timeline = await getTimeline(username, currentPage);
 
@@ -24,6 +28,7 @@ export default async function Profile({
     <Content>
       <Main className="!p-[18px_20px_12px_20px]">
         <MastHead username={username} />
+        {session?.user.username !== username && <Follow username={username} />}
         <Timeline updates={timeline.updates} currentPage={currentPage} />
         <Pagination
           userId={timeline.userId}

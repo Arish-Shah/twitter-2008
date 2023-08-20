@@ -43,6 +43,7 @@ export default function AboutUs() {
             width={400}
             quality={100}
             className="mx-auto"
+            draggable={false}
           />
         </Main.P>
         <div className="h-[21px]" />

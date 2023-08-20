@@ -4,7 +4,7 @@ import Link from "next/link";
 const home = [
   { label: "Home", href: "/home" },
   { label: "@Replies", href: "/replies" },
-  { label: "Direct Messages", href: "/direct_messages" },
+  { label: "Direct Messages", href: "/direct_messages", unread: 0 },
   { label: "Favorites", href: "/favorites" },
   { label: "Everyone", href: "/everyone" },
 ] as const;
@@ -41,12 +41,13 @@ function MenuItem({ link, selected }: MenuItemProps) {
         )}
       >
         <span>{link.label}</span>
-        {/* {unreadCount && <span>{unreadCount}</span>} */}
+        {link.label === "Direct Messages" && <span>{link.unread}</span>}
       </Link>
     </li>
   );
 }
 
+// TODO: unread counter
 export function Menu({ type, selected }: MenuProps) {
   const links = type === "home" ? home : profile(type.username);
 

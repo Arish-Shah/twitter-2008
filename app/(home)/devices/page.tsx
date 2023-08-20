@@ -1,6 +1,8 @@
+import { DevicesForm } from "@/components/forms/devices-form";
 import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
 import { Content, Main, Sidebar } from "@/components/ui/content";
+import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
@@ -9,13 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default async function ProfileSettings() {
-  const session = await auth();
+  const { user } = await auth();
+  const device = await getDeviceUpdates();
 
   return (
     <Content>
       <Main className="!p-[12px]">
-        <MastHead username={session.user.username} size="small" />
+        <MastHead username={user.username} size="small" />
         <Tabs selected="Devices" />
+        <DevicesForm device={device} />
       </Main>
       <Sidebar>
         <Sidebar.Section className="pr-[16px]">

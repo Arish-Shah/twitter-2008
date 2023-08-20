@@ -23,3 +23,5 @@
 - [x] show loading on favorite and delete
 - [ ] help page form should submit
 - [ ] deleting a tweet from status page goes to 404, what to do?
+- [ ] fix /account/complete and /account/resend_password they only work when logged in
+- [ ] test react-hook-form's Form component for progressive enhancement

@@ -1,8 +1,9 @@
-import { getFollowing } from "@/lib/actions/profile/get-following";
+import { getFollowingSection } from "@/lib/actions/profile/get-following";
 import { auth } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
+import { Sidebar } from "../ui/content";
 
 interface FollowingProps {
   username: string;
@@ -10,14 +11,14 @@ interface FollowingProps {
 
 export async function Following({ username }: FollowingProps) {
   const session = await auth();
-  const data = await getFollowing(username);
+  const data = await getFollowingSection(username);
 
   return (
     <Fragment>
       <div className="flex items-center justify-between">
-        <span className="text-[13.2px] font-bold">Following</span>
+        <Sidebar.H1 className="!m-0">Following</Sidebar.H1>
         {session?.user.username === username && (
-          <Link href="/invitations" className="text-[12px]">
+          <Link href="/invitations" className="text-[10.8px]">
             add
           </Link>
         )}
@@ -33,6 +34,7 @@ export async function Following({ username }: FollowingProps) {
                 width={24}
                 quality={100}
                 className="mb-[5px] inline"
+                draggable={false}
               />
             </Link>
           </span>

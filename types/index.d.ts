@@ -5,6 +5,12 @@ import {
   resendPasswordSchema,
   signupSchema,
 } from "@/lib/validations/auth";
+import {
+  deviceSetupSchema,
+  deviceUpdateSleepSchema,
+  deviceUpdateTypeSchema,
+} from "@/lib/validations/device";
+import { noticeSchema } from "@/lib/validations/notice";
 import { updateSchema } from "@/lib/validations/update";
 import { InferModel } from "drizzle-orm";
 import { z } from "zod";
@@ -34,6 +40,10 @@ export type LoginDataType = z.infer<typeof loginSchema>;
 export type CompleteDataType = z.infer<typeof completeSchema>;
 export type ResendPasswordDataType = z.infer<typeof resendPasswordSchema>;
 export type UpdateDataType = z.infer<typeof updateSchema>;
+export type DeviceSetupDataType = z.infer<typeof deviceSetupSchema>;
+export type DeviceUpdateTypeDataType = z.infer<typeof deviceUpdateTypeSchema>;
+export type DeviceUpdateSleepDataType = z.infer<typeof deviceUpdateSleepSchema>;
+export type NoticeDataType = z.infer<typeof noticeSchema>;
 
 export type CredentialsDataType =
   | ({ kind: "signup" } & SignupDataType)

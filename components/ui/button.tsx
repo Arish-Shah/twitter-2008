@@ -38,6 +38,7 @@ export function WatchButton() {
         quality={100}
         sizes="13px"
         alt="Arrow_on_red"
+        draggable={false}
       />{" "}
       Watch a video!
     </Link>

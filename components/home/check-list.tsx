@@ -7,6 +7,8 @@ import { Main } from "../ui/content";
 export async function CheckList() {
   const checkList = await getCheckList();
 
+  if (checkList.every((item) => item)) return null;
+
   return (
     <div className="mt-[20px] flex items-start px-[20px] pb-[30px]">
       <Image

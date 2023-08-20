@@ -48,6 +48,7 @@ export function IndexLoginForm() {
           id="usernameOrEmail"
           className="w-full"
           {...register("usernameOrEmail")}
+          autoFocus
         />
       </div>
       <div className="my-[5px]">

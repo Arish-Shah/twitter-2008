@@ -1,10 +1,4 @@
-import {
-  deviceUpdates,
-  notices,
-  profiles,
-  themes,
-  users,
-} from "@/drizzle/schema";
+import { notices, profiles, themes, users } from "@/drizzle/schema";
 import type { CredentialsDataType } from "@/types";
 import { compare, hash } from "bcrypt";
 import { or, sql } from "drizzle-orm";
@@ -41,7 +35,6 @@ export const {
           await db
             .insert(notices)
             .values({ userId, newsletter: params.newsletter });
-          await db.insert(deviceUpdates).values({ userId });
 
           return {
             id: userResult[0].id.toString(),

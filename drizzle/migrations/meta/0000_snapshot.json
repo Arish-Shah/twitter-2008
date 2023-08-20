@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "a0551ded-4275-453f-b220-f78b26a64fc6",
+  "id": "5c0ee80f-f966-489b-82ab-5818eb297bdb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "applications": {
@@ -103,19 +103,19 @@
         },
         "phone": {
           "name": "phone",
-          "type": "integer",
+          "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "type": {
           "name": "type",
-          "type": "device_update",
+          "type": "device_update_type",
           "primaryKey": false,
           "notNull": true,
-          "default": "'on'"
+          "default": "'off'"
         },
-        "custom": {
-          "name": "custom",
+        "sleep": {
+          "name": "sleep",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,
@@ -126,14 +126,14 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "default": 20
+          "default": 0
         },
         "to": {
           "name": "to",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "default": 4
+          "default": 0
         },
         "user_id": {
           "name": "user_id",
@@ -169,7 +169,13 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "device_updates_phone_unique": {
+          "name": "device_updates_phone_unique",
+          "nullsNotDistinct": false,
+          "columns": ["phone"]
+        }
+      }
     },
     "favorites": {
       "name": "favorites",
@@ -775,8 +781,8 @@
     }
   },
   "enums": {
-    "device_update": {
-      "name": "device_update",
+    "device_update_type": {
+      "name": "device_update_type",
       "values": {
         "on": "on",
         "off": "off",

@@ -1,6 +1,13 @@
 import { db } from "@/lib/db";
 import { hash } from "bcrypt";
-import { applications, profiles, themes, updates, users } from "./schema";
+import {
+  applications,
+  notices,
+  profiles,
+  themes,
+  updates,
+  users,
+} from "./schema";
 
 export async function main() {
   const password = await hash("arish", 10);
@@ -37,6 +44,8 @@ export async function main() {
     tile: false,
     profileId,
   });
+
+  await db.insert(notices).values({ userId });
 
   const applicationResult = await db
     .insert(applications)

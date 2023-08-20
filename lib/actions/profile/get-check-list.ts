@@ -7,11 +7,8 @@ import { eq } from "drizzle-orm";
 import { cache } from "react";
 
 export const getCheckList = cache(async () => {
-  const {
-    user: { id },
-  } = await auth();
-
-  const userId = Number(id);
+  const { user } = await auth();
+  const userId = Number(user.id);
 
   const updateData = await db
     .select({})

@@ -1,6 +1,8 @@
+import { NoticesForm } from "@/components/forms/notices-form";
 import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
 import { Content, Main, Sidebar } from "@/components/ui/content";
+import { getNotices } from "@/lib/actions/settings/get-update-notices";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -11,12 +13,14 @@ export const metadata: Metadata = {
 
 export default async function Notices() {
   const session = await auth();
+  const notices = await getNotices();
 
   return (
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
         <Tabs selected="Notices" />
+        <NoticesForm notices={notices} />
       </Main>
       <Sidebar>
         <Sidebar.Section className="pr-[18px]">

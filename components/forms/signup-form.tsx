@@ -9,10 +9,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Captcha } from "../captcha";
 import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
-import { Captcha } from "./captcha";
-import { UsernameInput } from "./username-input";
+import { UsernameInput } from "../username-input";
 
 interface SignupFormProps {
   captcha: CaptchaType;
@@ -136,7 +136,11 @@ export function SignupForm({ captcha }: SignupFormProps) {
       <Form.Row>
         <Form.LabelGroup />
         <Form.InputGroup>
-          <Submit value="I accept. Create my account." disabled={submitting} />
+          <Submit
+            value="I accept. Create my account."
+            className="disabled:text-gray-disabled disabled:hover:text-gray-disabled-hover"
+            disabled={submitting}
+          />
         </Form.InputGroup>
       </Form.Row>
     </Form>

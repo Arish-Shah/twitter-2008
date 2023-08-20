@@ -16,6 +16,7 @@ export function PictureForm({}: PictureFormProps) {
             width={48}
             quality={100}
             className="inline-block"
+            draggable={false}
           />
         </Form.LabelGroup>
         <Form.InputGroup>

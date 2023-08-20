@@ -2,7 +2,7 @@ import { Main } from "@/components/ui/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Twitter / Invitations",
+  title: "Twitter / Find People You Know on Twitter",
 };
 
 export default function Invitations() {

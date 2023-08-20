@@ -47,7 +47,7 @@ Main.H4 = function H4({ className, children }: ContentProps) {
 
 Main.P = function P({ className, children }: ContentProps) {
   return (
-    <p className={clsx("m-[5px_0] leading-[1.2]", className)}>{children}</p>
+    <div className={clsx("m-[5px_0] leading-[1.2]", className)}>{children}</div>
   );
 };
 
@@ -113,7 +113,7 @@ Sidebar.H1Underline = function H1Underline({
 };
 
 Sidebar.P = function P({ className, children }: ContentProps) {
-  return <p className={clsx("mt-[15px]", className)}>{children}</p>;
+  return <div className={clsx("mt-[15px]", className)}>{children}</div>;
 };
 
 Sidebar.OrderedList = function OrderedList({

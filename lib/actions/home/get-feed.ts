@@ -5,10 +5,8 @@ import { eq, inArray } from "drizzle-orm";
 import { cache } from "react";
 
 export const getFeed = cache(async (page = 1, limit = 20) => {
-  const {
-    user: { id },
-  } = await auth();
-  const userId = Number(id);
+  const { user } = await auth();
+  const userId = Number(user.id);
 
   const following = await db
     .select({ id: follows.followingId })

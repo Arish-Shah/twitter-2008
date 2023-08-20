@@ -28,13 +28,14 @@ function FeedItem({ update, username }: FeedItemProps) {
   return (
     <div className="group flex h-[70.84px] items-center border-b border-dashed border-timeline-border px-[5px] hover:bg-timeline-hover">
       <div className="w-[55px]">
-        <Link href={`/${""}`}>
+        <Link href={`/${update.username}`}>
           <Image
             src={update.author.picture}
             alt={`${update.username} picture`}
             height={48}
             width={48}
             quality={100}
+            draggable={false}
           />
         </Link>
       </div>

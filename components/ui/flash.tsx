@@ -28,21 +28,28 @@ export function Flash({ size }: FlashProps) {
 
   return (
     <div
-      className={clsx("overflow-hidden", {
-        "h-0 transition-height duration-500": !message,
+      className={clsx("overflow-hidden transition-height duration-500", {
+        "h-0": !message,
         "h-[105.52px]": message,
         "w-[620px]": size === "small",
       })}
     >
       <h2 className="pl-[24px]">
-        <Image src="/images/ui/girl.gif" alt="Girl" height={40} width={18} />
+        <Image
+          src="/images/ui/girl.gif"
+          alt="Girl"
+          height={40}
+          width={18}
+          draggable={false}
+        />
       </h2>
       <div className="mt-[6px] bg-arr2 bg-[25px_0] bg-no-repeat pt-[11px]"></div>
       <div className="mb-[4px]">
-        <p
+        <div
           className="rounded bg-white p-[7px] text-[25.44px] font-bold leading-[1.2]"
           ref={messageRef}
-        ></p>
+        />
+        p
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ export function Employees() {
               width={24}
               quality={100}
               className="mb-[3px] mr-[5.35px] inline"
+              draggable={false}
             />
           </Link>
         ))}

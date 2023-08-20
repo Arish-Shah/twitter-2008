@@ -17,6 +17,7 @@ export function JoinBanner({ username }: JoinBannerProps) {
         height={48}
         width={48}
         quality={100}
+        draggable={false}
       />
       <div className="mb-[10px] mt-[-7.5px] flex w-[763px] border border-join-banner-border bg-join-banner p-[15px_10px_20px_10px]">
         <div className="w-[480px]">

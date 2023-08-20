@@ -6,7 +6,9 @@ import { cache } from "react";
 
 export const getMastHead = cache(async (username: string) => {
   const data = await db.query.users.findFirst({
-    columns: {},
+    columns: {
+      username: true,
+    },
     where: (users, { sql }) =>
       sql`lower(${users.username}) = ${username.toLowerCase()}`,
     with: {
@@ -20,7 +22,7 @@ export const getMastHead = cache(async (username: string) => {
   if (!data) return notFound();
 
   return {
-    username,
-    picture: data?.profile.picture,
+    username: data.username,
+    picture: data.profile.picture,
   };
 });

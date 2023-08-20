@@ -22,6 +22,7 @@ export default function Jobs() {
           width={517}
           height={193}
           quality={100}
+          draggable={false}
         />
         <div className="ml-[9px] w-full border border-badgebox-border bg-badgebox p-[5px]">
           <Main.H3 className="mt-0 text-[14.4px]">Current positions:</Main.H3>

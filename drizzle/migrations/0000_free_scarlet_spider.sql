@@ -1,5 +1,5 @@
 DO $$ BEGIN
- CREATE TYPE "device_update" AS ENUM('on', 'off', 'direct_messages');
+ CREATE TYPE "device_update_type" AS ENUM('on', 'off', 'direct_messages');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -38,14 +38,15 @@ CREATE TABLE IF NOT EXISTS "blocks" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "device_updates" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"phone" integer,
-	"type" "device_update" DEFAULT 'on' NOT NULL,
-	"custom" boolean DEFAULT true NOT NULL,
-	"from" integer DEFAULT 20 NOT NULL,
-	"to" integer DEFAULT 4 NOT NULL,
+	"phone" text NOT NULL,
+	"type" "device_update_type" DEFAULT 'off' NOT NULL,
+	"sleep" boolean DEFAULT true NOT NULL,
+	"from" integer DEFAULT 0 NOT NULL,
+	"to" integer DEFAULT 0 NOT NULL,
 	"user_id" integer NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
-	"updated_at" timestamp with time zone DEFAULT now() NOT NULL
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "device_updates_phone_unique" UNIQUE("phone")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "favorites" (
