@@ -69,7 +69,7 @@ export function NoticesForm({ notices }: NoticesFormProps) {
             <option value="none">no @ replies</option>
           </Select>
           <Form.Subtext>
-            <small>
+            <small className="text-[10px]">
               <Link href="/replies">What is this?</Link>
             </small>
           </Form.Subtext>

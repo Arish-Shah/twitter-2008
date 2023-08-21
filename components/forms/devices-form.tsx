@@ -35,7 +35,6 @@ interface FormProps {
   device: Awaited<ReturnType<typeof getDeviceUpdates>>;
 }
 
-// TODO: flash message
 function SetupForm() {
   const setLoading = useLoadingStore((state) => state.setLoading);
   const [isPending, startTransition] = useLoadingTransition();
@@ -62,7 +61,7 @@ function SetupForm() {
       <Main.H3>
         <label htmlFor="phone">Mobile Phone</label>
       </Main.H3>
-      <small className="text-[10.8px]">
+      <small>
         Please precede your number with a &quot;+&quot; and your country code
         (leaving off the leading 0 of your number if applicable). Examples:
         +447781488126 or +12125551212. <Link href="/help">Need help?</Link>
@@ -152,7 +151,7 @@ export function ConfigureForm(formProps: FormProps) {
             <option value="direct_messages">Direct Messages</option>
           </Select>
           <Submit value="Save" className="p-[5px_10px]" disabled={isPending} />
-          <small className="mt-[3px] block text-[10.8px]">
+          <small className="mt-[3px] block">
             (Send updates to: <strong>40404</strong>)
           </small>
         </div>

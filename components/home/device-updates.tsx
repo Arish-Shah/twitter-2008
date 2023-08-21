@@ -20,7 +20,7 @@ export function DeviceUpdates({ device }: DeviceUpdatesProps) {
   const [, startTransition] = useLoadingTransition();
   const { register, handleSubmit } = useForm<DeviceUpdateTypeDataType>({
     resolver: zodResolver(deviceUpdateTypeSchema),
-    defaultValues: { type: device!.type },
+    defaultValues: { type: device?.type ?? "off" },
   });
 
   const update = async (data: DeviceUpdateTypeDataType) => {

@@ -25,3 +25,4 @@
 - [ ] deleting a tweet from status page goes to 404, what to do?
 - [ ] fix /account/complete and /account/resend_password they only work when logged in
 - [ ] test react-hook-form's Form component for progressive enhancement
+- [ ] extract getUserIdFromUsername to it's own function as it's called at multiple places

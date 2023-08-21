@@ -28,7 +28,9 @@ export default async function Profile({
     <Content>
       <Main className="!p-[18px_20px_12px_20px]">
         <MastHead username={username} />
-        {session?.user.username !== username && <Follow username={username} />}
+        {session?.user && session?.user.username !== username && (
+          <Follow username={username} />
+        )}
         <Timeline updates={timeline.updates} currentPage={currentPage} />
         <Pagination
           userId={timeline.userId}

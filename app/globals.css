@@ -21,3 +21,7 @@ body {
 a {
   @apply text-links hover:underline;
 }
+
+small {
+  @apply text-[10.8px];
+}
