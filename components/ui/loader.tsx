@@ -29,6 +29,7 @@ export function Loader({ size }: LoaderProps) {
         width={16}
         quality={100}
         draggable={false}
+        priority={true}
       />
     </span>
   );

@@ -3,7 +3,7 @@
 import { useLoadingStore } from "@/hooks/use-loading-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 
-import { useFlashStore } from "@/hooks/use-flash-store";
+import { useFlash } from "@/hooks/use-flash-store";
 import {
   deleteDeviceUpdates,
   getDeviceUpdates,
@@ -97,7 +97,7 @@ function SetupForm() {
 }
 
 export function ConfigureForm(formProps: FormProps) {
-  const flash = useFlashStore((state) => state.setMessage);
+  const flash = useFlash();
   const deviceData = formProps.device!;
   const [isPending, startTransition] = useLoadingTransition();
 

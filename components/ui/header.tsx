@@ -58,6 +58,7 @@ export async function Header({ size }: HeaderProps) {
           width={large ? 210 : 175}
           quality={100}
           draggable={false}
+          priority={true}
         />
       </Link>
       {!large && (

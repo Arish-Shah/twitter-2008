@@ -32,6 +32,7 @@ export function Captcha({ value, onChange }: CaptchaProps) {
               quality={100}
               className="absolute left-0 top-0"
               draggable={false}
+              priority={true}
             />
           </td>
           <td className="h-[57px] w-[9px] bg-sprite bg-[-27px_-0px] bg-no-repeat" />
@@ -89,6 +90,7 @@ export function Captcha({ value, onChange }: CaptchaProps) {
               className="absolute left-0 top-0 cursor-pointer"
               onClick={() => setData(getRandomCaptcha(data.index))}
               draggable={false}
+              priority={true}
             />
           </td>
           <td
@@ -107,6 +109,7 @@ export function Captcha({ value, onChange }: CaptchaProps) {
               quality={100}
               className="absolute left-0 top-[1px] cursor-pointer"
               draggable={false}
+              priority={true}
             />
           </td>
         </tr>
@@ -121,6 +124,7 @@ export function Captcha({ value, onChange }: CaptchaProps) {
               quality={100}
               className="absolute bottom-0 left-0 cursor-pointer"
               draggable={false}
+              priority={true}
             />
           </td>
         </tr>

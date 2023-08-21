@@ -7,6 +7,7 @@ import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+// TODO: separate into 2: favorite and unfavorite, better
 export const postFavorite = async (updateId: number) => {
   const session = await auth();
   if (!session?.user) return redirect("/login");

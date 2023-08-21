@@ -9,3 +9,5 @@ export const useFlashStore = create<FlashState>((set) => ({
   message: null,
   setMessage: (message: string | null) => set({ message }),
 }));
+
+export const useFlash = () => useFlashStore((state) => state.setMessage);

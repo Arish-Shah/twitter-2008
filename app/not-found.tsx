@@ -28,6 +28,7 @@ export default async function NotFound() {
           width={175}
           quality={100}
           draggable={false}
+          priority={true}
         />
       </Link>
       <Image
@@ -38,6 +39,7 @@ export default async function NotFound() {
         quality={100}
         className="mt-[21px]"
         draggable={false}
+        priority={true}
       />
       <div className="inline-block w-[40%] rounded bg-white p-[20px_10px_54px_10px] leading-[1.2]">
         <h3 className="text-[17.5px]">That page doesn&apos;t exist!</h3>
@@ -49,6 +51,7 @@ export default async function NotFound() {
           quality={100}
           className="mt-[21px]"
           draggable={false}
+          priority={true}
         />
         <ul className="mx-auto mt-[75px] flex max-w-[186px] justify-between">
           {links.map((link, i) => (

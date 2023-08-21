@@ -1,6 +1,6 @@
 "use client";
 
-import { useFlashStore } from "@/hooks/use-flash-store";
+import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import {
   getNotices,
@@ -19,7 +19,7 @@ interface NoticesFormProps {
 }
 
 export function NoticesForm({ notices }: NoticesFormProps) {
-  const flash = useFlashStore((state) => state.setMessage);
+  const flash = useFlash();
   const [isPending, startTransition] = useLoadingTransition();
   const { register, handleSubmit } = useForm<NoticeDataType>({
     resolver: zodResolver(noticeSchema),

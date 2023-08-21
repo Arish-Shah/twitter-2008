@@ -36,7 +36,6 @@ export default function Downloads() {
                     height={item.dimensions.icon.height}
                     quality={100}
                     draggable={false}
-                    priority
                   />
                 </center>
               ))}
@@ -65,7 +64,6 @@ export default function Downloads() {
                       height={item.dimensions.shot.height}
                       quality={100}
                       draggable={false}
-                      priority
                     />
                   </Link>
                   <br />

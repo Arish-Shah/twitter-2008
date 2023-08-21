@@ -92,6 +92,7 @@ export const UsernameInput = forwardRef<HTMLInputElement, UsernameInputProps>(
                 quality={100}
                 className="inline"
                 draggable={false}
+                priority={true}
               />{" "}
               Checking for availability of this username ...
             </span>

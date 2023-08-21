@@ -49,8 +49,8 @@ const config: Config = {
         intro: "#a4a0a1",
         "alert-success": "#e8fecd",
         "alert-success-border": "#a9bf74",
-        "alert-warning": "#fff0c0",
-        "alert-warning-border": "#ffe38d",
+        "alert-warning": "#f9f7a8",
+        "alert-warning-border": "#f2d792",
         "alert-info": "#c7eefe",
         "alert-info-border": "#ade6fe",
         recent: "#afeff1",
@@ -65,6 +65,7 @@ const config: Config = {
         downloadbutton: "#d4ff84",
         "downloadbutton-border": "#693",
         superscript: "#888",
+        tick: "#009a00",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],

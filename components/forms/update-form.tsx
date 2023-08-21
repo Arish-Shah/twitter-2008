@@ -1,6 +1,6 @@
 "use client";
 
-import { useFlashStore } from "@/hooks/use-flash-store";
+import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { useUpdateFormStore } from "@/hooks/use-update-form-store";
 import { postUpdate } from "@/lib/actions/update/post-update";
@@ -20,7 +20,7 @@ interface UpdateFormProps {
 export function UpdateForm({ children }: UpdateFormProps) {
   const values = useUpdateFormStore((state) => state.values);
   const setText = useUpdateFormStore((state) => state.setText);
-  const flash = useFlashStore((state) => state.setMessage);
+  const flash = useFlash();
   const {
     register,
     handleSubmit,

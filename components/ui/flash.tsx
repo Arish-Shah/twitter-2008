@@ -28,8 +28,8 @@ export function Flash({ size }: FlashProps) {
 
   return (
     <div
-      className={clsx("overflow-hidden transition-height duration-500", {
-        "h-0": !message,
+      className={clsx("overflow-hidden", {
+        "h-0 transition-height duration-500": !message,
         "h-[105.52px]": message,
         "w-[620px]": size === "small",
       })}
@@ -41,6 +41,7 @@ export function Flash({ size }: FlashProps) {
           height={40}
           width={18}
           draggable={false}
+          priority={true}
         />
       </h2>
       <div className="mt-[6px] bg-arr2 bg-[25px_0] bg-no-repeat pt-[11px]"></div>

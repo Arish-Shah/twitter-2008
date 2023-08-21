@@ -33,6 +33,7 @@ export async function MastHead({
           quality={100}
           className={clsx({ "border border-meta": !small })}
           draggable={false}
+          priority={true}
         />
       </Link>
       <h2

@@ -1,6 +1,6 @@
 "use client";
 
-import { useFlashStore } from "@/hooks/use-flash-store";
+import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { loginSchema } from "@/lib/validations/auth";
 import { LoginDataType } from "@/types";
@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { Input, Submit } from "../ui/input";
 
 export function IndexLoginForm() {
-  const flash = useFlashStore((state) => state.setMessage);
+  const flash = useFlash();
   const router = useRouter();
   const [, startTransition] = useLoadingTransition();
   const { register, handleSubmit } = useForm<LoginDataType>({

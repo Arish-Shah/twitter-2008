@@ -124,7 +124,7 @@ export function Carousel({ type }: Props) {
         width={510}
         className="m-[24px_0_9px_0] border border-black"
         draggable={false}
-        priority
+        priority={true}
       />
       {data[type].teaser}
     </Fragment>

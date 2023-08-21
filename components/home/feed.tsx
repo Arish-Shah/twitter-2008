@@ -36,6 +36,7 @@ function FeedItem({ update, username }: FeedItemProps) {
             width={48}
             quality={100}
             draggable={false}
+            priority={true}
           />
         </Link>
       </div>

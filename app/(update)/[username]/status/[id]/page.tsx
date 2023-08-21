@@ -81,6 +81,7 @@ export default async function Status({
             width={48}
             quality={100}
             draggable={false}
+            priority={true}
           />
         </Link>
         <div>

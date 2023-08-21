@@ -1,6 +1,6 @@
 "use client";
 
-import { useFlashStore } from "@/hooks/use-flash-store";
+import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingStore } from "@/hooks/use-loading-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { useUpdateFormStore } from "@/hooks/use-update-form-store";
@@ -26,7 +26,7 @@ export function Interactions({
   visible = false,
   className,
 }: InteractionsProps) {
-  const flash = useFlashStore((state) => state.setMessage);
+  const flash = useFlash();
   const setLoading = useLoadingStore((state) => state.setLoading);
   const setText = useUpdateFormStore((state) => state.setText);
   const router = useRouter();
@@ -60,7 +60,7 @@ export function Interactions({
     >
       <button
         title={
-          update.favorited ? "Remove from favorites" : "Favorite this update"
+          update.favorited ? "remove from favorites" : "favorite this update"
         }
         className={clsx({
           "opacity-0 group-hover:opacity-100": !visible,
@@ -75,7 +75,7 @@ export function Interactions({
       </button>
       {username === update.username ? (
         <button
-          title="Delete this update?"
+          title="delete this update"
           className={clsx("mt-[6px]", {
             "opacity-0 group-hover:opacity-100": !visible,
           })}

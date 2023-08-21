@@ -17,6 +17,7 @@ export async function CheckList() {
         height={40}
         width={18}
         draggable={false}
+        priority={true}
       />
       <div className="pl-[20px]">
         <Main.H1 className="my-0 text-[24px] font-bold">
