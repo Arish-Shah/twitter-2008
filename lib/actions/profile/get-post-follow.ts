@@ -8,6 +8,7 @@ import { follows } from "@/drizzle/schema";
 import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { DeviceUpdateTypeDataType, FollowDeviceUpdatesDataType } from "@/types";
 
 export const getFollow = cache(async (username: string) => {
   const session = await auth();
@@ -61,4 +62,27 @@ export const postUnfollow = async (username: string) => {
 
   revalidatePath("/[username]");
   revalidatePath("/home");
+};
+
+export const updateDeviceUpdates = async (
+  username: string,
+  data: FollowDeviceUpdatesDataType
+) => {
+  const session = await auth();
+  if (!session?.user) return redirect("/login");
+  const followerId = Number(session.user.id);
+
+  const followingId = await getUserId(username);
+
+  await db
+    .update(follows)
+    .set({ deviceUpdates: data.deviceUpdates === "on" })
+    .where(
+      and(
+        eq(follows.followerId, followerId),
+        eq(follows.followingId, followingId)
+      )
+    );
+
+  revalidatePath("/[username]");
 };

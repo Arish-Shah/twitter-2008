@@ -33,3 +33,7 @@ export const deviceUpdateSleepSchema = z.object({
     .or(z.string().regex(/\d+/).transform(Number))
     .refine((n) => n >= 0 && n <= 24),
 });
+
+export const followDeviceUpdatesSchema = z.object({
+  deviceUpdates: z.enum(["on", "off"]),
+});

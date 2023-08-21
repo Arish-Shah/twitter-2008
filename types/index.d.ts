@@ -1,4 +1,4 @@
-import { themes } from "@/drizzle/schema";
+import { followRelations, themes } from "@/drizzle/schema";
 import {
   completeSchema,
   loginSchema,
@@ -9,6 +9,7 @@ import {
   deviceSetupSchema,
   deviceUpdateSleepSchema,
   deviceUpdateTypeSchema,
+  followDeviceUpdatesSchema,
 } from "@/lib/validations/device";
 import { noticeSchema } from "@/lib/validations/notice";
 import { updateSchema } from "@/lib/validations/update";
@@ -44,6 +45,9 @@ export type DeviceSetupDataType = z.infer<typeof deviceSetupSchema>;
 export type DeviceUpdateTypeDataType = z.infer<typeof deviceUpdateTypeSchema>;
 export type DeviceUpdateSleepDataType = z.infer<typeof deviceUpdateSleepSchema>;
 export type NoticeDataType = z.infer<typeof noticeSchema>;
+export type FollowDeviceUpdatesDataType = z.infer<
+  typeof followDeviceUpdatesSchema
+>;
 
 export type CredentialsDataType =
   | ({ kind: "signup" } & SignupDataType)
