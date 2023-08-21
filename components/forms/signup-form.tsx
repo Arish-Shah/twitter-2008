@@ -113,12 +113,12 @@ export function SignupForm({ captcha }: SignupFormProps) {
       <Form.Row>
         <Form.LabelGroup />
         <Form.InputGroup>
-          <input
-            type="checkbox"
-            id="sendEmailNewsletter"
-            {...register("newsletter")}
-          />
-          <label htmlFor="sendEmailNewsletter" className="ml-[3px]">
+          <label htmlFor="newsletter" className="ml-[3px]">
+            <input
+              type="checkbox"
+              id="newsletter"
+              {...register("newsletter")}
+            />
             I want the inside scoop—please send me email updates!
           </label>
         </Form.InputGroup>

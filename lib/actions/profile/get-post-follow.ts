@@ -8,7 +8,7 @@ import { follows } from "@/drizzle/schema";
 import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { DeviceUpdateTypeDataType, FollowDeviceUpdatesDataType } from "@/types";
+import type { FollowDeviceUpdatesDataType } from "@/types";
 
 export const getFollow = cache(async (username: string) => {
   const session = await auth();

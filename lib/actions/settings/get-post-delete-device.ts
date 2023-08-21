@@ -51,6 +51,7 @@ export const updateDeviceUpdateType = async (
     .where(eq(deviceUpdates.id, deviceUpdateId));
   revalidatePath("/devices");
   revalidatePath("/home");
+  revalidatePath("/replies");
 };
 
 export const updateDeviceSleep = async (

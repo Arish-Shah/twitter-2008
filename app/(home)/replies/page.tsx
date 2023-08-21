@@ -4,6 +4,7 @@ import { Feed } from "@/components/home/feed";
 import { Menu } from "@/components/home/menu";
 import { Following } from "@/components/profile/following";
 import { MastHead } from "@/components/profile/mast-head";
+import { Pagination } from "@/components/profile/pagination";
 import { RecentUpdate } from "@/components/profile/recent-update";
 import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
@@ -32,6 +33,12 @@ export default async function Replies({ searchParams }: RepliesProps) {
           Replies — Updates beginning with @{user.username}
         </Main.H3>
         <Feed updates={replies.updates} />
+        <Pagination
+          currentPage={currentPage}
+          hasMore={replies.hasMore}
+          type="newOld"
+          userId={user.id}
+        />
       </Main>
       <Sidebar>
         <Sidebar.Section>
