@@ -28,7 +28,7 @@ export default async function Status({
     <div className="p-[20px]">
       <div className="group flex">
         <div>
-          <div className="w-[550px] font-georgia text-[25.2px] font-normal leading-[1.1]">
+          <div className="w-[550px] break-all font-georgia text-[25.2px] font-normal leading-[1.1]">
             {text}
           </div>
           <div className="m-[13px_0_0_3px] mt-[10px] font-georgia text-[15.6px] italic leading-[1] text-meta">

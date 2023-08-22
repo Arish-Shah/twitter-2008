@@ -40,7 +40,7 @@ async function TimelineItem({ highlight, update }: TimelineItemProps) {
     >
       <div className="w-[485px]">
         <span
-          className={clsx({
+          className={clsx("break-all", {
             "text-[14.4px]": !highlight,
             "mb-[10px] block text-[25.45px] leading-[1.05]": highlight,
           })}

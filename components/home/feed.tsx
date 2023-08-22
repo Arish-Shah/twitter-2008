@@ -49,7 +49,7 @@ function FeedItem({ update, username }: FeedItemProps) {
           >
             {update.username}
           </Link>{" "}
-          <span>{text}</span>
+          <span className="break-all">{text}</span>
           <span className="ml-[5px] font-georgia text-[11.5px] italic text-meta">
             <Link
               href={`/${update.username}/status/${update.id}`}

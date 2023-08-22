@@ -1,4 +1,5 @@
 import { updates } from "@/drizzle/schema";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { inArray } from "drizzle-orm";
 import { cache } from "react";
@@ -8,6 +9,9 @@ import { getUserId } from "../get-user-id";
 export const getFavorites = cache(
   async (username: string, page = 1, limit = 20) => {
     const userId = await getUserId(username);
+    const session = await auth();
+
+    const loggedInUserId = Number(session?.user.id) || 0;
 
     const favoriteUpdates = await db.query.favorites.findMany({
       columns: { updateId: true },
@@ -20,7 +24,7 @@ export const getFavorites = cache(
 
     if (favoriteIds.length > 0) {
       const feed = await getUpdates(
-        userId,
+        loggedInUserId,
         { page: 1, limit },
         inArray(updates.id, favoriteIds)
       );

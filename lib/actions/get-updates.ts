@@ -70,7 +70,7 @@ export const getUpdates = cache(
         id: update.id,
         text: update.text,
         username: update.author.username,
-        favorited: update.favoritedBy.length !== 0,
+        favorited: update.favoritedBy.length === 1,
         createdAt: update.createdAt,
         application: update.application,
         author: {

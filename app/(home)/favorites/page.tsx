@@ -43,7 +43,7 @@ export default async function Favorites({ searchParams }: FavoritesProps) {
           <div className="h-[10px]"></div>
           <Stats username={user.username} />
         </Sidebar.Section>
-        <Menu type="home" selected="@Replies" />
+        <Menu type="home" selected="Favorites" />
         <Sidebar.Section bordered>
           <Following username={user.username} />
         </Sidebar.Section>

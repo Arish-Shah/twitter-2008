@@ -11,7 +11,7 @@ export async function RecentUpdate() {
       <strong>Lastest:</strong>{" "}
       {update && (
         <Fragment>
-          <span>{update.text}</span>{" "}
+          <span className="break-all">{update.text}</span>{" "}
           <Link
             href={`/${update.author.username}/status/${update.id}`}
             className="font-georgia italic text-meta hover:no-underline"
