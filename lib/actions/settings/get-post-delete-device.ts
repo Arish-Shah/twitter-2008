@@ -13,8 +13,9 @@ import { revalidatePath } from "next/cache";
 import { cache } from "react";
 
 export const getDeviceUpdates = cache(async () => {
-  const { user } = await auth();
-  const userId = Number(user.id);
+  const session = await auth();
+  if (!session?.user) return null;
+  const userId = Number(session.user.id);
 
   const data = await db
     .select({

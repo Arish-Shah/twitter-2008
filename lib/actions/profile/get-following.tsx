@@ -26,6 +26,7 @@ export const getFollowingSection = cache(
               },
             },
           },
+          orderBy: (following, { desc }) => [desc(following.createdAt)],
         },
       },
     });

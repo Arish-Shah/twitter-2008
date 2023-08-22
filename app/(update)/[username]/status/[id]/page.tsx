@@ -8,7 +8,6 @@ import {
 } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 interface StatusProps {
   params: { username: string; id: string };
@@ -18,8 +17,6 @@ export default async function Status({
   params: { id, username },
 }: StatusProps) {
   const update = await getUpdate(id);
-  if (update.username !== username)
-    redirect(`/${update.username}/status/${id}`);
 
   const session = await auth();
 

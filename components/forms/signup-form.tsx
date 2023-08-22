@@ -117,6 +117,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
             <input
               type="checkbox"
               id="newsletter"
+              className="mr-[3px]"
               {...register("newsletter")}
             />
             I want the inside scoop—please send me email updates!

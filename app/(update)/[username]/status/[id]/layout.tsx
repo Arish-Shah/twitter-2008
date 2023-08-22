@@ -13,7 +13,8 @@ export async function generateMetadata({
   params: { id, username },
 }: StatusLayoutProps): Promise<Metadata> {
   const data = await getUpdateMetadata(id);
-  if (data.username !== username) redirect(`/${data.username}/status/${id}`);
+  if (data.username !== username)
+    return redirect(`/${data.username}/status/${id}`);
 
   return {
     title: `Twitter / ${data.name}: ${data.text}`,

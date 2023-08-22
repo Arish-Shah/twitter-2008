@@ -27,3 +27,5 @@
 - [ ] test react-hook-form's Form component for progressive enhancement
 - [ ] extract getUserIdFromUsername to it's own function as it's called at multiple places
 - [ ] fix newsletter while signup does not go to db
+- [ ] force pagination at the bottom of the page
+- [ ] fix flash message when multiple of them are rendered breaks

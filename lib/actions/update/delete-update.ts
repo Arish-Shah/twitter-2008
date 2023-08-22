@@ -25,4 +25,5 @@ export const deleteUpdate = async (updateId: number) => {
   await db.delete(updates).where(eq(updates.id, updateId));
   revalidatePath("/home");
   revalidatePath("/[username]");
+  revalidatePath("/[username]/status/[id]");
 };

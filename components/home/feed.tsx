@@ -83,20 +83,22 @@ function FeedItem({ update, username }: FeedItemProps) {
           </span>
         </div>
       </div>
-      <Interactions update={update} username={username} />
+      {username && <Interactions update={update} username={username} />}
     </div>
   );
 }
 
 export async function Feed({ updates }: FeedProps) {
-  const {
-    user: { username },
-  } = await auth();
+  const session = await auth();
 
   return (
     <div className="mt-[10px] border-t border-dashed border-timeline-border">
       {updates.map((update) => (
-        <FeedItem key={update.id} update={update} username={username} />
+        <FeedItem
+          key={update.id}
+          update={update}
+          username={session?.user.username}
+        />
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { followRelations, themes } from "@/drizzle/schema";
+import { themes } from "@/drizzle/schema";
 import {
   completeSchema,
   loginSchema,
@@ -34,6 +34,11 @@ export type CaptchaType = {
   src: string;
   answers: string[];
   index: number;
+};
+
+export type PaginationType = {
+  page: number;
+  limit: number;
 };
 
 export type SignupDataType = z.infer<typeof signupSchema>;

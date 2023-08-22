@@ -34,7 +34,7 @@ export const {
           await db.insert(themes).values({ profileId: profileResult[0].id });
           await db
             .insert(notices)
-            .values({ userId, newsletter: params.newsletter });
+            .values({ userId, newsletter: params.newsletter === "true" });
 
           return {
             id: userResult[0].id.toString(),

@@ -36,7 +36,7 @@ export const signupSchema = z.object({
       required_error: "Incorrect captcha",
     })
     .refine((val) => val, "Incorrect captcha"),
-  newsletter: z.boolean(),
+  newsletter: z.boolean().or(z.string()),
 });
 
 export const loginSchema = z.object({
