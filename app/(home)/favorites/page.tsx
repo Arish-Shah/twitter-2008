@@ -17,8 +17,8 @@ interface FavoritesProps {
 export default async function Favorites({ searchParams }: FavoritesProps) {
   const { user } = await auth();
 
-  const currentPage = Number(searchParams.page || 1);
-  const favorites = await getFavorites(user.username, currentPage);
+  const page = Number(searchParams.page || 1);
+  const favorites = await getFavorites(user.username, page);
   const device = await getDeviceUpdates();
 
   return (
@@ -31,7 +31,7 @@ export default async function Favorites({ searchParams }: FavoritesProps) {
         </Main.P>
         <Feed updates={favorites.updates} />
         <Pagination
-          currentPage={currentPage}
+          page={page}
           hasMore={favorites.hasMore}
           userId={user.id}
           type="prevNext"

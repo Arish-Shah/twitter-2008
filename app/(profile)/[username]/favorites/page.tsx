@@ -20,8 +20,8 @@ export default async function Favorites({
 }: FavoritesProps) {
   const session = await auth();
 
-  const currentPage = Number(searchParams.page || 1);
-  const favorites = await getFavorites(username, currentPage);
+  const page = Number(searchParams.page || 1);
+  const favorites = await getFavorites(username, page);
   const info = await getInfo(username);
 
   return (
@@ -31,7 +31,7 @@ export default async function Favorites({
         <Feed updates={favorites.updates} />
         <Pagination
           userId={session?.user.id}
-          currentPage={currentPage}
+          page={page}
           hasMore={favorites.hasMore}
           type="prevNext"
         />

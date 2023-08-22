@@ -9,7 +9,7 @@ export default async function Followers({
   params: { username },
   searchParams,
 }: FollowersProps) {
-  const currentPage = Number(searchParams.page || 1);
+  const page = Number(searchParams.page || 1);
 
   return (
     <Content>

@@ -19,8 +19,8 @@ interface RepliesProps {
 export default async function Replies({ searchParams }: RepliesProps) {
   const { user } = await auth();
 
-  const currentPage = Number(searchParams.page || 1);
-  const replies = await getReplies(currentPage);
+  const page = Number(searchParams.page || 1);
+  const replies = await getReplies(page);
   const device = await getDeviceUpdates();
 
   return (
@@ -34,7 +34,7 @@ export default async function Replies({ searchParams }: RepliesProps) {
         </Main.H3>
         <Feed updates={replies.updates} />
         <Pagination
-          currentPage={currentPage}
+          page={page}
           hasMore={replies.hasMore}
           type="newOld"
           userId={user.id}

@@ -23,8 +23,8 @@ export default async function Profile({
 }: ProfileProps) {
   const session = await auth();
 
-  const currentPage = Number(searchParams.page || 1);
-  const timeline = await getTimeline(username, currentPage);
+  const page = Number(searchParams.page || 1);
+  const timeline = await getTimeline(username, page);
   const followData = await getFollow(username);
   const deviceUpdatesData = await getDeviceUpdates();
 
@@ -39,10 +39,10 @@ export default async function Profile({
             deviceUpdatesData={deviceUpdatesData}
           />
         )}
-        <Timeline updates={timeline.updates} currentPage={currentPage} />
+        <Timeline updates={timeline.updates} page={page} />
         <Pagination
           userId={timeline.userId}
-          currentPage={currentPage}
+          page={page}
           hasMore={timeline.hasMore}
           type="newOld"
         />

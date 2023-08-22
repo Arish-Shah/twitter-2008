@@ -9,7 +9,7 @@ interface PaginationLinkProps extends LinkProps {
 interface PaginationProps {
   type: "prevNext" | "newOld";
   userId: number | string;
-  currentPage: number;
+  page: number;
   hasMore: boolean;
 }
 
@@ -27,12 +27,7 @@ function PaginationLink({ className, href, children }: PaginationLinkProps) {
   );
 }
 
-export function Pagination({
-  type,
-  currentPage,
-  hasMore,
-  userId,
-}: PaginationProps) {
+export function Pagination({ type, page, hasMore, userId }: PaginationProps) {
   const left = type === "newOld" ? "Newer" : "Previous";
   const right = type === "newOld" ? "Older" : "Next";
 
@@ -47,16 +42,16 @@ export function Pagination({
         </PaginationLink>
       )}
       <div className="ml-auto flex">
-        {currentPage > 1 && (
+        {page > 1 && (
           <PaginationLink
-            href={{ query: { page: currentPage - 1 } }}
+            href={{ query: { page: page - 1 } }}
             className="mr-[3px]"
           >
             « {left}
           </PaginationLink>
         )}
         <PaginationLink
-          href={`?page=${currentPage + 1}`}
+          href={`?page=${page + 1}`}
           className={clsx({
             "pointer-events-none cursor-default text-meta hover:no-underline":
               !hasMore,

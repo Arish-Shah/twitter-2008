@@ -21,8 +21,8 @@ export default async function Home({ searchParams }: HomeProps) {
   const {
     user: { id, username },
   } = await auth();
-  const currentPage = Number(searchParams.page || 1);
-  const feed = await getFeed(currentPage);
+  const page = Number(searchParams.page || 1);
+  const feed = await getFeed(page);
   const device = await getDeviceUpdates();
 
   return (
@@ -32,9 +32,9 @@ export default async function Home({ searchParams }: HomeProps) {
           <RecentUpdate />
         </UpdateForm>
         <Feed updates={feed.updates} />
-        {currentPage === 1 && <CheckList />}
+        {page === 1 && <CheckList />}
         <Pagination
-          currentPage={currentPage}
+          page={page}
           hasMore={feed.hasMore}
           type="newOld"
           userId={id}

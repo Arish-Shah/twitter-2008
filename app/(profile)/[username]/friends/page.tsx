@@ -9,7 +9,7 @@ export default async function Friends({
   params: { username },
   searchParams,
 }: FriendsProps) {
-  const currentPage = Number(searchParams.page || 1);
+  const page = Number(searchParams.page || 1);
 
   return (
     <Content>
