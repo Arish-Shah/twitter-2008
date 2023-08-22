@@ -19,7 +19,7 @@ export default async function Notices() {
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
-        <Tabs selected="Notices" />
+        <Tabs type="settings" selected="Notices" />
         <NoticesForm notices={notices} />
       </Main>
       <Sidebar>

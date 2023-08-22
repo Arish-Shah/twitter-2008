@@ -7,7 +7,11 @@ import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getFavorites } from "@/lib/actions/home/get-favorites";
 import { getInfo } from "@/lib/actions/profile/get-info";
-import { auth } from "@/lib/auth";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Twitter",
+};
 
 interface FavoritesProps {
   params: { username: string };
@@ -18,8 +22,6 @@ export default async function Favorites({
   params: { username },
   searchParams,
 }: FavoritesProps) {
-  const session = await auth();
-
   const page = Number(searchParams.page || 1);
   const favorites = await getFavorites(username, page);
   const info = await getInfo(username);
@@ -29,19 +31,14 @@ export default async function Favorites({
       <Main className="p-[5px_10px_15px]">
         <Main.H2>{info.name}&apos;s Favorites</Main.H2>
         <Feed updates={favorites.updates} />
-        <Pagination
-          userId={session?.user.id}
-          page={page}
-          hasMore={favorites.hasMore}
-          type="prevNext"
-        />
+        <Pagination page={page} hasMore={favorites.hasMore} type="prevNext" />
       </Main>
       <Sidebar>
         <Sidebar.Section>
           <Info username={username} />
           <Stats username={username} />
         </Sidebar.Section>
-        <Menu type={{ username }} selected="Favorites" />
+        <Menu type="profile" selected="Favorites" username={username} />
         <Sidebar.Section bordered>
           <Following username={username} />
         </Sidebar.Section>

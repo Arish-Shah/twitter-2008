@@ -16,7 +16,7 @@ export default async function Picture() {
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
-        <Tabs selected="Picture" />
+        <Tabs type="settings" selected="Picture" />
         <PictureForm />
       </Main>
       <Sidebar>

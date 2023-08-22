@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 
-const home = [
+const homeLinks = [
   { label: "Home", href: "/home" },
   { label: "@Replies", href: "/replies" },
   { label: "Direct Messages", href: "/direct_messages", unread: 0 },
@@ -9,21 +9,30 @@ const home = [
   { label: "Everyone", href: "/everyone" },
 ] as const;
 
-const profile = (username: string) =>
-  [
+const profileLinks = (username: string) => {
+  return [
     { label: "Updates", href: `/${username}` },
     { label: "Favorites", href: `/${username}/favorites` },
   ] as const;
+};
 
-type LinkType = (typeof home)[number] | ReturnType<typeof profile>[number];
+type HomeLinkType = (typeof homeLinks)[number];
+type ProfileLinkType = ReturnType<typeof profileLinks>[number];
 
-interface MenuProps {
-  type: "home" | { username: string };
-  selected?: LinkType["label"];
-}
+type MenuProps =
+  | {
+      type: "home";
+      selected: HomeLinkType["label"];
+      username?: string;
+    }
+  | {
+      type: "profile";
+      username: string;
+      selected: ProfileLinkType["label"];
+    };
 
 interface MenuItemProps {
-  link: LinkType;
+  link: HomeLinkType | ProfileLinkType;
   selected: boolean;
 }
 
@@ -48,8 +57,8 @@ function MenuItem({ link, selected }: MenuItemProps) {
 }
 
 // TODO: unread counter
-export function Menu({ type, selected }: MenuProps) {
-  const links = type === "home" ? home : profile(type.username);
+export function Menu({ type, selected, username }: MenuProps) {
+  const links = type === "home" ? homeLinks : profileLinks(username);
 
   return (
     <ul>

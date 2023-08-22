@@ -17,7 +17,7 @@ export default async function Settings() {
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
-        <Tabs selected="Account" />
+        <Tabs type="settings" selected="Account" />
         <SettingsForm />
         <div className="h-[10px]"></div>
         <Link href="/account/delete" prefetch={false}>

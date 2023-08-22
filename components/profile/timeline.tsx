@@ -33,7 +33,7 @@ async function TimelineItem({ highlight, update }: TimelineItemProps) {
       className={clsx(
         "group flex items-center border-b border-dashed border-timeline-border leading-[15px]",
         {
-          "p-[8px_3px] hover:bg-timeline-hover": !highlight,
+          "p-[8px_3px_8px_5px] hover:bg-timeline-hover": !highlight,
           "p-[8px_0_18px_0]": highlight,
         }
       )}

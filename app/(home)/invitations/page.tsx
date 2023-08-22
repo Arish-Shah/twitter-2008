@@ -1,3 +1,4 @@
+import { Tabs } from "@/components/home/tabs";
 import { Main } from "@/components/ui/content";
 import type { Metadata } from "next";
 
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
 export default function Invitations() {
   return (
     <Main>
-      <Main.H1>Are your friends on Twitter?</Main.H1>
-      <Main.P className="!mt-[10px] text-meta">
-        We can check if anyone in your email contacts already has a Twitter
-        account.
-      </Main.P>
+      <div className="flex justify-between">
+        <Main.H1>Are your friends on Twitter?</Main.H1>
+        <div>wew</div>
+      </div>
+      <Tabs type="invitations" selected="Invite from other networks" />
     </Main>
   );
 }

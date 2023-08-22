@@ -52,7 +52,7 @@ export default async function Profile({
           <Info username={username} />
           <Stats username={username} />
         </Sidebar.Section>
-        <Menu type={{ username }} selected="Updates" />
+        <Menu type="profile" selected="Updates" username={username} />
         <Sidebar.Section bordered>
           <Following username={username} />
         </Sidebar.Section>

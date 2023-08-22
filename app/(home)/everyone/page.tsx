@@ -12,10 +12,15 @@ import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getEveryone } from "@/lib/actions/home/get-everyone";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import { auth } from "@/lib/auth";
+import type { Metadata } from "next";
 
 interface EveryoneProps {
   searchParams: { page?: string };
 }
+
+export const metadata: Metadata = {
+  title: "Twitter / Everyone",
+};
 
 export default async function Everyone({ searchParams }: EveryoneProps) {
   const {
@@ -33,12 +38,7 @@ export default async function Everyone({ searchParams }: EveryoneProps) {
         </UpdateForm>
         <Feed updates={everyone.updates} />
         {page === 1 && <CheckList />}
-        <Pagination
-          page={page}
-          hasMore={everyone.hasMore}
-          type="newOld"
-          userId={id}
-        />
+        <Pagination page={page} hasMore={everyone.hasMore} type="newOld" />
       </Main>
       <Sidebar>
         <Sidebar.Section>

@@ -10,7 +10,6 @@
 - [ ] check and implement
   - https://web.archive.org/web/20091007131707/http://twitter.com//
   - https://web.archive.org/web/20091010004544/http://twitter.com/public_timeline
-  - https://web.archive.org/web/20081001114700/http://twitter.com:80/sessions
   - https://web.archive.org/web/20081217013517/twitter.com/public_timeline
   - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
 - [x] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss
@@ -25,7 +24,7 @@
 - [ ] deleting a tweet from status page goes to 404, what to do?
 - [ ] fix /account/complete and /account/resend_password they only work when logged in
 - [ ] test react-hook-form's Form component for progressive enhancement
-- [ ] extract getUserIdFromUsername to it's own function as it's called at multiple places
-- [ ] fix newsletter while signup does not go to db
-- [ ] force pagination at the bottom of the page
+- [x] extract getUserIdFromUsername to it's own function as it's called at multiple places
+- [x] fix newsletter while signup does not go to db
+- [x] force pagination at the bottom of the page
 - [ ] fix flash message when multiple of them are rendered breaks

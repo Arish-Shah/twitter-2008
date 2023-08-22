@@ -1,4 +1,3 @@
-import { LinkType } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -11,18 +10,39 @@ const settingsLinks = [
   { label: "Design", href: "/account/profile_settings" },
 ] as const;
 
-const invitationsLinks: LinkType[] = [];
+const invitationsLinks = [
+  { label: "Invite from other networks", href: "/invitations" },
+  { label: "Invite by email", href: "/invitations/invite_by_email" },
+  { label: "Search", href: "/invitations/search" },
+] as const;
 
-interface TabsProps {
-  selected: (typeof settingsLinks)[number]["label"];
-}
+const directMessagesLinks = [
+  { label: "Inbox", href: "/direct_messages" },
+  { label: "Sent", href: "/direct_messages/sent" },
+] as const;
 
-export function Tabs({ selected }: TabsProps) {
+type TabsProps =
+  | { type: "settings"; selected: (typeof settingsLinks)[number]["label"] }
+  | {
+      type: "invitations";
+      selected: (typeof invitationsLinks)[number]["label"];
+    }
+  | {
+      type: "direct_messages";
+      selected: (typeof directMessagesLinks)[number]["label"];
+    };
+
+export function Tabs({ type, selected }: TabsProps) {
+  let links;
+  if (type === "settings") links = settingsLinks;
+  else if (type === "invitations") links = invitationsLinks;
+  else links = directMessagesLinks;
+
   return (
     <div className="mt-[20px] px-[10px]">
       <ul className="flex">
         <li className="flex-1 border-b border-b-gray-border"></li>
-        {settingsLinks.map((link, i) => (
+        {links.map((link, i) => (
           <li
             key={i}
             className={clsx("ml-[-1px] border border-gray-border", {

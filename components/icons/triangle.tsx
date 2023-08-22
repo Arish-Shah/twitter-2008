@@ -8,8 +8,8 @@ export function TriangleIcon({ className }: TriangleIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="9px"
-      height="9px"
+      width="8px"
+      height="8px"
       viewBox="0 0 16 16"
       className={clsx("text-meta", className)}
       fill="currentColor"

@@ -21,7 +21,7 @@ export function Flash({ size }: FlashProps) {
 
       setTimeout(() => {
         setMessage(null);
-      }, 5000);
+      }, 3200);
     }
     // eslint-disable-next-line
   }, [message]);

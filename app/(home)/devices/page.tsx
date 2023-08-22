@@ -18,7 +18,7 @@ export default async function ProfileSettings() {
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={user.username} size="small" />
-        <Tabs selected="Devices" />
+        <Tabs type="settings" selected="Devices" />
         <DevicesForm device={device} />
       </Main>
       <Sidebar>

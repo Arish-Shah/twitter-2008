@@ -16,7 +16,7 @@ export default async function Password() {
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
-        <Tabs selected="Password" />
+        <Tabs type="settings" selected="Password" />
         <PasswordForm />
       </Main>
       <Sidebar>

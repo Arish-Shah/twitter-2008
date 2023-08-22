@@ -15,7 +15,7 @@ export default async function ProfileSettings() {
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
-        <Tabs selected="Design" />
+        <Tabs type="settings" selected="Design" />
       </Main>
       <Sidebar>
         <Sidebar.Section className="pr-[16px]">

@@ -3,16 +3,16 @@ import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Twitter / Direct Messages",
+  title: "Twitter / Sent Direct Messages",
 };
 
-interface DirectMessagesProps {
+interface SentDirectMessagesProps {
   searchParams: { page?: string };
 }
 
-export default async function DirectMessages({
+export default async function SentDirectMessages({
   searchParams,
-}: DirectMessagesProps) {
+}: SentDirectMessagesProps) {
   const { user } = await auth();
   const page = Number(searchParams.page || 1);
 

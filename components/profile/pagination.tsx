@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Link, { type LinkProps } from "next/link";
+import { Switch } from "../ui/switch";
 
 interface PaginationLinkProps extends LinkProps {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ interface PaginationLinkProps extends LinkProps {
 
 interface PaginationProps {
   type: "prevNext" | "newOld";
-  userId: number | string;
+  userId?: number | string;
   page: number;
   hasMore: boolean;
 }
@@ -33,14 +34,14 @@ export function Pagination({ type, page, hasMore, userId }: PaginationProps) {
 
   return (
     <div className="mt-[16px] flex justify-between leading-[1.2]">
-      {type === "newOld" && (
+      <Switch condition={!!userId && type === "newOld"}>
         <PaginationLink
           href={`statuses/user_timeline/${userId}.rss`}
           prefetch={false}
         >
           RSS
         </PaginationLink>
-      )}
+      </Switch>
       <div className="ml-auto flex">
         {page > 1 && (
           <PaginationLink

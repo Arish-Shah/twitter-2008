@@ -9,7 +9,6 @@ export const getTimeline = cache(
   async (username: string, page = 1, limit = 20) => {
     const session = await auth();
 
-    // TODO: might wanna change this
     const userId = Number(session?.user.id) || 0;
 
     const user = await db.query.users.findFirst({

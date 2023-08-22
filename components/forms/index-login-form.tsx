@@ -27,7 +27,6 @@ export function IndexLoginForm() {
     });
 
     if (response?.error) {
-      router.push("/login");
       return flash("Wrong Username/Email and password combination.");
     }
     router.push("/home");

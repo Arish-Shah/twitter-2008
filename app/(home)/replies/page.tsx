@@ -11,10 +11,15 @@ import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getReplies } from "@/lib/actions/home/get-replies";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import { auth } from "@/lib/auth";
+import type { Metadata } from "next";
 
 interface RepliesProps {
   searchParams: { page?: string };
 }
+
+export const metadata: Metadata = {
+  title: "Twitter / @Replies",
+};
 
 export default async function Replies({ searchParams }: RepliesProps) {
   const { user } = await auth();
