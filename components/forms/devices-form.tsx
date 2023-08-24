@@ -30,6 +30,7 @@ import { Mobile } from "../icons/mobile";
 import { Main } from "../ui/content";
 import { Form } from "../ui/form";
 import { Input, Select, Submit } from "../ui/input";
+import { Switch } from "../ui/switch";
 
 interface FormProps {
   device: Awaited<ReturnType<typeof getDeviceUpdates>>;
@@ -79,9 +80,9 @@ function SetupForm() {
         className="mr-[3px] p-[5px_10px]"
         disabled={isPending}
       />
-      {errors.phone && (
+      <Switch condition={!!errors.phone}>
         <Form.Error className="inline">{errors.phone?.message}</Form.Error>
-      )}
+      </Switch>
       <label htmlFor="okay" className="mt-[3px] block text-[10.8px]">
         <input
           type="checkbox"
@@ -215,11 +216,11 @@ export function ConfigureForm(formProps: FormProps) {
 export function DevicesForm({ device: deviceData }: FormProps) {
   return (
     <Fragment>
-      {!deviceData && (
+      <Switch condition={!deviceData}>
         <div className="mt-[10px]">
           Twitter is more fun when used through your mobile phone. Set yours up!
         </div>
-      )}
+      </Switch>
       <div className="flex items-center">
         <div className="w-[68px]">
           <div className="flex h-[50px] w-[50px] items-center justify-center border border-meta">

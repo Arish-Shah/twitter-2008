@@ -11,6 +11,11 @@ import {
   deviceUpdateTypeSchema,
   followDeviceUpdatesSchema,
 } from "@/lib/validations/device";
+import {
+  inviteEmailSchema,
+  inviteSchema,
+  searchSchema,
+} from "@/lib/validations/invite";
 import { noticeSchema } from "@/lib/validations/notice";
 import { updateSchema } from "@/lib/validations/update";
 import { InferModel } from "drizzle-orm";
@@ -53,6 +58,9 @@ export type NoticeDataType = z.infer<typeof noticeSchema>;
 export type FollowDeviceUpdatesDataType = z.infer<
   typeof followDeviceUpdatesSchema
 >;
+export type InviteDataType = z.infer<typeof inviteSchema>;
+export type InviteEmailDataType = z.infer<typeof inviteEmailSchema>;
+export type SearchDataType = z.infer<typeof searchSchema>;
 
 export type CredentialsDataType =
   | ({ kind: "signup" } & SignupDataType)

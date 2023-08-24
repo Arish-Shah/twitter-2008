@@ -8,6 +8,7 @@ import {
 import clsx from "clsx";
 import Link from "next/link";
 import { Interactions } from "../interactions";
+import { Switch } from "../ui/switch";
 
 type TimelineType = Awaited<ReturnType<typeof getTimeline>>["updates"];
 
@@ -40,7 +41,7 @@ async function TimelineItem({ highlight, update }: TimelineItemProps) {
     >
       <div className="w-[485px]">
         <span
-          className={clsx("break-all", {
+          className={clsx("break-words", {
             "text-[14.4px]": !highlight,
             "mb-[10px] block text-[25.45px] leading-[1.05]": highlight,
           })}
@@ -74,19 +75,19 @@ async function TimelineItem({ highlight, update }: TimelineItemProps) {
               update.application.name
             )}{" "}
           </span>
-          {update.parent && (
+          <Switch condition={!!update.parent}>
             <Link
-              href={`/${update.parent.username}/status/${update.parent.id}`}
+              href={`/${update.parent?.username}/status/${update.parent?.id}`}
               className="text-meta group-hover:text-links"
             >
-              in reply to {update.parent.username}
+              in reply to {update.parent?.username}
             </Link>
-          )}
+          </Switch>
         </span>
       </div>
-      {session?.user && (
+      <Switch condition={!!session?.user}>
         <Interactions username={session.user.username} update={update} />
-      )}
+      </Switch>
     </div>
   );
 }

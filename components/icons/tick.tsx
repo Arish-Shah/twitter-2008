@@ -12,6 +12,7 @@ export function TickIcon({ className }: TickIconProps) {
       width="8px"
       height="8px"
       viewBox="0 0 97.619 97.618"
+      // TODO: color
       className={clsx("text-tick", className)}
     >
       <g>

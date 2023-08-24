@@ -9,6 +9,7 @@ import { Pagination } from "@/components/profile/pagination";
 import { RecentUpdate } from "@/components/profile/recent-update";
 import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
+import { Switch } from "@/components/ui/switch";
 import { getEveryone } from "@/lib/actions/home/get-everyone";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import { auth } from "@/lib/auth";
@@ -37,7 +38,9 @@ export default async function Everyone({ searchParams }: EveryoneProps) {
           <RecentUpdate />
         </UpdateForm>
         <Feed updates={everyone.updates} />
-        {page === 1 && <CheckList />}
+        <Switch condition={page === 1}>
+          <CheckList />
+        </Switch>
         <Pagination page={page} hasMore={everyone.hasMore} type="newOld" />
       </Main>
       <Sidebar>

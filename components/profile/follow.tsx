@@ -1,15 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { Fragment, useState } from "react";
-import { Alert } from "../ui/alert";
-import { Main } from "../ui/content";
-import { Submit } from "../ui/input";
-import { TickIcon } from "../icons/tick";
-import { TriangleIcon } from "../icons/triangle";
-import clsx from "clsx";
-import { MinusIcon } from "../icons/minus";
-import { ReturnTypeOrValue } from "drizzle-orm";
+import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import {
   getFollow,
   postFollow,
@@ -17,12 +8,21 @@ import {
   updateDeviceUpdates,
 } from "@/lib/actions/profile/get-post-follow";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
-import { useLoadingTransition } from "@/hooks/use-loading-transition";
-import { Switch } from "../ui/switch";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { followDeviceUpdatesSchema } from "@/lib/validations/device";
 import { FollowDeviceUpdatesDataType } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import clsx from "clsx";
+import { ReturnTypeOrValue } from "drizzle-orm";
+import Link from "next/link";
+import { Fragment, useState } from "react";
+import { useForm } from "react-hook-form";
+import { MinusIcon } from "../icons/minus";
+import { TickIcon } from "../icons/tick";
+import { TriangleIcon } from "../icons/triangle";
+import { Alert } from "../ui/alert";
+import { Main } from "../ui/content";
+import { Submit } from "../ui/input";
+import { Switch } from "../ui/switch";
 
 interface FollowProps {
   username: string;
@@ -61,26 +61,25 @@ export function Follow({
   return (
     <Fragment>
       {followData ? (
-        <button
-          className="mt-[5px] flex cursor-default items-center border border-gray-border bg-gray p-[5px_20px_5px_3px]"
+        <div
+          className="mt-[5px] flex cursor-default items-center border border-gray-border p-[5px_20px_5px_3px]"
           onClick={() => setToggle((toggle) => !toggle)}
         >
           <TriangleIcon className={clsx({ "rotate-90": toggle })} />
           <TickIcon className="ml-[5px]" />
           <span className="ml-[2px] font-bold">Following</span>
-          {deviceUpdatesData && (
-            <Fragment>
-              {followData.deviceUpdates ? (
-                <TickIcon className="ml-[6px]" />
-              ) : (
-                <MinusIcon className="ml-[6px]" />
-              )}
-              <span className="ml-[2px]">
-                Device updates {followData.deviceUpdates ? "ON" : "OFF"}
-              </span>
-            </Fragment>
-          )}
-        </button>
+          <Switch condition={!!deviceUpdatesData}>
+            <Switch condition={followData.deviceUpdates}>
+              <TickIcon className="ml-[6px]" />
+            </Switch>
+            <Switch condition={!followData.deviceUpdates}>
+              <MinusIcon className="ml-[6px]" />
+            </Switch>
+            <span className="ml-[2px]">
+              Device updates {followData.deviceUpdates ? "ON" : "OFF"}
+            </span>
+          </Switch>
+        </div>
       ) : (
         <button
           className="mt-[5px] w-[74px] border border-black bg-subtext py-[5px] font-bold text-white"
@@ -91,7 +90,7 @@ export function Follow({
           Follow
         </button>
       )}
-      {followData && toggle && (
+      <Switch condition={!!followData && toggle}>
         <Alert.Warning className="my-[5px] !p-[10px]">
           <Main.H3 className="inline-block">You follow {username}</Main.H3>
           <Submit
@@ -140,22 +139,22 @@ export function Follow({
                 <Link href="/devices">activate</Link>).
               </Switch>
               <Switch
-                condition={!!deviceUpdatesData && !followData.deviceUpdates}
+                condition={!!deviceUpdatesData && !followData?.deviceUpdates}
               >
                 You will not receive {username}&apos;s updates via SMS when on.
               </Switch>
               <Switch
-                condition={!!deviceUpdatesData && followData.deviceUpdates}
+                condition={!!deviceUpdatesData && !!followData?.deviceUpdates}
               >
                 You will receive {username}&apos;s updates via SMS when on.
               </Switch>
             </span>
           </form>
         </Alert.Warning>
-      )}
-      {message && (
+      </Switch>
+      <Switch condition={!!message}>
         <Alert.Warning className="mt-[5px] font-bold">{message}</Alert.Warning>
-      )}
+      </Switch>
     </Fragment>
   );
 }

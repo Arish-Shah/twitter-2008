@@ -1,0 +1,66 @@
+import { useFlash } from "@/hooks/use-flash-store";
+import { inviteEmailSchema } from "@/lib/validations/invite";
+import type { InviteEmailDataType } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Fragment } from "react";
+import { useForm } from "react-hook-form";
+import { Main } from "../ui/content";
+import { Input, Submit } from "../ui/input";
+
+export function InviteEmailForm<Invi>() {
+  const flash = useFlash();
+  const router = useRouter();
+  const { register, handleSubmit } = useForm<InviteEmailDataType>({
+    resolver: zodResolver(inviteEmailSchema),
+  });
+
+  const preview: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
+    open(
+      "/invitations/email_preview",
+      "_blank",
+      "width=580,height=300,location=no,menubar=no,toolbar=no"
+    );
+  };
+
+  return (
+    <Fragment>
+      <Main.H3 className="!m-0">
+        <label htmlFor="emails">Send email invites</label>
+      </Main.H3>
+      <form
+        className="mt-[10px]"
+        onSubmit={handleSubmit((_) => {
+          // flash and redirect as this step is not implementable
+          router.push("/home");
+          flash("You must provide a valid email address.");
+        })}
+      >
+        <Link
+          href="/invitations/email_preview"
+          className="float-right text-[10.8px]"
+          onClick={preview}
+          prefetch={false}
+        >
+          What will this look like?
+        </Link>
+        <Input
+          type="text"
+          className="w-full"
+          placeholder="Email some email addresses"
+          id="emails"
+          {...register("emails")}
+        />
+        <small>
+          Separate multiple email addresses with commas, ex: joe@twitter.com,
+          jane@twitter.com
+        </small>
+        <div className="mt-[7px] text-center">
+          <Submit value="send »" />
+        </div>
+      </form>
+    </Fragment>
+  );
+}

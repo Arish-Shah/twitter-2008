@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import { SignoutForm } from "../forms/logout-form";
+import { Switch } from "./switch";
 
 const links: LinkType[] = [
   { label: "Home", href: "/home" },
@@ -61,7 +62,7 @@ export async function Header({ size }: HeaderProps) {
           priority={true}
         />
       </Link>
-      {!large && (
+      <Switch condition={!large}>
         <nav
           className={clsx(
             "absolute right-0 top-[25px] rounded bg-white p-[6px_10px] leading-[1.5]",
@@ -70,7 +71,7 @@ export async function Header({ size }: HeaderProps) {
         >
           <ul>{items}</ul>
         </nav>
-      )}
+      </Switch>
     </header>
   );
 }

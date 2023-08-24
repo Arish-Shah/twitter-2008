@@ -1,6 +1,7 @@
 "use client";
 
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
+import { useNewAccountStore } from "@/hooks/use-new-account-store";
 import { signupSchema } from "@/lib/validations/auth";
 import type { CaptchaType, SignupDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { Captcha } from "../captcha";
 import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
+import { Switch } from "../ui/switch";
 import { UsernameInput } from "../username-input";
 
 interface SignupFormProps {
@@ -21,6 +23,7 @@ interface SignupFormProps {
 export function SignupForm({ captcha }: SignupFormProps) {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const setNewAccount = useNewAccountStore((state) => state.setNewAccount);
   const [, startTransition] = useLoadingTransition();
   const {
     register,
@@ -33,6 +36,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
 
   const signup = async (data: SignupDataType) => {
     await signIn("credentials", { redirect: false, kind: "signup", ...data });
+    setNewAccount(true);
     router.push("/invitations");
   };
 
@@ -70,9 +74,9 @@ export function SignupForm({ captcha }: SignupFormProps) {
           />
           <Form.Subtext>
             <span>6 characters or more (be tricky!)</span>
-            {errors.password && (
-              <Form.Error>{errors.password.message}</Form.Error>
-            )}
+            <Switch condition={!!errors.password}>
+              <Form.Error>{errors.password?.message}</Form.Error>
+            </Switch>
           </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
@@ -90,7 +94,9 @@ export function SignupForm({ captcha }: SignupFormProps) {
           />
           <Form.Subtext>
             <span>In case you forget something</span>
-            {errors.email && <Form.Error>{errors.email.message}</Form.Error>}
+            <Switch condition={!!errors.email}>
+              <Form.Error>{errors.email!.message}</Form.Error>
+            </Switch>
           </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
@@ -104,9 +110,9 @@ export function SignupForm({ captcha }: SignupFormProps) {
             onChange={(value) => setValue("humanness", value)}
           />
           <Form.Subtext>
-            {errors.humanness && (
-              <span className="text-form-red">{errors.humanness.message}</span>
-            )}
+            <Switch condition={!!errors.humanness}>
+              <span className="text-form-red">{errors.humanness!.message}</span>
+            </Switch>
           </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>

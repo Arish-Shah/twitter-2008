@@ -47,10 +47,12 @@ const config: Config = {
         "updatebutton-gradient-from-hover": "#f1f1f1",
         "updatebutton-gradient-to-hover": "#e0e0e0",
         intro: "#a4a0a1",
+        "alert-default": "#f1f1f1",
+        "alert-default-border": "#ccc",
         "alert-success": "#e8fecd",
         "alert-success-border": "#a9bf74",
-        "alert-warning": "#f9f7a8",
-        "alert-warning-border": "#f2d792",
+        "alert-warning": "#ffff9b",
+        "alert-warning-border": "#ffe38d",
         "alert-info": "#c7eefe",
         "alert-info-border": "#ade6fe",
         recent: "#afeff1",
@@ -77,6 +79,7 @@ const config: Config = {
     },
     borderRadius: {
       DEFAULT: "5px",
+      full: "9999px",
     },
     transitionProperty: {
       height: "height",

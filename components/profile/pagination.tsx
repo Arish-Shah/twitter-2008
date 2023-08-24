@@ -43,14 +43,14 @@ export function Pagination({ type, page, hasMore, userId }: PaginationProps) {
         </PaginationLink>
       </Switch>
       <div className="ml-auto flex">
-        {page > 1 && (
+        <Switch condition={page > 1}>
           <PaginationLink
             href={{ query: { page: page - 1 } }}
             className="mr-[3px]"
           >
             « {left}
           </PaginationLink>
-        )}
+        </Switch>
         <PaginationLink
           href={`?page=${page + 1}`}
           className={clsx({

@@ -7,6 +7,7 @@ import { Pagination } from "@/components/profile/pagination";
 import { Stats } from "@/components/profile/stats";
 import { Timeline } from "@/components/profile/timeline";
 import { Content, Main, Sidebar } from "@/components/ui/content";
+import { Switch } from "@/components/ui/switch";
 import { getFollow } from "@/lib/actions/profile/get-post-follow";
 import { getTimeline } from "@/lib/actions/profile/get-timeline";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
@@ -32,13 +33,15 @@ export default async function Profile({
     <Content>
       <Main className="!p-[18px_20px_12px_20px]">
         <MastHead username={username} />
-        {session?.user && session?.user.username !== username && (
+        <Switch
+          condition={session?.user && session?.user.username !== username}
+        >
           <Follow
             username={username}
             followData={followData}
             deviceUpdatesData={deviceUpdatesData}
           />
-        )}
+        </Switch>
         <Timeline updates={timeline.updates} page={page} />
         <Pagination
           userId={timeline.userId}

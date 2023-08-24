@@ -9,6 +9,7 @@ import { Pagination } from "@/components/profile/pagination";
 import { RecentUpdate } from "@/components/profile/recent-update";
 import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
+import { Switch } from "@/components/ui/switch";
 import { getFeed } from "@/lib/actions/home/get-feed";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import { auth } from "@/lib/auth";
@@ -32,7 +33,9 @@ export default async function Home({ searchParams }: HomeProps) {
           <RecentUpdate />
         </UpdateForm>
         <Feed updates={feed.updates} />
-        {page === 1 && <CheckList />}
+        <Switch condition={page === 1}>
+          <CheckList />
+        </Switch>
         <Pagination
           page={page}
           hasMore={feed.hasMore}

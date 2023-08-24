@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import { Sidebar } from "../ui/content";
+import { Switch } from "../ui/switch";
 
 interface FollowingProps {
   username: string;
@@ -17,11 +18,11 @@ export async function Following({ username }: FollowingProps) {
     <Fragment>
       <div className="flex items-center justify-between">
         <Sidebar.H1 className="!m-0">Following</Sidebar.H1>
-        {session?.user.username === username && (
+        <Switch condition={session?.user.username === username}>
           <Link href="/invitations" className="text-[10.8px]">
             add
           </Link>
-        )}
+        </Switch>
       </div>
       <div className="mt-[10px] pl-[3px]">
         {data.following.map((user, i) => (
@@ -40,11 +41,11 @@ export async function Following({ username }: FollowingProps) {
           </span>
         ))}
       </div>
-      {data.hasMore && (
-        <Link href={`/${screen}/friends`} className="text-[10px]">
+      <Switch condition={data.hasMore}>
+        <Link href={`/${username}/friends`} className="text-[10px]">
           View All...
         </Link>
-      )}
+      </Switch>
     </Fragment>
   );
 }

@@ -1,4 +1,5 @@
 import { Interactions } from "@/components/interactions";
+import { Switch } from "@/components/ui/switch";
 import { getUpdate } from "@/lib/actions/update/get-update";
 import { auth } from "@/lib/auth";
 import {
@@ -28,7 +29,7 @@ export default async function Status({
     <div className="p-[20px]">
       <div className="group flex">
         <div>
-          <div className="w-[550px] break-all font-georgia text-[25.2px] font-normal leading-[1.1]">
+          <div className="w-[550px] break-words font-georgia text-[25.2px] font-normal leading-[1.1]">
             {text}
           </div>
           <div className="m-[13px_0_0_3px] mt-[10px] font-georgia text-[15.6px] italic leading-[1] text-meta">
@@ -50,24 +51,24 @@ export default async function Status({
             ) : (
               update.application.name
             )}{" "}
-            {update.parent && (
+            <Switch condition={!!update.parent}>
               <Link
-                href={`/${update.parent.username}/status/${update.parent.id}`}
+                href={`/${update.parent?.username}/status/${update.parent?.id}`}
                 className="text-meta group-hover:text-links"
               >
-                in reply to {update.parent.username}
+                in reply to {update.parent?.username}
               </Link>
-            )}
+            </Switch>
           </div>
         </div>
-        {session?.user && (
+        <Switch condition={!!session?.user}>
           <Interactions
             username={session.user.username}
             className="mt-[8px]"
             update={update}
             visible
           />
-        )}
+        </Switch>
       </div>
       <div className="mt-[15px] flex h-[89px] items-start border-t border-t-gray pt-[15px] leading-[1]">
         <Link href={`/${update.username}`} className="mr-[20px]">
@@ -85,9 +86,9 @@ export default async function Status({
           <Link href={`/${update.username}`} className="text-[27.6px]">
             <span>{update.username}</span>
           </Link>
-          {update.username !== update.name && (
+          <Switch condition={update.username !== update.name}>
             <span className="mt-[3px] block text-[14.4px]">{update.name}</span>
-          )}
+          </Switch>
         </div>
       </div>
     </div>

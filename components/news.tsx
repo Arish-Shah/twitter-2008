@@ -1,5 +1,5 @@
 import { getRandomNewsIndex } from "@/lib/utils";
-import { Fragment } from "react";
+import { Switch } from "./ui/switch";
 
 interface BubbleProps {
   text: string;
@@ -64,11 +64,9 @@ function Bubble({ text, bio, name }: BubbleProps) {
         </div>
       </blockquote>
       <cite className="text-[10.2px] not-italic">
-        {name && (
-          <Fragment>
-            <strong>{name}</strong>,{" "}
-          </Fragment>
-        )}
+        <Switch condition={!!name}>
+          <strong>{name}</strong>,{" "}
+        </Switch>
         <span>{bio}</span>
       </cite>
     </li>

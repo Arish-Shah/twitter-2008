@@ -25,3 +25,7 @@ a {
 small {
   @apply text-[10.8px];
 }
+
+input::placeholder {
+  @apply text-text;
+}

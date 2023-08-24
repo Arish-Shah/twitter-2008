@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Interactions } from "../interactions";
+import { Switch } from "../ui/switch";
 
 type FeedType = Awaited<ReturnType<typeof getFeed>>["updates"];
 
@@ -49,7 +50,7 @@ function FeedItem({ update, username }: FeedItemProps) {
           >
             {update.username}
           </Link>{" "}
-          <span className="break-all">{text}</span>
+          <span className="break-words">{text}</span>
           <span className="ml-[5px] font-georgia text-[11.5px] italic text-meta">
             <Link
               href={`/${update.username}/status/${update.id}`}
@@ -72,18 +73,20 @@ function FeedItem({ update, username }: FeedItemProps) {
                 update.application.name
               )}{" "}
             </span>
-            {update.parent && (
+            <Switch condition={!!update.parent}>
               <Link
-                href={`/${update.parent.username}/status/${update.parent.id}`}
+                href={`/${update.parent?.username}/status/${update.parent?.id}`}
                 className="text-meta group-hover:text-links"
               >
-                in reply to {update.parent.username}
+                in reply to {update.parent?.username}
               </Link>
-            )}
+            </Switch>
           </span>
         </div>
       </div>
-      {username && <Interactions update={update} username={username} />}
+      <Switch condition={!!username}>
+        <Interactions update={update} username={username} />
+      </Switch>
     </div>
   );
 }

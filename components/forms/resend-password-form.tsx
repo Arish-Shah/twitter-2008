@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "../ui/form";
 import { Input, Submit } from "../ui/input";
+import { Switch } from "../ui/switch";
 
 export function ResendPasswordForm() {
   const [, startTransition] = useLoadingTransition();
@@ -41,7 +42,9 @@ export function ResendPasswordForm() {
             {...register("email")}
           />
           <Form.Subtext>
-            {errors.email && <Form.Error>{errors.email.message}</Form.Error>}
+            <Switch condition={!!errors.email}>
+              <Form.Error>{errors.email!.message}</Form.Error>
+            </Switch>
           </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>

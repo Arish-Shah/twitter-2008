@@ -2,6 +2,7 @@ import { getInfo } from "@/lib/actions/profile/get-info";
 import { truncateWebUrl } from "@/lib/utils";
 import Link from "next/link";
 import { Fragment } from "react";
+import { Switch } from "../ui/switch";
 
 interface InfoItemProps {
   label: string;
@@ -29,9 +30,9 @@ export async function Info({ username }: InfoProps) {
       <address className="not-italic">
         <ul>
           <InfoItem label="Name">{info.name}</InfoItem>
-          {info.location && (
+          <Switch condition={!!info.location}>
             <InfoItem label="Location">{info.location}</InfoItem>
-          )}
+          </Switch>
           {info.web && (
             <InfoItem label="Web">
               <Link href={info.web}>{truncateWebUrl(info.web)}</Link>

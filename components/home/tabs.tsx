@@ -10,12 +10,6 @@ const settingsLinks = [
   { label: "Design", href: "/account/profile_settings" },
 ] as const;
 
-const invitationsLinks = [
-  { label: "Invite from other networks", href: "/invitations" },
-  { label: "Invite by email", href: "/invitations/invite_by_email" },
-  { label: "Search", href: "/invitations/search" },
-] as const;
-
 const directMessagesLinks = [
   { label: "Inbox", href: "/direct_messages" },
   { label: "Sent", href: "/direct_messages/sent" },
@@ -24,10 +18,6 @@ const directMessagesLinks = [
 type TabsProps =
   | { type: "settings"; selected: (typeof settingsLinks)[number]["label"] }
   | {
-      type: "invitations";
-      selected: (typeof invitationsLinks)[number]["label"];
-    }
-  | {
       type: "direct_messages";
       selected: (typeof directMessagesLinks)[number]["label"];
     };
@@ -35,7 +25,6 @@ type TabsProps =
 export function Tabs({ type, selected }: TabsProps) {
   let links;
   if (type === "settings") links = settingsLinks;
-  else if (type === "invitations") links = invitationsLinks;
   else links = directMessagesLinks;
 
   return (
