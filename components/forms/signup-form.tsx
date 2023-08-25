@@ -95,7 +95,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
           <Form.Subtext>
             <span>In case you forget something</span>
             <Switch condition={!!errors.email}>
-              <Form.Error>{errors.email!.message}</Form.Error>
+              <Form.Error>{errors.email?.message}</Form.Error>
             </Switch>
           </Form.Subtext>
         </Form.InputGroup>
@@ -111,7 +111,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
           />
           <Form.Subtext>
             <Switch condition={!!errors.humanness}>
-              <span className="text-form-red">{errors.humanness!.message}</span>
+              <span className="text-form-red">{errors.humanness?.message}</span>
             </Switch>
           </Form.Subtext>
         </Form.InputGroup>
