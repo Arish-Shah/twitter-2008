@@ -86,7 +86,7 @@ async function TimelineItem({ highlight, update }: TimelineItemProps) {
         </span>
       </div>
       <Switch condition={!!session?.user}>
-        <Interactions username={session.user.username} update={update} />
+        <Interactions username={session?.user.username} update={update} />
       </Switch>
     </div>
   );

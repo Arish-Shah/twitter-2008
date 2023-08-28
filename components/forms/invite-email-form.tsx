@@ -54,8 +54,10 @@ export function InviteEmailForm<Invi>() {
           {...register("emails")}
         />
         <small>
-          Separate multiple email addresses with commas, ex: joe@twitter.com,
-          jane@twitter.com
+          Separate multiple email addresses with commas,{" "}
+          <span className="text-subtext">
+            ex: joe@twitter.com, jane@twitter.com
+          </span>
         </small>
         <div className="mt-[7px] text-center">
           <Submit value="send »" />

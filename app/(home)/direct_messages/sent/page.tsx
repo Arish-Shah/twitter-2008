@@ -1,3 +1,4 @@
+import { Tabs } from "@/components/home/tabs";
 import { Main } from "@/components/ui/content";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
@@ -16,5 +17,10 @@ export default async function SentDirectMessages({
   const { user } = await auth();
   const page = Number(searchParams.page || 1);
 
-  return <Main.H2>Direct Messages</Main.H2>;
+  return (
+    <div className="mt-[20px]">
+      <Tabs type="direct_messages" selected="Sent" />
+      <Main.H2>Direct Messages You&apos;ve Sent</Main.H2>
+    </div>
+  );
 }

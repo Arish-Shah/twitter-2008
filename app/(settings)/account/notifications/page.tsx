@@ -19,7 +19,9 @@ export default async function Notices() {
     <Content>
       <Main className="!p-[12px]">
         <MastHead username={session.user.username} size="small" />
-        <Tabs type="settings" selected="Notices" />
+        <div className="mt-[20px] px-[10px]">
+          <Tabs type="settings" selected="Notices" />
+        </div>
         <NoticesForm notices={notices} />
       </Main>
       <Sidebar>

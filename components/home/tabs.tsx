@@ -28,29 +28,27 @@ export function Tabs({ type, selected }: TabsProps) {
   else links = directMessagesLinks;
 
   return (
-    <div className="mt-[20px] px-[10px]">
-      <ul className="flex">
-        <li className="flex-1 border-b border-b-gray-border"></li>
-        {links.map((link, i) => (
-          <li
-            key={i}
-            className={clsx("ml-[-1px] border border-gray-border", {
-              "border-b-white": selected === link.label,
+    <ul className="flex">
+      <li className="flex-1 border-b border-b-gray-border"></li>
+      {links.map((link, i) => (
+        <li
+          key={i}
+          className={clsx("ml-[-1px] border border-gray-border", {
+            "border-b-white": selected === link.label,
+          })}
+        >
+          <Link
+            href={link.href}
+            className={clsx("p-[2px_16px] text-text hover:no-underline", {
+              "bg-gray hover:bg-gray-hover": selected !== link.label,
+              "bg-white": selected === link.label,
             })}
           >
-            <Link
-              href={link.href}
-              className={clsx("p-[2px_12px] text-text hover:no-underline", {
-                "bg-gray hover:bg-gray-hover": selected !== link.label,
-                "bg-white": selected === link.label,
-              })}
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
-        <li className="flex-1 border-b border-b-gray-border"></li>
-      </ul>
-    </div>
+            {link.label}
+          </Link>
+        </li>
+      ))}
+      <li className="flex-1 border-b border-b-gray-border"></li>
+    </ul>
   );
 }

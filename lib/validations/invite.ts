@@ -7,7 +7,7 @@ export const inviteSchema = z.object({
 });
 
 export const inviteEmailSchema = z.object({
-  emails: z.string().min(1),
+  emails: z.string(),
 });
 
 export const searchSchema = z.object({

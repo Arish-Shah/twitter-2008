@@ -21,12 +21,11 @@ interface FindPeopleProps {
 }
 
 export function FindPeople({ email }: FindPeopleProps) {
-  // TODO: get email and set that in the form
   const newAccount = useNewAccountStore((state) => state.newAccount);
   const [selected, setSelected] = useState(0);
 
   return (
-    <div className="px-[10px] pb-[15px]">
+    <div className="px-[10px] pb-[10px]">
       <Switch condition={!newAccount}>
         <ul className="mb-[10px] mt-[20px] flex">
           <li className="flex-1 border-b border-b-gray-border"></li>
@@ -54,8 +53,7 @@ export function FindPeople({ email }: FindPeopleProps) {
           <li className="flex-1 border-b border-b-gray-border"></li>
         </ul>
       </Switch>
-
-      <Main.P className="text-[13.6px] text-meta">
+      <Main.P className="text-[13.4px] text-meta">
         <Switch condition={selected === 0}>
           We can check if anyone in your email contacts already has a Twitter
           account.
@@ -73,7 +71,7 @@ export function FindPeople({ email }: FindPeopleProps) {
           <InviteEmailForm />
         </Switch>
         <Switch condition={selected === 2}>
-          <SearchForm />
+          <SearchForm size="large" />
         </Switch>
       </Alert.Default>
     </div>

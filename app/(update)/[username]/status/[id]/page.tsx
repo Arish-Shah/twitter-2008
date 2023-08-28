@@ -63,7 +63,7 @@ export default async function Status({
         </div>
         <Switch condition={!!session?.user}>
           <Interactions
-            username={session.user.username}
+            username={session?.user.username}
             className="mt-[8px]"
             update={update}
             visible
