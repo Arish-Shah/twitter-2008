@@ -1,21 +1,55 @@
 "use client";
 
+import { useFlash } from "@/hooks/use-flash-store";
+import { useLoadingTransition } from "@/hooks/use-loading-transition";
+import { updateProfile } from "@/lib/actions/profile/get-update-profile";
+import { getErrorMessage } from "@/lib/utils";
+import { accountSettingsSchema } from "@/lib/validations/settings";
+import type { AccountSettingsDataType } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import { Form } from "../ui/form";
 import { Input, Select, Submit } from "../ui/input";
 import { UsernameInput } from "../username-input";
 
-interface SettingsFormProps {}
+interface SettingsFormProps {
+  defaultValues: AccountSettingsDataType;
+}
 
-export function SettingsForm({}: SettingsFormProps) {
+export function SettingsForm({ defaultValues }: SettingsFormProps) {
+  const flash = useFlash();
+  const router = useRouter();
+  const [isPending, startTransition] = useLoadingTransition();
+  const { register, handleSubmit } = useForm<AccountSettingsDataType>({
+    resolver: zodResolver(accountSettingsSchema),
+    defaultValues,
+  });
+
+  const update = async (data: AccountSettingsDataType) => {
+    router.replace("/account/settings");
+    try {
+      await updateProfile(data);
+      flash("Thanks, your settings have been saved.");
+    } catch (error) {
+      flash(getErrorMessage(error));
+    }
+  };
+
   return (
-    <Form className="pl-[10px]">
+    <Form
+      className="pl-[10px]"
+      onSubmit={handleSubmit((data) => {
+        startTransition(() => update(data));
+      })}
+    >
       <Form.Row>
         <Form.LabelGroup>
           <label htmlFor="name">Name:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="name" type="text" />
+          <Input id="name" type="text" {...register("name")} />
           <Form.Subtext className="block">
             Enter your real name, so people you know can recognize you.
           </Form.Subtext>
@@ -26,7 +60,7 @@ export function SettingsForm({}: SettingsFormProps) {
           <label htmlFor="username">Username:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <UsernameInput id="username" />
+          <UsernameInput id="username" {...register("username")} />
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
@@ -34,7 +68,7 @@ export function SettingsForm({}: SettingsFormProps) {
           <label htmlFor="email">Email:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="email" type="email" />
+          <Input id="email" type="email" {...register("email")} />
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
@@ -53,7 +87,11 @@ export function SettingsForm({}: SettingsFormProps) {
                 </label>
               </Form.LabelGroup>
               <Form.InputGroup className="p-0">
-                <Input id="password" type="password" />
+                <Input
+                  id="password"
+                  type="password"
+                  {...register("password")}
+                />
                 <Form.Subtext>
                   <Link href="/account/resend_password">
                     Forgot your password?
@@ -79,7 +117,7 @@ export function SettingsForm({}: SettingsFormProps) {
           <label htmlFor="web">More Info URL:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="web" type="url" />
+          <Input id="web" type="url" {...register("web")} />
           <Form.Subtext className="block">
             Have a homepage or a blog? Put the address here.
             <Link href="/downloads" className="block">
@@ -93,7 +131,7 @@ export function SettingsForm({}: SettingsFormProps) {
           <label htmlFor="bio">One Line Bio:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="bio" type="text" />
+          <Input id="bio" type="text" {...register("bio")} />
           <Form.Subtext className="block">
             About yourself in fewer than 160 chars.
           </Form.Subtext>
@@ -104,7 +142,7 @@ export function SettingsForm({}: SettingsFormProps) {
           <label htmlFor="location">Location:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="location" type="text" />
+          <Input id="location" type="text" {...register("location")} />
           <Form.Subtext className="block">
             Where in the world are you?
           </Form.Subtext>
@@ -124,7 +162,8 @@ export function SettingsForm({}: SettingsFormProps) {
         <Form.LabelGroup />
         <Form.InputGroup>
           <label htmlFor="protected">
-            <input type="checkbox" id="protected" /> Protect my updates
+            <input type="checkbox" id="protected" {...register("protected")} />{" "}
+            Protect my updates
           </label>
           <Form.Subtext className="block">
             Only let people whom I approve follow my updates. If this is
@@ -137,7 +176,7 @@ export function SettingsForm({}: SettingsFormProps) {
       <Form.Row>
         <Form.LabelGroup />
         <Form.InputGroup>
-          <Submit value="Save" />
+          <Submit value="Save" disabled={isPending} />
         </Form.InputGroup>
       </Form.Row>
     </Form>

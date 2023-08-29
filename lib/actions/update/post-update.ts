@@ -46,7 +46,11 @@ export const postUpdate = async (
       .insert(updates)
       .values({ text, authorId, applicationId, parentId });
   } else {
-    await postMessage({ to: data.to!, text: data.text });
+    await postMessage({
+      to: data.to!,
+      // remove the dm and username words
+      text: data.text.split(" ").slice(2).join(" "),
+    });
   }
 
   revalidatePath("/home");

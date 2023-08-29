@@ -18,7 +18,7 @@ export function Steps({ selected }: StepsProps) {
             {
               "text-text": selected === step,
               "text-gray-border": selected !== step,
-              "leading-[23px]": selected <= step,
+              "leading-[24px]": selected <= step,
               "!text-tick": selected > step,
             }
           )}
