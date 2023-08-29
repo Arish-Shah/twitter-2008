@@ -1,7 +1,6 @@
 "use client";
 
 import { useFlash } from "@/hooks/use-flash-store";
-import { useLoadingStore } from "@/hooks/use-loading-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { useUpdateFormStore } from "@/hooks/use-update-form-store";
 import { deleteUpdate } from "@/lib/actions/update/delete-update";
@@ -27,28 +26,25 @@ export function Interactions({
   className,
 }: InteractionsProps) {
   const flash = useFlash();
-  const setLoading = useLoadingStore((state) => state.setLoading);
   const setText = useUpdateFormStore((state) => state.setText);
   const router = useRouter();
 
   const [isPending, startTransition] = useLoadingTransition();
 
-  const handleFavorite = async () => {
+  const handleFavorite = async (id: number) => {
     try {
-      await postFavorite(update.id);
+      await postFavorite(id);
     } catch (error) {
       flash(getErrorMessage(error));
     }
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (id: number) => {
     try {
       const confirmDelete = confirm(
         "Sure you want to delete this update? There is NO undo!"
       );
-      if (confirmDelete) await deleteUpdate(update.id);
-      // TODO: loading state isn't set to false with delete, test
-      setLoading(false);
+      if (confirmDelete) await deleteUpdate(id);
     } catch (error) {
       flash(getErrorMessage(error));
     }
@@ -67,7 +63,7 @@ export function Interactions({
           "opacity-100": update.favorited,
         })}
         onClick={() => {
-          startTransition(() => handleFavorite());
+          startTransition(() => handleFavorite(update.id));
         }}
         disabled={isPending}
       >
@@ -81,7 +77,7 @@ export function Interactions({
           })}
           disabled={isPending}
           onClick={() => {
-            startTransition(() => handleDelete());
+            startTransition(() => handleDelete(update.id));
           }}
         >
           <TrashIcon />

@@ -7,8 +7,7 @@ export function useLoadingTransition(): ReturnType<typeof useTransition> {
 
   useEffect(() => {
     setLoading(isPending);
-    // eslint-disable-next-line
-  }, [isPending]);
+  }, [setLoading, isPending]);
 
   return [isPending, startTransition];
 }

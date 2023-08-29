@@ -67,7 +67,7 @@ const config: Config = {
         downloadbutton: "#d4ff84",
         "downloadbutton-border": "#693",
         superscript: "#888",
-        tick: "#84c23b",
+        tick: "#54b219",
         "steps-gradient": "#f8f8f8",
       },
       fontFamily: {

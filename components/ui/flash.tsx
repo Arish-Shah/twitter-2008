@@ -23,8 +23,7 @@ export function Flash({ size }: FlashProps) {
         setMessage(null);
       }, 3200);
     }
-    // eslint-disable-next-line
-  }, [message]);
+  }, [message, setMessage]);
 
   return (
     <div

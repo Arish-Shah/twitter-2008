@@ -62,7 +62,7 @@ export function Follow({
     <Fragment>
       {followData ? (
         <div
-          className="mt-[5px] flex cursor-default items-center border border-gray-border p-[5px_20px_5px_3px]"
+          className="mt-[5px] flex cursor-default items-center border border-gray-border p-[5px]"
           onClick={() => setToggle((toggle) => !toggle)}
         >
           <TriangleIcon className={clsx({ "rotate-90": toggle })} />

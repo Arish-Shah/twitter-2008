@@ -40,9 +40,9 @@ export function UpdateForm({ children }: UpdateFormProps) {
     setValue("to", values.to);
     setValue("kind", values.kind);
     setFocus("text");
-    // eslint-disable-next-line
-  }, [values]);
+  }, [values, setFocus, setValue]);
 
+  // TODO: show message flash when it's a direct message
   const update = async (data: UpdateDataType) => {
     try {
       await postUpdate(data);

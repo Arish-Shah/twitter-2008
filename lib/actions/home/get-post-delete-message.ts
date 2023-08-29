@@ -80,6 +80,11 @@ export const getSentDirectMessages = cache(async (page = 1, limit = 20) => {
       createdAt: true,
     },
     with: {
+      from: {
+        columns: {
+          username: true,
+        },
+      },
       to: {
         columns: {
           username: true,
@@ -117,6 +122,11 @@ export const getDirectMessages = cache(async (page = 1, limit = 20) => {
       createdAt: true,
     },
     with: {
+      from: {
+        columns: {
+          username: true,
+        },
+      },
       to: {
         columns: {
           username: true,
@@ -139,3 +149,8 @@ export const getDirectMessages = cache(async (page = 1, limit = 20) => {
     hasMore: data.length > limit,
   };
 });
+
+export const deleteMessage = async (id: number) => {
+  await db.delete(messages).where(eq(messages.id, id));
+  revalidatePath("/direct_messages");
+};

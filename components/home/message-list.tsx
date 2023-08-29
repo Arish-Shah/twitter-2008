@@ -1,7 +1,9 @@
-import { getSentDirectMessages } from "@/lib/actions/home/get-post-message";
+import { getSentDirectMessages } from "@/lib/actions/home/get-post-delete-message";
+import { auth } from "@/lib/auth";
 import { formatUpdateCreatedAt, formatUpdateText } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { MessageInteractions } from "./message-interactions";
 
 type MessageType = Awaited<
   ReturnType<typeof getSentDirectMessages>
@@ -15,9 +17,14 @@ interface MessageListProps {
   messages: MessageType;
 }
 
-function MessageItem({ message }: MessageItemProps) {
+async function MessageItem({ message }: MessageItemProps) {
+  const { user } = await auth();
   const text = formatUpdateText(message.text);
   const createdAt = formatUpdateCreatedAt(message.createdAt);
+  const username =
+    message.from.username !== user.username
+      ? message.from.username
+      : message.to.username;
 
   return (
     <div className="group flex h-[70.84px] items-center border-b border-dashed border-timeline-border px-[5px] hover:bg-timeline-hover">
@@ -40,13 +47,14 @@ function MessageItem({ message }: MessageItemProps) {
           className="font-bold"
           title={message.to.profile.name || message.to.username}
         >
-          {message.to.username}
+          {username}
         </Link>{" "}
         <span className="break-words">{text}</span>
         <span className="ml-[5px] font-georgia text-[11.5px] italic text-meta">
           {createdAt}
         </span>
       </div>
+      <MessageInteractions id={message.id} username={username} />
     </div>
   );
 }

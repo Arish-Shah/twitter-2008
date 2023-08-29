@@ -2,20 +2,23 @@
 
 import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
-import { postMessage } from "@/lib/actions/home/get-post-message";
+import { useMessageFormStore } from "@/hooks/use-message-form-store";
+import { useMountedEffect } from "@/hooks/use-mounted-effect";
+import { postMessage } from "@/lib/actions/home/get-post-delete-message";
 import { getErrorMessage } from "@/lib/utils";
 import { messageSchema } from "@/lib/validations/message";
 import type { MessageDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Select, TextArea } from "../ui/input";
 
-interface DirectMessageFormProps {
+interface MessageFormProps {
   receipents: string[];
 }
 
-export function DirectMessageForm({ receipents }: DirectMessageFormProps) {
+export function MessageForm({ receipents }: MessageFormProps) {
   const {
     register,
     handleSubmit,
@@ -23,12 +26,21 @@ export function DirectMessageForm({ receipents }: DirectMessageFormProps) {
     formState: { isValid },
     reset,
     getValues,
+    setValue,
+    setFocus,
   } = useForm<MessageDataType>({
     resolver: zodResolver(messageSchema),
     defaultValues: { text: "" },
   });
+  const to = useMessageFormStore((state) => state.to);
   const [, startTransition] = useLoadingTransition();
   const flash = useFlash();
+  const router = useRouter();
+
+  useMountedEffect(() => {
+    setValue("to", to);
+    setFocus("text");
+  }, [to]);
 
   const watchedText = watch("text");
   const charactersLeft = 140 - watchedText.length;
@@ -36,7 +48,8 @@ export function DirectMessageForm({ receipents }: DirectMessageFormProps) {
   const sendMessage = async (data: MessageDataType) => {
     try {
       await postMessage(data);
-      flash(`Your direct message has been sent to ${getValues("to")}.`);
+      flash(`Your direct message has been sent to ${getValues("to")}!`);
+      router.push("/direct_messages/sent");
     } catch (error) {
       flash(getErrorMessage(error));
     } finally {

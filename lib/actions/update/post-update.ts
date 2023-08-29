@@ -7,7 +7,7 @@ import { UpdateDataType } from "@/types";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { postMessage } from "../home/get-post-message";
+import { postMessage } from "../home/get-post-delete-message";
 
 export const postUpdate = async (
   data: UpdateDataType,

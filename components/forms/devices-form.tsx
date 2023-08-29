@@ -1,6 +1,5 @@
 "use client";
 
-import { useLoadingStore } from "@/hooks/use-loading-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 
 import { useFlash } from "@/hooks/use-flash-store";
@@ -37,7 +36,6 @@ interface FormProps {
 }
 
 function SetupForm() {
-  const setLoading = useLoadingStore((state) => state.setLoading);
   const [isPending, startTransition] = useLoadingTransition();
   const {
     register,
@@ -49,7 +47,6 @@ function SetupForm() {
 
   const setup = async (data: DeviceSetupDataType) => {
     await postDeviceSetup(data);
-    setLoading(false);
   };
 
   return (
