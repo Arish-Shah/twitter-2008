@@ -9,6 +9,7 @@ import { updateSchema } from "@/lib/validations/update";
 import { UpdateDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { TextArea } from "../ui/input";
@@ -33,7 +34,7 @@ export function UpdateForm({ children }: UpdateFormProps) {
   });
   const [, startTransition] = useLoadingTransition();
   const { onChange, ...rest } = register("text");
-  const charactersLeft = 140 - values.text.length;
+  const router = useRouter();
 
   useEffect(() => {
     setValue("text", values.text);
@@ -42,10 +43,16 @@ export function UpdateForm({ children }: UpdateFormProps) {
     setFocus("text");
   }, [values, setFocus, setValue]);
 
-  // TODO: show message flash when it's a direct message
+  const charactersLeft = 140 - values.text.length;
+
   const update = async (data: UpdateDataType) => {
     try {
       await postUpdate(data);
+      // show flash when the kind of update is dm
+      if (values.kind === "direct_message") {
+        flash(`Your direct message has been sent to ${values.to}!`);
+        router.push("/direct_messages/sent");
+      }
     } catch (error) {
       flash(getErrorMessage(error));
     } finally {

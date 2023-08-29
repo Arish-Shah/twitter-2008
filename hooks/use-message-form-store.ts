@@ -1,12 +1,14 @@
 import { create } from "zustand";
 
+type ToType = { username: string };
+
 interface MessageFormState {
-  to: string;
-  setTo: (to: string) => void;
+  to: ToType;
+  setTo: (username: string) => void;
 }
 
-// TODO: update as passing same to does not trigger re-render
+// to used as object to force re-render
 export const useMessageFormStore = create<MessageFormState>((set) => ({
-  to: "",
-  setTo: (to) => set({ to }),
+  to: { username: "" },
+  setTo: (username) => set({ to: { username } }),
 }));

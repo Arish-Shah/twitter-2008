@@ -38,7 +38,7 @@ export function MessageForm({ receipents }: MessageFormProps) {
   const router = useRouter();
 
   useMountedEffect(() => {
-    setValue("to", to);
+    setValue("to", to.username);
     setFocus("text");
   }, [to]);
 

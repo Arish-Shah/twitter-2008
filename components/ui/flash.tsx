@@ -27,8 +27,8 @@ export function Flash({ size }: FlashProps) {
 
   return (
     <div
-      className={clsx("overflow-hidden", {
-        "h-0 transition-height duration-500": !message,
+      className={clsx("overflow-hidden transition-height duration-500", {
+        "h-0": !message,
         "h-[105.52px]": message,
         "w-[620px]": size === "small",
       })}
