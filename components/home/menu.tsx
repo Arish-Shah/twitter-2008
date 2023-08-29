@@ -1,3 +1,4 @@
+import { getUnreadCount } from "@/lib/actions/home/get-post-message";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -56,9 +57,15 @@ function MenuItem({ link, selected }: MenuItemProps) {
   );
 }
 
-// TODO: unread counter
-export function Menu({ type, selected, username }: MenuProps) {
-  const links = type === "home" ? homeLinks : profileLinks(username);
+export async function Menu({ type, selected, username }: MenuProps) {
+  let links;
+
+  if (type === "home") {
+    links = homeLinks;
+    const unread = await getUnreadCount();
+    // TODO: fix type
+    (links[2] as any).unread = unread;
+  } else links = profileLinks(username);
 
   return (
     <ul>

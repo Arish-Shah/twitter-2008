@@ -2,6 +2,8 @@
 
 import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
+import { postMessage } from "@/lib/actions/home/get-post-message";
+import { getErrorMessage } from "@/lib/utils";
 import { messageSchema } from "@/lib/validations/message";
 import type { MessageDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,10 +34,16 @@ export function DirectMessageForm({ receipents }: DirectMessageFormProps) {
   const charactersLeft = 140 - watchedText.length;
 
   const sendMessage = async (data: MessageDataType) => {
-    console.log(data);
-    flash(`Your direct message has been sent to ${getValues("to")}`);
-    reset();
+    try {
+      await postMessage(data);
+      flash(`Your direct message has been sent to ${getValues("to")}.`);
+    } catch (error) {
+      flash(getErrorMessage(error));
+    } finally {
+      reset();
+    }
   };
+
   return (
     <form
       onSubmit={handleSubmit((data) => {

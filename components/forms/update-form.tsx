@@ -48,10 +48,11 @@ export function UpdateForm({ children }: UpdateFormProps) {
       await postUpdate(data);
     } catch (error) {
       flash(getErrorMessage(error));
+    } finally {
+      setText("");
+      setFocus("text");
+      reset();
     }
-    setText("");
-    setFocus("text");
-    reset();
   };
 
   return (

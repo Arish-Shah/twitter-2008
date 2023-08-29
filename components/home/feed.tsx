@@ -41,48 +41,46 @@ function FeedItem({ update, username }: FeedItemProps) {
           />
         </Link>
       </div>
-      <div className="flex-1 text-[14.4px] leading-[1.1]">
-        <div className="w-[430px]">
+      <div className="w-[430px] flex-1 text-[14.4px] leading-[1.1]">
+        <Link
+          href={`/${update.username}`}
+          className="font-bold"
+          title={update.author.name || update.username}
+        >
+          {update.username}
+        </Link>{" "}
+        <span className="break-words">{text}</span>
+        <span className="ml-[5px] font-georgia text-[11.5px] italic text-meta">
           <Link
-            href={`/${update.username}`}
-            className="font-bold"
-            title={update.author.name || update.username}
+            href={`/${update.username}/status/${update.id}`}
+            className="text-meta group-hover:text-links"
+            title={title}
           >
-            {update.username}
-          </Link>{" "}
-          <span className="break-words">{text}</span>
-          <span className="ml-[5px] font-georgia text-[11.5px] italic text-meta">
-            <Link
-              href={`/${update.username}/status/${update.id}`}
-              className="text-meta group-hover:text-links"
-              title={title}
-            >
-              {createdAt}
-            </Link>
-            <span>
-              {" "}
-              from{" "}
-              {update.application.url ? (
-                <Link
-                  href={update.application.url}
-                  className="text-meta group-hover:text-links"
-                >
-                  {update.application.name}
-                </Link>
-              ) : (
-                update.application.name
-              )}{" "}
-            </span>
-            <Switch condition={!!update.parent}>
+            {createdAt}
+          </Link>
+          <span>
+            {" "}
+            from{" "}
+            {update.application.url ? (
               <Link
-                href={`/${update.parent?.username}/status/${update.parent?.id}`}
+                href={update.application.url}
                 className="text-meta group-hover:text-links"
               >
-                in reply to {update.parent?.username}
+                {update.application.name}
               </Link>
-            </Switch>
+            ) : (
+              update.application.name
+            )}{" "}
           </span>
-        </div>
+          <Switch condition={!!update.parent}>
+            <Link
+              href={`/${update.parent?.username}/status/${update.parent?.id}`}
+              className="text-meta group-hover:text-links"
+            >
+              in reply to {update.parent?.username}
+            </Link>
+          </Switch>
+        </span>
       </div>
       <Switch condition={!!username}>
         <Interactions update={update} username={username} />

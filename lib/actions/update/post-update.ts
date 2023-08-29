@@ -1,12 +1,13 @@
 "use server";
 
-import { applications, messages, updates } from "@/drizzle/schema";
+import { applications, updates } from "@/drizzle/schema";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { UpdateDataType } from "@/types";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { postMessage } from "../home/get-post-message";
 
 export const postUpdate = async (
   data: UpdateDataType,
@@ -45,19 +46,7 @@ export const postUpdate = async (
       .insert(updates)
       .values({ text, authorId, applicationId, parentId });
   } else {
-    // TODO: also check if the user follows me
-    const user = await db.query.users.findFirst({
-      where: (users, { sql }) =>
-        sql`lower(${users.username}) = ${data.to!.toLowerCase()}`,
-    });
-
-    if (user) {
-      await db.insert(messages).values({
-        fromId: authorId,
-        toId: user.id,
-        text: text.split(" ").slice(1).join(" "), // remove the d/dm as first word
-      });
-    }
+    await postMessage({ to: data.to!, text: data.text });
   }
 
   revalidatePath("/home");
