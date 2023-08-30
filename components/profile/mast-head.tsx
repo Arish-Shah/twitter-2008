@@ -1,4 +1,4 @@
-import { getProfile } from "@/lib/actions/profile/get-update-profile";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";

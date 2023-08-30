@@ -50,7 +50,7 @@ export const Submit = forwardRef<HTMLInputElement, InputProps>(function Submit(
     <input
       type="submit"
       className={clsx(
-        "cursor-pointer border border-gray-border bg-gray p-[2px_8px] text-black hover:bg-gray-hover",
+        "cursor-pointer border border-gray-border bg-gray p-[2px_8px] text-black hover:bg-gray-hover disabled:text-gray-disabled disabled:hover:text-gray-disabled-hover",
         className
       )}
       ref={ref}

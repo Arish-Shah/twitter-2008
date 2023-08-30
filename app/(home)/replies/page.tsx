@@ -9,7 +9,7 @@ import { RecentUpdate } from "@/components/profile/recent-update";
 import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getReplies } from "@/lib/actions/home/get-replies";
-import { getProfile } from "@/lib/actions/profile/get-update-profile";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import type { Metadata } from "next";
 

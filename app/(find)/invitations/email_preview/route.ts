@@ -1,4 +1,4 @@
-import { getProfile } from "@/lib/actions/profile/get-update-profile";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 
 export async function GET() {
   const profile = await getProfile();

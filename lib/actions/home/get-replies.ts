@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { and, eq, ilike, inArray, type SQL } from "drizzle-orm";
 import { cache } from "react";
 import { getUpdates } from "../get-updates";
-import { getProfile } from "../profile/get-update-profile";
+import { getProfile } from "../profile/get-profile";
 import { getNotices } from "../settings/get-update-notices";
 
 export const getReplies = cache(async (page = 1, limit = 20) => {

@@ -1,5 +1,5 @@
 import { getSentDirectMessages } from "@/lib/actions/home/get-post-delete-message";
-import { getProfile } from "@/lib/actions/profile/get-update-profile";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 import { formatUpdateCreatedAt, formatUpdateText } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";

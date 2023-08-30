@@ -2,7 +2,7 @@
 
 import { cache } from "react";
 import { auth } from "../auth";
-import { getProfile } from "./profile/get-update-profile";
+import { getProfile } from "./profile/get-profile";
 
 export const getLoggedInUsername = cache(async () => {
   const session = await auth();

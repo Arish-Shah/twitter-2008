@@ -2,7 +2,7 @@ import { SettingsForm } from "@/components/forms/settings-form";
 import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
 import { Content, Main, Sidebar } from "@/components/ui/content";
-import { getProfile } from "@/lib/actions/profile/get-update-profile";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 import type { Metadata } from "next";
 import Link from "next/link";
 

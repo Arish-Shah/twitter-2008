@@ -2,11 +2,12 @@
 
 import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
-import { updateProfile } from "@/lib/actions/profile/get-update-profile";
+import { updateProfile } from "@/lib/actions/settings/update-profile";
 import { getErrorMessage } from "@/lib/utils";
 import { accountSettingsSchema } from "@/lib/validations/settings";
 import type { AccountSettingsDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -26,7 +27,7 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
   const {
     register,
     handleSubmit,
-    formState: { dirtyFields },
+    formState: { dirtyFields, errors },
   } = useForm<AccountSettingsDataType>({
     resolver: zodResolver(accountSettingsSchema),
     defaultValues,
@@ -54,9 +55,17 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
           <label htmlFor="name">Name:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="name" type="text" {...register("name")} />
-          <Form.Subtext className="block">
-            Enter your real name, so people you know can recognize you.
+          <Input
+            id="name"
+            type="text"
+            hasError={!!errors.name}
+            {...register("name")}
+          />
+          <Form.Subtext
+            className={clsx("block", { "!text-form-red": errors.name })}
+          >
+            {errors.name?.message ??
+              "Enter your real name, so people you know can recognize you."}
           </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
@@ -143,9 +152,16 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
           <label htmlFor="bio">One Line Bio:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="bio" type="text" {...register("bio")} />
-          <Form.Subtext className="block">
-            About yourself in fewer than 160 chars.
+          <Input
+            id="bio"
+            type="text"
+            hasError={!!errors.bio}
+            {...register("bio")}
+          />
+          <Form.Subtext
+            className={clsx("block", { "!text-form-red": errors.bio })}
+          >
+            {errors.bio?.message ?? "About yourself in fewer than 160 chars."}
           </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>
@@ -154,9 +170,16 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
           <label htmlFor="location">Location:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <Input id="location" type="text" {...register("location")} />
-          <Form.Subtext className="block">
-            Where in the world are you?
+          <Input
+            id="location"
+            type="text"
+            hasError={!!errors.location}
+            {...register("location")}
+          />
+          <Form.Subtext
+            className={clsx("block", { "!text-form-red": errors.location })}
+          >
+            {errors.location?.message ?? "Where in the world are you?"}
           </Form.Subtext>
         </Form.InputGroup>
       </Form.Row>

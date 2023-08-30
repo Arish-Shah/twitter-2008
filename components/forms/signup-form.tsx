@@ -144,11 +144,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
       <Form.Row>
         <Form.LabelGroup />
         <Form.InputGroup>
-          <Submit
-            value="I accept. Create my account."
-            className="disabled:text-gray-disabled disabled:hover:text-gray-disabled-hover"
-            disabled={submitting}
-          />
+          <Submit value="I accept. Create my account." disabled={submitting} />
         </Form.InputGroup>
       </Form.Row>
     </Form>

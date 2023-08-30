@@ -1,5 +1,5 @@
 import { Main } from "@/components/ui/content";
-import { getProfile } from "@/lib/actions/profile/get-update-profile";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 import type { Metadata } from "next";
 import Link from "next/link";
 

@@ -1,4 +1,4 @@
-import { getProfile } from "@/lib/actions/profile/get-update-profile";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 import { auth } from "@/lib/auth";
 import type { LinkType, PageSizeType } from "@/types";
 import clsx from "clsx";
