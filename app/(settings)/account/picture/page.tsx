@@ -2,7 +2,6 @@ import { PictureForm } from "@/components/forms/picture-form";
 import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
 import { Content, Main, Sidebar } from "@/components/ui/content";
-import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,12 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Picture() {
-  const session = await auth();
-
   return (
     <Content>
       <Main className="!p-[12px]">
-        <MastHead username={session.user.username} size="small" />
+        <MastHead size="small" />
         <div className="mt-[20px] px-[10px]">
           <Tabs type="settings" selected="Picture" />
         </div>

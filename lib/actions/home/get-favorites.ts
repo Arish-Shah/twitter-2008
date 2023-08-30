@@ -1,17 +1,29 @@
-import { updates } from "@/drizzle/schema";
+import { updates, users } from "@/drizzle/schema";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { inArray } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { cache } from "react";
 import { getUpdates } from "../get-updates";
 import { getUserId } from "../get-user-id";
 
 export const getFavorites = cache(
-  async (username: string, page = 1, limit = 20) => {
-    const userId = await getUserId(username);
-    const session = await auth();
+  async (username?: string, page = 1, limit = 20) => {
+    let tempUsername = username;
 
+    const session = await auth();
     const loggedInUserId = Number(session?.user.id) || 0;
+
+    if (!tempUsername) {
+      if (session?.user) {
+        const data = await db
+          .select({ username: users.username })
+          .from(users)
+          .where(eq(users.id, loggedInUserId));
+        tempUsername = data[0].username;
+      }
+    }
+
+    const userId = await getUserId(tempUsername!);
 
     const favoriteUpdates = await db.query.favorites.findMany({
       columns: { updateId: true },

@@ -12,7 +12,6 @@ import { Content, Main, Sidebar } from "@/components/ui/content";
 import { Switch } from "@/components/ui/switch";
 import { getEveryone } from "@/lib/actions/home/get-everyone";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
-import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 interface EveryoneProps {
@@ -24,9 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Everyone({ searchParams }: EveryoneProps) {
-  const {
-    user: { id, username },
-  } = await auth();
   const page = Number(searchParams.page || 1);
   const everyone = await getEveryone(page);
   const device = await getDeviceUpdates();
@@ -45,13 +41,13 @@ export default async function Everyone({ searchParams }: EveryoneProps) {
       </Main>
       <Sidebar>
         <Sidebar.Section>
-          <MastHead username={username} size="small" light />
+          <MastHead size="small" light />
           <div className="h-[10px]"></div>
-          <Stats username={username} />
+          <Stats />
         </Sidebar.Section>
         <Menu type="home" selected="Everyone" />
         <Sidebar.Section bordered>
-          <Following username={username} />
+          <Following />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

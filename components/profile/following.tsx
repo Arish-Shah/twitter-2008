@@ -1,5 +1,5 @@
+import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
 import { getFollowingSection } from "@/lib/actions/profile/get-following";
-import { auth } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -7,18 +7,18 @@ import { Sidebar } from "../ui/content";
 import { Switch } from "../ui/switch";
 
 interface FollowingProps {
-  username: string;
+  username?: string;
 }
 
 export async function Following({ username }: FollowingProps) {
-  const session = await auth();
+  const loggedInUsername = await getLoggedInUsername();
   const data = await getFollowingSection(username);
 
   return (
     <Fragment>
       <div className="flex items-center justify-between">
         <Sidebar.H1 className="!m-0">Following</Sidebar.H1>
-        <Switch condition={session?.user.username === username}>
+        <Switch condition={loggedInUsername === username}>
           <Link href="/invitations" className="text-[10.8px]">
             add
           </Link>

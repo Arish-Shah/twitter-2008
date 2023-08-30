@@ -1,12 +1,25 @@
+import { users } from "@/drizzle/schema";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { eq, sql, type SQL } from "drizzle-orm";
+import { redirect } from "next/navigation";
 import { cache } from "react";
 
 export const getFollowingSection = cache(
-  async (username: string, limit = 37) => {
+  async (username?: string, limit = 36) => {
+    let where: SQL<unknown>;
+
+    if (username) {
+      where = sql`lower(${users.username}) = ${username.toLowerCase()}`;
+    } else {
+      const session = await auth();
+      if (!session?.user) return redirect("/login");
+      where = eq(users.id, Number(session.user.id));
+    }
+
     const data = await db.query.users.findFirst({
       columns: {},
-      where: (users, { sql }) =>
-        sql`lower(${users.username}) = ${username.toLowerCase()}`,
+      where,
       with: {
         following: {
           limit: limit + 1,

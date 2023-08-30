@@ -1,11 +1,11 @@
+import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
 import { getStats } from "@/lib/actions/profile/get-stats";
-import { auth } from "@/lib/auth";
 import type { LinkType } from "@/types";
 import clsx from "clsx";
 import Link from "next/link";
 
 interface StatsProps {
-  username: string;
+  username?: string;
 }
 
 interface StatsItem {
@@ -35,9 +35,8 @@ function StatsItem({ count, link, className }: StatsItem) {
 }
 
 export async function Stats({ username }: StatsProps) {
-  const session = await auth();
+  const loggedInUsername = await getLoggedInUsername();
   const stats = await getStats(username);
-  const me = session?.user.username === username;
 
   return (
     <div className="m-[5px_0_10px_0] flex">
@@ -45,7 +44,8 @@ export async function Stats({ username }: StatsProps) {
         count={stats.following}
         link={{
           label: "Following",
-          href: me ? `/friends` : `/${username}/friends`,
+          href:
+            loggedInUsername === username ? `/friends` : `/${username}/friends`,
         }}
         className="border-l-0 pl-0"
       />
@@ -53,7 +53,10 @@ export async function Stats({ username }: StatsProps) {
         count={stats.followers}
         link={{
           label: "Followers",
-          href: me ? `/followers` : `/${username}/followers`,
+          href:
+            loggedInUsername === username
+              ? `/followers`
+              : `/${username}/followers`,
         }}
       />
       <StatsItem

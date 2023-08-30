@@ -7,8 +7,6 @@ import { cache } from "react";
 import { auth } from "../auth";
 
 export const getEmailAvailable = cache(async (email: string) => {
-  const session = await auth();
-
   const data = await db
     .select({ email: users.email })
     .from(users)
@@ -16,12 +14,12 @@ export const getEmailAvailable = cache(async (email: string) => {
 
   if (data.length > 0) {
     // check if the email belongs to the currently logged in user's
+    const session = await auth();
     if (session?.user) {
-      const userId = Number(session.user.id);
       const data = await db
         .select({ email: users.email })
         .from(users)
-        .where(eq(users.id, userId));
+        .where(eq(users.id, Number(session.user.id)));
       if (data.length === 0) return { success: true };
       if (email === data[0].email) return { success: true };
     }

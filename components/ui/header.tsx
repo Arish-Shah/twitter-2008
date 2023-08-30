@@ -1,3 +1,4 @@
+import { getProfile } from "@/lib/actions/profile/get-update-profile";
 import { auth } from "@/lib/auth";
 import type { LinkType, PageSizeType } from "@/types";
 import clsx from "clsx";
@@ -24,7 +25,8 @@ export async function Header({ size }: HeaderProps) {
 
   const session = await auth();
   if (session?.user) {
-    links[1].href = `/${session.user.username}`;
+    const profile = await getProfile();
+    links[1].href = `/${profile.username}`;
   }
 
   const items = session?.user ? (

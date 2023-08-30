@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { notFound, redirect } from "next/navigation";
 
+// TODO: change based on video
 export async function GET(
   _: Request,
   { params }: { params: { username: string } }

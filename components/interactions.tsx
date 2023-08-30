@@ -15,7 +15,7 @@ import { TrashIcon } from "./icons/trash";
 
 interface InteractionsProps extends React.HTMLAttributes<HTMLDivElement> {
   update: { id: number; username: string; favorited: boolean };
-  username: string;
+  username?: string;
   visible?: boolean;
 }
 
@@ -49,6 +49,8 @@ export function Interactions({
       flash(getErrorMessage(error));
     }
   };
+
+  if (!username) return null;
 
   return (
     <div

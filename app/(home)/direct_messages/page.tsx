@@ -3,7 +3,6 @@ import { Tabs } from "@/components/home/tabs";
 import { Pagination } from "@/components/profile/pagination";
 import { Main } from "@/components/ui/content";
 import { getDirectMessages } from "@/lib/actions/home/get-post-delete-message";
-import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,7 +16,6 @@ interface DirectMessagesProps {
 export default async function DirectMessages({
   searchParams,
 }: DirectMessagesProps) {
-  const { user } = await auth();
   const page = Number(searchParams.page || 1);
   const inbox = await getDirectMessages(page);
 

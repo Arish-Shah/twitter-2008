@@ -1,7 +1,7 @@
 import { Interactions } from "@/components/interactions";
 import { Switch } from "@/components/ui/switch";
+import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
 import { getUpdate } from "@/lib/actions/update/get-update";
-import { auth } from "@/lib/auth";
 import {
   formatUpdateCreatedAt,
   formatUpdateCreatedAtTitle,
@@ -14,12 +14,9 @@ interface StatusProps {
   params: { username: string; id: string };
 }
 
-export default async function Status({
-  params: { id, username },
-}: StatusProps) {
+export default async function Status({ params: { id } }: StatusProps) {
+  const username = await getLoggedInUsername();
   const update = await getUpdate(id);
-
-  const session = await auth();
 
   const text = formatUpdateText(update.text);
   const createdAt = formatUpdateCreatedAt(update.createdAt);
@@ -61,14 +58,12 @@ export default async function Status({
             </Switch>
           </div>
         </div>
-        <Switch condition={!!session?.user}>
-          <Interactions
-            username={session?.user.username}
-            className="mt-[8px]"
-            update={update}
-            visible
-          />
-        </Switch>
+        <Interactions
+          username={username}
+          className="mt-[8px]"
+          update={update}
+          visible
+        />
       </div>
       <div className="mt-[15px] flex h-[89px] items-start border-t border-t-gray pt-[15px] leading-[1]">
         <Link href={`/${update.username}`} className="mr-[20px]">

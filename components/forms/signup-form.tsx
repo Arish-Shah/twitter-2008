@@ -55,6 +55,7 @@ export function SignupForm({ captcha }: SignupFormProps) {
           <UsernameInput
             id="username"
             hasError={!!errors.username}
+            defaultMessage="Username can only contain letters, numbers and '_'"
             {...register("username")}
             autoFocus
           />

@@ -7,7 +7,6 @@ import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getReceipents } from "@/lib/actions/home/get-post-delete-message";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
-import { auth } from "@/lib/auth";
 
 interface DirectMessagesLayoutProps {
   children: React.ReactNode;
@@ -16,8 +15,6 @@ interface DirectMessagesLayoutProps {
 export default async function DirectMessagesLayout({
   children,
 }: DirectMessagesLayoutProps) {
-  const { user } = await auth();
-
   const device = await getDeviceUpdates();
   const receipents = await getReceipents();
 
@@ -29,13 +26,13 @@ export default async function DirectMessagesLayout({
       </Main>
       <Sidebar>
         <Sidebar.Section>
-          <MastHead username={user.username} size="small" light />
+          <MastHead size="small" light />
           <div className="h-[10px]"></div>
-          <Stats username={user.username} />
+          <Stats />
         </Sidebar.Section>
         <Menu type="home" selected="Direct Messages" />
         <Sidebar.Section bordered>
-          <Following username={user.username} />
+          <Following />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

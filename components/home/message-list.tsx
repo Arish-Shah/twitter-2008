@@ -1,5 +1,5 @@
 import { getSentDirectMessages } from "@/lib/actions/home/get-post-delete-message";
-import { auth } from "@/lib/auth";
+import { getProfile } from "@/lib/actions/profile/get-update-profile";
 import { formatUpdateCreatedAt, formatUpdateText } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,11 +18,12 @@ interface MessageListProps {
 }
 
 async function MessageItem({ message }: MessageItemProps) {
-  const { user } = await auth();
+  const profile = await getProfile();
   const text = formatUpdateText(message.text);
   const createdAt = formatUpdateCreatedAt(message.createdAt);
+  // TODO: title for link hover
   const username =
-    message.from.username !== user.username
+    message.from.username !== profile.username
       ? message.from.username
       : message.to.username;
 
@@ -42,11 +43,7 @@ async function MessageItem({ message }: MessageItemProps) {
         </Link>
       </div>
       <div className="w-[430px] flex-1 text-[14.4px] leading-[1.1]">
-        <Link
-          href={`/${message.to.username}`}
-          className="font-bold"
-          title={message.to.profile.name || message.to.username}
-        >
+        <Link href={`/${username}`} className="font-bold" title={username}>
           {username}
         </Link>{" "}
         <span className="break-words">{text}</span>

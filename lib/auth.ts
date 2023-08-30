@@ -21,7 +21,6 @@ export const {
             .values({ ...params, password })
             .returning({
               id: users.id,
-              username: users.username,
               role: users.role,
             });
           const userId = userResult[0].id;
@@ -38,7 +37,6 @@ export const {
 
           return {
             id: userResult[0].id.toString(),
-            username: userResult[0].username,
             role: userResult[0].role,
           };
         } else if (params.kind === "login") {
@@ -48,7 +46,6 @@ export const {
           const data = await db
             .select({
               id: users.id,
-              username: users.username,
               password: users.password,
               role: users.role,
             })
@@ -68,7 +65,6 @@ export const {
 
           return {
             id: user.id.toString(),
-            username: user.username,
             role: user.role,
           };
         }

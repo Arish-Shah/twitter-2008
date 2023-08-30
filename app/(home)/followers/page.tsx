@@ -1,12 +1,12 @@
 import { Main } from "@/components/ui/content";
-import { auth } from "@/lib/auth";
+import { getProfile } from "@/lib/actions/profile/get-update-profile";
 import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { user } = await auth();
+  const profile = await getProfile();
 
   return {
-    title: `Twitter / People who follow ${user.username}`,
+    title: `Twitter / People who follow ${profile.username}`,
   };
 }
 

@@ -28,3 +28,5 @@
 - [x] fix newsletter while signup does not go to db
 - [x] force pagination at the bottom of the page
 - [ ] fix flash message when multiple of them are rendered breaks
+- [ ] remove username from jwt as updating username logs you out of the application
+- [x] move loggedInUsername method call to a lib function instead of repeating it

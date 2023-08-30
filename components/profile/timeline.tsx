@@ -1,5 +1,5 @@
+import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
 import { getTimeline } from "@/lib/actions/profile/get-timeline";
-import { auth } from "@/lib/auth";
 import {
   formatUpdateCreatedAt,
   formatUpdateCreatedAtTitle,
@@ -15,6 +15,7 @@ type TimelineType = Awaited<ReturnType<typeof getTimeline>>["updates"];
 interface TimelineItemProps {
   update: TimelineType[number];
   highlight: boolean;
+  username?: string;
 }
 
 interface TimelineProps {
@@ -22,9 +23,11 @@ interface TimelineProps {
   page: number;
 }
 
-async function TimelineItem({ highlight, update }: TimelineItemProps) {
-  const session = await auth();
-
+async function TimelineItem({
+  highlight,
+  update,
+  username,
+}: TimelineItemProps) {
   const text = formatUpdateText(update.text);
   const createdAt = formatUpdateCreatedAt(update.createdAt);
   const title = formatUpdateCreatedAtTitle(update.createdAt);
@@ -85,14 +88,14 @@ async function TimelineItem({ highlight, update }: TimelineItemProps) {
           </Switch>
         </span>
       </div>
-      <Switch condition={!!session?.user}>
-        <Interactions username={session?.user.username} update={update} />
-      </Switch>
+      <Interactions username={username} update={update} />
     </div>
   );
 }
 
-export function Timeline({ updates, page }: TimelineProps) {
+export async function Timeline({ updates, page }: TimelineProps) {
+  const username = await getLoggedInUsername();
+
   return (
     <div className="mt-[17.5px]">
       {updates.map((update, i) => (
@@ -100,6 +103,7 @@ export function Timeline({ updates, page }: TimelineProps) {
           key={update.id}
           update={update}
           highlight={page === 1 && i === 0}
+          username={username}
         />
       ))}
     </div>

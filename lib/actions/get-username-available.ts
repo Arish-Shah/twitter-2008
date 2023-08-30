@@ -3,7 +3,7 @@
 import { users } from "@/drizzle/schema";
 import { db } from "@/lib/db";
 import { signupSchema } from "@/lib/validations/auth";
-import { sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { cache } from "react";
 import { auth } from "../auth";
 
@@ -13,16 +13,22 @@ export type UsernameAvailableResponse = {
 };
 
 export const getUsernameAvailable = cache(async (username: string) => {
-  const session = await auth();
-
   const data = await db
     .select({ username: users.username })
     .from(users)
     .where(sql`lower(${users.username}) = ${username.toLowerCase()}`);
 
   if (data.length > 0) {
-    // the username is currently logged in users's
-    if (session?.user.username === data[0].username) return { success: true };
+    // check if the username belongs to the currently logged in user's
+    const session = await auth();
+    if (session?.user) {
+      const data = await db
+        .select({ username: users.username })
+        .from(users)
+        .where(eq(users.id, Number(session.user.id)));
+      if (data.length === 0) return { success: true };
+      if (username === data[0].username) return { success: true };
+    }
     return { success: false };
   }
   return { success: true };

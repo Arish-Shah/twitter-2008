@@ -20,7 +20,7 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
   const {
-    user: { id, username },
+    user: { id },
   } = await auth();
   const page = Number(searchParams.page || 1);
   const feed = await getFeed(page);
@@ -45,13 +45,13 @@ export default async function Home({ searchParams }: HomeProps) {
       </Main>
       <Sidebar>
         <Sidebar.Section>
-          <MastHead username={username} size="small" light />
+          <MastHead size="small" light />
           <div className="h-[10px]"></div>
-          <Stats username={username} />
+          <Stats />
         </Sidebar.Section>
         <Menu type="home" selected="Home" />
         <Sidebar.Section bordered>
-          <Following username={username} />
+          <Following />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

@@ -4,7 +4,6 @@ import "next-auth";
 
 interface NextAuthUser {
   id: string;
-  username: string;
   role: InferModel<typeof users, "insert">["role"];
 }
 

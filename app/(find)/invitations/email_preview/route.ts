@@ -1,7 +1,8 @@
-import { auth } from "@/lib/auth";
+import { getProfile } from "@/lib/actions/profile/get-update-profile";
 
 export async function GET() {
-  const { user } = await auth();
+  const profile = await getProfile();
+  const username = profile.username;
 
   return new Response(
     `<!doctype html>
@@ -9,10 +10,10 @@ export async function GET() {
   <title>Twitter Email Preview</title> 
   <body style="font-family: monospace;">
     <div>
-      <strong>From:</strong> ${user.username}
+      <strong>From:</strong> ${username}
     </div>
     <div>
-      <strong>Subject:</strong> ${user.username} wants to keep up with you on Twitter
+      <strong>Subject:</strong> ${username} wants to keep up with you on Twitter
     </div>
     <p>
       To find out more about Twitter, visit the link below:<br />

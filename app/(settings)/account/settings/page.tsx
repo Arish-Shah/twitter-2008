@@ -3,7 +3,6 @@ import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getProfile } from "@/lib/actions/profile/get-update-profile";
-import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -12,13 +11,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Settings() {
-  const session = await auth();
   const data = await getProfile();
 
   return (
     <Content>
       <Main className="!p-[12px]">
-        <MastHead username={session.user.username} size="small" />
+        <MastHead size="small" />
         <div className="mt-[20px] px-[10px]">
           <Tabs type="settings" selected="Account" />
         </div>

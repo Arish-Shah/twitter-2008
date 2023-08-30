@@ -18,11 +18,16 @@ import { Input } from "./ui/input";
 interface UsernameInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean;
+  defaultUsername?: string;
+  defaultMessage: string;
 }
 
 export const UsernameInput = forwardRef<HTMLInputElement, UsernameInputProps>(
-  function UsernameInput({ hasError, onChange, ...props }, ref) {
-    const [username, setUsername] = useState("");
+  function UsernameInput(
+    { hasError, onChange, defaultUsername = "", defaultMessage, ...props },
+    ref
+  ) {
+    const [username, setUsername] = useState(defaultUsername);
     const [debouncedUsername] = useDebounce(username, 1000);
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState<UsernameAvailableResponse>({
@@ -73,7 +78,7 @@ export const UsernameInput = forwardRef<HTMLInputElement, UsernameInputProps>(
                 "opacity-100 delay-500": !loading && !response.message,
               })}
             >
-              Username can only contain letters, numbers and &apos;_&apos;
+              {defaultMessage}
             </span>
             <span
               className={clsx(

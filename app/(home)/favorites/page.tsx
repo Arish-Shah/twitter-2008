@@ -8,7 +8,6 @@ import { Stats } from "@/components/profile/stats";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getFavorites } from "@/lib/actions/home/get-favorites";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
-import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,10 +19,8 @@ interface FavoritesProps {
 }
 
 export default async function Favorites({ searchParams }: FavoritesProps) {
-  const { user } = await auth();
-
   const page = Number(searchParams.page || 1);
-  const favorites = await getFavorites(user.username, page);
+  const favorites = await getFavorites(undefined, page);
   const device = await getDeviceUpdates();
 
   return (
@@ -39,13 +36,13 @@ export default async function Favorites({ searchParams }: FavoritesProps) {
       </Main>
       <Sidebar>
         <Sidebar.Section>
-          <MastHead username={user.username} size="small" light />
+          <MastHead size="small" light />
           <div className="h-[10px]"></div>
-          <Stats username={user.username} />
+          <Stats />
         </Sidebar.Section>
         <Menu type="home" selected="Favorites" />
         <Sidebar.Section bordered>
-          <Following username={user.username} />
+          <Following />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

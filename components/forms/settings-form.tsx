@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Form } from "../ui/form";
 import { Input, Select, Submit } from "../ui/input";
+import { Switch } from "../ui/switch";
 import { UsernameInput } from "../username-input";
 
 interface SettingsFormProps {
@@ -22,7 +23,11 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
   const flash = useFlash();
   const router = useRouter();
   const [isPending, startTransition] = useLoadingTransition();
-  const { register, handleSubmit } = useForm<AccountSettingsDataType>({
+  const {
+    register,
+    handleSubmit,
+    formState: { dirtyFields },
+  } = useForm<AccountSettingsDataType>({
     resolver: zodResolver(accountSettingsSchema),
     defaultValues,
   });
@@ -60,7 +65,12 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
           <label htmlFor="username">Username:</label>
         </Form.LabelGroup>
         <Form.InputGroup>
-          <UsernameInput id="username" {...register("username")} />
+          <UsernameInput
+            id="username"
+            defaultUsername={defaultValues.username!}
+            defaultMessage="No spaces, please."
+            {...register("username")}
+          />
         </Form.InputGroup>
       </Form.Row>
       <Form.Row>
@@ -71,37 +81,39 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
           <Input id="email" type="email" {...register("email")} />
         </Form.InputGroup>
       </Form.Row>
-      <Form.Row>
-        <Form.LabelGroup />
-        <Form.InputGroup>
-          <div className="border border-gray-border bg-gray p-[8px]">
-            <strong>
-              You must re-enter your password to change your screen name or
-              email address.
-            </strong>
-            <div className="h-[15px]"></div>
-            <Form.Row>
-              <Form.LabelGroup className="!w-0">
-                <label htmlFor="password" className="font-bold">
-                  Password:
-                </label>
-              </Form.LabelGroup>
-              <Form.InputGroup className="p-0">
-                <Input
-                  id="password"
-                  type="password"
-                  {...register("password")}
-                />
-                <Form.Subtext>
-                  <Link href="/account/resend_password">
-                    Forgot your password?
-                  </Link>
-                </Form.Subtext>
-              </Form.InputGroup>
-            </Form.Row>
-          </div>
-        </Form.InputGroup>
-      </Form.Row>
+      <Switch condition={Boolean(dirtyFields.email || !!dirtyFields.username)}>
+        <Form.Row>
+          <Form.LabelGroup />
+          <Form.InputGroup>
+            <div className="border border-gray-border bg-gray p-[8px]">
+              <strong>
+                You must re-enter your password to change your screen name or
+                email address.
+              </strong>
+              <div className="h-[15px]"></div>
+              <Form.Row>
+                <Form.LabelGroup className="!w-0">
+                  <label htmlFor="password" className="font-bold">
+                    Password:
+                  </label>
+                </Form.LabelGroup>
+                <Form.InputGroup className="p-0">
+                  <Input
+                    id="password"
+                    type="password"
+                    {...register("password")}
+                  />
+                  <Form.Subtext>
+                    <Link href="/account/resend_password">
+                      Forgot your password?
+                    </Link>
+                  </Form.Subtext>
+                </Form.InputGroup>
+              </Form.Row>
+            </div>
+          </Form.InputGroup>
+        </Form.Row>
+      </Switch>
       <Form.Row>
         <Form.LabelGroup>
           <label htmlFor="time_zone">Time Zone:</label>

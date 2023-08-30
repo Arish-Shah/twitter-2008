@@ -8,6 +8,7 @@ import { Stats } from "@/components/profile/stats";
 import { Timeline } from "@/components/profile/timeline";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { Switch } from "@/components/ui/switch";
+import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
 import { getFollow } from "@/lib/actions/profile/get-post-follow";
 import { getTimeline } from "@/lib/actions/profile/get-timeline";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
@@ -22,20 +23,19 @@ export default async function Profile({
   params: { username },
   searchParams,
 }: ProfileProps) {
-  const session = await auth();
-
   const page = Number(searchParams.page || 1);
   const timeline = await getTimeline(username, page);
   const followData = await getFollow(username);
   const deviceUpdatesData = await getDeviceUpdates();
 
+  const session = await auth();
+  const loggedInUsername = await getLoggedInUsername();
+
   return (
     <Content>
       <Main className="!p-[18px_20px_12px_20px]">
         <MastHead username={username} />
-        <Switch
-          condition={session?.user && session?.user.username !== username}
-        >
+        <Switch condition={session?.user && loggedInUsername !== username}>
           <Follow
             username={username}
             followData={followData}

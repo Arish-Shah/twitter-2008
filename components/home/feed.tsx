@@ -1,5 +1,5 @@
+import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
 import { getFeed } from "@/lib/actions/home/get-feed";
-import { auth } from "@/lib/auth";
 import {
   formatUpdateCreatedAt,
   formatUpdateCreatedAtTitle,
@@ -17,7 +17,7 @@ interface FeedProps {
 }
 
 interface FeedItemProps {
-  username: string;
+  username?: string;
   update: FeedType[number];
 }
 
@@ -82,24 +82,18 @@ function FeedItem({ update, username }: FeedItemProps) {
           </Switch>
         </span>
       </div>
-      <Switch condition={!!username}>
-        <Interactions update={update} username={username} />
-      </Switch>
+      <Interactions update={update} username={username} />
     </div>
   );
 }
 
 export async function Feed({ updates }: FeedProps) {
-  const session = await auth();
+  const username = await getLoggedInUsername();
 
   return (
     <div className="mt-[10px] border-t border-dashed border-timeline-border">
       {updates.map((update) => (
-        <FeedItem
-          key={update.id}
-          update={update}
-          username={session?.user.username}
-        />
+        <FeedItem key={update.id} update={update} username={username} />
       ))}
     </div>
   );

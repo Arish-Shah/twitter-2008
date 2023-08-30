@@ -5,21 +5,29 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { AccountSettingsDataType } from "@/types";
 import { compare } from "bcrypt";
-import { eq } from "drizzle-orm";
+import { eq, sql, type SQL } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { cache } from "react";
 
-export const getProfile = cache(async () => {
-  const { user } = await auth();
-  const userId = Number(user.id);
+export const getProfile = cache(async (username?: string) => {
+  let where: SQL<unknown>;
+
+  if (username) {
+    where = sql`lower(${users.username}) = ${username.toLowerCase()}`;
+  } else {
+    const session = await auth();
+    if (!session?.user) return redirect("/login");
+    where = eq(users.id, Number(session.user.id));
+  }
 
   const data = await db.query.users.findFirst({
     columns: {
+      id: true,
       username: true,
       email: true,
     },
-    where: (users, { eq }) => eq(users.id, userId),
+    where,
     with: {
       profile: {
         columns: {
@@ -30,6 +38,7 @@ export const getProfile = cache(async () => {
           protected: true,
           picture: true,
           pictureChanged: true,
+          userId: true,
         },
       },
     },
@@ -46,6 +55,7 @@ export const getProfile = cache(async () => {
     protected: data.profile.protected,
     picture: data.profile.picture,
     pictureChanged: data.profile.pictureChanged,
+    userId: data.id,
   };
 });
 
@@ -86,4 +96,5 @@ export const updateProfile = async (data: AccountSettingsDataType) => {
 
   revalidatePath("/account/settings");
   revalidatePath("/[username]");
+  revalidatePath("/home");
 };

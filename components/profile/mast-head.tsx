@@ -1,11 +1,11 @@
-import { getMastHead } from "@/lib/actions/profile/get-mast-head";
+import { getProfile } from "@/lib/actions/profile/get-update-profile";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
 interface MastHeadProps {
   size?: "small";
-  username: string;
+  username?: string;
   light?: boolean;
 }
 
@@ -14,7 +14,7 @@ export async function MastHead({
   username,
   light = false,
 }: MastHeadProps) {
-  const data = await getMastHead(username);
+  const data = await getProfile(username);
   const small = size === "small";
 
   const dimension = small ? 32 : 74;

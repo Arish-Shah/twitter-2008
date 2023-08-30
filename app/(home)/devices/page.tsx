@@ -3,7 +3,6 @@ import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
 import { Content, Main, Sidebar } from "@/components/ui/content";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
-import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,13 +10,12 @@ export const metadata: Metadata = {
 };
 
 export default async function ProfileSettings() {
-  const { user } = await auth();
   const device = await getDeviceUpdates();
 
   return (
     <Content>
       <Main className="!p-[12px]">
-        <MastHead username={user.username} size="small" />
+        <MastHead size="small" />
         <div className="mt-[20px] px-[10px]">
           <Tabs type="settings" selected="Devices" />
         </div>

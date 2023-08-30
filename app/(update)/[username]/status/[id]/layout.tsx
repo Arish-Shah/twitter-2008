@@ -22,7 +22,7 @@ export async function generateMetadata({
 }
 
 export default async function StatusLayout({
-  params: { username, id },
+  params: { username },
   children,
 }: StatusLayoutProps) {
   const theme = await getTheme(username);
