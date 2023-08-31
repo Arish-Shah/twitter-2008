@@ -53,7 +53,7 @@ export default async function Replies({ searchParams }: RepliesProps) {
         </Sidebar.Section>
         <Menu type="home" selected="@Replies" />
         <Sidebar.Section bordered>
-          <Following />
+          <Following showAdd={true} />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

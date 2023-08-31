@@ -32,7 +32,7 @@ export default async function DirectMessagesLayout({
         </Sidebar.Section>
         <Menu type="home" selected="Direct Messages" />
         <Sidebar.Section bordered>
-          <Following />
+          <Following showAdd={true} />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

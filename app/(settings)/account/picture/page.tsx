@@ -2,6 +2,7 @@ import { PictureForm } from "@/components/forms/picture-form";
 import { Tabs } from "@/components/home/tabs";
 import { MastHead } from "@/components/profile/mast-head";
 import { Content, Main, Sidebar } from "@/components/ui/content";
+import { getProfile } from "@/lib/actions/profile/get-profile";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Picture() {
+  const profile = await getProfile();
+
   return (
     <Content>
       <Main className="!p-[12px]">
@@ -16,7 +19,7 @@ export default async function Picture() {
         <div className="mt-[20px] px-[10px]">
           <Tabs type="settings" selected="Picture" />
         </div>
-        <PictureForm />
+        <PictureForm profile={profile} />
       </Main>
       <Sidebar>
         <Sidebar.Section className="pr-[18px]">

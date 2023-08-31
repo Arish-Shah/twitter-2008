@@ -8,9 +8,10 @@ import { Switch } from "../ui/switch";
 
 interface FollowingProps {
   username?: string;
+  showAdd?: boolean;
 }
 
-export async function Following({ username }: FollowingProps) {
+export async function Following({ username, showAdd = false }: FollowingProps) {
   const loggedInUsername = await getLoggedInUsername();
   const data = await getFollowingSection(username);
 
@@ -18,7 +19,7 @@ export async function Following({ username }: FollowingProps) {
     <Fragment>
       <div className="flex items-center justify-between">
         <Sidebar.H1 className="!m-0">Following</Sidebar.H1>
-        <Switch condition={loggedInUsername === username}>
+        <Switch condition={showAdd}>
           <Link href="/invitations" className="text-[10.8px]">
             add
           </Link>

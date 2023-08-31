@@ -42,7 +42,7 @@ export default async function Favorites({ searchParams }: FavoritesProps) {
         </Sidebar.Section>
         <Menu type="home" selected="Favorites" />
         <Sidebar.Section bordered>
-          <Following />
+          <Following showAdd={true} />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

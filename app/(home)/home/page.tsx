@@ -51,7 +51,7 @@ export default async function Home({ searchParams }: HomeProps) {
         </Sidebar.Section>
         <Menu type="home" selected="Home" />
         <Sidebar.Section bordered>
-          <Following />
+          <Following showAdd={true} />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

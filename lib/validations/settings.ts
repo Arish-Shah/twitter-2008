@@ -25,3 +25,17 @@ export const updatePasswordSchema = z
     message: "Passwords do not match.",
     path: ["verifyPassword"],
   });
+
+export const pictureSchema = z.object({
+  picture: z
+    .custom<FileList>()
+    .refine((files) => files?.length > 0, "Please select an image.")
+    .refine((files) => files?.[0]?.size < 700 * 1024, "Maximum size of 700k.")
+    .refine(
+      (files) =>
+        ["image/jpeg", "image/jpg", "image/gif", "image/png"].includes(
+          files?.[0]?.type
+        ),
+      "Only JPG, GIF, PNG are allowed."
+    ),
+});

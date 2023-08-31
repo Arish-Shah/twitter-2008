@@ -47,7 +47,7 @@ export default async function Everyone({ searchParams }: EveryoneProps) {
         </Sidebar.Section>
         <Menu type="home" selected="Everyone" />
         <Sidebar.Section bordered>
-          <Following />
+          <Following showAdd={true} />
         </Sidebar.Section>
         <Sidebar.Section bordered>
           <DeviceUpdates device={device} />

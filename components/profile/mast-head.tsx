@@ -27,7 +27,7 @@ export async function MastHead({
       >
         <Image
           src={data.picture}
-          alt={data.username}
+          alt={`${data.username}'s picture`}
           height={dimension}
           width={dimension}
           quality={100}

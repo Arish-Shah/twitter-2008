@@ -32,7 +32,7 @@ function FeedItem({ update, username }: FeedItemProps) {
         <Link href={`/${update.username}`}>
           <Image
             src={update.author.picture}
-            alt={`${update.username} picture`}
+            alt={`${update.username}'s picture`}
             height={48}
             width={48}
             quality={100}
