@@ -11,5 +11,5 @@ export const inviteEmailSchema = z.object({
 });
 
 export const searchSchema = z.object({
-  keyword: z.string().min(1),
+  keyword: z.string(),
 });

@@ -9,7 +9,12 @@ export async function Employees() {
     <div className="p-[10px_0_0_12px] text-center">
       <div className="mx-auto w-[158px] text-left">
         {employees.map((user, i) => (
-          <Link key={i} href={`/${user.username}`} title={user.profile.name}>
+          <Link
+            key={i}
+            href={`/${user.username}`}
+            title={user.profile.name}
+            className="block h-[24px] overflow-hidden"
+          >
             <Image
               src={user.profile.picture}
               alt={`${user.profile.name} picture`}

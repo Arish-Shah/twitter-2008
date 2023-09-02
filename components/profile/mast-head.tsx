@@ -18,12 +18,15 @@ export async function MastHead({
   const small = size === "small";
 
   const dimension = small ? 32 : 74;
+  const heightClassName = small ? "h-[32px]" : "h-[74px]";
 
   return (
     <div className="flex items-center">
       <Link
         href={`${!small ? "/account/profile_images" : ""}/${profile.username}`}
-        prefetch={false}
+        className={clsx("block overflow-hidden", heightClassName, {
+          "border border-meta": !small,
+        })}
       >
         <Image
           src={profile.picture}
@@ -31,7 +34,7 @@ export async function MastHead({
           height={dimension}
           width={dimension}
           quality={100}
-          className={clsx("h-auto", { "border border-meta": !small })}
+          className={clsx("h-auto")}
           draggable={false}
           priority={true}
         />

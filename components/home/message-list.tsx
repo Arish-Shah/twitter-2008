@@ -23,7 +23,10 @@ async function MessageItem({ message }: MessageItemProps) {
   return (
     <div className="group flex items-center border-b border-dashed border-timeline-border px-[5px] py-[10px] hover:bg-timeline-hover">
       <div className="w-[55px]">
-        <Link href={`/${message.to.username}`}>
+        <Link
+          href={`/${message.to.username}`}
+          className="block h-[48px] overflow-hidden"
+        >
           <Image
             src={message.to.profile.picture}
             alt={`${message.to.username}`}

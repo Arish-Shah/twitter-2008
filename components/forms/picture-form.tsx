@@ -60,7 +60,7 @@ export function PictureForm({ profile }: PictureFormProps) {
     >
       <Form.Row>
         <Form.LabelGroup className="pt-[5px]">
-          <label htmlFor="picture">
+          <label htmlFor="picture" className="block h-[48px] overflow-hidden">
             <Image
               src={profile.picture}
               alt="Profile picture"

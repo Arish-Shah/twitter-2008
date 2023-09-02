@@ -25,7 +25,10 @@ export async function Following({ username, showAdd = false }: FollowingProps) {
       </div>
       <div className="mt-[10px] pl-[3px]">
         {data.following.map((user, i) => (
-          <span key={i} className="p-[0_3px_2px_1px]">
+          <span
+            key={i}
+            className="inline-block h-[24px] overflow-hidden p-[0_3px_2px_1px]"
+          >
             <Link href={`/${user.username}`} title={user.name || user.username}>
               <Image
                 src={user.picture}

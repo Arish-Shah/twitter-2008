@@ -66,7 +66,10 @@ export default async function Status({ params: { id } }: StatusProps) {
         />
       </div>
       <div className="mt-[15px] flex h-[89px] items-start border-t border-t-gray pt-[15px] leading-[1]">
-        <Link href={`/${update.username}`} className="mr-[20px]">
+        <Link
+          href={`/${update.username}`}
+          className="mr-[20px] h-[48px] overflow-hidden"
+        >
           <Image
             src={update.picture}
             alt={`${update.username}'s picture`}

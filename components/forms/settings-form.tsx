@@ -26,6 +26,8 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { dirtyFields, errors },
   } = useForm<AccountSettingsDataType>({
     resolver: zodResolver(accountSettingsSchema),
@@ -36,6 +38,7 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
     router.replace("/account/settings");
     try {
       await updateProfile(data);
+      reset({ ...data, password: "" });
       flash("Thanks, your settings have been saved.");
     } catch (error) {
       flash("Your current password is incorrect.");
