@@ -3,7 +3,6 @@
 import { useFlash } from "@/hooks/use-flash-store";
 import { useLoadingTransition } from "@/hooks/use-loading-transition";
 import { updateProfile } from "@/lib/actions/settings/update-profile";
-import { getErrorMessage } from "@/lib/utils";
 import { accountSettingsSchema } from "@/lib/validations/settings";
 import type { AccountSettingsDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,7 +38,7 @@ export function SettingsForm({ defaultValues }: SettingsFormProps) {
       await updateProfile(data);
       flash("Thanks, your settings have been saved.");
     } catch (error) {
-      flash(getErrorMessage(error));
+      flash("Your current password is incorrect.");
     }
   };
 

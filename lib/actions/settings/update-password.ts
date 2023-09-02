@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { UpdatePasswordDataType } from "@/types";
 import { compare, hash } from "bcrypt";
 import { eq } from "drizzle-orm";
+import { notFound } from "next/navigation";
 
 export const updatePassword = async (data: UpdatePasswordDataType) => {
   if (data.newPassword !== data.verifyPassword)
@@ -16,7 +17,7 @@ export const updatePassword = async (data: UpdatePasswordDataType) => {
     .select({ password: users.password })
     .from(users)
     .where(eq(users.id, Number(user.id)));
-  if (result.length === 0) throw new Error("User not found");
+  if (result.length === 0) return notFound();
 
   const valid = await compare(data.currentPassword, result[0].password);
   if (!valid) throw new Error("Your current password is incorrect.");
