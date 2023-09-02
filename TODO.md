@@ -12,10 +12,11 @@
   - https://web.archive.org/web/20091010004544/http://twitter.com/public_timeline
   - https://web.archive.org/web/20081217013517/twitter.com/public_timeline
   - https://web.archive.org/web/20081217200201/https://twitter.com/em33/status/1063088727
+  - https://web.archive.org/web/20081217202229/http://twitter.com/twii
 - [x] check https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis for rss
-- [ ] fix signup form, try using useFormStatus etc => but it has to be reused in another place??
+- [x] fix signup form, try using useFormStatus etc => but it has to be reused in another place??
 - [x] change application in db to a table as it would also include url etc idk
-- [ ] /help page https://web.archive.org/web/20081031043123/http://twitter.com/help
+- [x] /help page https://web.archive.org/web/20081031043123/http://twitter.com/help
 - [x] hide login/join navigation from status page when the user is logged out => meh, it's fine
 - [x] use revalidatePath on server actions
 - [ ] on signing in as different user, the navbar still links to old profile
@@ -23,10 +24,19 @@
 - [ ] help page form should submit
 - [ ] deleting a tweet from status page goes to 404, what to do?
 - [ ] fix /account/complete and /account/resend_password they only work when logged in
-- [ ] test react-hook-form's Form component for progressive enhancement
+- [x] test react-hook-form's Form component for progressive enhancement
 - [x] extract getUserIdFromUsername to it's own function as it's called at multiple places
 - [x] fix newsletter while signup does not go to db
 - [x] force pagination at the bottom of the page
 - [ ] fix flash message when multiple of them are rendered breaks
-- [ ] remove username from jwt as updating username logs you out of the application
+- [x] remove username from jwt as updating username logs you out of the application
 - [x] move loggedInUsername method call to a lib function instead of repeating it
+- [x] show info and stats on design sidebar
+- [x] fix employees component to show contributors image
+- [ ] add deleted by columns to messages so they are not deleted if removed by sender
+- [ ] fix design form state management
+- pending
+  - search
+  - follow/followers
+  - dm from user / actions
+  - blocks / protected account

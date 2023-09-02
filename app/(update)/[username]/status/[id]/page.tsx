@@ -70,6 +70,7 @@ export default async function Status({ params: { id } }: StatusProps) {
           <Image
             src={update.picture}
             alt={`${update.username}'s picture`}
+            className="h-auto"
             height={48}
             width={48}
             quality={100}

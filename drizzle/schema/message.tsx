@@ -18,7 +18,8 @@ export const messages = pgTable("messages", {
   toId: integer("to_id")
     .references(() => users.id, { onDelete: "cascade" })
     .notNull(),
-  read: boolean("read").default(false).notNull(),
+  toDeleted: boolean("to_deleted").default(false).notNull(),
+  fromDeleted: boolean("from_deleted").default(false).notNull(),
   createdAt: timestamp("created_at", { withTimezone: true })
     .defaultNow()
     .notNull(),

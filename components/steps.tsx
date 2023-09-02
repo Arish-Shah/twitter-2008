@@ -14,7 +14,7 @@ export function Steps({ selected }: StepsProps) {
         <div
           key={step}
           className={clsx(
-            "ml-[10px] flex h-[30px] w-[30px] cursor-default justify-center rounded-full border border-gray-border bg-gradient-to-t from-white to-steps-gradient font-georgia text-[18px] shadow-[1px_1px] shadow-gray",
+            "ml-[10px] flex h-[30px] w-[30px] cursor-default justify-center rounded-full border border-gray-border bg-gradient-to-t from-white to-timeline-hover font-georgia text-[18px] shadow-[1px_1px] shadow-gray",
             {
               "text-text": selected === step,
               "text-gray-border": selected !== step,

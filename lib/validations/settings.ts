@@ -30,12 +30,39 @@ export const pictureSchema = z.object({
   picture: z
     .custom<FileList>()
     .refine((files) => files?.length > 0, "Please select an image.")
-    .refine((files) => files?.[0]?.size < 700 * 1024, "Maximum size of 700k.")
     .refine(
       (files) =>
         ["image/jpeg", "image/jpg", "image/gif", "image/png"].includes(
           files?.[0]?.type
         ),
       "Only JPG, GIF, PNG are allowed."
-    ),
+    )
+    .refine((files) => files?.[0]?.size < 700 * 1024, "Maximum size of 700k."),
+});
+
+export const designSchema = z.object({
+  backgroundFile: z.union([
+    z
+      .custom<FileList>()
+      .refine(
+        (files) =>
+          files?.length === 0 ||
+          ["image/jpeg", "image/jpg", "image/gif", "image/png"].includes(
+            files?.[0]?.type
+          ),
+        "Only JPG, GIF, PNG are allowed."
+      )
+      .refine(
+        (files) => files?.length === 0 || files?.[0]?.size < 800 * 1024,
+        "Maximum size of 800k."
+      ),
+    z.undefined(),
+  ]),
+  background: z.string().length(7).regex(/^#/),
+  backgroundImage: z.string(),
+  sidebar: z.string().length(7).regex(/^#/),
+  sidebarBorder: z.string().length(7).regex(/^#/),
+  links: z.string().length(7).regex(/^#/),
+  text: z.string().length(7).regex(/^#/),
+  tile: z.boolean(),
 });

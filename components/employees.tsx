@@ -1,26 +1,22 @@
-import type { VCardType } from "@/types";
+import { getEmployees } from "@/lib/actions/get-employees";
 import Image from "next/image";
 import Link from "next/link";
 
-export function Employees() {
-  const users: VCardType[] = Array<VCardType>(30).fill({
-    name: "Default User",
-    username: "default",
-    picture: "/images/profile/default_profile.png",
-  });
+export async function Employees() {
+  const employees = await getEmployees(["arish"]);
 
   return (
     <div className="p-[10px_0_0_12px] text-center">
       <div className="mx-auto w-[158px] text-left">
-        {users.map((user, i) => (
-          <Link key={i} href={`/${user.username}`} title={user.name}>
+        {employees.map((user, i) => (
+          <Link key={i} href={`/${user.username}`} title={user.profile.name}>
             <Image
-              src={user.picture}
-              alt={user.name}
+              src={user.profile.picture}
+              alt={`${user.profile.name} picture`}
+              className="mb-[3px] mr-[5.35px] inline h-auto"
               height={24}
               width={24}
               quality={100}
-              className="mb-[3px] mr-[5.35px] inline"
               draggable={false}
             />
           </Link>

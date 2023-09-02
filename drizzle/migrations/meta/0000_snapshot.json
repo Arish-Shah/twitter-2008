@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "425e2719-8ec3-4e34-9985-5ca8bcb403d3",
+  "id": "2aefa88c-8f1d-4432-8c22-932494c9a547",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "applications": {
@@ -325,8 +325,15 @@
           "primaryKey": false,
           "notNull": true
         },
-        "read": {
-          "name": "read",
+        "to_deleted": {
+          "name": "to_deleted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "from_deleted": {
+          "name": "from_deleted",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,
@@ -459,7 +466,8 @@
           "name": "name",
           "type": "varchar(20)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "''"
         },
         "web": {
           "name": "web",

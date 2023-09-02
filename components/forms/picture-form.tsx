@@ -64,10 +64,10 @@ export function PictureForm({ profile }: PictureFormProps) {
             <Image
               src={profile.picture}
               alt="Profile picture"
+              className="inline-block h-auto"
               height={48}
               width={48}
               quality={100}
-              className="inline-block"
               draggable={false}
               priority={true}
             />

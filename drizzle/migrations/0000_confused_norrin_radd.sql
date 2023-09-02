@@ -70,7 +70,8 @@ CREATE TABLE IF NOT EXISTS "messages" (
 	"text" varchar(140) NOT NULL,
 	"from_id" integer NOT NULL,
 	"to_id" integer NOT NULL,
-	"read" boolean DEFAULT false NOT NULL,
+	"to_deleted" boolean DEFAULT false NOT NULL,
+	"from_deleted" boolean DEFAULT false NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
@@ -88,7 +89,7 @@ CREATE TABLE IF NOT EXISTS "notices" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "profiles" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"name" varchar(20),
+	"name" varchar(20) DEFAULT '' NOT NULL,
 	"web" text,
 	"bio" varchar(160),
 	"location" varchar(30),

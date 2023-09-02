@@ -1,3 +1,5 @@
+import type { ThemeType } from "@/types";
+
 type DimensionType = { width: number; height: number };
 
 type DownloadItemType = {
@@ -180,3 +182,122 @@ export const hours = [
   { label: "10 PM", value: 22 },
   { label: "11 PM", value: 23 },
 ];
+
+export const defaultThemes: ThemeType[] = [
+  {
+    text: "#333333",
+    background: "#9ae4e8",
+    links: "#0084b4",
+    sidebar: "#ddffcc",
+    sidebarBorder: "#bddcad",
+    backgroundImage: "/images/themes/theme1.gif",
+    tile: false,
+  },
+  {
+    text: "#663b12",
+    background: "#c6e2ee",
+    links: "#1f98c7",
+    sidebar: "#daecf4",
+    sidebarBorder: "#c6e2ee",
+    backgroundImage: "/images/themes/theme2.gif",
+    tile: false,
+  },
+  {
+    text: "#634047",
+    background: "#edece9",
+    links: "#088253",
+    sidebar: "#e3e2de",
+    sidebarBorder: "#d3d2cf",
+    backgroundImage: "/images/themes/theme3.gif",
+    tile: false,
+  },
+  {
+    text: "#3c3940",
+    background: "#0099b9",
+    links: "#0099b9",
+    sidebar: "#95e8ec",
+    sidebarBorder: "#5ed4dc",
+    backgroundImage: "/images/themes/theme4.gif",
+    tile: false,
+  },
+  {
+    text: "#3e4415",
+    background: "#352726",
+    links: "#d02b55",
+    sidebar: "#99cc33",
+    sidebarBorder: "#829d5e",
+    backgroundImage: "/images/themes/theme5.gif",
+    tile: false,
+  },
+  {
+    text: "#333333",
+    background: "#709397",
+    links: "#ff3300",
+    sidebar: "#a0c5c7",
+    sidebarBorder: "#86a4a6",
+    backgroundImage: "/images/themes/theme6.gif",
+    tile: false,
+  },
+  {
+    background: "#ebebeb",
+    text: "#333333",
+    links: "#990000",
+    sidebar: "#f3f3f3",
+    sidebarBorder: "#dfdfdf",
+    backgroundImage: "/images/themes/theme7.gif",
+    tile: false,
+  },
+  {
+    text: "#333333",
+    background: "#8b542b",
+    links: "#9d582e",
+    sidebar: "#eadeaa",
+    sidebarBorder: "#d9b17e",
+    backgroundImage: "/images/themes/theme8.gif",
+    tile: false,
+  },
+  {
+    text: "#666666",
+    background: "#1a1b1f",
+    links: "#2fc2ef",
+    sidebar: "#252429",
+    sidebarBorder: "#181a1e",
+    backgroundImage: "/images/themes/theme9.gif",
+    tile: false,
+  },
+  {
+    text: "#332651",
+    background: "#642d8d",
+    links: "#e70000",
+    sidebar: "#84d7fb",
+    sidebarBorder: "#6ec7ed",
+    backgroundImage: "/images/themes/theme10.gif",
+    tile: true,
+  },
+  {
+    text: "#362720",
+    background: "#ff6699",
+    links: "#b40b43",
+    sidebar: "#e5507e",
+    sidebarBorder: "#cc3366",
+    backgroundImage: "/images/themes/theme11.gif",
+    tile: true,
+  },
+  {
+    text: "#0c3e53",
+    background: "#badfcd",
+    links: "#ff0000",
+    sidebar: "#fff7cc",
+    sidebarBorder: "#f2e195",
+    backgroundImage: "/images/themes/theme12.gif",
+    tile: false,
+  },
+];
+
+export const designColors: { [key: string]: keyof ThemeType } = {
+  background: "background",
+  text: "text",
+  links: "links",
+  sidebar: "sidebar",
+  "sidebar border": "sidebarBorder",
+};

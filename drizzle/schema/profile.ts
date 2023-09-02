@@ -14,7 +14,7 @@ import { users } from "./user";
 
 export const profiles = pgTable("profiles", {
   id: serial("id").primaryKey().notNull(),
-  name: varchar("name", { length: 20 }),
+  name: varchar("name", { length: 20 }).default("").notNull(),
   web: text("web"),
   bio: varchar("bio", { length: 160 }),
   location: varchar("location", { length: 30 }),

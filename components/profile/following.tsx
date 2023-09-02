@@ -1,4 +1,3 @@
-import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
 import { getFollowingSection } from "@/lib/actions/profile/get-following";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +11,6 @@ interface FollowingProps {
 }
 
 export async function Following({ username, showAdd = false }: FollowingProps) {
-  const loggedInUsername = await getLoggedInUsername();
   const data = await getFollowingSection(username);
 
   return (
@@ -31,11 +29,11 @@ export async function Following({ username, showAdd = false }: FollowingProps) {
             <Link href={`/${user.username}`} title={user.name || user.username}>
               <Image
                 src={user.picture}
+                className="mb-[5px] inline h-auto"
                 alt={user.username}
                 height={24}
                 width={24}
                 quality={100}
-                className="mb-[5px] inline"
                 draggable={false}
               />
             </Link>

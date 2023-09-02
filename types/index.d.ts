@@ -20,6 +20,7 @@ import { messageSchema } from "@/lib/validations/message";
 import { noticeSchema } from "@/lib/validations/notice";
 import {
   accountSettingsSchema,
+  designSchema,
   pictureSchema,
   updatePasswordSchema,
 } from "@/lib/validations/settings";
@@ -71,6 +72,7 @@ export type MessageDataType = z.infer<typeof messageSchema>;
 export type AccountSettingsDataType = z.infer<typeof accountSettingsSchema>;
 export type UpdatePasswordDataType = z.infer<typeof updatePasswordSchema>;
 export type PictureDataType = z.infer<typeof pictureSchema>;
+export type DesignDataType = z.infer<typeof designSchema>;
 
 export type CredentialsDataType =
   | ({ kind: "signup" } & SignupDataType)

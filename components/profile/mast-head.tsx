@@ -14,7 +14,7 @@ export async function MastHead({
   username,
   light = false,
 }: MastHeadProps) {
-  const data = await getProfile(username);
+  const profile = await getProfile(username);
   const small = size === "small";
 
   const dimension = small ? 32 : 74;
@@ -22,16 +22,16 @@ export async function MastHead({
   return (
     <div className="flex items-center">
       <Link
-        href={`${!small ? "/account/profile_images" : ""}/${data.username}`}
+        href={`${!small ? "/account/profile_images" : ""}/${profile.username}`}
         prefetch={false}
       >
         <Image
-          src={data.picture}
-          alt={`${data.username}'s picture`}
+          src={profile.picture}
+          alt={`${profile.username}'s picture`}
           height={dimension}
           width={dimension}
           quality={100}
-          className={clsx({ "border border-meta": !small })}
+          className={clsx("h-auto", { "border border-meta": !small })}
           draggable={false}
           priority={true}
         />
@@ -43,7 +43,7 @@ export async function MastHead({
           "text-[18px] font-bold": !light,
         })}
       >
-        {data.username}
+        {size === "small" && !light ? profile.name : profile.username}
       </h2>
     </div>
   );

@@ -10,7 +10,14 @@ export const ourFileRouter = {
       if (!session?.user) throw new Error("Unauthenticated");
       return {};
     })
-    .onUploadComplete(async () => {}),
+    .onUploadComplete(() => {}),
+  backgroundImage: f({ image: { maxFileSize: "1024KB", maxFileCount: 1 } })
+    .middleware(async () => {
+      const session = await auth();
+      if (!session?.user) throw new Error("Unauthenticated");
+      return {};
+    })
+    .onUploadComplete(() => {}),
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;

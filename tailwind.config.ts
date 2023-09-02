@@ -68,7 +68,6 @@ const config: Config = {
         "downloadbutton-border": "#693",
         superscript: "#888",
         tick: "#54b219",
-        "steps-gradient": "#f8f8f8",
       },
       fontFamily: {
         sans: ["'Lucida Grande'", "sans-serif"],

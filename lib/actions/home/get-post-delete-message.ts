@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { MessageDataType } from "@/types";
 import { and, eq, ilike, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { notFound } from "next/navigation";
 import { cache } from "react";
 
 export const getUnreadCount = cache(async () => {
@@ -15,7 +16,7 @@ export const getUnreadCount = cache(async () => {
   const data = await db
     .select({ count: sql<number>`count(*)` })
     .from(messages)
-    .where(eq(messages.toId, userId));
+    .where(and(eq(messages.toId, userId), eq(messages.toDeleted, false)));
   return data[0].count;
 });
 
@@ -71,7 +72,8 @@ export const getSentDirectMessages = cache(async (page = 1, limit = 20) => {
   const userId = Number(user.id);
 
   const data = await db.query.messages.findMany({
-    where: (messages, { eq }) => eq(messages.fromId, userId),
+    where: (messages, { eq, and }) =>
+      and(eq(messages.fromId, userId), eq(messages.fromDeleted, false)),
     limit: limit + 1,
     offset: limit * (page - 1),
     columns: {
@@ -80,11 +82,6 @@ export const getSentDirectMessages = cache(async (page = 1, limit = 20) => {
       createdAt: true,
     },
     with: {
-      from: {
-        columns: {
-          username: true,
-        },
-      },
       to: {
         columns: {
           username: true,
@@ -113,7 +110,8 @@ export const getDirectMessages = cache(async (page = 1, limit = 20) => {
   const userId = Number(user.id);
 
   const data = await db.query.messages.findMany({
-    where: (messages, { eq }) => eq(messages.toId, userId),
+    where: (messages, { eq, and }) =>
+      and(eq(messages.toId, userId), eq(messages.toDeleted, false)),
     limit: limit + 1,
     offset: limit * (page - 1),
     columns: {
@@ -123,11 +121,6 @@ export const getDirectMessages = cache(async (page = 1, limit = 20) => {
     },
     with: {
       from: {
-        columns: {
-          username: true,
-        },
-      },
-      to: {
         columns: {
           username: true,
         },
@@ -144,13 +137,37 @@ export const getDirectMessages = cache(async (page = 1, limit = 20) => {
     orderBy: (messages, { desc }) => [desc(messages.createdAt)],
   });
 
+  const mappedData = data.map((message) => ({
+    id: message.id,
+    text: message.text,
+    createdAt: message.createdAt,
+    to: {
+      ...message.from,
+    },
+  }));
+
   return {
-    messages: data.slice(0, limit),
+    messages: mappedData.slice(0, limit),
     hasMore: data.length > limit,
   };
 });
 
-export const deleteMessage = async (id: number) => {
-  await db.delete(messages).where(eq(messages.id, id));
+// TODO: maybe delete when both toDeleted and fromDeleted are true (DB triggers?)
+export const deleteMessage = async (messageId: number) => {
+  console.log(messageId);
+  const { user } = await auth();
+
+  const data = await db
+    .select({ toId: messages.toId, fromId: messages.fromId })
+    .from(messages)
+    .where(eq(messages.id, messageId));
+  if (data.length !== 1) return notFound();
+
+  const set =
+    data[0].fromId === Number(user.id)
+      ? { fromDeleted: true }
+      : { toDeleted: true };
+  await db.update(messages).set(set).where(eq(messages.id, messageId));
+
   revalidatePath("/direct_messages");
 };
