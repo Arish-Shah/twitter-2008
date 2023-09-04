@@ -53,7 +53,7 @@ const config: Config = {
         "alert-success-border": "#a9bf74",
         "alert-warning": "#ffff9b",
         "alert-warning-border": "#ffe38d",
-        "alert-info": "#c7eefe",
+        "alert-info": "#e3f6fe",
         "alert-info-border": "#ade6fe",
         recent: "#afeff1",
         "join-banner": "#feffdf",

@@ -17,7 +17,7 @@ interface DeviceUpdatesProps {
 }
 
 export function DeviceUpdates({ device }: DeviceUpdatesProps) {
-  const [, startTransition] = useLoadingTransition();
+  const [isPending, startTransition] = useLoadingTransition();
   const { register, handleSubmit } = useForm<DeviceUpdateTypeDataType>({
     resolver: zodResolver(deviceUpdateTypeSchema),
     defaultValues: { type: device?.type ?? "off" },
@@ -50,6 +50,7 @@ export function DeviceUpdates({ device }: DeviceUpdatesProps) {
                 type="radio"
                 id="type-on"
                 value="on"
+                disabled={isPending}
                 {...register("type")}
               />
               <span className="ml-[2px]">phone</span>
@@ -59,6 +60,7 @@ export function DeviceUpdates({ device }: DeviceUpdatesProps) {
                 type="radio"
                 id="type-off"
                 value="off"
+                disabled={isPending}
                 {...register("type")}
               />
               <span className="ml-[2px]">off</span>

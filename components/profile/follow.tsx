@@ -43,18 +43,21 @@ export function Follow({
     defaultValues: { deviceUpdates: followData?.deviceUpdates ? "on" : "off" },
   });
 
-  const follow = async () => {
+  const follow = async (username: string) => {
     await postFollow(username);
     setMessage(`You are now following ${username}.`);
   };
 
-  const unfollow = async () => {
+  const unfollow = async (username: string) => {
     await postUnfollow(username);
     setMessage(`You are no longer following ${username}.`);
     setToggle(false);
   };
 
-  const deviceUpdate = async (data: FollowDeviceUpdatesDataType) => {
+  const deviceUpdate = async (
+    username: string,
+    data: FollowDeviceUpdatesDataType
+  ) => {
     await updateDeviceUpdates(username, data);
   };
 
@@ -84,7 +87,7 @@ export function Follow({
         <button
           className="mt-[5px] w-[74px] border border-black bg-subtext py-[5px] font-bold text-white"
           onClick={() => {
-            startTransition(() => follow());
+            startTransition(() => follow(username));
           }}
         >
           Follow
@@ -98,7 +101,7 @@ export function Follow({
             value="Remove"
             className="ml-[5px] p-[4px_12px] text-[10.8px]"
             onClick={() => {
-              startTransition(() => unfollow());
+              startTransition(() => unfollow(username));
             }}
           />
           <small className="block">
@@ -109,7 +112,7 @@ export function Follow({
           <form
             onChange={() => {
               handleSubmit((data) => {
-                startTransition(() => deviceUpdate(data));
+                startTransition(() => deviceUpdate(username, data));
               })();
             }}
           >

@@ -1,4 +1,5 @@
 import { themes } from "@/drizzle/schema";
+import { getSearchResults } from "@/lib/actions/get-search-results";
 import {
   completeSchema,
   loginSchema,
@@ -88,3 +89,7 @@ export type ThemeType = Pick<
   | "links"
   | "text"
 >;
+
+export type SearchResultsType = Awaited<
+  ReturnType<typeof getSearchResults>
+>["results"];

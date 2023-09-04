@@ -1,3 +1,5 @@
+"use client";
+
 import { useFlash } from "@/hooks/use-flash-store";
 import { inviteEmailSchema } from "@/lib/validations/invite";
 import type { InviteEmailDataType } from "@/types";
@@ -9,7 +11,11 @@ import { useForm } from "react-hook-form";
 import { Main } from "../ui/content";
 import { Input, Submit } from "../ui/input";
 
-export function InviteEmailForm<Invi>() {
+interface InviteEmailFormProps {
+  formFor: "invite" | "search";
+}
+
+export function InviteEmailForm({ formFor }: InviteEmailFormProps) {
   const flash = useFlash();
   const router = useRouter();
   const { register, handleSubmit } = useForm<InviteEmailDataType>({
@@ -28,7 +34,16 @@ export function InviteEmailForm<Invi>() {
   return (
     <Fragment>
       <Main.H3 className="!m-0">
-        <label htmlFor="emails">Send email invites</label>
+        <label htmlFor="emails">
+          {formFor === "invite" ? (
+            "Send email invites"
+          ) : (
+            <Fragment>
+              Did&apos;t find what you were looking for?{" "}
+              <span className="font-normal">Send folks an email invite!</span>
+            </Fragment>
+          )}
+        </label>
       </Main.H3>
       <form
         className="mt-[10px]"
@@ -49,9 +64,10 @@ export function InviteEmailForm<Invi>() {
         <Input
           type="text"
           className="w-full"
-          placeholder="Email some email addresses"
+          placeholder="Enter some email addresses"
           id="emails"
           {...register("emails")}
+          autoFocus
         />
         <small>
           Separate multiple email addresses with commas,{" "}

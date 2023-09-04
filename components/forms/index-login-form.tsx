@@ -14,7 +14,7 @@ import { Input, Submit } from "../ui/input";
 export function IndexLoginForm() {
   const flash = useFlash();
   const router = useRouter();
-  const [, startTransition] = useLoadingTransition();
+  const [isPending, startTransition] = useLoadingTransition();
   const { register, handleSubmit } = useForm<LoginDataType>({
     resolver: zodResolver(loginSchema),
   });
@@ -66,7 +66,7 @@ export function IndexLoginForm() {
             Remember me
           </label>
         </div>
-        <Submit value="Sign In »" />
+        <Submit value="Sign In »" disabled={isPending} />
       </div>
       <div className="text-[10.2px]">
         Forgot password?{" "}

@@ -33,7 +33,7 @@ export function MessageForm({ receipents }: MessageFormProps) {
     defaultValues: { text: "" },
   });
   const to = useMessageFormStore((state) => state.to);
-  const [, startTransition] = useLoadingTransition();
+  const [isPending, startTransition] = useLoadingTransition();
   const flash = useFlash();
   const router = useRouter();
 
@@ -101,7 +101,7 @@ export function MessageForm({ receipents }: MessageFormProps) {
           type="submit"
           value="send"
           className="min-w-[115px] rounded-[5px] border border-gray-border bg-gradient-to-b from-updatebutton-gradient-from to-updatebutton-gradient-to p-[6px_36px] text-[13.2px] font-medium text-updatebutton shadow-[0.5px_0.5px_0px] shadow-gray active:shadow-none enabled:hover:from-updatebutton-gradient-from-hover enabled:hover:to-updatebutton-gradient-to-hover disabled:text-updatebutton-disabled"
-          disabled={!isValid}
+          disabled={!isValid || isPending}
         />
       </div>
     </form>

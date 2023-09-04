@@ -5,6 +5,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import Link from "next/link";
 import { Fragment } from "react";
 
+dayjs.extend(relativeTime);
+dayjs.extend(advancedFormat);
+
 const getRandomIndex = (limit: number) => Math.floor(Math.random() * limit);
 
 export function getRandomCaptcha(currentIndex?: number): CaptchaType {
@@ -76,9 +79,6 @@ export function formatUpdateText(text: string): React.ReactNode[] {
 }
 
 export function formatUpdateCreatedAt(createdAt: Date) {
-  dayjs.extend(relativeTime);
-  dayjs.extend(advancedFormat);
-
   const today = dayjs();
   const date = dayjs(createdAt);
 
@@ -87,6 +87,10 @@ export function formatUpdateCreatedAt(createdAt: Date) {
   else if (date.isBefore(today.subtract(1, "day")))
     return date.format("h:mm A MMM Do");
   else return "about " + date.fromNow();
+}
+
+export function formatUpdateCreatedAtSearchResult(createdAt: Date) {
+  return "about " + dayjs(createdAt).fromNow();
 }
 
 export function getErrorMessage(error: unknown) {

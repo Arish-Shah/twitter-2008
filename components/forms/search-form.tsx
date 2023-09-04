@@ -33,6 +33,7 @@ export function SearchForm({ size, keyword }: SearchFormProps) {
         })}
         placeholder="Name or location"
         {...register("keyword")}
+        autoFocus
       />
       <Submit value="search" />
     </form>

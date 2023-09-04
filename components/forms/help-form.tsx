@@ -1,3 +1,5 @@
+"use client";
+
 import { Form } from "../ui/form";
 import { Input, Select, Submit, TextArea } from "../ui/input";
 
