@@ -11,9 +11,10 @@ import { Input, Submit } from "../ui/input";
 interface SearchFormProps {
   size: "small" | "large";
   keyword?: string;
+  autoFocus: boolean;
 }
 
-export function SearchForm({ size, keyword }: SearchFormProps) {
+export function SearchForm({ size, keyword, autoFocus }: SearchFormProps) {
   const router = useRouter();
   const { register, handleSubmit } = useForm<SearchDataType>({
     resolver: zodResolver(searchSchema),
@@ -33,7 +34,7 @@ export function SearchForm({ size, keyword }: SearchFormProps) {
         })}
         placeholder="Name or location"
         {...register("keyword")}
-        autoFocus
+        autoFocus={autoFocus}
       />
       <Submit value="search" />
     </form>

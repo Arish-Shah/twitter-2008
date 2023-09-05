@@ -13,9 +13,10 @@ import { Input, Submit } from "../ui/input";
 
 interface InviteEmailFormProps {
   formFor: "invite" | "search";
+  autoFocus: boolean;
 }
 
-export function InviteEmailForm({ formFor }: InviteEmailFormProps) {
+export function InviteEmailForm({ formFor, autoFocus }: InviteEmailFormProps) {
   const flash = useFlash();
   const router = useRouter();
   const { register, handleSubmit } = useForm<InviteEmailDataType>({
@@ -67,7 +68,7 @@ export function InviteEmailForm({ formFor }: InviteEmailFormProps) {
           placeholder="Enter some email addresses"
           id="emails"
           {...register("emails")}
-          autoFocus
+          autoFocus={autoFocus}
         />
         <small>
           Separate multiple email addresses with commas,{" "}

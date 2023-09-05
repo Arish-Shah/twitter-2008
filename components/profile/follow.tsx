@@ -12,7 +12,6 @@ import { followDeviceUpdatesSchema } from "@/lib/validations/device";
 import { FollowDeviceUpdatesDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
-import { ReturnTypeOrValue } from "drizzle-orm";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -26,8 +25,8 @@ import { Switch } from "../ui/switch";
 
 interface FollowProps {
   username: string;
-  followData: Awaited<ReturnTypeOrValue<typeof getFollow>>;
-  deviceUpdatesData: Awaited<ReturnTypeOrValue<typeof getDeviceUpdates>>;
+  followData: Awaited<ReturnType<typeof getFollow>>;
+  deviceUpdatesData: Awaited<ReturnType<typeof getDeviceUpdates>>;
 }
 
 export function Follow({

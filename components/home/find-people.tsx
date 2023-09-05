@@ -68,10 +68,10 @@ export function FindPeople({ email }: FindPeopleProps) {
           <InviteForm email={email} />
         </Switch>
         <Switch condition={selected === 1}>
-          <InviteEmailForm formFor="invite" />
+          <InviteEmailForm formFor="invite" autoFocus />
         </Switch>
         <Switch condition={selected === 2}>
-          <SearchForm size="large" />
+          <SearchForm size="large" autoFocus />
         </Switch>
       </Alert.Default>
     </div>

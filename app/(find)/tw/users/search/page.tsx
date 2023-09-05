@@ -27,7 +27,7 @@ export default async function UsersSearch({ searchParams }: UsersSearchProps) {
         Results {startIndex} - {endIndex} of {data.count} for &quot;{query}
         &quot;
       </Main.H1>
-      <SearchForm size="small" keyword={query} />
+      <SearchForm size="small" keyword={query} autoFocus={false} />
       <Main.P className="mb-[20px] text-[13.4px] text-meta">
         Your search term in highlighted below.
       </Main.P>
@@ -36,7 +36,7 @@ export default async function UsersSearch({ searchParams }: UsersSearchProps) {
         page {page} of {totalPages}
       </center>
       <Alert.Default className="mx-auto mt-[20px] max-w-[500px] !p-[10px]">
-        <InviteEmailForm formFor="search" />
+        <InviteEmailForm formFor="search" autoFocus={false} />
       </Alert.Default>
       <Pagination type="prevNext" page={page} hasMore={hasMore} />
     </Main>

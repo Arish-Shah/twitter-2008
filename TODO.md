@@ -35,6 +35,8 @@
 - [x] fix employees component to show contributors image
 - [ ] add deleted by columns to messages so they are not deleted if removed by sender
 - [ ] fix design form state management
+- [ ] remove words like home, aboutus to be used as username
+- [ ] maybe remove isPending disabled from a few components, looks yuck!
 - pending
   - search
   - follow/followers

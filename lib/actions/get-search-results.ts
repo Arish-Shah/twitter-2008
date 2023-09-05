@@ -72,7 +72,7 @@ export const getSearchResults = cache(
         return {
           ...row,
           recentUpdate: update?.[0] ?? null,
-          following: !!following,
+          following,
         };
       })
     );

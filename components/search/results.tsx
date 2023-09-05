@@ -1,4 +1,5 @@
 import { getLoggedInUsername } from "@/lib/actions/get-loggedin-username";
+import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import { formatUpdateCreatedAtSearchResult } from "@/lib/utils";
 import type { SearchResultsType } from "@/types";
 import clsx from "clsx";
@@ -9,13 +10,14 @@ import { FollowDevice } from "./follow-device";
 interface ResultItemProps {
   result: SearchResultsType[number];
   showFollow: boolean;
+  deviceUpdates: Awaited<ReturnType<typeof getDeviceUpdates>>;
 }
 
 interface ResultsProps {
   results: SearchResultsType;
 }
 
-function ResultItem({ result, showFollow }: ResultItemProps) {
+function ResultItem({ result, showFollow, deviceUpdates }: ResultItemProps) {
   return (
     <div
       className={clsx("mt-[10px] flex justify-between border p-[10px]", {
@@ -76,19 +78,25 @@ function ResultItem({ result, showFollow }: ResultItemProps) {
           )}
         </div>
       </div>
-      <FollowDevice showFollow={showFollow} result={result} />
+      <FollowDevice
+        showFollow={showFollow}
+        result={result}
+        deviceUpdates={deviceUpdates}
+      />
     </div>
   );
 }
 
 export async function Results({ results }: ResultsProps) {
   const loggedInUsername = await getLoggedInUsername();
+  const deviceUpdates = await getDeviceUpdates();
 
   return results.map((result) => (
     <ResultItem
       key={result.userId}
       result={result}
       showFollow={result.username !== loggedInUsername}
+      deviceUpdates={deviceUpdates}
     />
   ));
 }
