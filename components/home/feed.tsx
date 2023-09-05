@@ -45,7 +45,7 @@ function FeedItem({ update, username }: FeedItemProps) {
           />
         </Link>
       </div>
-      <div className="w-[430px] flex-1 text-[14.4px] leading-[1.1]">
+      <div className="w-[420px] flex-1 text-[14.4px] leading-[1.1]">
         <Link
           href={`/${update.username}`}
           className="font-bold"

@@ -39,7 +39,7 @@ async function MessageItem({ message }: MessageItemProps) {
           />
         </Link>
       </div>
-      <div className="w-[430px] flex-1 text-[14.4px] leading-[1.1]">
+      <div className="w-[420px] flex-1 text-[14.4px] leading-[1.1]">
         <Link
           href={`/${message.to.username}`}
           className="font-bold"
