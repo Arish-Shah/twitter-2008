@@ -28,7 +28,7 @@ export default async function ProfileSettings() {
       <Sidebar>
         <Sidebar.Section>
           <Info username={username!} />
-          <Stats username={username!} />
+          <Stats />
         </Sidebar.Section>
         <Sidebar.Section className="pr-[16px]">
           Customize the way Twitter looks for you and how your profile looks to

@@ -1,6 +1,5 @@
 "use client";
 
-import { useFlash } from "@/hooks/use-flash-store";
 import { inviteSchema } from "@/lib/validations/invite";
 import type { InviteDataType } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,7 +25,6 @@ interface InviteFormProps {
 
 export function InviteForm({ email }: InviteFormProps) {
   const [username, emailProvider] = email.split("@");
-  const flash = useFlash();
   const provider =
     providers.map((p) => p.value).indexOf(emailProvider) >= 0
       ? emailProvider
@@ -42,10 +40,10 @@ export function InviteForm({ email }: InviteFormProps) {
     <Fragment>
       <div className="flex justify-between">
         <div>
-          <Main.H3 className="!m-0">
+          <Main.H4 className="!m-0">
             Search Web Email{" "}
             <span className="font-normal">(Hotmail, Yahoo, Gmail, Etc.)</span>
-          </Main.H3>
+          </Main.H4>
           <form
             className="relative table pb-[35px]"
             onSubmit={handleSubmit((_) => {

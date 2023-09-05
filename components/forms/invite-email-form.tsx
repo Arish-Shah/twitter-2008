@@ -34,7 +34,7 @@ export function InviteEmailForm({ formFor, autoFocus }: InviteEmailFormProps) {
 
   return (
     <Fragment>
-      <Main.H3 className="!m-0">
+      <Main.H4 className="!m-0">
         <label htmlFor="emails">
           {formFor === "invite" ? (
             "Send email invites"
@@ -45,7 +45,7 @@ export function InviteEmailForm({ formFor, autoFocus }: InviteEmailFormProps) {
             </Fragment>
           )}
         </label>
-      </Main.H3>
+      </Main.H4>
       <form
         className="mt-[10px]"
         onSubmit={handleSubmit((_) => {

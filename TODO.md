@@ -37,6 +37,7 @@
 - [ ] fix design form state management
 - [ ] remove words like home, aboutus to be used as username
 - [ ] maybe remove isPending disabled from a few components, looks yuck!
+- [ ] show favorites ordered by their createdAt instead of update's createdAt
 - pending
   - search
   - follow/followers

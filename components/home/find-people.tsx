@@ -53,7 +53,7 @@ export function FindPeople({ email }: FindPeopleProps) {
           <li className="flex-1 border-b border-b-gray-border"></li>
         </ul>
       </Switch>
-      <Main.P className="text-[13.4px] text-meta">
+      <Main.P className="text-meta">
         <Switch condition={selected === 0}>
           We can check if anyone in your email contacts already has a Twitter
           account.

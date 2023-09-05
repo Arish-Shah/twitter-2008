@@ -24,7 +24,7 @@ export function SearchForm({ size, keyword, autoFocus }: SearchFormProps) {
   return (
     <form
       onSubmit={handleSubmit((data) => {
-        router.push("/tw/users/search?q=" + data.keyword.split(" ").join("+"));
+        router.push("/tw/search/users?q=" + data.keyword.split(" ").join("+"));
       })}
     >
       <Input

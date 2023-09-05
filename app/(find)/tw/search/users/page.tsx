@@ -5,10 +5,15 @@ import { Results } from "@/components/search/results";
 import { Alert } from "@/components/ui/alert";
 import { Main } from "@/components/ui/content";
 import { getSearchResults } from "@/lib/actions/get-search-results";
+import type { Metadata } from "next";
 
 interface UsersSearchProps {
   searchParams: { q: string; page?: string };
 }
+
+export const metadata: Metadata = {
+  title: "Twitter / people search",
+};
 
 export default async function UsersSearch({ searchParams }: UsersSearchProps) {
   const query = searchParams.q || "Name or location";
