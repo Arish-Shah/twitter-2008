@@ -2,19 +2,19 @@ import { Page } from "@/components/ui/page";
 import { getTheme } from "@/lib/actions/profile/get-theme";
 import { auth } from "@/lib/auth";
 
-interface ProfileLayoutProps {
+interface CreateDirectMessagesLayoutProps {
   params: { username: string };
   children: React.ReactNode;
 }
 
-export default async function ProfileLayout({
+export default async function CreateDirectMessagesLayout({
   params: { username },
   children,
-}: ProfileLayoutProps) {
+}: CreateDirectMessagesLayoutProps) {
   const session = await auth();
   const join = !session?.user ? username : undefined;
-  const theme = await getTheme(username);
 
+  const theme = await getTheme(username);
   return (
     <Page theme={theme} join={join}>
       {children}

@@ -1,4 +1,5 @@
 import { Menu } from "@/components/home/menu";
+import { Actions } from "@/components/profile/actions";
 import { Follow } from "@/components/profile/follow";
 import { Following } from "@/components/profile/following";
 import { Info } from "@/components/profile/info";
@@ -13,10 +14,19 @@ import { getFollow } from "@/lib/actions/profile/get-post-follow";
 import { getTimeline } from "@/lib/actions/profile/get-timeline";
 import { getDeviceUpdates } from "@/lib/actions/settings/get-post-delete-device";
 import { auth } from "@/lib/auth";
+import type { Metadata } from "next";
 
 interface ProfileProps {
   params: { username: string };
   searchParams: { page?: string };
+}
+
+export async function generateMetadata({
+  params: { username },
+}: ProfileProps): Promise<Metadata> {
+  return {
+    title: `Twitter / ${username}`,
+  };
 }
 
 export default async function Profile({
@@ -59,6 +69,11 @@ export default async function Profile({
         <Sidebar.Section bordered>
           <Following username={username} />
         </Sidebar.Section>
+        <Switch condition={loggedInUsername !== username}>
+          <Sidebar.Section bordered>
+            <Actions username={username} />
+          </Sidebar.Section>
+        </Switch>
       </Sidebar>
     </Content>
   );
