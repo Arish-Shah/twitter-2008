@@ -69,7 +69,7 @@ export default async function Profile({
         <Sidebar.Section bordered>
           <Following username={username} />
         </Sidebar.Section>
-        <Switch condition={loggedInUsername !== username}>
+        <Switch condition={session?.user && loggedInUsername !== username}>
           <Sidebar.Section bordered>
             <Actions username={username} />
           </Sidebar.Section>

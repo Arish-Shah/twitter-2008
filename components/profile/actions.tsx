@@ -11,6 +11,8 @@ interface ActionsProps {
 export async function Actions({ username }: ActionsProps) {
   const receipents = await getReceipents();
 
+  console.log(receipents);
+
   return (
     <Fragment>
       <div className="text-[13.2px] font-bold">Actions</div>
